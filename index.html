@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olha Polishchuk — SMM & SEO Spezialistin in Düsseldorf</title>
+<meta name="description" content="Freelance SMM, SEO & E-Commerce Spezialistin in Düsseldorf. Shopify-Stores, Instagram-Marketing und Google-Rankings für lokale Unternehmen. Deutsch & Russisch.">
+<meta name="keywords" content="SMM Spezialistin Düsseldorf, SEO Freelancer Düsseldorf, Shopify Experte NRW, Social Media Marketing Düsseldorf, Instagram Marketing">
+<meta property="og:title" content="Olha Polishchuk — SMM & SEO · Düsseldorf">
+<meta property="og:description" content="Freelance SMM, SEO & Shopify-Spezialistin in Düsseldorf. Ich bringe Ihren Onlineshop und Social Media auf das nächste Level.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E2A4A;
+  --ink-soft:#4A5568;
+  --amber:#D48B3A;
+  --amber-light:#E8A84F;
+  --amber-pale:#FDF3E7;
+  --bg:#FFFFFF;
+  --bg-soft:#F7F6F4;
+  --bg-mid:#EEF0F5;
+  --line:rgba(30,42,74,0.1);
+  --r:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.65}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+
+/* LANG */
+[data-l]{display:none}
+body.de [data-l="de"],body.ru [data-l="ru"]{display:revert}
+
+/* NAV */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-init{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;letter-spacing:0.02em;flex-shrink:0}
+.brand-name{font-size:15px;font-weight:600;letter-spacing:-0.01em}
+.brand-name span{color:var(--amber)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-sw{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.lang-sw button{font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:0.06em;background:none;border:none;cursor:pointer;color:var(--ink-soft);padding:5px 12px;transition:all .2s;text-transform:uppercase}
+.lang-sw button.on{background:var(--ink);color:#fff}
+.cta-nav{font-size:13px;font-weight:600;padding:9px 20px;background:var(--amber);color:#fff;border-radius:var(--r);transition:all .2s;white-space:nowrap}
+.cta-nav:hover{background:var(--amber-light);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:88px 0 64px;background:var(--bg)}
+.hero-inner{display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--amber-pale);color:var(--amber);font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px}
+.hero-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px;color:var(--ink)}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.hero-sub{font-size:1.08rem;font-weight:300;color:var(--ink-soft);max-width:48ch;line-height:1.75;margin-bottom:34px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--ink);color:#fff;border-radius:var(--r);font-size:14px;font-weight:600;transition:all .25s}
+.btn-primary:hover{background:#2d3f6b;transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1.5px solid var(--line);color:var(--ink);border-radius:var(--r);font-size:14px;font-weight:500;transition:all .25s}
+.btn-outline:hover{border-color:var(--ink);background:var(--bg-soft)}
+.hero-photo{position:relative}
+.hero-photo-frame{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--bg-mid);position:relative}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover}
+.hero-photo-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--ink-soft)}
+.hero-photo-ph svg{width:48px;height:48px;opacity:0.3}
+.hero-photo-ph span{font-size:12px;opacity:0.5;text-align:center;max-width:16ch}
+.hero-badge{position:absolute;bottom:-18px;right:-18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 24px rgba(30,42,74,0.08)}
+.hero-badge-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--ink);line-height:1}
+.hero-badge-lbl{font-size:11px;color:var(--ink-soft);margin-top:2px}
+
+/* METRICS BAR */
+.metrics{background:var(--ink);padding:28px 0}
+.metrics-inner{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap}
+.metric{text-align:center}
+.metric-num{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;line-height:1}
+.metric-num span{color:var(--amber)}
+.metric-lbl{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;letter-spacing:0.04em}
+
+/* SERVICES */
+.services{padding:88px 0;background:var(--bg-soft)}
+.sec-label{font-size:11.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.12;letter-spacing:-0.01em;margin-bottom:44px;max-width:28ch}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc:hover::before{transform:scaleX(1)}
+.svc:hover{border-color:rgba(212,139,58,0.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(30,42,74,0.08)}
+.svc-icon{width:44px;height:44px;border-radius:10px;background:var(--amber-pale);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.svc-icon svg{width:22px;height:22px;color:var(--amber)}
+.svc h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.svc p{font-size:13.5px;color:var(--ink-soft);line-height:1.65;margin-bottom:16px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg-soft);color:var(--ink-soft);letter-spacing:0.04em}
+
+/* ABOUT */
+.about{padding:88px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img{position:relative}
+.about-img-frame{aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:var(--bg-mid)}
+.about-img-frame img{width:100%;height:100%;object-fit:cover}
+.about-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--ink-soft)}
+.about-img-ph svg{width:40px;height:40px;opacity:0.25}
+.about-img-ph span{font-size:12px;opacity:0.4}
+.about-card{position:absolute;bottom:-20px;left:-20px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;min-width:200px}
+.about-card-title{font-size:12px;color:var(--ink-soft);margin-bottom:8px;letter-spacing:0.04em}
+.about-card-langs{display:flex;flex-direction:column;gap:5px}
+.lang-row{display:flex;align-items:center;gap:8px;font-size:13px}
+.lang-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.about-text .sec-label{margin-bottom:10px}
+.about-text h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.12;margin-bottom:18px}
+.about-text p{font-size:1rem;color:var(--ink-soft);margin-bottom:14px;line-height:1.75}
+.about-skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.skill{font-size:12.5px;font-weight:500;padding:7px 14px;border:1px solid var(--line);border-radius:20px;color:var(--ink-soft);transition:all .2s}
+.skill:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-pale)}
+
+/* PORTFOLIO / CASES */
+.cases{padding:88px 0;background:var(--bg-soft)}
+.cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;transition:all .3s}
+.case:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(30,42,74,0.07)}
+.case-tag{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.case h3{font-size:17px;font-weight:600;margin-bottom:10px}
+.case p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin-bottom:18px}
+.case-result{display:flex;gap:20px;flex-wrap:wrap}
+.result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink)}
+.result-item .r-lbl{font-size:11px;color:var(--ink-soft);margin-top:2px}
+
+/* CONTACT */
+.contact{padding:88px 0;background:var(--ink)}
+.contact-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:start}
+.contact h2{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;color:#fff;margin-bottom:16px}
+.contact h2 em{font-style:italic;color:var(--amber)}
+.contact-sub{font-size:1rem;color:rgba(255,255,255,0.65);margin-bottom:32px;font-weight:300;max-width:42ch;line-height:1.75}
+.contact-methods{display:flex;flex-direction:column;gap:12px}
+.cm{display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;transition:all .25s;color:#fff}
+.cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateX(4px)}
+.cm-ic{width:40px;height:40px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cm-ic svg{width:18px;height:18px;color:var(--amber)}
+.cm-info .cm-label{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase}
+.cm-info .cm-val{font-size:14px;font-weight:500;color:#fff;margin-top:2px}
+.contact-form{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px}
+.contact-form h3{font-size:15px;font-weight:600;color:#fff;margin-bottom:20px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px}
+.form-row input,.form-row textarea,.form-row select{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);color:#fff;font-family:'DM Sans';font-size:14px;padding:11px 14px;outline:none;transition:border .2s;resize:none}
+.form-row input::placeholder,.form-row textarea::placeholder{color:rgba(255,255,255,0.3)}
+.form-row input:focus,.form-row textarea:focus{border-color:var(--amber)}
+.form-row textarea{height:90px}
+.form-submit{width:100%;padding:13px;background:var(--amber);color:#fff;border:none;border-radius:var(--r);font-family:'DM Sans';font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;margin-top:4px}
+.form-submit:hover{background:var(--amber-light)}
+
+/* FOOTER */
+footer{background:#111827;padding:32px 0}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-copy{font-size:13px;color:rgba(255,255,255,0.4)}
+.foot-links{display:flex;gap:20px}
+.foot-links a{font-size:13px;color:rgba(255,255,255,0.4);transition:color .2s}
+.foot-links a:hover{color:rgba(255,255,255,0.8)}
+
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
+  .hero-photo{display:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .cases-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  section{padding:64px 0}
+  .services,.cases,.about,.contact{padding:64px 0}
+}
+@media(max-width:560px){
+  .svc-grid{grid-template-columns:1fr}
+  .hero{padding:56px 0 44px}
+  .metrics-inner{gap:30px}
+}
+</style>
+</head>
+<body class="de">
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <div class="brand-init">OP</div>
+      <div class="brand-name">Olha <span>Polishchuk</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="#services" data-l="de">Leistungen</a><a href="#services" data-l="ru">Услуги</a>
+      <a href="#about" data-l="de">Über mich</a><a href="#about" data-l="ru">Обо мне</a>
+      <a href="#cases" data-l="de">Projekte</a><a href="#cases" data-l="ru">Проекты</a>
+      <a href="#contact" data-l="de">Kontakt</a><a href="#contact" data-l="ru">Контакт</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button onclick="setL('de')" id="b-de" class="on">DE</button>
+        <button onclick="setL('ru')" id="b-ru">RU</button>
+      </div>
+      <a href="#contact" class="cta-nav" data-l="de">Anfrage stellen</a>
+      <a href="#contact" class="cta-nav" data-l="ru">Написать</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow" data-l="de">Freelancerin · Düsseldorf & Remote</div>
+        <div class="hero-eyebrow" data-l="ru">Фриланс · Дюссельдорф и удалённо</div>
+
+        <h1 data-l="de">SMM & SEO, die <em>wirklich</em> Kunden bringen</h1>
+        <h1 data-l="ru">SMM и SEO, которые <em>реально</em> приводят клиентов</h1>
+
+        <p class="hero-sub" data-l="de">Ich helfe lokalen Unternehmen und Onlineshops in Düsseldorf, online sichtbar zu werden — durch durchdachtes Social-Media-Marketing, Shopify-Optimierung und nachhaltiges SEO.</p>
+        <p class="hero-sub" data-l="ru">Помогаю бизнесу в Дюссельдорфе стать заметным онлайн — через грамотный SMM, оптимизацию Shopify-магазинов и SEO, которое работает вдолгую.</p>
+
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary" data-l="de">Kostenloses Erstgespräch →</a>
+          <a href="#contact" class="btn-primary" data-l="ru">Бесплатная консультация →</a>
+          <a href="#cases" class="btn-outline" data-l="de">Projekte ansehen</a>
+          <a href="#cases" class="btn-outline" data-l="ru">Смотреть проекты</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <div class="hero-photo-frame">
+          <img src="images/Ich.png" alt="Olha Polishchuk — SMM & SEO Spezialistin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="hero-photo-ph" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span>Добавь своё фото в images/portrait.jpg</span>
+          </div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-num">5+</div>
+          <div class="hero-badge-lbl" data-l="de">Jahre Erfahrung</div>
+          <div class="hero-badge-lbl" data-l="ru">лет опыта</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="wrap metrics-inner">
+    <div class="metric">
+      <div class="metric-num">20<span>+</span></div>
+      <div class="metric-lbl" data-l="de">Betreute Projekte</div>
+      <div class="metric-lbl" data-l="ru">Проектов</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">3</div>
+      <div class="metric-lbl" data-l="de">Sprachen: DE · UA · RU</div>
+      <div class="metric-lbl" data-l="ru">Языка: DE · UA · RU</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num"><span>#</span>1</div>
+      <div class="metric-lbl" data-l="de">Google-Rankings erzielt</div>
+      <div class="metric-lbl" data-l="ru">Позиций в Google</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">Shopify</div>
+      <div class="metric-lbl" data-l="de">Partner & Experte</div>
+      <div class="metric-lbl" data-l="ru">Эксперт</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">NRW</div>
+      <div class="metric-lbl" data-l="de">Düsseldorf & Region</div>
+      <div class="metric-lbl" data-l="ru">Дюссельдорф и регион</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-label" data-l="de">Was ich anbiete</div>
+    <div class="sec-label" data-l="ru">Что я делаю</div>
+    <h2 class="sec-title" data-l="de">Leistungen, die Ihr Business weiterbringen</h2>
+    <h2 class="sec-title" data-l="ru">Услуги, которые двигают бизнес вперёд</h2>
+
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 data-l="de">Social Media Marketing</h3><h3 data-l="ru">Social Media Marketing</h3>
+        <p data-l="de">Instagram, Facebook und TikTok — strategisch bespielt, mit Inhalten, die Ihre Zielgruppe ansprechen und zu Kunden werden lässt.</p>
+        <p data-l="ru">Instagram, Facebook и TikTok — стратегический контент, который превращает подписчиков в покупателей.</p>
+        <div class="svc-tags"><span class="tag">Instagram</span><span class="tag">Reels</span><span class="tag">TikTok</span><span class="tag">Content</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3 data-l="de">SEO & lokale Sichtbarkeit</h3><h3 data-l="ru">SEO и локальное продвижение</h3>
+        <p data-l="de">Google findet Ihr Unternehmen — durch technisches SEO, Produkttexte und lokale Optimierung für Düsseldorf und NRW.</p>
+        <p data-l="ru">Вывожу в топ Google по ключевым словам для Дюссельдорфа и NRW — через технический SEO, тексты и локальную оптимизацию.</p>
+        <div class="svc-tags"><span class="tag">Google</span><span class="tag">Lokales SEO</span><span class="tag">Keywords</span><span class="tag">Texte</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3 data-l="de">Shopify E-Commerce</h3><h3 data-l="ru">Shopify E-Commerce</h3>
+        <p data-l="de">Aufbau, Optimierung und Pflege von Shopify-Stores — Produktkataloge, SEO-Texte, Pinterest-Integration und mehr.</p>
+        <p data-l="ru">Настройка, оптимизация и ведение Shopify-магазинов — каталоги, SEO-тексты, интеграции и аналитика.</p>
+        <div class="svc-tags"><span class="tag">Shopify</span><span class="tag">E-Commerce</span><span class="tag">Pinterest</span><span class="tag">Analytics</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 data-l="de">Content-Strategie</h3><h3 data-l="ru">Контент-стратегия</h3>
+        <p data-l="de">Redaktionsplanung, Copywriting und visuelle Konzepte — auf Deutsch, Russisch und Ukrainisch.</p>
+        <p data-l="ru">Контент-план, тексты и визуальная концепция — на немецком, русском и украинском языках.</p>
+        <div class="svc-tags"><span class="tag">Copywriting</span><span class="tag">Canva</span><span class="tag">DE·RU·UA</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 data-l="de">Analytics & Reporting</h3><h3 data-l="ru">Аналитика и отчётность</h3>
+        <p data-l="de">Klare Berichte über Reichweite, Rankings und Conversions — damit Sie immer wissen, was Ihr Budget bringt.</p>
+        <p data-l="ru">Понятные отчёты по охватам, позициям и конверсиям — всегда понятно, что работает, а что нет.</p>
+        <div class="svc-tags"><span class="tag">Google Analytics</span><span class="tag">Reporting</span></div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3 data-l="de">Freelance Beratung</h3><h3 data-l="ru">Консультации</h3>
+        <p data-l="de">Einmalige Audits, Strategie-Sessions oder laufende Begleitung — flexibel, direkt, ohne Agentur-Overhead.</p>
+        <p data-l="ru">Разовые аудиты, стратегические сессии или постоянное сопровождение — гибко, напрямую, без наценок агентства.</p>
+        <div class="svc-tags"><span class="tag">Audit</span><span class="tag">Strategie</span><span class="tag">1:1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img">
+      <div class="about-img-frame">
+        <img src="images/foto.png" alt="Woman with reddish-blonde hair and glasses, wearing a black turtleneck, sitting at a wooden desk and working on a laptop in a warm, well-lit home office decorated with potted plants and shelving, expressing professional focus and approachability" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="about-img-ph" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>images/foto.png</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title" data-l="de">Sprachen</div>
+        <div class="about-card-title" data-l="ru">Языки</div>
+        <div class="about-card-langs">
+          <div class="lang-row"><div class="lang-dot" style="background:#000"></div>Deutsch (B2)</div>
+          <div class="lang-row"><div class="lang-dot" style="background:#005BBB"></div>Українська</div>
+          <div class="lang-row"><div class="lang-dot" style="background:#CC0000"></div>Русский</div>
+          <div class="lang-row"><div class="lang-dot" style="background:#00247D"></div>English</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="sec-label" data-l="de">Über mich</div>
+      <div class="sec-label" data-l="ru">Обо мне</div>
+      <h2 data-l="de">Hallo, ich bin Olha</h2>
+      <h2 data-l="ru">Привет, я Ольга</h2>
+
+      <p data-l="de">Ich bin Freelancerin für SMM, SEO und E-Commerce in Düsseldorf. Mit einem technischen Hintergrund in Programmierung und Datenanalyse denke ich nicht nur kreativ, sondern auch datengetrieben — und das merken meine Kunden an den Ergebnissen.</p>
+      <p data-l="ru">Фрилансер по SMM, SEO и e-commerce в Дюссельдорфе. За плечами — технический бэкграунд в программировании и аналитике данных, поэтому я не просто создаю красивый контент, а работаю с цифрами и результатами.</p>
+
+      <p data-l="de">Ich spreche Deutsch, Ukrainisch, Russisch und Englisch — das macht mich zur idealen Partnerin für Unternehmen, die russisch- oder ukrainischsprachige Kunden in Deutschland ansprechen möchten.</p>
+      <p data-l="ru">Говорю на немецком, украинском, русском и английском — это делает меня идеальным партнёром для бизнеса, который хочет работать с русскоязычной аудиторией в Германии.</p>
+
+      <div class="about-skills">
+        <span class="skill">Shopify</span>
+        <span class="skill">Instagram</span>
+        <span class="skill">TikTok</span>
+        <span class="skill">Pinterest</span>
+        <span class="skill">Google SEO</span>
+        <span class="skill">Canva</span>
+        <span class="skill">CapCut</span>
+        <span class="skill">Analytics</span>
+        <span class="skill">Copywriting</span>
+        <span class="skill">AI Tools</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="wrap">
+    <div class="sec-label" data-l="de">Ausgewählte Projekte</div>
+    <div class="sec-label" data-l="ru">Избранные проекты</div>
+    <h2 class="sec-title" data-l="de">Echte Ergebnisse für echte Unternehmen</h2>
+    <h2 class="sec-title" data-l="ru">Реальные результаты для реального бизнеса</h2>
+
+    <div class="cases-grid">
+      <div class="case">
+        <div class="case-tag">Shopify · SEO · SMM</div>
+        <h3 data-l="de">Kanelia — Nagelkosmetik Düsseldorf</h3>
+        <h3 data-l="ru">Kanelia — профессиональная косметика</h3>
+        <p data-l="de">SEO-Optimierung des Shopify-Stores, Neuschreiben aller Produkttexte, Aufbau von Pinterest-Präsenz und Google-Rankings für lokale Keywords in Düsseldorf.</p>
+        <p data-l="ru">SEO-оптимизация Shopify-магазина, переписала все тексты продуктов, выстроила присутствие в Pinterest и добилась позиций в Google по локальным запросам Дюссельдорфа.</p>
+        <div class="case-result">
+          <div class="result-item"><div class="r-num" data-l="de">Top 3</div><div class="r-num" data-l="ru">Топ 3</div><div class="r-lbl" data-l="de">Google Düsseldorf</div><div class="r-lbl" data-l="ru">Google Дюссельдорф</div></div>
+          <div class="result-item"><div class="r-num">↑ SEO</div><div class="r-lbl" data-l="de">Alle Produktseiten</div><div class="r-lbl" data-l="ru">Все страницы товаров</div></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">Content · Instagram · Telegram</div>
+        <h3 data-l="de">Finanz-Coaching Content Brand</h3>
+        <h3 data-l="ru">Бренд финансового коучинга</h3>
+        <p data-l="de">Aufbau einer Content-Marke für russischsprachige Familien in Deutschland — Instagram-Karussells, Telegram-Kanal und Reels zu deutschen Finanzthemen (VL, Riester, ETF).</p>
+        <p data-l="ru">Выстроила контент-бренд для русскоязычных семей в Германии — карусели в Instagram, Telegram-канал и Reels по финансовым темам (VL, Riester, ETF, Kindergeld).</p>
+        <div class="case-result">
+          <div class="result-item"><div class="r-num">Instagram</div><div class="r-lbl">@Olga_FinansCouch</div></div>
+          <div class="result-item"><div class="r-num">Telegram</div><div class="r-lbl">FinanzGuide_GE</div></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">Shopify · Proposal</div>
+        <h3 data-l="de">Satti Osteuropäische Küche</h3>
+        <h3 data-l="ru">Satti — восточноевропейская кухня</h3>
+        <p data-l="de">Erstellung eines detaillierten Shopify-Angebots mit Finanzvergleich gegenüber Lieferando-Provisionen und Marktanalyse für den Online-Verkauf.</p>
+        <p data-l="ru">Разработала детальное предложение по запуску Shopify-магазина с финансовым сравнением против комиссий Lieferando и анализом рынка.</p>
+        <div class="case-result">
+          <div class="result-item"><div class="r-num" data-l="de">ROI</div><div class="r-num" data-l="ru">ROI</div><div class="r-lbl" data-l="de">Analyse erstellt</div><div class="r-lbl" data-l="ru">Анализ готов</div></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">SMM · Branding</div>
+        <h3 data-l="de">Personal Branding für Finanzberater</h3>
+        <h3 data-l="ru">Персональный бренд финансового советника</h3>
+        <p data-l="de">Instagram-Templates, Brand-System (Farben, Typografie), Voiceover-Skripte und Content-Strategie für eine DVAG-Finanzberaterin.</p>
+        <p data-l="ru">Instagram-шаблоны, брендовая система (цвета, шрифты), скрипты для видео и контент-стратегия для финансового советника DVAG.</p>
+        <div class="case-result">
+          <div class="result-item"><div class="r-num" data-l="de">Brand</div><div class="r-num" data-l="ru">Бренд</div><div class="r-lbl" data-l="de">System entwickelt</div><div class="r-lbl" data-l="ru">Система создана</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-inner">
+    <div>
+      <h2 data-l="de">Bereit, Ihren Online-<em>Auftritt</em> zu stärken?</h2>
+      <h2 data-l="ru">Готовы усилить ваше онлайн-<em>присутствие</em>?</h2>
+      <p class="contact-sub" data-l="de">Schreiben Sie mir — wir besprechen Ihr Projekt kostenlos und ohne Verpflichtung. Antwort innerhalb von 24 Stunden.</p>
+      <p class="contact-sub" data-l="ru">Напишите мне — обсудим ваш проект бесплатно и без обязательств. Отвечаю в течение 24 часов.</p>
+
+      <div class="contact-methods">
+        <a class="cm" href="https://linkedin.com/in/olha-882b30113">
+          <div class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div class="cm-info"><div class="cm-label">LinkedIn</div><div class="cm-val">Olha Polishchuk</div></div>
+        </a>
+        <a class="cm" href="https://github.com/OlgaPolish">
+          <div class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+          <div class="cm-info"><div class="cm-label">GitHub</div><div class="cm-val">OlgaPolish</div></div>
+        </a>
+        <a class="cm" href="https://t.me/FinanzGuide_GE">
+          <div class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.607c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.163 13.925l-2.963-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.656.661z"/></svg></div>
+          <div class="cm-info"><div class="cm-label">Telegram</div><div class="cm-val">@FinanzGuide_GE</div></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3 data-l="de">Nachricht senden</h3>
+      <h3 data-l="ru">Отправить сообщение</h3>
+      <div class="form-row">
+        <label data-l="de">Name</label><label data-l="ru">Имя</label>
+        <input type="text" placeholder="Ihr Name / Ваше имя">
+      </div>
+      <div class="form-row">
+        <label>E-Mail</label>
+        <input type="email" placeholder="name@email.de">
+      </div>
+      <div class="form-row">
+        <label data-l="de">Wie kann ich helfen?</label><label data-l="ru">Чем могу помочь?</label>
+        <textarea placeholder="SMM, SEO, Shopify..."></textarea>
+      </div>
+      <button class="form-submit" onclick="sendMsg()" data-l="de">Nachricht senden →</button>
+      <button class="form-submit" onclick="sendMsg()" data-l="ru">Отправить →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>
+    <div class="foot-links">
+      <a href="https://linkedin.com/in/olha-882b30113">LinkedIn</a>
+      <a href="https://github.com/OlgaPolish">GitHub</a>
+      <a href="https://t.me/FinanzGuide_GE">Telegram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setL(l){
+  document.body.className=l;
+  ['de','ru'].forEach(x=>document.getElementById('b-'+x).classList.toggle('on',x===l));
+  document.documentElement.lang=l==='ru'?'ru':'de';
+  try{localStorage.setItem('op-lang',l)}catch(e){}
+}
+(function(){var s;try{s=localStorage.getItem('op-lang')}catch(e){}if(s)setL(s);})();
+
+function sendMsg(){
+  var name=document.querySelector('input[type=text]').value;
+  var email=document.querySelector('input[type=email]').value;
+  var msg=document.querySelector('textarea').value;
+  if(!name||!email){alert('Пожалуйста, заполните имя и email / Bitte Name und E-Mail ausfüllen');return;}
+  window.location.href='mailto:your-email@gmail.com?subject=Anfrage von '+encodeURIComponent(name)+'&body='+encodeURIComponent(msg+'\n\nE-Mail: '+email);
+}
+</script>
+</body>
+</html>
