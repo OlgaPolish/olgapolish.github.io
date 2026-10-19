@@ -4,15 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Olha Polishchuk — SMM & SEO Spezialistin in Düsseldorf</title>
-<meta name="description" content="Freelance SMM, SEO & E-Commerce Spezialistin in Düsseldorf. Shopify-Stores, Instagram-Marketing und Google-Rankings für lokale Unternehmen. Deutsch & Russisch.">
-<meta name="keywords" content="SMM Spezialistin Düsseldorf, SEO Freelancer Düsseldorf, Shopify Experte NRW, Social Media Marketing Düsseldorf, Instagram Marketing">
+<meta name="description" content="Freelance SMM, SEO & E-Commerce Spezialistin in Düsseldorf. Shopify-Stores, Instagram-Marketing und Google-Rankings für lokale Unternehmen. Deutsch, Ukrainisch & Russisch.">
 <meta property="og:title" content="Olha Polishchuk — SMM & SEO · Düsseldorf">
-<meta property="og:description" content="Freelance SMM, SEO & Shopify-Spezialistin in Düsseldorf. Ich bringe Ihren Onlineshop und Social Media auf das nächste Level.">
+<meta property="og:description" content="Freelance SMM, SEO & Shopify-Spezialistin in Düsseldorf. Mehr Sichtbarkeit für Ihren Onlineshop und Ihr lokales Unternehmen.">
+<meta property="og:url" content="https://olgapolish.github.io/">
+<meta property="og:image" content="https://olgapolish.github.io/images/olha-portrait.jpg">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://olgapolish.github.io/">
 <style>
+/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/dm-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/dm-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/dm-sans-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/dm-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:600 700;font-display:swap;src:url(fonts/dm-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/dm-serif-display-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/dm-serif-display-latin-400-italic.woff2) format('woff2')}
 :root{
   --ink:#1E2A4A;
   --ink-soft:#4A5568;
@@ -35,6 +42,7 @@ img{display:block;max-width:100%}
 /* LANG */
 [data-l]{display:none}
 body.de [data-l="de"],body.ru [data-l="ru"]{display:revert}
+body.de [data-l="ru"],body.ru [data-l="de"]{display:none!important}
 
 /* NAV */
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -156,6 +164,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .form-row textarea{height:90px}
 .form-submit{width:100%;padding:13px;background:var(--amber);color:#fff;border:none;border-radius:var(--r);font-family:'DM Sans';font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;margin-top:4px}
 .form-submit:hover{background:var(--amber-light)}
+.form-note{font-size:12px;color:rgba(255,255,255,0.45);margin-top:12px;line-height:1.5}
+.form-note a{color:rgba(255,255,255,0.7);text-decoration:underline}
 
 /* FOOTER */
 footer{background:#111827;padding:32px 0}
@@ -230,10 +240,10 @@ footer{background:#111827;padding:32px 0}
 
       <div class="hero-photo">
         <div class="hero-photo-frame">
-          <img src="images/Ich.png" alt="Olha Polishchuk — SMM & SEO Spezialistin" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="images/olha-portrait.jpg" width="900" height="1350" alt="Olha Polishchuk — SMM- & SEO-Spezialistin in Düsseldorf" fetchpriority="high" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="hero-photo-ph" style="display:none">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span>Добавь своё фото в images/portrait.jpg</span>
+            <span>Olha Polishchuk</span>
           </div>
         </div>
         <div class="hero-badge">
@@ -260,14 +270,14 @@ footer{background:#111827;padding:32px 0}
       <div class="metric-lbl" data-l="ru">Языка: DE · UA · RU</div>
     </div>
     <div class="metric">
-      <div class="metric-num"><span>#</span>1</div>
-      <div class="metric-lbl" data-l="de">Google-Rankings erzielt</div>
-      <div class="metric-lbl" data-l="ru">Позиций в Google</div>
+      <div class="metric-num">Top <span>3</span></div>
+      <div class="metric-lbl" data-l="de">bei Google Düsseldorf</div>
+      <div class="metric-lbl" data-l="ru">в Google Дюссельдорф</div>
     </div>
     <div class="metric">
       <div class="metric-num">Shopify</div>
-      <div class="metric-lbl" data-l="de">Partner & Experte</div>
-      <div class="metric-lbl" data-l="ru">Эксперт</div>
+      <div class="metric-lbl" data-l="de">Shops aufbauen & optimieren</div>
+      <div class="metric-lbl" data-l="ru">Создание и оптимизация магазинов</div>
     </div>
     <div class="metric">
       <div class="metric-num">NRW</div>
@@ -302,7 +312,7 @@ footer{background:#111827;padding:32px 0}
         </div>
         <h3 data-l="de">SEO & lokale Sichtbarkeit</h3><h3 data-l="ru">SEO и локальное продвижение</h3>
         <p data-l="de">Google findet Ihr Unternehmen — durch technisches SEO, Produkttexte und lokale Optimierung für Düsseldorf und NRW.</p>
-        <p data-l="ru">Вывожу в топ Google по ключевым словам для Дюссельдорфа и NRW — через технический SEO, тексты и локальную оптимизацию.</p>
+        <p data-l="ru">Помогаю, чтобы вас находили в Google по запросам для Дюссельдорфа и NRW — через техническое SEO, тексты и локальную оптимизацию.</p>
         <div class="svc-tags"><span class="tag">Google</span><span class="tag">Lokales SEO</span><span class="tag">Keywords</span><span class="tag">Texte</span></div>
       </div>
 
@@ -354,17 +364,17 @@ footer{background:#111827;padding:32px 0}
   <div class="wrap about-grid">
     <div class="about-img">
       <div class="about-img-frame">
-        <img src="images/foto.png" alt="Woman with reddish-blonde hair and glasses, wearing a black turtleneck, sitting at a wooden desk and working on a laptop in a warm, well-lit home office decorated with potted plants and shelving, expressing professional focus and approachability" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="images/olha-arbeit.jpg" width="1100" height="733" loading="lazy" alt="Olha Polishchuk am Laptop in ihrem Büro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="about-img-ph" style="display:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span>images/foto.png</span>
+          <span>Olha Polishchuk</span>
         </div>
       </div>
       <div class="about-card">
         <div class="about-card-title" data-l="de">Sprachen</div>
         <div class="about-card-title" data-l="ru">Языки</div>
         <div class="about-card-langs">
-          <div class="lang-row"><div class="lang-dot" style="background:#000"></div>Deutsch (B2)</div>
+          <div class="lang-row"><div class="lang-dot" style="background:#000"></div>Deutsch</div>
           <div class="lang-row"><div class="lang-dot" style="background:#005BBB"></div>Українська</div>
           <div class="lang-row"><div class="lang-dot" style="background:#CC0000"></div>Русский</div>
           <div class="lang-row"><div class="lang-dot" style="background:#00247D"></div>English</div>
@@ -382,7 +392,7 @@ footer{background:#111827;padding:32px 0}
       <p data-l="ru">Фрилансер по SMM, SEO и e-commerce в Дюссельдорфе. За плечами — технический бэкграунд в программировании и аналитике данных, поэтому я не просто создаю красивый контент, а работаю с цифрами и результатами.</p>
 
       <p data-l="de">Ich spreche Deutsch, Ukrainisch, Russisch und Englisch — das macht mich zur idealen Partnerin für Unternehmen, die russisch- oder ukrainischsprachige Kunden in Deutschland ansprechen möchten.</p>
-      <p data-l="ru">Говорю на немецком, украинском, русском и английском — это делает меня идеальным партнёром для бизнеса, который хочет работать с русскоязычной аудиторией в Германии.</p>
+      <p data-l="ru">Говорю на немецком, украинском, русском и английском — это делает меня идеальным партнёром для бизнеса, который хочет работать с русско- и украиноязычной аудиторией в Германии.</p>
 
       <div class="about-skills">
         <span class="skill">Shopify</span>
@@ -434,17 +444,6 @@ footer{background:#111827;padding:32px 0}
       </div>
 
       <div class="case">
-        <div class="case-tag">Shopify · Proposal</div>
-        <h3 data-l="de">Satti Osteuropäische Küche</h3>
-        <h3 data-l="ru">Satti — восточноевропейская кухня</h3>
-        <p data-l="de">Erstellung eines detaillierten Shopify-Angebots mit Finanzvergleich gegenüber Lieferando-Provisionen und Marktanalyse für den Online-Verkauf.</p>
-        <p data-l="ru">Разработала детальное предложение по запуску Shopify-магазина с финансовым сравнением против комиссий Lieferando и анализом рынка.</p>
-        <div class="case-result">
-          <div class="result-item"><div class="r-num" data-l="de">ROI</div><div class="r-num" data-l="ru">ROI</div><div class="r-lbl" data-l="de">Analyse erstellt</div><div class="r-lbl" data-l="ru">Анализ готов</div></div>
-        </div>
-      </div>
-
-      <div class="case">
         <div class="case-tag">SMM · Branding</div>
         <h3 data-l="de">Personal Branding für Finanzberater</h3>
         <h3 data-l="ru">Персональный бренд финансового советника</h3>
@@ -468,17 +467,13 @@ footer{background:#111827;padding:32px 0}
       <p class="contact-sub" data-l="ru">Напишите мне — обсудим ваш проект бесплатно и без обязательств. Отвечаю в течение 24 часов.</p>
 
       <div class="contact-methods">
-        <a class="cm" href="https://linkedin.com/in/olha-882b30113">
+        <a class="cm" href="mailto:olha.polishchuk.web@gmail.com?subject=Anfrage%20%C3%BCber%20die%20Website">
+          <div class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div class="cm-info"><div class="cm-label">E-Mail</div><div class="cm-val">olha.polishchuk.web@gmail.com</div></div>
+        </a>
+        <a class="cm" href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener">
           <div class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
           <div class="cm-info"><div class="cm-label">LinkedIn</div><div class="cm-val">Olha Polishchuk</div></div>
-        </a>
-        <a class="cm" href="https://github.com/OlgaPolish">
-          <div class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
-          <div class="cm-info"><div class="cm-label">GitHub</div><div class="cm-val">OlgaPolish</div></div>
-        </a>
-        <a class="cm" href="https://t.me/FinanzGuide_GE">
-          <div class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.607c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.163 13.925l-2.963-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.656.661z"/></svg></div>
-          <div class="cm-info"><div class="cm-label">Telegram</div><div class="cm-val">@FinanzGuide_GE</div></div>
         </a>
       </div>
     </div>
@@ -500,6 +495,8 @@ footer{background:#111827;padding:32px 0}
       </div>
       <button class="form-submit" onclick="sendMsg()" data-l="de">Nachricht senden →</button>
       <button class="form-submit" onclick="sendMsg()" data-l="ru">Отправить →</button>
+      <p class="form-note" data-l="de">Beim Absenden öffnet sich Ihr E-Mail-Programm. Es werden keine Daten auf dieser Website gespeichert. <a href="datenschutz.html">Datenschutz</a></p>
+      <p class="form-note" data-l="ru">При отправке откроется ваша почтовая программа. Сайт не сохраняет никаких данных. <a href="datenschutz.html">Datenschutz</a></p>
     </div>
   </div>
 </section>
@@ -508,9 +505,9 @@ footer{background:#111827;padding:32px 0}
   <div class="wrap foot-inner">
     <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>
     <div class="foot-links">
-      <a href="https://linkedin.com/in/olha-882b30113">LinkedIn</a>
-      <a href="https://github.com/OlgaPolish">GitHub</a>
-      <a href="https://t.me/FinanzGuide_GE">Telegram</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
@@ -529,7 +526,7 @@ function sendMsg(){
   var email=document.querySelector('input[type=email]').value;
   var msg=document.querySelector('textarea').value;
   if(!name||!email){alert('Пожалуйста, заполните имя и email / Bitte Name und E-Mail ausfüllen');return;}
-  window.location.href='mailto:your-email@gmail.com?subject=Anfrage von '+encodeURIComponent(name)+'&body='+encodeURIComponent(msg+'\n\nE-Mail: '+email);
+  window.location.href='mailto:olha.polishchuk.web@gmail.com?subject='+encodeURIComponent('[Website] Anfrage von '+name)+'&body='+encodeURIComponent(msg+'\n\nE-Mail: '+email);
 }
 </script>
 </body>
