@@ -186,13 +186,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .contact h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;color:#fff;margin-bottom:16px}
 .contact h2 em{font-style:italic;color:var(--amber-light)}
 .contact-sub{font-size:1rem;color:rgba(255,255,255,0.75);margin-bottom:32px;font-weight:300;max-width:46ch;line-height:1.75}
-.contact-methods{display:flex;flex-direction:column;gap:12px}
-.cm{display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;transition:all .25s;color:#fff}
-.cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateX(4px)}
+.contact-methods{display:flex;flex-direction:row;flex-wrap:wrap;gap:16px}
+.cm{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transition:all .25s;color:#fff}
+.cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateY(-3px)}
 .cm.wa{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4)}
-.cm-ic{width:40px;height:40px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cm-ic{width:44px;height:44px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cm.wa .cm-ic{background:rgba(37,211,102,0.22)}
-.cm-ic svg{width:18px;height:18px;color:var(--amber-light)}
+.cm-ic svg{width:22px;height:22px;color:var(--amber-light)}
 .cm.wa .cm-ic svg{color:#4BE08A}
 .cm-info .cm-label{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.06em;text-transform:uppercase}
 .cm-info .cm-val{font-size:14px;font-weight:500;color:#fff;margin-top:2px}
@@ -443,9 +443,9 @@ footer{background:#111827;padding:32px 0}
       <h2>Получите бесплатный <em>аудит</em> в Google</h2>
       <p class="contact-sub">Напишите, чем вы занимаетесь и в каком городе. Я посмотрю ваш профиль и сайт и пришлю короткий чек-лист точек роста: что уже хорошо и что мешает клиентам вас найти. Бесплатно и без обязательств. Отвечаю в течение 24 часов.</p>
       <div class="contact-methods">
-        <a class="cm wa" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B2%20Google." target="_blank" rel="noopener"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.3 1.2-1.3 1.8-2.4 1.6A6.5 6.5 0 0 1 8.4 10c-.2-1.1.4-2.1 1.6-2.4l.9 2z"/></svg></span><span class="cm-info"><span class="cm-label" style="display:block">WhatsApp</span><span class="cm-val" style="display:block">+380 66 657 8075</span></span></a>
-        <a class="cm" href="mailto:olha.polishchuk.web@gmail.com?subject=%5BWebsite%5D%20Google-Check"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><span class="cm-info"><span class="cm-label" style="display:block">E-Mail</span><span class="cm-val" style="display:block">olha.polishchuk.web@gmail.com</span></span></a>
-        <a class="cm" href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span><span class="cm-info"><span class="cm-label" style="display:block">LinkedIn</span><span class="cm-val" style="display:block">Olha Polishchuk</span></span></a>
+        <a class="cm wa" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B2%20Google." target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.3 1.2-1.3 1.8-2.4 1.6A6.5 6.5 0 0 1 8.4 10c-.2-1.1.4-2.1 1.6-2.4l.9 2z"/></svg></span></a>
+        <a class="cm" href="mailto:olha.polishchuk.web@gmail.com?subject=%5BWebsite%5D%20Google-Check" title="E-Mail" aria-label="E-Mail"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span></a>
+        <a class="cm" href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span></a>
       </div>
     </div>
     <form class="contact-form" onsubmit="return sendMsg(event)">

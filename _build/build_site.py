@@ -12,7 +12,6 @@ import sys
 SITE = "https://olhapolishchuk.de/"
 EMAIL = "olha.polishchuk.web@gmail.com"
 WA_NUM = "380666578075"
-WA_SHOW = "+380 66 657 8075"
 LINKEDIN = "https://linkedin.com/in/olha-882b30113"
 PATHS = {"de": "", "uk": "uk/", "ru": "ru/"}
 LABELS = {"de": "DE", "uk": "UA", "ru": "RU"}
@@ -199,13 +198,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .contact h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1.1;color:#fff;margin-bottom:16px}
 .contact h2 em{font-style:italic;color:var(--amber-light)}
 .contact-sub{font-size:1rem;color:rgba(255,255,255,0.75);margin-bottom:32px;font-weight:300;max-width:46ch;line-height:1.75}
-.contact-methods{display:flex;flex-direction:column;gap:12px}
-.cm{display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;transition:all .25s;color:#fff}
-.cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateX(4px)}
+.contact-methods{display:flex;flex-direction:row;flex-wrap:wrap;gap:16px}
+.cm{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transition:all .25s;color:#fff}
+.cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateY(-3px)}
 .cm.wa{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4)}
-.cm-ic{width:40px;height:40px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cm-ic{width:44px;height:44px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cm.wa .cm-ic{background:rgba(37,211,102,0.22)}
-.cm-ic svg{width:18px;height:18px;color:var(--amber-light)}
+.cm-ic svg{width:22px;height:22px;color:var(--amber-light)}
 .cm.wa .cm-ic svg{color:#4BE08A}
 .cm-info .cm-label{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.06em;text-transform:uppercase}
 .cm-info .cm-val{font-size:14px;font-weight:500;color:#fff;margin-top:2px}
@@ -644,9 +643,9 @@ def render(lang):
     # contact
     w('<section class="contact" id="contact">\n  <div class="wrap contact-inner">\n    <div>\n')
     w('      <h2>%s</h2>\n      <p class="contact-sub">%s</p>\n      <div class="contact-methods">\n' % (t["ct_title"], esc(t["ct_sub"])))
-    w('        <a class="cm wa" href="%s" target="_blank" rel="noopener"><span class="cm-ic">%s</span><span class="cm-info"><span class="cm-label" style="display:block">%s</span><span class="cm-val" style="display:block">%s</span></span></a>\n' % (esc(wa), ICON["wa"], esc(t["wa_label"]), WA_SHOW))
-    w('        <a class="cm" href="mailto:%s?subject=%%5BWebsite%%5D%%20Google-Check"><span class="cm-ic">%s</span><span class="cm-info"><span class="cm-label" style="display:block">E-Mail</span><span class="cm-val" style="display:block">%s</span></span></a>\n' % (EMAIL, ICON["mail"], EMAIL))
-    w('        <a class="cm" href="%s" target="_blank" rel="noopener"><span class="cm-ic">%s</span><span class="cm-info"><span class="cm-label" style="display:block">LinkedIn</span><span class="cm-val" style="display:block">Olha Polishchuk</span></span></a>\n' % (LINKEDIN, ICON["in"]))
+    w('        <a class="cm wa" href="%s" target="_blank" rel="noopener" title="%s" aria-label="%s"><span class="cm-ic">%s</span></a>\n' % (esc(wa), esc(t["wa_label"]), esc(t["wa_label"]), ICON["wa"]))
+    w('        <a class="cm" href="mailto:%s?subject=%%5BWebsite%%5D%%20Google-Check" title="E-Mail" aria-label="E-Mail"><span class="cm-ic">%s</span></a>\n' % (EMAIL, ICON["mail"]))
+    w('        <a class="cm" href="%s" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic">%s</span></a>\n' % (LINKEDIN, ICON["in"]))
     w('      </div>\n    </div>\n')
     w('    <form class="contact-form" onsubmit="return sendMsg(event)">\n      <h3>%s</h3>\n' % esc(t["f_title"]))
     w('      <div class="form-row"><label for="f-name">%s</label><input id="f-name" type="text" autocomplete="name" placeholder="%s"></div>\n' % (esc(t["f_name"]), esc(t["f_ph_name"])))
