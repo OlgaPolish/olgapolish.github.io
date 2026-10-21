@@ -532,11 +532,146 @@ T["ru"] = dict(
     f_alert="Пожалуйста, заполните имя и e-mail.", lang_name="Язык",
 )
 
+# ---- Пазл-лид-магнит в блоке «Обо мне» ----
+PZ_SLUG = "checklist-google-maps.html"
+PZ = {
+    "de": dict(label="Mini-Spiel", title="Puzzle lösen — Geschenk bekommen",
+               text="Setzen Sie das Bild zusammen und holen Sie sich Ihr Passwort und eine kostenlose Checkliste für Google Maps.",
+               hint="Tippen Sie nacheinander auf zwei Teile, um sie zu tauschen.", moves="Züge", shuffle="Neu mischen",
+               m_title="Sie sind super! Das Glück ist heute auf Ihrer Seite 🎉", m_pass="Ihr Passwort", word="ERFOLG",
+               m_text="Holen Sie sich die Checkliste „10 Punkte für Ihr Google-Maps-Profil“. Und wenn Sie mir das Passwort per WhatsApp schicken, prüfe ich Ihr Profil bevorzugt.",
+               m_btn1="Checkliste öffnen", m_btn2="Passwort per WhatsApp senden", close="Schließen",
+               wa="Hallo! Mein Passwort: ERFOLG. Ich möchte einen Check meines Google-Profils.",
+               alt="Puzzle: Olha Polishchuk am Laptop"),
+    "uk": dict(label="Міні-гра", title="Зберіть картинку — отримайте подарунок",
+               text="Складіть пазл і заберіть слово-пароль та безкоштовний чек-лист щодо Google Maps.",
+               hint="Натисніть по черзі на два шматочки, щоб поміняти їх місцями.", moves="Ходів", shuffle="Перемішати",
+               m_title="Ви супер! Удача сьогодні з вами 🎉", m_pass="Ваше слово-пароль", word="УСПІХ",
+               m_text="Забирайте чек-лист «10 перевірок профілю в Google Maps». А якщо назвете пароль у WhatsApp — перевірю ваш профіль позачергово.",
+               m_btn1="Відкрити чек-лист", m_btn2="Надіслати пароль у WhatsApp", close="Закрити",
+               wa="Добрий день! Мій пароль: УСПІХ. Хочу перевірку профілю в Google.",
+               alt="Пазл: Ольга Поліщук за ноутбуком"),
+    "ru": dict(label="Мини-игра", title="Соберите картинку — получите подарок",
+               text="Сложите пазл и заберите слово-пароль и бесплатный чек-лист по Google Maps.",
+               hint="Нажмите по очереди на два кусочка, чтобы поменять их местами.", moves="Ходов", shuffle="Перемешать",
+               m_title="Вы супер! Удача сегодня с вами 🎉", m_pass="Ваше слово-пароль", word="УСПЕХ",
+               m_text="Забирайте чек-лист «10 проверок профиля в Google Maps». А если назовёте пароль в WhatsApp — проверю ваш профиль вне очереди.",
+               m_btn1="Открыть чек-лист", m_btn2="Отправить пароль в WhatsApp", close="Закрыть",
+               wa="Здравствуйте! Мой пароль: УСПЕХ. Хочу проверку профиля в Google.",
+               alt="Пазл: Ольга Полищук за ноутбуком"),
+}
+
+PZ_CSS = r"""
+/* PUZZLE */
+.pz{margin-top:72px;background:var(--ink);border-radius:18px;padding:40px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:center;color:#fff}
+.pz .sec-label{color:var(--amber-light)}
+.pz h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.15;margin-bottom:12px}
+.pz-text{color:rgba(255,255,255,0.78);margin-bottom:10px}
+.pz-hint{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:18px}
+.pz-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,0.75)}
+.pz-btn{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:8px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+.pz-btn:hover{border-color:var(--amber-light);color:var(--amber-light)}
+.pz-board{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;aspect-ratio:4/3;width:100%;background:rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;touch-action:manipulation}
+.pz-tile{border:0;padding:0;cursor:pointer;background-color:#2a375c;background-size:300% 300%;background-repeat:no-repeat;transition:transform .15s,box-shadow .15s,opacity .15s}
+.pz-tile:hover{opacity:.92}
+.pz-tile:focus-visible{outline:3px solid var(--amber-light);outline-offset:-3px}
+.pz-tile.sel{box-shadow:inset 0 0 0 4px var(--amber-light);transform:scale(.96)}
+.pz-board.done{gap:0}
+.pz-board.done .pz-tile{cursor:default;transform:none;box-shadow:none}
+.pz-modal{position:fixed;inset:0;z-index:300;background:rgba(15,20,38,0.72);display:none;align-items:center;justify-content:center;padding:16px}
+.pz-modal.open{display:flex}
+.pz-dialog{background:#fff;color:var(--ink);border-radius:16px;max-width:440px;width:100%;padding:32px 28px 26px;text-align:center;position:relative;animation:pzIn .3s ease}
+@keyframes pzIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.pz-x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:24px;line-height:1;color:var(--ink-soft);cursor:pointer;padding:6px}
+.pz-dialog h4{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.55rem;line-height:1.2;margin-bottom:16px}
+.pz-pass-l{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.pz-word{font-family:'DM Serif Display',serif;font-size:2.3rem;letter-spacing:.12em;color:var(--amber);margin:4px 0 14px}
+.pz-dialog p{color:var(--ink-soft);font-size:15px;margin-bottom:20px}
+.pz-acts{display:flex;flex-direction:column;gap:10px}
+.pz-a1{background:var(--amber);color:#fff;font-weight:600;padding:13px 18px;border-radius:8px}
+.pz-a1:hover{background:var(--amber-light)}
+.pz-a2{background:#25D366;color:#fff;font-weight:600;padding:13px 18px;border-radius:8px}
+.pz-a2:hover{filter:brightness(1.06)}
+@media (max-width:860px){.pz{grid-template-columns:1fr;padding:26px 18px;gap:24px;margin-top:56px}}
+"""
+
 ANCHORS = ["pakete", "ablauf", "ergebnisse", "about", "contact"]
 
 
 def esc(s):
     return html.escape(s, quote=True)
+
+
+
+def puzzle_html(lang, t):
+    from urllib.parse import quote
+    z = PZ[lang]
+    wa = "https://wa.me/%s?text=%s" % (WA_NUM, quote(z["wa"]))
+    img = "/images/puzzle-%s.jpg" % lang
+    chk = "/%s%s" % (PATHS[lang], PZ_SLUG)
+    o = []
+    o.append('  <div class="wrap">\n  <div class="pz" id="puzzle">\n    <div>\n')
+    o.append('      <div class="sec-label">%s</div>\n      <h3>%s</h3>\n' % (esc(z["label"]), esc(z["title"])))
+    o.append('      <p class="pz-text">%s</p>\n      <p class="pz-hint">%s</p>\n' % (esc(z["text"]), esc(z["hint"])))
+    o.append('      <div class="pz-bar"><span>%s: <b id="pz-moves">0</b></span><button type="button" class="pz-btn" id="pz-shuffle">%s</button></div>\n    </div>\n' % (esc(z["moves"]), esc(z["shuffle"])))
+    o.append('    <div class="pz-board" id="pz-board" role="group" aria-label="%s" data-img="%s"></div>\n  </div>\n  </div>\n' % (esc(z["alt"]), img))
+    o.append('  <div class="pz-modal" id="pz-modal" role="dialog" aria-modal="true" aria-labelledby="pz-mt"><div class="pz-dialog">\n')
+    o.append('    <button type="button" class="pz-x" id="pz-close" aria-label="%s">&times;</button>\n' % esc(z["close"]))
+    o.append('    <h4 id="pz-mt">%s</h4>\n    <div class="pz-pass-l">%s</div>\n    <div class="pz-word">%s</div>\n' % (esc(z["m_title"]), esc(z["m_pass"]), esc(z["word"])))
+    o.append('    <p>%s</p>\n    <div class="pz-acts"><a class="pz-a1" href="%s">%s</a><a class="pz-a2" href="%s" target="_blank" rel="noopener">%s</a></div>\n' % (esc(z["m_text"]), chk, esc(z["m_btn1"]), esc(wa), esc(z["m_btn2"])))
+    o.append('  </div></div>\n')
+    o.append(PZ_JS)
+    return "".join(o)
+
+
+PZ_JS = r"""  <script>
+(function(){
+  var board=document.getElementById('pz-board'); if(!board) return;
+  var movesEl=document.getElementById('pz-moves'), modal=document.getElementById('pz-modal');
+  var N=3, order=[], sel=null, moves=0, done=false, tiles=[];
+  for(var i=0;i<N*N;i++){
+    var b=document.createElement('button'); b.type='button'; b.className='pz-tile';
+    b.setAttribute('aria-label',String(i+1)); b.dataset.pos=i;
+    b.addEventListener('click',onTap); tiles.push(b); board.appendChild(b);
+  }
+  function paint(){
+    for(var p=0;p<tiles.length;p++){
+      var k=order[p], x=k%N, y=Math.floor(k/N);
+      tiles[p].style.backgroundPosition=(x*50)+'% '+(y*50)+'%';
+      tiles[p].classList.toggle('sel',sel===p);
+    }
+    movesEl.textContent=moves;
+  }
+  function solved(){for(var p=0;p<order.length;p++){if(order[p]!==p)return false}return true}
+  function shuffle(){
+    order=[]; for(var i=0;i<N*N;i++)order.push(i);
+    do{for(var j=order.length-1;j>0;j--){var r=Math.floor(Math.random()*(j+1)),t=order[j];order[j]=order[r];order[r]=t}}while(solved());
+    sel=null; moves=0; done=false; board.classList.remove('done'); paint();
+  }
+  function onTap(e){
+    if(done) return;
+    var p=+e.currentTarget.dataset.pos;
+    if(sel===null){sel=p}else if(sel===p){sel=null}else{
+      var t=order[sel];order[sel]=order[p];order[p]=t;sel=null;moves++;
+      if(solved()){done=true;board.classList.add('done');paint();setTimeout(openM,700);return}
+    }
+    paint();
+  }
+  var last=null;
+  function openM(){last=document.activeElement;modal.classList.add('open');document.getElementById('pz-close').focus()}
+  function closeM(){modal.classList.remove('open');if(last)last.focus()}
+  document.getElementById('pz-close').addEventListener('click',closeM);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeM()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeM()});
+  document.getElementById('pz-shuffle').addEventListener('click',shuffle);
+  function load(){var u='url('+board.dataset.img+')';tiles.forEach(function(t){t.style.backgroundImage=u})}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){load();io.disconnect()}},{rootMargin:'400px'});io.observe(board);
+  }else load();
+  shuffle();
+})();
+  </script>
+"""
 
 
 def render(lang):
@@ -557,7 +692,7 @@ def render(lang):
         w('<link rel="alternate" hreflang="%s" href="%s%s">\n' % (l2, SITE, PATHS[l2]))
     w('<link rel="alternate" hreflang="x-default" href="%s">\n' % SITE)
     w('<link rel="preload" href="/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n')
-    w('<style>\n/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */\n' + FONTS + CSS + '</style>\n</head>\n<body>\n\n')
+    w('<style>\n/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */\n' + FONTS + CSS + PZ_CSS + '</style>\n</head>\n<body>\n\n')
 
     # header
     w('<header>\n  <nav class="wrap" aria-label="Navigation">\n')
@@ -632,7 +767,9 @@ def render(lang):
     w('      <div class="about-skills">')
     for s in ("Google Maps", "Google SEO", "Search Console", "Shopify", "Instagram", "Telegram", "Pinterest", "Canva", "Analytics", "Copywriting"):
         w('<span class="skill">%s</span>' % s)
-    w('</div>\n    </div>\n  </div>\n</section>\n\n')
+    w('</div>\n    </div>\n  </div>\n')
+    w(puzzle_html(lang, t))
+    w('</section>\n\n')
 
     # faq
     w('<section class="faq" id="faq">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="faq-list">\n' % (esc(t["fq_label"]), esc(t["fq_title"])))

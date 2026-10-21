@@ -21,6 +21,27 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/"/>
   </url>
+  <url>
+    <loc>https://olhapolishchuk.de/checklist-google-maps.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/uk/checklist-google-maps.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/ru/checklist-google-maps.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/checklist-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
+  </url>
   <url><loc>https://olhapolishchuk.de/impressum.html</loc></url>
   <url><loc>https://olhapolishchuk.de/datenschutz.html</loc></url>
 </urlset>
