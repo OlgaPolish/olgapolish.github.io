@@ -674,6 +674,10 @@ PZ_JS = r"""  <script>
 """
 
 
+WIDGET = """<script>(function () { var widget = document.createElement('script'); widget.defer = true; widget.dataset.pfId = 'e95ecb09-89d8-4863-b954-200bd0a8ed56'; widget.src = 'https://widget.yourgood.app/script/widget.js?id=e95ecb09-89d8-4863-b954-200bd0a8ed56&now='+Date.now(); document.head.appendChild(widget); })()</script>
+"""
+
+
 def render(lang):
     t = T[lang]
     url = SITE + PATHS[lang]
@@ -797,7 +801,8 @@ def render(lang):
     w('<script>\nfunction sendMsg(e){\n  e.preventDefault();\n')
     w('  var n=document.getElementById("f-name").value.trim(),m=document.getElementById("f-mail").value.trim(),t=document.getElementById("f-msg").value;\n')
     w('  if(!n||!m){alert(%s);return false;}\n' % json.dumps(t["f_alert"], ensure_ascii=False))
-    w('  window.location.href="mailto:%s?subject="+encodeURIComponent("[Website] Google-Check: "+n+" (%s)")+"&body="+encodeURIComponent(t+"\\n\\nE-Mail: "+m);\n  return false;\n}\n</script>\n</body>\n</html>\n' % (EMAIL, LABELS[lang]))
+    w('  window.location.href="mailto:%s?subject="+encodeURIComponent("[Website] Google-Check: "+n+" (%s)")+"&body="+encodeURIComponent(t+"\\n\\nE-Mail: "+m);\n  return false;\n}\n</script>\n' % (EMAIL, LABELS[lang]))
+    w(WIDGET + '</body>\n</html>\n')
     # неразрывный пробел перед €, чтобы цена не разрывалась
     return "".join(out).replace(" €", "\u00a0€")
 
