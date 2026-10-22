@@ -701,9 +701,9 @@ def render(lang):
     for a, label in zip(ANCHORS, t["nav"]):
         w('      <a href="#%s">%s</a>\n' % (a, esc(label)))
     w('    </div>\n    <div class="nav-right">\n      <div class="lang-sw" role="group" aria-label="%s">' % esc(t["lang_name"]))
-    for l2 in ("de", "uk", "ru"):
+    for l2 in ("uk", "de", "ru"):
         cur = ' class="on" aria-current="page"' if l2 == lang else ''
-        w('<a href="/%s" hreflang="%s" lang="%s"%s>%s</a>' % (PATHS[l2], l2, l2, cur, LABELS[l2]))
+        w('<a href="/%s" hreflang="%s" lang="%s" translate="no"%s>%s</a>' % (PATHS[l2], l2, l2, cur, LABELS[l2]))
     w('</div>\n      <a href="#contact" class="cta-nav">%s</a>\n    </div>\n  </nav>\n</header>\n\n' % esc(t["cta_nav"]))
 
     # hero
