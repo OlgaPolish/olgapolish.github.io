@@ -112,6 +112,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .pkg-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9A6424;margin-bottom:10px}
 .pkg h3{font-size:18px;font-weight:600;line-height:1.35}
 .pkg-price{font-family:'DM Serif Display',serif;font-size:2.6rem;line-height:1.1;margin:12px 0 12px}
+.pkg-price s.old{font-size:.62em;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#D62828;text-decoration-thickness:3px;margin-right:6px;vertical-align:middle}
 .pkg-price small{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink-soft);font-weight:500}
 .pkg-start{background:var(--amber-pale);color:#7A4E17;font-size:13.5px;line-height:1.5;padding:10px 12px;border-radius:8px;margin-bottom:16px}
 .pkg-desc{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}
@@ -335,7 +336,7 @@ footer{background:#111827;padding:32px 0}
       <article class="pkg">
         <div class="pkg-tag">Разово</div>
         <h3>A · «Вас находят в Google»</h3>
-        <div class="pkg-price">190 €</div>
+        <div class="pkg-price"><s class="old">190 €</s> 150 €</div>
         <div class="pkg-start"><strong>Стартовая цена для первых 3 клиентов: 150 €</strong> — в обмен на короткий письменный отзыв</div>
         <p class="pkg-desc">Профиль вашей компании в Google Maps — создам с нуля или приведу в порядок:</p>
         <ul>
@@ -351,7 +352,7 @@ footer{background:#111827;padding:32px 0}
       <article class="pkg">
         <div class="pkg-tag">Разово</div>
         <h3>B · Сайт-визитка</h3>
-        <div class="pkg-price">450 €</div>
+        <div class="pkg-price"><s class="old">450 €</s> 350 €</div>
         <div class="pkg-start"><strong>Стартовая цена для первых 3 клиентов: 350 €</strong> — в обмен на короткий письменный отзыв</div>
         <p class="pkg-desc">Одна страница, на которой есть всё главное:</p>
         <ul>
@@ -369,7 +370,7 @@ footer{background:#111827;padding:32px 0}
       <article class="pkg feat">
         <div class="pkg-tag">Каждый месяц</div>
         <h3>C · Поддержка</h3>
-        <div class="pkg-price">290 € <small>/ мес</small></div>
+        <div class="pkg-price"><s class="old">290 €</s> 220 € <small>первый месяц</small></div>
         <div class="pkg-start"><strong>Первый месяц для первых 3 клиентов: 220 €</strong></div>
         <p class="pkg-desc">Чтобы вас не просто нашли один раз, а находили постоянно:</p>
         <ul>
@@ -411,16 +412,16 @@ footer{background:#111827;padding:32px 0}
     <h2 class="sec-title">Реальные результаты для реального бизнеса</h2>
     <div class="cases-grid">
       <div class="case wide">
+        <div class="case-tag">Сайт-визитка · домен · корпоративная почта</div>
+        <h3><a href="https://avkoncepcia.com/" target="_blank" rel="noopener">«АВ-Концепція» — сайт инженерной компании (Харьков)</a></h3>
+        <p>Сайт-визитка с портфолио на украинском и английском — собран из PDF, старых .doc-файлов и 80+ фото заказчика. Плюс свой домен и корпоративные адреса почты с переадресацией. Клиент только проверял.</p>
+        <div class="case-result"><div class="result-item"><div class="r-num">51</div><div class="r-lbl">объект с фильтрами и поиском</div></div><div class="result-item"><div class="r-num">279 → 8 МБ</div><div class="r-lbl">фото сжаты — сайт быстро открывается с телефона</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">языка: украинский и английский</div></div></div>
+      </div>
+      <div class="case">
         <div class="case-tag">SEO · Shopify · Düsseldorf</div>
         <h3><a href="https://kaneliastore.com/" target="_blank" rel="noopener">Kanelia — магазин материалов для маникюра</a></h3>
         <p>SEO-переработка Shopify-магазина: карточки товаров, структура сайта, локальная видимость. Результаты через 2–3 месяца — по данным Google Search Console и Shopify.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">№ 1</div><div class="r-lbl">в Google по запросу «nagelsticker kaufen»</div></div><div class="result-item"><div class="r-num">4–5 → 65</div><div class="r-lbl">визитов из Google в месяц</div></div><div class="result-item"><div class="r-num">9 из 11</div><div class="r-lbl">первых онлайн-заказов — из Google</div></div></div>
-      </div>
-      <div class="case">
-        <div class="case-tag">Сайт-визитка · на согласовании</div>
-        <h3>Сайт для инженерной компании «АВ-Концепція» (Харьков)</h3>
-        <p>Сайт-визитка с портфолио на украинском — собран из PDF, старых .doc-файлов и 80+ фото заказчика. Клиент только проверял.</p>
-        <div class="case-result"><div class="result-item"><div class="r-num">51</div><div class="r-lbl">объект с фильтрами и поиском</div></div><div class="result-item"><div class="r-num">279 → 8 МБ</div><div class="r-lbl">фото сжаты — сайт быстро открывается с телефона</div></div></div>
       </div>
       <div class="case">
         <div class="case-tag">Свой проект · Сайт · Pinterest</div>
@@ -429,10 +430,16 @@ footer{background:#111827;padding:32px 0}
         <div class="case-result"><div class="result-item"><div class="r-num">7 057</div><div class="r-lbl">показов в Pinterest за 30 дней</div></div><div class="result-item"><div class="r-num">+61 %</div><div class="r-lbl">к прошлому месяцу</div></div></div>
       </div>
       <div class="case">
-        <div class="case-tag">Контент · SMM</div>
-        <h3>FinanzGuide GE — контент для финансового консультанта в Düsseldorf</h3>
-        <p>Голос бренда, визуальная система и регулярные публикации для русско- и украиноязычной аудитории в NRW.</p>
-        <div class="case-result"><div class="result-item"><div class="r-num">39 933</div><div class="r-lbl">просмотра у лучшей публикации</div></div></div>
+        <div class="case-tag">Instagram · SMM</div>
+        <h3><a href="https://www.instagram.com/katerynaiakovlieva/" target="_blank" rel="noopener">Катерина Яковлева — Instagram финансового консультанта в Düsseldorf</a></h3>
+        <p>Голос бренда, визуальная система и регулярные публикации для русско- и украиноязычной аудитории в NRW: стратегия, карусели, Reels и Stories, тексты и публикация по плану.</p>
+        <div class="case-result"><div class="result-item"><div class="r-num">2 → 62</div><div class="r-lbl">подписчика с июля 2026</div></div></div>
+      </div>
+      <div class="case">
+        <div class="case-tag">Telegram · Threads · SMM</div>
+        <h3>FinanzGuide GE — Telegram и Threads для команды финансовых консультантов</h3>
+        <p>С августа 2026: голос бренда, визуальная система и чек-лист комплаенса (§ 34d/f GewO, маркировка рекламы, DSGVO), через который проходит каждая публикация. Контент для русско- и украиноязычных семей в NRW. После разбора 35 публикаций в Threads перестроила стратегию: конкретная сумма или срок в первой строке, треды вместо одиночных постов, вопрос в конце. Плюс бесплатная атрибуция через WhatsApp-ссылки с предзаполненным текстом и трекер договоров в Google Sheets как лид-магнит.</p>
+        <div class="case-result"><div class="result-item"><div class="r-num">39 933</div><div class="r-lbl">просмотра у лучшего поста</div></div><div class="result-item"><div class="r-num">×6</div><div class="r-lbl">охват с цифрой в первой строке</div></div><div class="result-item"><div class="r-num">×2</div><div class="r-lbl">треды против одиночных постов</div></div></div>
       </div>
     </div>
     <p class="also"><strong>Также могу помочь:</strong> ведение Instagram и Telegram, настройка и оптимизация Shopify-магазинов, тексты на немецком, русском и украинском. Напишите — обсудим.</p>

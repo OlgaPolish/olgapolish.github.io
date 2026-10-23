@@ -112,6 +112,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .pkg-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9A6424;margin-bottom:10px}
 .pkg h3{font-size:18px;font-weight:600;line-height:1.35}
 .pkg-price{font-family:'DM Serif Display',serif;font-size:2.6rem;line-height:1.1;margin:12px 0 12px}
+.pkg-price s.old{font-size:.62em;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#D62828;text-decoration-thickness:3px;margin-right:6px;vertical-align:middle}
 .pkg-price small{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink-soft);font-weight:500}
 .pkg-start{background:var(--amber-pale);color:#7A4E17;font-size:13.5px;line-height:1.5;padding:10px 12px;border-radius:8px;margin-bottom:16px}
 .pkg-desc{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}
@@ -335,7 +336,7 @@ footer{background:#111827;padding:32px 0}
       <article class="pkg">
         <div class="pkg-tag">Einmalig</div>
         <h3>A · „Man findet Sie in Google“</h3>
-        <div class="pkg-price">190 €</div>
+        <div class="pkg-price"><s class="old">190 €</s> 150 €</div>
         <div class="pkg-start"><strong>Startpreis für die ersten 3 Kunden: 150 €</strong> — gegen eine kurze schriftliche Bewertung</div>
         <p class="pkg-desc">Ihr Unternehmensprofil in Google Maps — neu eingerichtet oder aufgeräumt:</p>
         <ul>
@@ -351,7 +352,7 @@ footer{background:#111827;padding:32px 0}
       <article class="pkg">
         <div class="pkg-tag">Einmalig</div>
         <h3>B · Onepager-Webseite</h3>
-        <div class="pkg-price">450 €</div>
+        <div class="pkg-price"><s class="old">450 €</s> 350 €</div>
         <div class="pkg-start"><strong>Startpreis für die ersten 3 Kunden: 350 €</strong> — gegen eine kurze schriftliche Bewertung</div>
         <p class="pkg-desc">Eine Seite mit allem, was zählt:</p>
         <ul>
@@ -369,7 +370,7 @@ footer{background:#111827;padding:32px 0}
       <article class="pkg feat">
         <div class="pkg-tag">Monatlich</div>
         <h3>C · Betreuung</h3>
-        <div class="pkg-price">290 € <small>/ Monat</small></div>
+        <div class="pkg-price"><s class="old">290 €</s> 220 € <small>im 1. Monat</small></div>
         <div class="pkg-start"><strong>Erster Monat für die ersten 3 Kunden: 220 €</strong></div>
         <p class="pkg-desc">Damit man Sie nicht nur einmal findet, sondern dauerhaft:</p>
         <ul>
@@ -411,16 +412,16 @@ footer{background:#111827;padding:32px 0}
     <h2 class="sec-title">Echte Ergebnisse für echte Unternehmen</h2>
     <div class="cases-grid">
       <div class="case wide">
+        <div class="case-tag">Onepager · Domain · Firmen-E-Mail</div>
+        <h3><a href="https://avkoncepcia.com/" target="_blank" rel="noopener">АВ-Концепція — Webseite für ein Ingenieurbüro aus Charkiw</a></h3>
+        <p>Onepager mit Portfolio auf Ukrainisch und Englisch — erstellt aus PDFs, alten .doc-Dateien und über 80 Fotos des Kunden. Dazu eigene Domain und Firmen-E-Mail-Adressen mit Weiterleitung. Der Kunde musste nur noch prüfen.</p>
+        <div class="case-result"><div class="result-item"><div class="r-num">51</div><div class="r-lbl">Objekte mit Filter und Suche</div></div><div class="result-item"><div class="r-num">279 → 8 MB</div><div class="r-lbl">Bilder komprimiert — schnell auf dem Smartphone</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">Sprachen: Ukrainisch und Englisch</div></div></div>
+      </div>
+      <div class="case">
         <div class="case-tag">SEO · Shopify · Düsseldorf</div>
         <h3><a href="https://kaneliastore.com/" target="_blank" rel="noopener">Kanelia — Shop für Nageldesign-Bedarf</a></h3>
         <p>SEO-Überarbeitung des Shopify-Shops: Produktseiten, Seitenstruktur, lokale Sichtbarkeit. Ergebnisse nach 2–3 Monaten — laut Google Search Console und Shopify.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">Nr. 1</div><div class="r-lbl">in Google für „nagelsticker kaufen“</div></div><div class="result-item"><div class="r-num">4–5 → 65</div><div class="r-lbl">Besuche aus Google pro Monat</div></div><div class="result-item"><div class="r-num">9 von 11</div><div class="r-lbl">ersten Online-Bestellungen kamen über Google</div></div></div>
-      </div>
-      <div class="case">
-        <div class="case-tag">Onepager · in Abstimmung</div>
-        <h3>Webseite für ein Ingenieurbüro aus Charkiw (АВ-Концепція)</h3>
-        <p>Onepager mit Portfolio auf Ukrainisch — erstellt aus PDFs, alten .doc-Dateien und über 80 Fotos des Kunden. Der Kunde musste nur noch prüfen.</p>
-        <div class="case-result"><div class="result-item"><div class="r-num">51</div><div class="r-lbl">Objekte mit Filter und Suche</div></div><div class="result-item"><div class="r-num">279 → 8 MB</div><div class="r-lbl">Bilder komprimiert — schnell auf dem Smartphone</div></div></div>
       </div>
       <div class="case">
         <div class="case-tag">Eigenes Projekt · Webseite · Pinterest</div>
@@ -429,10 +430,16 @@ footer{background:#111827;padding:32px 0}
         <div class="case-result"><div class="result-item"><div class="r-num">7.057</div><div class="r-lbl">Pinterest-Impressionen in 30 Tagen</div></div><div class="result-item"><div class="r-num">+61 %</div><div class="r-lbl">zum Vormonat</div></div></div>
       </div>
       <div class="case">
-        <div class="case-tag">Content · SMM</div>
-        <h3>FinanzGuide GE — Content für eine Finanzberaterin in Düsseldorf</h3>
-        <p>Markenstimme, visuelles System und regelmäßige Beiträge für russisch- und ukrainischsprachige Familien in NRW.</p>
-        <div class="case-result"><div class="result-item"><div class="r-num">39.933</div><div class="r-lbl">Aufrufe des besten Beitrags</div></div></div>
+        <div class="case-tag">Instagram · SMM</div>
+        <h3><a href="https://www.instagram.com/katerynaiakovlieva/" target="_blank" rel="noopener">Katerina Yakovleva — Instagram für eine Finanzberaterin in Düsseldorf</a></h3>
+        <p>Komplette Betreuung des Instagram-Accounts: Strategie, Karussells, Reels und Stories, Texte und Veröffentlichung nach Plan. Jeder Beitrag wird vor der Veröffentlichung auf Compliance geprüft.</p>
+        <div class="case-result"></div>
+      </div>
+      <div class="case">
+        <div class="case-tag">Telegram · Threads · SMM</div>
+        <h3>FinanzGuide GE — Telegram und Threads für ein Team von Finanzberatern</h3>
+        <p>Seit August 2026: Markenstimme, visuelles System und eine Compliance-Checkliste (§ 34d/f GewO, Werbekennzeichnung, DSGVO), die jeder Beitrag durchläuft. Content für russisch- und ukrainischsprachige Familien in NRW. Nach der Analyse von 35 Threads-Beiträgen die Strategie umgebaut: konkreter Betrag oder Frist in der ersten Zeile, Threads statt Einzelposts, Frage am Ende. Dazu kostenlose Zuordnung der Anfragen über WhatsApp-Links mit vorausgefülltem Text und ein Vertrags-Tracker in Google Sheets als Lead-Magnet.</p>
+        <div class="case-result"><div class="result-item"><div class="r-num">39.933</div><div class="r-lbl">Aufrufe des besten Beitrags (Threads)</div></div></div>
       </div>
     </div>
     <p class="also"><strong>Außerdem:</strong> Betreuung von Instagram und Telegram, Einrichtung und Optimierung von Shopify-Shops, Texte auf Deutsch, Ukrainisch und Russisch. Schreiben Sie mir — wir besprechen es.</p>
