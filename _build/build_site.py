@@ -17,7 +17,7 @@ PATHS = {"de": "", "uk": "uk/", "ru": "ru/"}
 LABELS = {"de": "DE", "uk": "UA", "ru": "RU"}
 LOCALE = {"de": "de_DE", "uk": "uk_UA", "ru": "ru_RU"}
 # Ссылка на Google-профиль (Google Maps → «Поделиться» → скопировать ссылку). Пусто — не выводится.
-GBP_URL = ""
+GBP_URL = "https://share.google/Fj5iyprSwlv8rUxlQ"
 
 CYR = "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116"
 LAT = ("U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,"
