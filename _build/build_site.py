@@ -16,6 +16,8 @@ LINKEDIN = "https://linkedin.com/in/olha-882b30113"
 PATHS = {"de": "", "uk": "uk/", "ru": "ru/"}
 LABELS = {"de": "DE", "uk": "UA", "ru": "RU"}
 LOCALE = {"de": "de_DE", "uk": "uk_UA", "ru": "ru_RU"}
+# Ссылка на Google-профиль (Google Maps → «Поделиться» → скопировать ссылку). Пусто — не выводится.
+GBP_URL = ""
 
 CYR = "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116"
 LAT = ("U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,"
@@ -685,6 +687,77 @@ WIDGET = """<script>(function () { var widget = document.createElement('script')
 """
 
 
+import re as _re
+
+
+def _plain(s):
+    """HTML → чистый текст для JSON-LD."""
+    return html.unescape(_re.sub(r"<[^>]+>", "", s)).strip()
+
+
+def jsonld(lang, t):
+    """Микроразметка Schema.org: бизнес + услуги с ценами + FAQ (для Google, Bing, ИИ-поиска)."""
+    url = SITE + PATHS[lang]
+    biz_id = SITE + "#business"
+    offers = []
+    for p in t["pk"]:
+        nums = [int(n) for n in _re.findall(r"(\d+)\s*€", p["price"])]
+        regular = max(nums)
+        spec = {"@type": "UnitPriceSpecification", "price": regular, "priceCurrency": "EUR"}
+        if "feat" in p:  # пакет C — помесячно
+            spec["unitCode"] = "MON"
+        offers.append({"@type": "Offer", "priceSpecification": spec,
+                       "itemOffered": {"@type": "Service", "name": _plain(p["name"]),
+                                       "description": _plain(p["desc"]) + " " + "; ".join(_plain(i) for i in p["items"])}})
+    for key, monthly in (("pk_combo", False), ("pk_addon", True)):
+        txt = _plain(t[key])
+        m = _re.search(r"(\d+)\s*€", txt)
+        if not m:
+            continue
+        name = _re.split(r"\s[—–-]\s", _re.search(r"<strong>(.*?)</strong>", t[key]).group(1))[0]
+        if ":" in name:  # «Дополнительно к поддержке: контент за вас» → «Контент за вас»
+            name = name.split(":", 1)[1].strip()
+            name = name[:1].upper() + name[1:]
+        spec = {"@type": "UnitPriceSpecification", "price": int(m.group(1)), "priceCurrency": "EUR"}
+        if monthly:
+            spec["unitCode"] = "MON"
+        offers.append({"@type": "Offer", "priceSpecification": spec,
+                       "itemOffered": {"@type": "Service", "name": _plain(name), "description": txt}})
+    same = [LINKEDIN] + ([GBP_URL] if GBP_URL else [])
+    biz = {
+        "@type": "ProfessionalService",
+        "@id": biz_id,
+        "name": "Olha Polishchuk",
+        "alternateName": "Olha Polishchuk — Google-Profil, Webseite & SEO",
+        "description": t["desc"],
+        "url": SITE,
+        "image": SITE + "images/olha-portrait.jpg",
+        "email": EMAIL,
+        "address": {"@type": "PostalAddress", "addressLocality": "Düsseldorf", "postalCode": "40589",
+                    "addressRegion": "Nordrhein-Westfalen", "addressCountry": "DE"},
+        "areaServed": [{"@type": "City", "name": "Düsseldorf"},
+                       {"@type": "State", "name": "Nordrhein-Westfalen"},
+                       {"@type": "Country", "name": "Deutschland"}],
+        "knowsLanguage": ["de", "uk", "ru", "en"],
+        "priceRange": "150–590 €",
+        "currenciesAccepted": "EUR",
+        "founder": {"@type": "Person", "@id": SITE + "#olha", "name": "Olha Polishchuk",
+                    "jobTitle": "Google-Profil, Webseiten & SEO", "sameAs": [LINKEDIN]},
+        "sameAs": same,
+        "hasOfferCatalog": {"@type": "OfferCatalog", "name": _plain(t["pk_title"]), "itemListElement": offers},
+    }
+    page = {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": t["title"],
+            "description": t["desc"], "inLanguage": lang, "about": {"@id": biz_id},
+            "isPartOf": {"@type": "WebSite", "@id": SITE + "#website", "url": SITE, "name": "Olha Polishchuk",
+                         "inLanguage": ["de", "uk", "ru"], "publisher": {"@id": biz_id}}}
+    faq = {"@type": "FAQPage", "@id": url + "#faq", "inLanguage": lang,
+           "mainEntity": [{"@type": "Question", "name": _plain(q),
+                           "acceptedAnswer": {"@type": "Answer", "text": _plain(a)}} for q, a in t["faq"]]}
+    data = {"@context": "https://schema.org", "@graph": [biz, page, faq]}
+    js = json.dumps(data, ensure_ascii=False, indent=1).replace("</", "<\\/")
+    return '<script type="application/ld+json">\n' + js + '\n</script>\n'
+
+
 def render(lang):
     t = T[lang]
     url = SITE + PATHS[lang]
@@ -702,6 +775,7 @@ def render(lang):
     for l2 in ("de", "uk", "ru"):
         w('<link rel="alternate" hreflang="%s" href="%s%s">\n' % (l2, SITE, PATHS[l2]))
     w('<link rel="alternate" hreflang="x-default" href="%s">\n' % SITE)
+    w(jsonld(lang, t))
     w('<link rel="preload" href="/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n')
     w('<style>\n/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */\n' + FONTS + CSS + PZ_CSS + '</style>\n</head>\n<body>\n\n')
 
