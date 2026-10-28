@@ -422,6 +422,57 @@ footer{background:#111827;padding:32px 0}
 .foot-links a{font-size:13px;color:rgba(255,255,255,0.5);transition:color .2s}
 .foot-links a:hover{color:rgba(255,255,255,0.85)}
 
+/* BURGER / MOBILE MENU */
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:transform .25s,background .25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+header.open .burger span{background:transparent}
+header.open .burger span::before{transform:translateY(6px) rotate(45deg)}
+header.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+.mnav{display:none;border-top:1px solid var(--line);background:#fff;max-height:calc(100vh - 64px);overflow-y:auto}
+.mnav .wrap{display:flex;flex-direction:column;padding-top:8px;padding-bottom:20px}
+.mnav a.ml{font-size:16px;font-weight:500;color:var(--ink);padding:14px 2px;border-bottom:1px solid var(--line)}
+.mnav a.ml:active{color:var(--amber)}
+.mnav .cta-m{margin-top:18px;text-align:center;font-size:15px;font-weight:600;padding:14px 18px;background:var(--amber);color:#fff;border-radius:var(--r)}
+header.open .mnav{display:block}
+.nav-links a.cur{color:var(--ink)}
+@media(max-width:980px){.burger{display:inline-flex}}
+@media(min-width:981px){.mnav{display:none!important}}
+@media(max-width:400px){.brand-name{display:none}}
+
+/* BLOG */
+.blog-hero{padding:64px 0 32px}
+.blog-hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.12;margin-bottom:14px}
+.blog-hero p{color:var(--ink-soft);font-size:1.05rem;max-width:60ch}
+.post-list{display:grid;gap:18px;padding-bottom:88px}
+.post-card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 26px;transition:all .25s}
+.post-card:hover{border-color:rgba(212,139,58,0.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(30,42,74,0.08)}
+.post-meta{font-size:12.5px;color:#9A6424;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.post-card h2{font-size:1.3rem;font-weight:600;line-height:1.35;margin-bottom:8px}
+.post-card p{color:var(--ink-soft);font-size:15px}
+.post-more{display:inline-block;margin-top:12px;color:var(--amber);font-weight:600;font-size:14px}
+article.post{max-width:740px;margin:0 auto;padding:56px 28px 88px}
+.crumbs{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
+.crumbs a{color:var(--amber)}
+article.post h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4.2vw,2.8rem);line-height:1.13;letter-spacing:-0.01em;margin-bottom:14px}
+article.post .lead{font-size:1.12rem;color:var(--ink-soft);line-height:1.75;margin:18px 0 28px}
+article.post h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.65rem;line-height:1.2;margin:44px 0 14px}
+article.post p{margin-bottom:16px;font-size:16.5px;line-height:1.8}
+article.post ul{margin:0 0 18px 22px}
+article.post li{margin-bottom:8px;font-size:16.5px;line-height:1.7}
+article.post strong{font-weight:600}
+article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset:3px}
+.tip{background:var(--amber-pale);border-left:4px solid var(--amber);border-radius:8px;padding:18px 20px;margin:22px 0}
+.tip p:last-child{margin-bottom:0}
+.post-cta{background:var(--ink);color:#fff;border-radius:16px;padding:34px 30px;margin-top:48px;text-align:center}
+.post-cta h2{color:#fff;margin:0 0 10px!important}
+.post-cta p{color:rgba(255,255,255,.8);max-width:52ch;margin:0 auto 22px!important}
+.post-cta .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.post-cta a{display:inline-block;padding:13px 24px;border-radius:var(--r);font-weight:600;font-size:15px}
+.post-cta a.b1{background:var(--amber);color:#fff}
+.post-cta a.b2{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+@media(max-width:560px){article.post{padding:36px 16px 64px}.post-card{padding:22px 18px}.blog-hero{padding:44px 0 24px}}
 @media(max-width:980px){.nav-links{display:none}}
 @media(max-width:900px){
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
@@ -476,7 +527,7 @@ footer{background:#111827;padding:32px 0}
 </head>
 <body>
 
-<header>
+<header id="hdr">
   <nav class="wrap" aria-label="Navigation">
     <a class="brand" href="/uk/"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>
     <div class="nav-links">
@@ -484,13 +535,26 @@ footer{background:#111827;padding:32px 0}
       <a href="#ablauf">Як працюємо</a>
       <a href="#ergebnisse">Результати</a>
       <a href="#about">Про мене</a>
+      <a href="/uk/blog/">Блог</a>
       <a href="#contact">Контакт</a>
     </div>
     <div class="nav-right">
-      <div class="lang-sw" role="group" aria-label="Мова"><a href="/uk/" hreflang="uk" lang="uk" translate="no" class="on" aria-current="page">UA</a><a href="/" hreflang="de" lang="de" translate="no">DE</a><a href="/ru/" hreflang="ru" lang="ru" translate="no">RU</a></div>
+      <div class="lang-sw" role="group" aria-label="Мова"><a href="/uk/" hreflang="uk" lang="uk" translate="no" class="on" aria-current="true">UA</a><a href="/" hreflang="de" lang="de" translate="no">DE</a><a href="/ru/" hreflang="ru" lang="ru" translate="no">RU</a></div>
       <a href="#contact" class="cta-nav">Безкоштовний аудит</a>
+      <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span></button>
     </div>
   </nav>
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <a class="ml" href="#pakete">Пакети</a>
+      <a class="ml" href="#ablauf">Як працюємо</a>
+      <a class="ml" href="#ergebnisse">Результати</a>
+      <a class="ml" href="#about">Про мене</a>
+      <a class="ml" href="/uk/blog/">Блог</a>
+      <a class="ml" href="#contact">Контакт</a>
+      <a class="cta-m" href="#contact">Безкоштовний аудит</a>
+    </div>
+  </div>
 </header>
 
 <section class="hero" id="top">
@@ -784,6 +848,14 @@ function sendMsg(e){
   window.location.href="mailto:olha.polishchuk.web@gmail.com?subject="+encodeURIComponent("[Website] Google-Check: "+n+" (UA)")+"&body="+encodeURIComponent(t+"\n\nE-Mail: "+m);
   return false;
 }
+</script>
+<script>
+(function(){var h=document.getElementById('hdr');if(!h)return;var b=h.querySelector('.burger');
+function set(o){h.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');}
+b.addEventListener('click',function(){set(!h.classList.contains('open'));});
+h.querySelectorAll('.mnav a').forEach(function(a){a.addEventListener('click',function(){set(false);});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);});})();
 </script>
 <script>(function () { var widget = document.createElement('script'); widget.defer = true; widget.dataset.pfId = 'e95ecb09-89d8-4863-b954-200bd0a8ed56'; widget.src = 'https://widget.yourgood.app/script/widget.js?id=e95ecb09-89d8-4863-b954-200bd0a8ed56&now='+Date.now(); document.head.appendChild(widget); })()</script>
 </body>

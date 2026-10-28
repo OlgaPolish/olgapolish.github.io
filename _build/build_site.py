@@ -232,6 +232,57 @@ footer{background:#111827;padding:32px 0}
 .foot-links a{font-size:13px;color:rgba(255,255,255,0.5);transition:color .2s}
 .foot-links a:hover{color:rgba(255,255,255,0.85)}
 
+/* BURGER / MOBILE MENU */
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative;transition:transform .25s,background .25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+header.open .burger span{background:transparent}
+header.open .burger span::before{transform:translateY(6px) rotate(45deg)}
+header.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+.mnav{display:none;border-top:1px solid var(--line);background:#fff;max-height:calc(100vh - 64px);overflow-y:auto}
+.mnav .wrap{display:flex;flex-direction:column;padding-top:8px;padding-bottom:20px}
+.mnav a.ml{font-size:16px;font-weight:500;color:var(--ink);padding:14px 2px;border-bottom:1px solid var(--line)}
+.mnav a.ml:active{color:var(--amber)}
+.mnav .cta-m{margin-top:18px;text-align:center;font-size:15px;font-weight:600;padding:14px 18px;background:var(--amber);color:#fff;border-radius:var(--r)}
+header.open .mnav{display:block}
+.nav-links a.cur{color:var(--ink)}
+@media(max-width:980px){.burger{display:inline-flex}}
+@media(min-width:981px){.mnav{display:none!important}}
+@media(max-width:400px){.brand-name{display:none}}
+
+/* BLOG */
+.blog-hero{padding:64px 0 32px}
+.blog-hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.12;margin-bottom:14px}
+.blog-hero p{color:var(--ink-soft);font-size:1.05rem;max-width:60ch}
+.post-list{display:grid;gap:18px;padding-bottom:88px}
+.post-card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 26px;transition:all .25s}
+.post-card:hover{border-color:rgba(212,139,58,0.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(30,42,74,0.08)}
+.post-meta{font-size:12.5px;color:#9A6424;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.post-card h2{font-size:1.3rem;font-weight:600;line-height:1.35;margin-bottom:8px}
+.post-card p{color:var(--ink-soft);font-size:15px}
+.post-more{display:inline-block;margin-top:12px;color:var(--amber);font-weight:600;font-size:14px}
+article.post{max-width:740px;margin:0 auto;padding:56px 28px 88px}
+.crumbs{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
+.crumbs a{color:var(--amber)}
+article.post h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4.2vw,2.8rem);line-height:1.13;letter-spacing:-0.01em;margin-bottom:14px}
+article.post .lead{font-size:1.12rem;color:var(--ink-soft);line-height:1.75;margin:18px 0 28px}
+article.post h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.65rem;line-height:1.2;margin:44px 0 14px}
+article.post p{margin-bottom:16px;font-size:16.5px;line-height:1.8}
+article.post ul{margin:0 0 18px 22px}
+article.post li{margin-bottom:8px;font-size:16.5px;line-height:1.7}
+article.post strong{font-weight:600}
+article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset:3px}
+.tip{background:var(--amber-pale);border-left:4px solid var(--amber);border-radius:8px;padding:18px 20px;margin:22px 0}
+.tip p:last-child{margin-bottom:0}
+.post-cta{background:var(--ink);color:#fff;border-radius:16px;padding:34px 30px;margin-top:48px;text-align:center}
+.post-cta h2{color:#fff;margin:0 0 10px!important}
+.post-cta p{color:rgba(255,255,255,.8);max-width:52ch;margin:0 auto 22px!important}
+.post-cta .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.post-cta a{display:inline-block;padding:13px 24px;border-radius:var(--r);font-weight:600;font-size:15px}
+.post-cta a.b1{background:var(--amber);color:#fff}
+.post-cta a.b2{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+@media(max-width:560px){article.post{padding:36px 16px 64px}.post-card{padding:22px 18px}.blog-hero{padding:44px 0 24px}}
 @media(max-width:980px){.nav-links{display:none}}
 @media(max-width:900px){
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
@@ -758,6 +809,59 @@ def jsonld(lang, t):
     return '<script type="application/ld+json">\n' + js + '\n</script>\n'
 
 
+# Блог: какие языки уже имеют статьи (DE добавить, когда будет немецкая статья)
+BLOG_LANGS = ("uk", "ru")
+BLOG_LABEL = {"de": "Blog", "uk": "Блог", "ru": "Блог"}
+MENU_LABEL = {"de": "Menü", "uk": "Меню", "ru": "Меню"}
+
+
+def header_html(lang, home=True, alt_paths=None, current=None):
+    """Шапка с бургер-меню. home=False — ссылки на якоря ведут на главную.
+    alt_paths: {lang: путь} для переключателя языков (по умолчанию — главные)."""
+    t = T[lang]
+    base = "" if home else "/" + PATHS[lang]
+    alt = alt_paths or {l2: "/" + PATHS[l2] for l2 in ("de", "uk", "ru")}
+    links = [(base + "#" + a, label, None) for a, label in zip(ANCHORS, t["nav"])]
+    if lang in BLOG_LANGS:
+        links.insert(4, ("/" + PATHS[lang] + "blog/", BLOG_LABEL[lang], "blog"))
+    o = []
+    w = o.append
+    w('<header id="hdr">\n  <nav class="wrap" aria-label="Navigation">\n')
+    w('    <a class="brand" href="/%s"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>\n' % PATHS[lang])
+    w('    <div class="nav-links">\n')
+    for href, label, key in links:
+        cur = ' class="cur" aria-current="page"' if key and key == current else ''
+        w('      <a href="%s"%s>%s</a>\n' % (href, cur, esc(label)))
+    w('    </div>\n    <div class="nav-right">\n      <div class="lang-sw" role="group" aria-label="%s">' % esc(t["lang_name"]))
+    for l2 in ("uk", "de", "ru"):
+        if l2 not in alt:
+            continue
+        cur = ' class="on" aria-current="true"' if l2 == lang else ''
+        w('<a href="%s" hreflang="%s" lang="%s" translate="no"%s>%s</a>' % (alt[l2], l2, l2, cur, LABELS[l2]))
+    w('</div>\n      <a href="%s#contact" class="cta-nav">%s</a>\n' % (base, esc(t["cta_nav"])))
+    w('      <button class="burger" type="button" aria-label="%s" aria-expanded="false" aria-controls="mnav"><span></span></button>\n' % MENU_LABEL[lang])
+    w('    </div>\n  </nav>\n  <div class="mnav" id="mnav">\n    <div class="wrap">\n')
+    for href, label, key in links:
+        w('      <a class="ml" href="%s">%s</a>\n' % (href, esc(label)))
+    w('      <a class="cta-m" href="%s#contact">%s</a>\n    </div>\n  </div>\n</header>\n\n' % (base, esc(t["cta_nav"])))
+    return "".join(o)
+
+
+BURGER_JS = """<script>
+(function(){var h=document.getElementById('hdr');if(!h)return;var b=h.querySelector('.burger');
+function set(o){h.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');}
+b.addEventListener('click',function(){set(!h.classList.contains('open'));});
+h.querySelectorAll('.mnav a').forEach(function(a){a.addEventListener('click',function(){set(false);});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);});})();
+</script>
+"""
+
+
+def footer_html():
+    return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % LINKEDIN
+
+
 def render(lang):
     t = T[lang]
     url = SITE + PATHS[lang]
@@ -780,16 +884,7 @@ def render(lang):
     w('<style>\n/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */\n' + FONTS + CSS + PZ_CSS + '</style>\n</head>\n<body>\n\n')
 
     # header
-    w('<header>\n  <nav class="wrap" aria-label="Navigation">\n')
-    w('    <a class="brand" href="/%s"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>\n' % PATHS[lang])
-    w('    <div class="nav-links">\n')
-    for a, label in zip(ANCHORS, t["nav"]):
-        w('      <a href="#%s">%s</a>\n' % (a, esc(label)))
-    w('    </div>\n    <div class="nav-right">\n      <div class="lang-sw" role="group" aria-label="%s">' % esc(t["lang_name"]))
-    for l2 in ("uk", "de", "ru"):
-        cur = ' class="on" aria-current="page"' if l2 == lang else ''
-        w('<a href="/%s" hreflang="%s" lang="%s" translate="no"%s>%s</a>' % (PATHS[l2], l2, l2, cur, LABELS[l2]))
-    w('</div>\n      <a href="#contact" class="cta-nav">%s</a>\n    </div>\n  </nav>\n</header>\n\n' % esc(t["cta_nav"]))
+    w(header_html(lang))
 
     # hero
     w('<section class="hero" id="top">\n  <div class="wrap hero-inner">\n    <div class="hero-text">\n')
@@ -876,14 +971,14 @@ def render(lang):
     w('      <button type="submit" class="form-submit">%s</button>\n      <p class="form-note">%s <a href="/datenschutz.html">Datenschutz</a></p>\n    </form>\n  </div>\n</section>\n\n' % (esc(t["f_btn"]), esc(t["f_note"])))
 
     # footer
-    w('<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % LINKEDIN)
+    w(footer_html())
 
     # script
     w('<script>\nfunction sendMsg(e){\n  e.preventDefault();\n')
     w('  var n=document.getElementById("f-name").value.trim(),m=document.getElementById("f-mail").value.trim(),t=document.getElementById("f-msg").value;\n')
     w('  if(!n||!m){alert(%s);return false;}\n' % json.dumps(t["f_alert"], ensure_ascii=False))
     w('  window.location.href="mailto:%s?subject="+encodeURIComponent("[Website] Google-Check: "+n+" (%s)")+"&body="+encodeURIComponent(t+"\\n\\nE-Mail: "+m);\n  return false;\n}\n</script>\n' % (EMAIL, LABELS[lang]))
-    w(WIDGET + '</body>\n</html>\n')
+    w(BURGER_JS + WIDGET + '</body>\n</html>\n')
     # неразрывный пробел перед €, чтобы цена не разрывалась
     return "".join(out).replace(" €", "\u00a0€")
 
