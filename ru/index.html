@@ -356,6 +356,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .case-result{display:flex;gap:28px;flex-wrap:wrap}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
+.case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
+.case-img img{width:100%;height:auto;display:block}
+.case.has-img .case-result{gap:22px}
+.case.has-img .r-lbl{max-width:17ch}
+.case-quote{border-left:3px solid var(--amber);padding:2px 0 2px 16px;margin:0 0 18px;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.65}
+.case-quote cite{display:block;font-style:normal;font-size:12px;color:var(--ink-soft);margin-top:6px}
 .also{margin-top:20px;font-size:15px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px}
 .also strong{color:var(--ink)}
 
@@ -478,7 +485,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
   .hero-photo{display:none}
   .why-grid{grid-template-columns:1fr 1fr}
-  .pkg-grid,.pkg-extras,.cases-grid{grid-template-columns:1fr}
+  .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
+  .case.has-img{gap:20px}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .why,.pakete,.ablauf,.cases,.about,.faq,.contact{padding:64px 0}
@@ -679,6 +687,16 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <div class="sec-label">Результаты</div>
     <h2 class="sec-title">Реальные результаты для реального бизнеса</h2>
     <div class="cases-grid">
+      <div class="case wide has-img">
+        <a class="case-img" href="https://jana-nails-beauty.de/" target="_blank" rel="noopener"><img src="/images/case-jana-nails.jpg" width="1200" height="750" loading="lazy" alt="Главная страница jana-nails-beauty.de — сайт ногтевой студии JANA NAILS &amp; Beauty"></a>
+        <div>
+        <div class="case-tag">Сайт-визитка · онлайн-запись · свой домен</div>
+        <h3><a href="https://jana-nails-beauty.de/" target="_blank" rel="noopener">JANA NAILS &amp; Beauty — сайт ногтевой студии в Düsseldorf-Benrath</a></h3>
+        <p>Сайт на немецком и русском: услуги и прайс с длительностью процедур, фото работ, команда, отзывы из Google, карта и контакты. Онлайн-запись через Fresha — клиентки сами выбирают услугу, мастера и время, напоминания приходят автоматически. Перенос на собственный домен студии и удобная мобильная версия.</p>
+        <blockquote class="case-quote" lang="de">„Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!“<cite lang="ru">— Яна, владелица JANA NAILS &amp; Beauty · отзыв в Google ★★★★★</cite></blockquote>
+        <div class="case-result"><div class="result-item"><div class="r-num">11 дней</div><div class="r-lbl">от демо-версии до запуска на домене студии</div></div><div class="result-item"><div class="r-num">24/7</div><div class="r-lbl">онлайн-запись без переписки в WhatsApp</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">языка: немецкий и русский</div></div></div>
+        </div>
+      </div>
       <div class="case wide">
         <div class="case-tag">Сайт-визитка · домен · корпоративная почта</div>
         <h3><a href="https://avkoncepcia.com/" target="_blank" rel="noopener">«АВ-Концепція» — сайт инженерной компании (Харьков)</a></h3>
@@ -701,7 +719,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <div class="case-tag">Instagram · SMM</div>
         <h3><a href="https://www.instagram.com/katerynaiakovlieva/" target="_blank" rel="noopener">Катерина Яковлева — Instagram финансового консультанта в Düsseldorf</a></h3>
         <p>Голос бренда, визуальная система и регулярные публикации для русско- и украиноязычной аудитории в NRW: стратегия, карусели, Reels и Stories, тексты и публикация по плану.</p>
-        <div class="case-result"><div class="result-item"><div class="r-num">2 → 62</div><div class="r-lbl">подписчика с июля 2026</div></div></div>
+        <blockquote class="case-quote" lang="ru">„Очень рада сотрудничеству с Ольгой! Ценю её внимательное отношение, доброжелательность и приятное общение. Особенно радуют положительные результаты работы над моим профессиональным Instagram, где я делюсь полезной информацией как финансовый консультант.“<cite lang="ru">— Екатерина Я., финансовый консультант · отзыв в Google ★★★★★</cite></blockquote>
+        <div class="case-result"><div class="result-item"><div class="r-num">2 → 113</div><div class="r-lbl">подписчиков с июля 2026</div></div></div>
       </div>
       <div class="case">
         <div class="case-tag">Telegram · Threads · SMM</div>

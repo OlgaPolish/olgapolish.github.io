@@ -166,6 +166,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .case-result{display:flex;gap:28px;flex-wrap:wrap}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
+.case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
+.case-img img{width:100%;height:auto;display:block}
+.case.has-img .case-result{gap:22px}
+.case.has-img .r-lbl{max-width:17ch}
+.case-quote{border-left:3px solid var(--amber);padding:2px 0 2px 16px;margin:0 0 18px;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.65}
+.case-quote cite{display:block;font-style:normal;font-size:12px;color:var(--ink-soft);margin-top:6px}
 .also{margin-top:20px;font-size:15px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px}
 .also strong{color:var(--ink)}
 
@@ -288,7 +295,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
   .hero-photo{display:none}
   .why-grid{grid-template-columns:1fr 1fr}
-  .pkg-grid,.pkg-extras,.cases-grid{grid-template-columns:1fr}
+  .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
+  .case.has-img{gap:20px}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .why,.pakete,.ablauf,.cases,.about,.faq,.contact{padding:64px 0}
@@ -374,7 +382,11 @@ T["de"] = dict(
            ("Umsetzung", "Sie schicken Fotos und Infos, ich setze um. Ich zeige Ihnen das Ergebnis, wir nehmen Korrekturen vor."),
            ("Fertig", "Rechnung nach Abschluss. Auf Wunsch geht es mit der Betreuung weiter.")],
     cs_label="Ergebnisse", cs_title="Echte Ergebnisse für echte Unternehmen",
-    cases=[dict(wide=True, tag="Onepager · Domain · Firmen-E-Mail", name="АВ-Концепція — Webseite für ein Ingenieurbüro aus Charkiw", link="https://avkoncepcia.com/",
+    cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Startseite von jana-nails-beauty.de — Webseite des Nagelstudios JANA NAILS & Beauty', tag='Onepager · Online-Terminbuchung · eigene Domain', name='JANA NAILS & Beauty — Webseite für ein Nagelstudio in Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
+                text='Webseite auf Deutsch und Russisch: Leistungen und Preise mit Behandlungsdauer, Arbeitsfotos, Team, Google-Bewertungen, Karte und Kontakt. Online-Terminbuchung über Fresha — Kundinnen wählen Leistung, Nageldesignerin und Uhrzeit selbst, Erinnerungen kommen automatisch. Umzug auf die eigene Domain des Studios, optimiert fürs Smartphone.',
+                quote='Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!', cite='— Jana, Inhaberin von JANA NAILS & Beauty · Google-Bewertung ★★★★★',
+                res=[('11 Tage', 'vom Demo bis zum Start auf der Studio-Domain'), ('24/7', 'Online-Termine ohne WhatsApp-Hin-und-Her'), ('2', 'Sprachen: Deutsch und Russisch')]),
+           dict(wide=True, tag="Onepager · Domain · Firmen-E-Mail", name="АВ-Концепція — Webseite für ein Ingenieurbüro aus Charkiw", link="https://avkoncepcia.com/",
                 text="Onepager mit Portfolio auf Ukrainisch und Englisch — erstellt aus PDFs, alten .doc-Dateien und über 80 Fotos des Kunden. Dazu eigene Domain und Firmen-E-Mail-Adressen mit Weiterleitung. Der Kunde musste nur noch prüfen.",
                 res=[("51", "Objekte mit Filter und Suche"), ("279 → 8 MB", "Bilder komprimiert — schnell auf dem Smartphone"), ("2", "Sprachen: Ukrainisch und Englisch")]),
            dict(tag="SEO · Shopify · Düsseldorf", name="Kanelia — Shop für Nageldesign-Bedarf", link="https://kaneliastore.com/",
@@ -385,7 +397,8 @@ T["de"] = dict(
                 res=[("7.057", "Pinterest-Impressionen in 30 Tagen"), ("+61 %", "zum Vormonat")]),
            dict(tag="Instagram · SMM", name="Katerina Yakovleva — Instagram für eine Finanzberaterin in Düsseldorf", link="https://www.instagram.com/katerynaiakovlieva/",
                 text="Komplette Betreuung des Instagram-Accounts: Strategie, Karussells, Reels und Stories, Texte und Veröffentlichung nach Plan. Jeder Beitrag wird vor der Veröffentlichung auf Compliance geprüft.",
-                res=[]),
+                quote='Ich freue mich sehr über die Zusammenarbeit mit Olga! Ich schätze ihre Aufmerksamkeit, ihre Freundlichkeit und die angenehme Kommunikation. Besonders freuen mich die positiven Ergebnisse der Arbeit an meinem beruflichen Instagram-Account, auf dem ich als Finanzberaterin nützliche Informationen teile.', quote_lang='de', cite='— Katerina Y., Finanzberaterin · Google-Bewertung ★★★★★ (aus dem Russischen übersetzt)',
+                res=[("2 → 113", "Follower seit Juli 2026")]),
            dict(tag="Telegram · Threads · SMM", name="FinanzGuide GE — Telegram und Threads für ein Team von Finanzberatern", text="Seit August 2026: Markenstimme, visuelles System und eine Compliance-Checkliste (§ 34d/f GewO, Werbekennzeichnung, DSGVO), die jeder Beitrag durchläuft. Content für russisch- und ukrainischsprachige Familien in NRW. Nach der Analyse von 35 Threads-Beiträgen die Strategie umgebaut: konkreter Betrag oder Frist in der ersten Zeile, Threads statt Einzelposts, Frage am Ende. Dazu kostenlose Zuordnung der Anfragen über WhatsApp-Links mit vorausgefülltem Text und ein Vertrags-Tracker in Google Sheets als Lead-Magnet.",
                 res=[("39.933", "Aufrufe des besten Beitrags (Threads)")])],
     also="<strong>Außerdem:</strong> Betreuung von Instagram und Telegram, Einrichtung und Optimierung von Shopify-Shops, Texte auf Deutsch, Ukrainisch und Russisch. Schreiben Sie mir — wir besprechen es.",
@@ -466,7 +479,11 @@ T["uk"] = dict(
            ("Робота", "Ви надсилаєте фото й інформацію, я роблю. Показую результат, вносимо правки."),
            ("Готово", "Рахунок — після виконання. Якщо потрібно — далі підтримка.")],
     cs_label="Результати", cs_title="Реальні результати для реального бізнесу",
-    cases=[dict(wide=True, tag="Сайт-візитка · домен · корпоративна пошта", name="«АВ-Концепція» — сайт інженерної компанії (Харків)", link="https://avkoncepcia.com/",
+    cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Головна сторінка jana-nails-beauty.de — сайт нейл-студії JANA NAILS & Beauty', tag='Сайт-візитка · онлайн-запис · власний домен', name='JANA NAILS & Beauty — сайт нейл-студії в Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
+                text='Сайт німецькою та російською: послуги й прайс із тривалістю процедур, фото робіт, команда, відгуки з Google, мапа й контакти. Онлайн-запис через Fresha — клієнтки самі обирають послугу, майстриню й час, нагадування надходять автоматично. Перенесення на власний домен студії та зручна мобільна версія.',
+                quote='Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!', cite='— Яна, власниця JANA NAILS & Beauty · відгук у Google ★★★★★',
+                res=[('11 днів', 'від демоверсії до запуску на домені студії'), ('24/7', 'онлайн-запис без листування у WhatsApp'), ('2', 'мови: німецька та російська')]),
+           dict(wide=True, tag="Сайт-візитка · домен · корпоративна пошта", name="«АВ-Концепція» — сайт інженерної компанії (Харків)", link="https://avkoncepcia.com/",
                 text="Сайт-візитка з портфоліо українською та англійською — зібраний із PDF, старих .doc-файлів і 80+ фото замовника. Плюс власний домен і корпоративні адреси пошти з переадресацією. Клієнт лише перевіряв.",
                 res=[("51", "об'єкт із фільтрами й пошуком"), ("279 → 8 МБ", "фото стиснуто — сайт швидко відкривається з телефона"), ("2", "мови: українська та англійська")]),
            dict(tag="SEO · Shopify · Düsseldorf", name="Kanelia — магазин матеріалів для манікюру", link="https://kaneliastore.com/",
@@ -477,7 +494,8 @@ T["uk"] = dict(
                 res=[("7 057", "показів у Pinterest за 30 днів"), ("+61 %", "до минулого місяця")]),
            dict(tag="Instagram · SMM", name="Катерина Яковлева — Instagram фінансової консультантки в Düsseldorf", link="https://www.instagram.com/katerynaiakovlieva/",
                 text="Голос бренду, візуальна система та регулярні публікації для україно- та російськомовної аудиторії в NRW: стратегія, каруселі, Reels і Stories, тексти та публікація за планом.",
-                res=[("2 → 62", "підписники з липня 2026")]),
+                quote='Очень рада сотрудничеству с Ольгой! Ценю её внимательное отношение, доброжелательность и приятное общение. Особенно радуют положительные результаты работы над моим профессиональным Instagram, где я делюсь полезной информацией как финансовый консультант.', quote_lang='ru', cite='— Екатерина Я., фінансова консультантка · відгук у Google ★★★★★ (мовою оригіналу)',
+                res=[("2 → 113", "підписників з липня 2026")]),
            dict(tag="Telegram · Threads · SMM", name="FinanzGuide GE — Telegram і Threads для команди фінансових консультантів", text="З серпня 2026: голос бренду, візуальна система й чек-лист комплаєнсу (§ 34d/f GewO, маркування реклами, DSGVO), через який проходить кожна публікація. Контент для україно- та російськомовних родин у NRW. Після розбору 35 публікацій у Threads перебудувала стратегію: конкретна сума або термін у першому рядку, треди замість поодиноких дописів, запитання наприкінці. А також безкоштовна атрибуція через WhatsApp-посилання з готовим текстом і трекер договорів у Google Sheets як лід-магніт.",
                 res=[("39 933", "переглядів найкращого допису"), ("×6", "охоплення з цифрою в першому рядку"), ("×2", "треди проти поодиноких дописів")])],
     also="<strong>Також можу допомогти:</strong> ведення Instagram і Telegram, налаштування й оптимізація Shopify-магазинів, тексти німецькою, українською та російською. Напишіть — обговоримо.",
@@ -558,7 +576,11 @@ T["ru"] = dict(
            ("Работа", "Вы присылаете фото и информацию, я делаю. Показываю результат, вносим правки."),
            ("Готово", "Счёт после выполнения. Если нужно — дальше поддержка.")],
     cs_label="Результаты", cs_title="Реальные результаты для реального бизнеса",
-    cases=[dict(wide=True, tag="Сайт-визитка · домен · корпоративная почта", name="«АВ-Концепція» — сайт инженерной компании (Харьков)", link="https://avkoncepcia.com/",
+    cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Главная страница jana-nails-beauty.de — сайт ногтевой студии JANA NAILS & Beauty', tag='Сайт-визитка · онлайн-запись · свой домен', name='JANA NAILS & Beauty — сайт ногтевой студии в Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
+                text='Сайт на немецком и русском: услуги и прайс с длительностью процедур, фото работ, команда, отзывы из Google, карта и контакты. Онлайн-запись через Fresha — клиентки сами выбирают услугу, мастера и время, напоминания приходят автоматически. Перенос на собственный домен студии и удобная мобильная версия.',
+                quote='Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!', cite='— Яна, владелица JANA NAILS & Beauty · отзыв в Google ★★★★★',
+                res=[('11 дней', 'от демо-версии до запуска на домене студии'), ('24/7', 'онлайн-запись без переписки в WhatsApp'), ('2', 'языка: немецкий и русский')]),
+           dict(wide=True, tag="Сайт-визитка · домен · корпоративная почта", name="«АВ-Концепція» — сайт инженерной компании (Харьков)", link="https://avkoncepcia.com/",
                 text="Сайт-визитка с портфолио на украинском и английском — собран из PDF, старых .doc-файлов и 80+ фото заказчика. Плюс свой домен и корпоративные адреса почты с переадресацией. Клиент только проверял.",
                 res=[("51", "объект с фильтрами и поиском"), ("279 → 8 МБ", "фото сжаты — сайт быстро открывается с телефона"), ("2", "языка: украинский и английский")]),
            dict(tag="SEO · Shopify · Düsseldorf", name="Kanelia — магазин материалов для маникюра", link="https://kaneliastore.com/",
@@ -569,7 +591,8 @@ T["ru"] = dict(
                 res=[("7 057", "показов в Pinterest за 30 дней"), ("+61 %", "к прошлому месяцу")]),
            dict(tag="Instagram · SMM", name="Катерина Яковлева — Instagram финансового консультанта в Düsseldorf", link="https://www.instagram.com/katerynaiakovlieva/",
                 text="Голос бренда, визуальная система и регулярные публикации для русско- и украиноязычной аудитории в NRW: стратегия, карусели, Reels и Stories, тексты и публикация по плану.",
-                res=[("2 → 62", "подписчика с июля 2026")]),
+                quote='Очень рада сотрудничеству с Ольгой! Ценю её внимательное отношение, доброжелательность и приятное общение. Особенно радуют положительные результаты работы над моим профессиональным Instagram, где я делюсь полезной информацией как финансовый консультант.', quote_lang='ru', cite='— Екатерина Я., финансовый консультант · отзыв в Google ★★★★★',
+                res=[("2 → 113", "подписчиков с июля 2026")]),
            dict(tag="Telegram · Threads · SMM", name="FinanzGuide GE — Telegram и Threads для команды финансовых консультантов", text="С августа 2026: голос бренда, визуальная система и чек-лист комплаенса (§ 34d/f GewO, маркировка рекламы, DSGVO), через который проходит каждая публикация. Контент для русско- и украиноязычных семей в NRW. После разбора 35 публикаций в Threads перестроила стратегию: конкретная сумма или срок в первой строке, треды вместо одиночных постов, вопрос в конце. Плюс бесплатная атрибуция через WhatsApp-ссылки с предзаполненным текстом и трекер договоров в Google Sheets как лид-магнит.",
                 res=[("39 933", "просмотра у лучшего поста"), ("×6", "охват с цифрой в первой строке"), ("×2", "треды против одиночных постов")])],
     also="<strong>Также могу помочь:</strong> ведение Instagram и Telegram, настройка и оптимизация Shopify-магазинов, тексты на немецком, русском и украинском. Напишите — обсудим.",
@@ -929,10 +952,17 @@ def render(lang):
         name = esc(c["name"])
         if c.get("link"):
             name = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (c["link"], name)
-        w('      <div class="case%s">\n        <div class="case-tag">%s</div>\n        <h3>%s</h3>\n        <p>%s</p>\n        <div class="case-result">' % (" wide" if c.get("wide") else "", esc(c["tag"]), name, esc(c["text"])))
+        cls = (" wide" if c.get("wide") else "") + (" has-img" if c.get("img") else "")
+        w('      <div class="case%s">\n' % cls)
+        if c.get("img"):
+            w('        <a class="case-img" href="%s" target="_blank" rel="noopener"><img src="%s" width="1200" height="750" loading="lazy" alt="%s"></a>\n        <div>\n' % (c["link"], c["img"], esc(c["img_alt"])))
+        w('        <div class="case-tag">%s</div>\n        <h3>%s</h3>\n        <p>%s</p>\n' % (esc(c["tag"]), name, esc(c["text"])))
+        if c.get("quote"):
+            w('        <blockquote class="case-quote" lang="%s">„%s“<cite lang="%s">%s</cite></blockquote>\n' % (c.get("quote_lang", "de"), esc(c["quote"]), lang, esc(c["cite"])))
+        w('        <div class="case-result">')
         for num, lbl in c["res"]:
             w('<div class="result-item"><div class="r-num">%s</div><div class="r-lbl">%s</div></div>' % (esc(num), esc(lbl)))
-        w('</div>\n      </div>\n')
+        w('</div>\n' + ('        </div>\n' if c.get("img") else '') + '      </div>\n')
     w('    </div>\n    <p class="also">%s</p>\n  </div>\n</section>\n\n' % t["also"])
 
     # about

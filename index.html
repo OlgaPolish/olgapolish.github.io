@@ -356,6 +356,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .case-result{display:flex;gap:28px;flex-wrap:wrap}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
+.case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
+.case-img img{width:100%;height:auto;display:block}
+.case.has-img .case-result{gap:22px}
+.case.has-img .r-lbl{max-width:17ch}
+.case-quote{border-left:3px solid var(--amber);padding:2px 0 2px 16px;margin:0 0 18px;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.65}
+.case-quote cite{display:block;font-style:normal;font-size:12px;color:var(--ink-soft);margin-top:6px}
 .also{margin-top:20px;font-size:15px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px}
 .also strong{color:var(--ink)}
 
@@ -478,7 +485,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
   .hero-photo{display:none}
   .why-grid{grid-template-columns:1fr 1fr}
-  .pkg-grid,.pkg-extras,.cases-grid{grid-template-columns:1fr}
+  .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
+  .case.has-img{gap:20px}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .why,.pakete,.ablauf,.cases,.about,.faq,.contact{padding:64px 0}
@@ -677,6 +685,16 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <div class="sec-label">Ergebnisse</div>
     <h2 class="sec-title">Echte Ergebnisse für echte Unternehmen</h2>
     <div class="cases-grid">
+      <div class="case wide has-img">
+        <a class="case-img" href="https://jana-nails-beauty.de/" target="_blank" rel="noopener"><img src="/images/case-jana-nails.jpg" width="1200" height="750" loading="lazy" alt="Startseite von jana-nails-beauty.de — Webseite des Nagelstudios JANA NAILS &amp; Beauty"></a>
+        <div>
+        <div class="case-tag">Onepager · Online-Terminbuchung · eigene Domain</div>
+        <h3><a href="https://jana-nails-beauty.de/" target="_blank" rel="noopener">JANA NAILS &amp; Beauty — Webseite für ein Nagelstudio in Düsseldorf-Benrath</a></h3>
+        <p>Webseite auf Deutsch und Russisch: Leistungen und Preise mit Behandlungsdauer, Arbeitsfotos, Team, Google-Bewertungen, Karte und Kontakt. Online-Terminbuchung über Fresha — Kundinnen wählen Leistung, Nageldesignerin und Uhrzeit selbst, Erinnerungen kommen automatisch. Umzug auf die eigene Domain des Studios, optimiert fürs Smartphone.</p>
+        <blockquote class="case-quote" lang="de">„Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!“<cite lang="de">— Jana, Inhaberin von JANA NAILS &amp; Beauty · Google-Bewertung ★★★★★</cite></blockquote>
+        <div class="case-result"><div class="result-item"><div class="r-num">11 Tage</div><div class="r-lbl">vom Demo bis zum Start auf der Studio-Domain</div></div><div class="result-item"><div class="r-num">24/7</div><div class="r-lbl">Online-Termine ohne WhatsApp-Hin-und-Her</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">Sprachen: Deutsch und Russisch</div></div></div>
+        </div>
+      </div>
       <div class="case wide">
         <div class="case-tag">Onepager · Domain · Firmen-E-Mail</div>
         <h3><a href="https://avkoncepcia.com/" target="_blank" rel="noopener">АВ-Концепція — Webseite für ein Ingenieurbüro aus Charkiw</a></h3>
@@ -699,7 +717,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <div class="case-tag">Instagram · SMM</div>
         <h3><a href="https://www.instagram.com/katerynaiakovlieva/" target="_blank" rel="noopener">Katerina Yakovleva — Instagram für eine Finanzberaterin in Düsseldorf</a></h3>
         <p>Komplette Betreuung des Instagram-Accounts: Strategie, Karussells, Reels und Stories, Texte und Veröffentlichung nach Plan. Jeder Beitrag wird vor der Veröffentlichung auf Compliance geprüft.</p>
-        <div class="case-result"></div>
+        <blockquote class="case-quote" lang="de">„Ich freue mich sehr über die Zusammenarbeit mit Olga! Ich schätze ihre Aufmerksamkeit, ihre Freundlichkeit und die angenehme Kommunikation. Besonders freuen mich die positiven Ergebnisse der Arbeit an meinem beruflichen Instagram-Account, auf dem ich als Finanzberaterin nützliche Informationen teile.“<cite lang="de">— Katerina Y., Finanzberaterin · Google-Bewertung ★★★★★ (aus dem Russischen übersetzt)</cite></blockquote>
+        <div class="case-result"><div class="result-item"><div class="r-num">2 → 113</div><div class="r-lbl">Follower seit Juli 2026</div></div></div>
       </div>
       <div class="case">
         <div class="case-tag">Telegram · Threads · SMM</div>
