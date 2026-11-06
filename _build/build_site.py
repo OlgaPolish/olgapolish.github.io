@@ -154,6 +154,9 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.demo-head{margin:48px 0 18px}
+.demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
+.demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
 .case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;transition:all .3s}
 .case:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(30,42,74,0.07)}
 .case.wide{grid-column:1/-1}
@@ -382,6 +385,10 @@ T["de"] = dict(
            ("Umsetzung", "Sie schicken Fotos und Infos, ich setze um. Ich zeige Ihnen das Ergebnis, wir nehmen Korrekturen vor."),
            ("Fertig", "Rechnung nach Abschluss. Auf Wunsch geht es mit der Betreuung weiter.")],
     cs_label="Ergebnisse", cs_title="Echte Ergebnisse für echte Unternehmen",
+    dm_title="Demo-Design — so kann Ihre Webseite aussehen", dm_sub="Beispiel für ein erfundenes Studio, damit Sie Stil und Aufbau sehen.",
+    demos=[dict(wide=True, img="/images/case-feinschliff.jpg", img_alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio", tag="Demo · fiktives Studio", name="Feinschliff — Beispiel-Webseite für ein Nagelstudio", link="https://german-nail-studio.netlify.app/",
+                text="So kann eine Studio-Webseite aussehen: Leistungen und Preise, Studio, Team, Öffnungszeiten und Terminanfrage, optimiert fürs Smartphone. Das Studio ist erfunden — alle Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[])],
+    
     cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Startseite von jana-nails-beauty.de — Webseite des Nagelstudios JANA NAILS & Beauty', tag='Onepager · Online-Terminbuchung · eigene Domain', name='JANA NAILS & Beauty — Webseite für ein Nagelstudio in Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
                 text='Webseite auf Deutsch und Russisch: Leistungen und Preise mit Behandlungsdauer, Arbeitsfotos, Team, Google-Bewertungen, Karte und Kontakt. Online-Terminbuchung über Fresha — Kundinnen wählen Leistung, Nageldesignerin und Uhrzeit selbst, Erinnerungen kommen automatisch. Umzug auf die eigene Domain des Studios, optimiert fürs Smartphone.',
                 quote='Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!', cite='— Jana, Inhaberin von JANA NAILS & Beauty · Google-Bewertung ★★★★★',
@@ -479,6 +486,10 @@ T["uk"] = dict(
            ("Робота", "Ви надсилаєте фото й інформацію, я роблю. Показую результат, вносимо правки."),
            ("Готово", "Рахунок — після виконання. Якщо потрібно — далі підтримка.")],
     cs_label="Результати", cs_title="Реальні результати для реального бізнесу",
+    dm_title="Демо-дизайн — так може виглядати ваш сайт", dm_sub="Приклад для вигаданої студії, щоб ви побачили стиль і структуру.",
+    demos=[dict(wide=True, img="/images/case-feinschliff.jpg", img_alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія", tag="Демо · вигадана студія", name="Feinschliff — приклад сайту для нейл-студії", link="https://german-nail-studio.netlify.app/",
+                text="Так може виглядати сайт студії: послуги й ціни, студія, команда, години роботи та запис, зручно на смартфоні. Студія вигадана — усі фото, відгуки й дані лише для прикладу.", res=[])],
+    
     cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Головна сторінка jana-nails-beauty.de — сайт нейл-студії JANA NAILS & Beauty', tag='Сайт-візитка · онлайн-запис · власний домен', name='JANA NAILS & Beauty — сайт нейл-студії в Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
                 text='Сайт німецькою та російською: послуги й прайс із тривалістю процедур, фото робіт, команда, відгуки з Google, мапа й контакти. Онлайн-запис через Fresha — клієнтки самі обирають послугу, майстриню й час, нагадування надходять автоматично. Перенесення на власний домен студії та зручна мобільна версія.',
                 quote='Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!', cite='— Яна, власниця JANA NAILS & Beauty · відгук у Google ★★★★★',
@@ -576,6 +587,10 @@ T["ru"] = dict(
            ("Работа", "Вы присылаете фото и информацию, я делаю. Показываю результат, вносим правки."),
            ("Готово", "Счёт после выполнения. Если нужно — дальше поддержка.")],
     cs_label="Результаты", cs_title="Реальные результаты для реального бизнеса",
+    dm_title="Демо-дизайн — так может выглядеть ваш сайт", dm_sub="Пример для вымышленной студии, чтобы вы увидели стиль и структуру.",
+    demos=[dict(wide=True, img="/images/case-feinschliff.jpg", img_alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия", tag="Демо · вымышленная студия", name="Feinschliff — пример сайта для ногтевой студии", link="https://german-nail-studio.netlify.app/",
+                text="Так может выглядеть сайт студии: услуги и цены, студия, команда, часы работы и запись, удобно на смартфоне. Студия вымышленная — все фото, отзывы и данные только для примера.", res=[])],
+    
     cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Главная страница jana-nails-beauty.de — сайт ногтевой студии JANA NAILS & Beauty', tag='Сайт-визитка · онлайн-запись · свой домен', name='JANA NAILS & Beauty — сайт ногтевой студии в Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
                 text='Сайт на немецком и русском: услуги и прайс с длительностью процедур, фото работ, команда, отзывы из Google, карта и контакты. Онлайн-запись через Fresha — клиентки сами выбирают услугу, мастера и время, напоминания приходят автоматически. Перенос на собственный домен студии и удобная мобильная версия.',
                 quote='Ich bin überglücklich mit meiner neuen Website für mein Nagelstudio! Sie ist wunderschön geworden, übersichtlich und genau so, wie ich sie mir gewünscht habe … Eine absolute Herzensempfehlung!', cite='— Яна, владелица JANA NAILS & Beauty · отзыв в Google ★★★★★',
@@ -948,7 +963,7 @@ def render(lang):
 
     # cases
     w('<section class="cases" id="ergebnisse">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="cases-grid">\n' % (esc(t["cs_label"]), esc(t["cs_title"])))
-    for c in t["cases"]:
+    def case_html(c):
         name = esc(c["name"])
         if c.get("link"):
             name = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (c["link"], name)
@@ -963,6 +978,12 @@ def render(lang):
         for num, lbl in c["res"]:
             w('<div class="result-item"><div class="r-num">%s</div><div class="r-lbl">%s</div></div>' % (esc(num), esc(lbl)))
         w('</div>\n' + ('        </div>\n' if c.get("img") else '') + '      </div>\n')
+    for c in t["cases"]:
+        case_html(c)
+    if t.get("demos"):
+        w('    </div>\n    <div class="demo-head"><h3>%s</h3><p>%s</p></div>\n    <div class="cases-grid">\n' % (esc(t["dm_title"]), esc(t["dm_sub"])))
+        for c in t["demos"]:
+            case_html(c)
     w('    </div>\n    <p class="also">%s</p>\n  </div>\n</section>\n\n' % t["also"])
 
     # about
