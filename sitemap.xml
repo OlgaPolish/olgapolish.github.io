@@ -42,6 +42,69 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/checklist-google-maps.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/checklist-google-maps.html"/>
   </url>
+  <url>
+    <loc>https://olhapolishchuk.de/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/uk/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/ru/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/tilky-instagram-tse-orenda.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/tolko-instagram-eto-arenda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/uk/blog/tilky-instagram-tse-orenda.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/tilky-instagram-tse-orenda.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/tolko-instagram-eto-arenda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/ru/blog/tolko-instagram-eto-arenda.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/tilky-instagram-tse-orenda.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/tolko-instagram-eto-arenda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
+  </url>
   <url><loc>https://olhapolishchuk.de/impressum.html</loc></url>
   <url><loc>https://olhapolishchuk.de/datenschutz.html</loc></url>
 </urlset>

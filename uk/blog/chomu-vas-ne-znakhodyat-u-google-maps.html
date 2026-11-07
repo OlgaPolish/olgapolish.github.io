@@ -11,8 +11,10 @@
 <meta property="og:image" content="https://olhapolishchuk.de/images/olha-portrait.jpg">
 <meta property="og:locale" content="uk_UA">
 <link rel="canonical" href="https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html">
+<link rel="alternate" hreflang="de" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html">
 <link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html">
 <link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html">
+<link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html">
 <meta property="og:type" content="article">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Чому вас не знаходять у Google Maps: 7 причин, про які мовчать чек-листи", "description": "Профіль заповнений, а клієнти не знаходять? Розбираю, як Google вирішує, кого показати на карті, і 7 причин, чому вас там немає — для бізнесу в Німеччині.", "inLanguage": "uk", "datePublished": "2026-10-28", "dateModified": "2026-10-28", "mainEntityOfPage": "https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html", "image": "https://olhapolishchuk.de/images/olha-portrait.jpg", "author": {"@type": "Person", "name": "Olha Polishchuk", "url": "https://olhapolishchuk.de/uk/"}, "publisher": {"@type": "Person", "name": "Olha Polishchuk"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://olhapolishchuk.de/uk/"}, {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://olhapolishchuk.de/uk/blog/"}, {"@type": "ListItem", "position": 3, "name": "Чому вас не знаходять у Google Maps: 7 причин, про які мовчать чек-листи", "item": "https://olhapolishchuk.de/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html"}]}</script>
@@ -138,6 +140,9 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.demo-head{margin:48px 0 18px}
+.demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
+.demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
 .case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;transition:all .3s}
 .case:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(30,42,74,0.07)}
 .case.wide{grid-column:1/-1}
@@ -150,6 +155,13 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .case-result{display:flex;gap:28px;flex-wrap:wrap}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
+.case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
+.case-img img{width:100%;height:auto;display:block}
+.case.has-img .case-result{gap:22px}
+.case.has-img .r-lbl{max-width:17ch}
+.case-quote{border-left:3px solid var(--amber);padding:2px 0 2px 16px;margin:0 0 18px;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.65}
+.case-quote cite{display:block;font-style:normal;font-size:12px;color:var(--ink-soft);margin-top:6px}
 .also{margin-top:20px;font-size:15px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px}
 .also strong{color:var(--ink)}
 
@@ -272,7 +284,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
   .hero-photo{display:none}
   .why-grid{grid-template-columns:1fr 1fr}
-  .pkg-grid,.pkg-extras,.cases-grid{grid-template-columns:1fr}
+  .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
+  .case.has-img{gap:20px}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .why,.pakete,.ablauf,.cases,.about,.faq,.contact{padding:64px 0}
@@ -285,6 +298,15 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .cta-nav{display:none}
   .about-card{position:static;margin-top:14px}
 }
+article.post figure{margin:28px 0 30px}
+article.post figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
+article.post figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:8px}
+.tbl-wrap{overflow-x:auto;margin:0 0 22px}
+article.post table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;min-width:520px}
+article.post th,article.post td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+article.post thead th{font-weight:600;background:var(--bg-soft)}
+article.post tbody th{font-weight:600;color:var(--ink);width:26%}
+@media(max-width:560px){article.post table{min-width:0;font-size:14px}article.post th,article.post td{padding:9px 6px}}
 </style>
 </head>
 <body>
@@ -301,7 +323,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <a href="/uk/#contact">Контакт</a>
     </div>
     <div class="nav-right">
-      <div class="lang-sw" role="group" aria-label="Мова"><a href="/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html" hreflang="uk" lang="uk" translate="no" class="on" aria-current="true">UA</a><a href="/" hreflang="de" lang="de" translate="no">DE</a><a href="/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html" hreflang="ru" lang="ru" translate="no">RU</a></div>
+      <div class="lang-sw" role="group" aria-label="Мова"><a href="/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html" hreflang="uk" lang="uk" translate="no" class="on" aria-current="true">UA</a><a href="/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html" hreflang="de" lang="de" translate="no">DE</a><a href="/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html" hreflang="ru" lang="ru" translate="no">RU</a></div>
       <a href="/uk/#contact" class="cta-nav">Безкоштовний аудит</a>
       <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span></button>
     </div>

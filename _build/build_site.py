@@ -847,8 +847,8 @@ def jsonld(lang, t):
     return '<script type="application/ld+json">\n' + js + '\n</script>\n'
 
 
-# Блог: какие языки уже имеют статьи (DE добавить, когда будет немецкая статья)
-BLOG_LANGS = ("uk", "ru")
+# Блог: какие языки уже имеют статьи (DE включён 07.11.2026)
+BLOG_LANGS = ("de", "uk", "ru")
 BLOG_LABEL = {"de": "Blog", "uk": "Блог", "ru": "Блог"}
 MENU_LABEL = {"de": "Menü", "uk": "Меню", "ru": "Меню"}
 

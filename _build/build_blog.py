@@ -17,6 +17,17 @@ import build_site as B  # noqa: E402
 esc = B.esc
 
 UI = {
+    "de": dict(
+        title="Blog – Google Maps, Website und Kundschaft für kleine Unternehmen in Deutschland",
+        h1="Blog",
+        lead="Ich erkläre in einfachen Worten, wie kleine Unternehmen in Deutschland über Google Kundschaft gewinnen: Profil in Google Maps, Website, Bewertungen.",
+        desc="Artikel für Beauty-Studios, Salons, Cafés und Selbstständige in Deutschland: Google Maps, Website, Bewertungen, Impressum.",
+        more="Weiterlesen →", home="Startseite", blog="Blog", min="Min. Lesezeit",
+        cta_t="Soll ich mir Ihr Profil ansehen?",
+        cta_p="Kostenloser Google-Check: Ich schaue mir Ihr Profil in Google Maps an und schicke Ihnen 3–5 konkrete Schritte, was Sie verbessern können.",
+        cta_b1="Kostenloser Google-Check", cta_b2="Checkliste: 10 Punkte",
+        months=["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    ),
     "uk": dict(
         title="Блог — Google Maps, сайти та клієнти для малого бізнесу в Німеччині",
         h1="Блог",
@@ -225,6 +236,23 @@ Google официально называет три главных фактор�
     },
 ]
 
+# Добавлено 07.11.2026: DE-версия статьи про Google Maps и статья «Только Instagram — это аренда» (RU/UK/DE)
+from blog_posts_2026_11 import DE_GOOGLE_MAPS, INSTAGRAM_POST  # noqa: E402
+POSTS[0]["de"] = DE_GOOGLE_MAPS
+POSTS.append(INSTAGRAM_POST)
+
+# Доп. стили блога: картинки и таблицы в статьях
+BLOG_CSS = """article.post figure{margin:28px 0 30px}
+article.post figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
+article.post figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:8px}
+.tbl-wrap{overflow-x:auto;margin:0 0 22px}
+article.post table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;min-width:520px}
+article.post th,article.post td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+article.post thead th{font-weight:600;background:var(--bg-soft)}
+article.post tbody th{font-weight:600;color:var(--ink);width:26%}
+@media(max-width:560px){article.post table{min-width:0;font-size:14px}article.post th,article.post td{padding:9px 6px}}
+"""
+
 
 def inline(s):
     s = esc(s)
@@ -237,7 +265,15 @@ def md(text):
     out = []
     for block in [b.strip() for b in text.strip().split("\n\n") if b.strip()]:
         lines = block.split("\n")
-        if block.startswith("## "):
+        m = re.match(r"^!\[(.*?)\]\((.+?)\)$", block)
+        if m:
+            out.append('<figure><img src="%s" alt="%s" width="1200" height="630" loading="lazy" decoding="async"></figure>' % (esc(m.group(2)), esc(m.group(1))))
+        elif all(l.startswith("|") for l in lines):
+            rows = [[c.strip() for c in l.strip().strip("|").split("|")] for l in lines]
+            th = "".join("<th>%s</th>" % inline(c) for c in rows[0])
+            body = "".join("<tr><th scope=\"row\">%s</th>%s</tr>" % (inline(r[0]), "".join("<td>%s</td>" % inline(c) for c in r[1:])) for r in rows[1:])
+            out.append('<div class="tbl-wrap"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>' % (th, body))
+        elif block.startswith("## "):
             out.append("<h2>%s</h2>" % inline(block[3:]))
         elif all(l.startswith("- ") for l in lines):
             out.append("<ul>%s</ul>" % "".join("<li>%s</li>" % inline(l[2:]) for l in lines))
@@ -256,20 +292,22 @@ def words(text):
 
 def nice_date(d, lang):
     y, m, dd = d.split("-")
+    if lang == "de":
+        return "%d. %s %s" % (int(dd), UI[lang]["months"][int(m) - 1], y)
     return "%d %s %s" % (int(dd), UI[lang]["months"][int(m) - 1], y)
 
 
-def head(lang, title, desc, url, alts, extra=""):
+def head(lang, title, desc, url, alts, extra="", og_img="images/olha-portrait.jpg"):
     o = ['<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n' % lang,
          '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n',
          '<title>%s</title>\n<meta name="description" content="%s">\n' % (esc(title), esc(desc)),
          '<meta property="og:title" content="%s">\n<meta property="og:description" content="%s">\n' % (esc(title), esc(desc)),
-         '<meta property="og:url" content="%s">\n<meta property="og:image" content="%simages/olha-portrait.jpg">\n' % (url, B.SITE),
+         '<meta property="og:url" content="%s">\n<meta property="og:image" content="%s%s">\n' % (url, B.SITE, og_img),
          '<meta property="og:locale" content="%s">\n<link rel="canonical" href="%s">\n' % (B.LOCALE[lang], url)]
     for l2, u in alts.items():
         o.append('<link rel="alternate" hreflang="%s" href="%s">\n' % (l2, u))
     o.append(extra)
-    o.append('<style>\n' + B.FONTS + B.CSS + '</style>\n</head>\n<body>\n\n')
+    o.append('<style>\n' + B.FONTS + B.CSS + BLOG_CSS + '</style>\n</head>\n<body>\n\n')
     return "".join(o)
 
 
@@ -281,8 +319,8 @@ def render_index(lang):
     u = UI[lang]
     url = B.SITE + B.PATHS[lang] + "blog/"
     alts = {l2: B.SITE + B.PATHS[l2] + "blog/" for l2 in B.BLOG_LANGS}
+    alts["x-default"] = alts["de"]
     hdr_alt = {l2: "/" + B.PATHS[l2] + "blog/" for l2 in B.BLOG_LANGS}
-    hdr_alt["de"] = "/"
     o = [head(lang, u["title"], u["desc"], url, alts), B.header_html(lang, home=False, alt_paths=hdr_alt, current="blog")]
     o.append('<main>\n<section class="blog-hero"><div class="wrap"><div class="sec-label">%s</div><h1>%s</h1><p>%s</p></div></section>\n' % (esc(u["blog"]), esc(u["h1"]), esc(u["lead"])))
     o.append('<div class="wrap post-list">\n')
@@ -303,13 +341,17 @@ def render_post(p, lang):
     a = p[lang]
     url = B.SITE + B.PATHS[lang] + "blog/" + a["slug"]
     alts = {l2: B.SITE + B.PATHS[l2] + "blog/" + p[l2]["slug"] for l2 in B.BLOG_LANGS if l2 in p}
+    if "de" in alts:
+        alts["x-default"] = alts["de"]
     hdr_alt = {l2: "/" + B.PATHS[l2] + "blog/" + p[l2]["slug"] for l2 in B.BLOG_LANGS if l2 in p}
-    hdr_alt["de"] = "/"
+    for l2 in ("de", "uk", "ru"):
+        hdr_alt.setdefault(l2, "/" + B.PATHS[l2])
+    og_img = p.get("image", {}).get(lang, "images/olha-portrait.jpg")
     ld = {
         "@context": "https://schema.org", "@type": "BlogPosting",
         "headline": a["title"], "description": a["desc"], "inLanguage": lang,
         "datePublished": p["date"], "dateModified": p.get("updated", p["date"]),
-        "mainEntityOfPage": url, "image": B.SITE + "images/olha-portrait.jpg",
+        "mainEntityOfPage": url, "image": B.SITE + og_img,
         "author": {"@type": "Person", "name": "Olha Polishchuk", "url": B.SITE + B.PATHS[lang]},
         "publisher": {"@type": "Person", "name": "Olha Polishchuk"},
     }
@@ -320,7 +362,7 @@ def render_post(p, lang):
     extra = '<meta property="og:type" content="article">\n<script type="application/ld+json">%s</script>\n<script type="application/ld+json">%s</script>\n' % (
         json.dumps(ld, ensure_ascii=False), json.dumps(crumbs, ensure_ascii=False))
     mins = max(1, round(words(a["body"]) / 180))
-    o = [head(lang, a["seo_title"], a["desc"], url, alts, extra), B.header_html(lang, home=False, alt_paths=hdr_alt, current="blog")]
+    o = [head(lang, a["seo_title"], a["desc"], url, alts, extra, og_img), B.header_html(lang, home=False, alt_paths=hdr_alt, current="blog")]
     o.append('<main>\n<article class="post">\n')
     o.append('<nav class="crumbs" aria-label="Breadcrumb"><a href="/%s">%s</a> / <a href="/%sblog/">%s</a></nav>\n' % (B.PATHS[lang], esc(u["home"]), B.PATHS[lang], esc(u["blog"])))
     o.append('<div class="post-meta">%s · %d %s</div>\n<h1>%s</h1>\n<p class="lead">%s</p>\n' % (
