@@ -105,6 +105,14 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/blog/tolko-instagram-eto-arenda.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/blog/nur-instagram-ist-miete.html"/>
   </url>
-  <url><loc>https://olhapolishchuk.de/impressum.html</loc></url>
-  <url><loc>https://olhapolishchuk.de/datenschutz.html</loc></url>
+  <url>
+    <loc>https://olhapolishchuk.de/uk/sait-vizytka-dlia-maistra-manikiuru.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/sait-vizytka-dlia-maistra-manikiuru.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/sait-vizitka-dlya-mastera-manikyura.html"/>
+  </url>
+  <url>
+    <loc>https://olhapolishchuk.de/ru/sait-vizitka-dlya-mastera-manikyura.html</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/sait-vizytka-dlia-maistra-manikiuru.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/sait-vizitka-dlya-mastera-manikyura.html"/>
+  </url>
 </urlset>

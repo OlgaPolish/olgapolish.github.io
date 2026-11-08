@@ -139,6 +139,8 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .pkg-extras{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 .pkg-extra{background:#fff;border:1px dashed rgba(30,42,74,0.28);border-radius:14px;padding:20px 22px;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
 .pkg-extra strong{color:var(--ink)}
+a.inl{color:#9A6424;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+a.inl:hover{color:var(--ink)}
 .pkg-note{font-size:13px;color:var(--ink-soft);margin-top:22px;max-width:85ch}
 
 /* STEPS */
@@ -328,20 +330,20 @@ ICON = {
 T = {}
 
 T["de"] = dict(
-    title="Olha Polishchuk — Google-Profil, Webseite & SEO in Düsseldorf",
-    desc="Damit Kunden Sie in Google finden: Google-Unternehmensprofil, Onepager-Webseite und Betreuung für kleine Unternehmen in Düsseldorf und ganz Deutschland. Auf Deutsch, Ukrainisch und Russisch.",
-    og_title="Olha Polishchuk — Google-Profil, Webseite & SEO · Düsseldorf",
+    title="Webseite & Google-Profil für Beauty-Studios | Olha Polishchuk",
+    desc="Onepager-Webseite und Google-Profil für Nagel-, Kosmetik- und Friseurstudios in ganz Deutschland. Beratung auf Ukrainisch und Russisch, Webseite auf Deutsch.",
+    og_title="Webseite & Google-Profil für Beauty-Studios · Olha Polishchuk",
     nav=["Pakete", "Ablauf", "Ergebnisse", "Über mich", "Kontakt"],
     cta_nav="Kostenloser Google-Check",
     eyebrow="Düsseldorf · NRW · deutschlandweit remote",
     h1="Ihre Kunden suchen Sie in Google. Ich sorge dafür, dass sie Sie <em>finden</em>.",
-    sub="Google-Unternehmensprofil, Onepager-Webseite und laufende Betreuung für kleine Unternehmen in Deutschland. Wir sprechen Deutsch, Ukrainisch oder Russisch — die Texte für Ihre Kunden schreibe ich auf Deutsch, klar und korrekt.",
+    sub="Google-Unternehmensprofil, Onepager-Webseite und laufende Betreuung für kleine Unternehmen in Deutschland. Wir sprechen Ukrainisch oder Russisch — Ihre Webseite und alle Texte für Ihre Kunden sind auf Deutsch, klar und korrekt.",
     btn1="Kostenloser Google-Check →", btn2="Pakete & Preise",
-    photo_alt="Olha Polishchuk — Google-Profil, Webseiten und SEO in Düsseldorf",
+    photo_alt="Olha Polishchuk — Webseiten und Google-Profile für Beauty-Studios",
     badge_num="Nr. 1", badge_lbl="in Google für einen Kunden",
-    metrics=[("3 Sprachen", "Deutsch · Ukrainisch · Russisch"), ("Google SEO", "praktische Erfahrung"), ("Ganz Deutschland", "remote und in Düsseldorf")],
+    metrics=[("UA · RU", "Beratung — Webseite auf Deutsch"), ("Google SEO", "praktische Erfahrung"), ("Ganz Deutschland", "remote und in Düsseldorf")],
     why_label="Warum mit mir", why_title="Einfach, verständlich — in Ihrer Sprache",
-    why=[("chat", "Wir sprechen dieselbe Sprache", "Sie erklären auf Deutsch, Ukrainisch oder Russisch, ich schreibe für Ihre Kunden auf Deutsch. Ohne Dolmetscher, ohne Missverständnisse."),
+    why=[("chat", "Wir sprechen dieselbe Sprache", "Sie erklären auf Ukrainisch oder Russisch, Ihre Kunden lesen alles auf Deutsch. Ohne Dolmetscher, ohne Missverständnisse."),
          ("hand", "Ich mache das für Sie", "Sie schicken Fotos und ein paar Sätze zu Ihrer Arbeit — den Rest übernehme ich. Sie prüfen nur und sagen „Ja“."),
          ("doc", "Alles schriftlich", "Preis, Umfang und Termine stehen vorab im Angebot. Keine Überraschungen auf der Rechnung."),
          ("chart", "In der Praxis erprobt", "Was ich Kunden anbiete, teste ich zuerst in eigenen Projekten — und sehe das Ergebnis in Zahlen.")],
@@ -410,9 +412,9 @@ T["de"] = dict(
                 res=[("39.933", "Aufrufe des besten Beitrags (Threads)")])],
     also="<strong>Außerdem:</strong> Betreuung von Instagram und Telegram, Einrichtung und Optimierung von Shopify-Shops, Texte auf Deutsch, Ukrainisch und Russisch. Schreiben Sie mir — wir besprechen es.",
     ab_label="Über mich", ab_title="Hallo, ich bin Olha", ab_img_alt="Olha Polishchuk am Laptop",
-    ab_langs="Sprachen",
+    ab_langs="Beratung auf",
     ab=["Ich lebe in Düsseldorf. Mein Hintergrund sind Programmierung und Datenanalyse — deshalb achte ich nicht nur darauf, dass es gut aussieht, sondern auch auf die Zahlen: wie viele Menschen Sie gefunden haben und was sie danach getan haben.",
-        "Ich spreche Deutsch, Ukrainisch, Russisch und Englisch und arbeite mit kleinen Unternehmen: Nagel- und Kosmetikstudios, Friseuren, Cafés, Läden, Handwerk und Dienstleistern."],
+        "Wir sprechen Ukrainisch oder Russisch, Ihre Webseite und die Texte für Ihre Kunden sind auf Deutsch. Ich arbeite mit kleinen Unternehmen: Nagel- und Kosmetikstudios, Friseuren, Cafés, Läden, Handwerk und Dienstleistern."],
     fq_label="Häufige Fragen", fq_title="Antworten auf häufige Fragen",
     faq=[("Ich habe Instagram. Wozu noch Google?", "Wer „Maniküre in der Nähe“ oder „Friseur Düsseldorf“ sucht, öffnet Google und Google Maps — nicht Instagram. Ein Google-Profil ist Ihr kostenloses Schild genau dort, wo man Sie gerade sucht."),
          ("Was brauche ich für den Start?", "Ein paar Fotos Ihrer Arbeit, Ihre Leistungen mit Preisen, Adresse und Öffnungszeiten. Fehlt etwas, sage ich Ihnen, wie Sie es schnell erstellen."),
@@ -429,9 +431,9 @@ T["de"] = dict(
 )
 
 T["uk"] = dict(
-    title="Ольга Поліщук — Google-профіль, сайт-візитка та SEO в Дюссельдорфі",
-    desc="Щоб клієнти знаходили вас у Google: профіль у Google Maps, сайт-візитка та підтримка для україно- та російськомовного бізнесу в Німеччині. Düsseldorf і вся Німеччина.",
-    og_title="Ольга Поліщук — Google-профіль, сайт і SEO · Düsseldorf",
+    title="Сайт-візитка та Google-профіль для майстрів у Німеччині | Ольга Поліщук",
+    desc="Сайт-візитка німецькою та профіль у Google Maps для майстрів манікюру, бровістів, косметологів і перукарів по всій Німеччині. Спілкуємося українською або російською.",
+    og_title="Сайт-візитка та Google-профіль для майстрів у Німеччині · Ольга Поліщук",
     nav=["Пакети", "Як працюємо", "Результати", "Про мене", "Контакт"],
     cta_nav="Безкоштовний аудит",
     eyebrow="Düsseldorf · NRW · дистанційно по всій Німеччині",
@@ -440,7 +442,7 @@ T["uk"] = dict(
     btn1="Отримати безкоштовний аудит у Google →", btn2="Пакети та ціни",
     photo_alt="Ольга Поліщук — Google-профіль, сайти та SEO в Дюссельдорфі",
     badge_num="№ 1", badge_lbl="у Google для клієнта",
-    metrics=[("3 мови", "спілкування: DE · UA · RU"), ("Google SEO", "практичний досвід"), ("Уся Німеччина", "дистанційно та в Düsseldorf")],
+    metrics=[("UA · RU", "спілкуємося — сайт німецькою"), ("Google SEO", "практичний досвід"), ("Уся Німеччина", "дистанційно та в Düsseldorf")],
     why_label="Чому зі мною зручно", why_title="Просто, зрозуміло й вашою мовою",
     why=[("chat", "Говоримо однією мовою", "Ви пояснюєте українською чи російською, я пишу для ваших клієнтів німецькою. Без перекладача й без непорозумінь."),
          ("hand", "Роблю за вас", "Ви надсилаєте фото й кілька слів про свою роботу — решта на мені. Від вас потрібно лише перевірити й сказати «так»."),
@@ -477,7 +479,7 @@ T["uk"] = dict(
                     "щомісяця покращую для Google одну сторінку або послугу",
                     "короткий звіт раз на місяць: скільки людей вас знайшли, зателефонували, проклали маршрут"],
              term="Мінімум 3 місяці — перші результати в Google зазвичай видно через 2–3 місяці.")],
-    pk_combo="<strong>A + B разом — 590 €</strong> замість 640 €. Google-профіль і сайт в одних руках.",
+    pk_combo="<strong>A + B разом — 590 €</strong> замість 640 €. Google-профіль і сайт в одних руках. Сайт-візитка для майстра манікюру — <a class=\"inl\" href=\"/uk/sait-vizytka-dlia-maistra-manikiuru.html\">детально →</a>",
     pk_addon="<strong>Додатково до підтримки: контент за вас — +190 € на місяць.</strong> 12 дописів на місяць для Instagram, Telegram або Threads: тексти, прості картинки, публікація за розкладом.",
     pk_note="Ціни остаточні: як Kleinunternehmer за § 19 UStG я не нараховую ПДВ. Точний обсяг робіт фіксуємо письмово в пропозиції.",
     st_label="Як ми працюємо", st_title="Чотири кроки — і вас видно",
@@ -511,11 +513,12 @@ T["uk"] = dict(
                 res=[("39 933", "переглядів найкращого допису"), ("×6", "охоплення з цифрою в першому рядку"), ("×2", "треди проти поодиноких дописів")])],
     also="<strong>Також можу допомогти:</strong> ведення Instagram і Telegram, налаштування й оптимізація Shopify-магазинів, тексти німецькою, українською та російською. Напишіть — обговоримо.",
     ab_label="Про мене", ab_title="Привіт, я Ольга", ab_img_alt="Ольга Поліщук за ноутбуком",
-    ab_langs="Мови",
+    ab_langs="Спілкуємося",
     ab=["Живу в Düsseldorf. За освітою й досвідом — програмування та аналіз даних, тому дивлюся не лише на «гарно», а й на цифри: скільки людей вас знайшли і що вони зробили далі.",
-        "Говорю німецькою, українською, російською та англійською. Працюю з невеликими бізнесами: майстрами, салонами, кафе, магазинами, ремонтом і послугами."],
+        "Спілкуємося українською або російською, а сайт і тексти для ваших клієнтів — німецькою. Працюю з невеликими бізнесами: майстрами, салонами, кафе, магазинами, ремонтом і послугами."],
     fq_label="Часті запитання", fq_title="Відповіді на часті запитання",
     faq=[("У мене є Instagram. Навіщо ще Google?", "Коли людина шукає «манікюр поруч» або «Friseur Düsseldorf», вона відкриває Google і Google Maps, а не Instagram. Профіль у Google — це безкоштовна вивіска там, де вас шукають саме зараз."),
+         ("Скільки коштує сайт для майстра манікюру?", "Сайт-візитка німецькою — 350 € для перших 3 клієнтів, далі 450 €. Разом із профілем у Google Maps — 590 €. Термін — 1–2 тижні після ваших матеріалів.", "/uk/sait-vizytka-dlia-maistra-manikiuru.html", "Детально →"),
          ("Що мені потрібно для початку?", "Кілька фото вашої роботи, список послуг із цінами, адреса й години роботи. Якщо чогось немає — підкажу, як швидко це зробити."),
          ("Ви працюєте лише в Düsseldorf?", "Ні, дистанційно по всій Німеччині. Зустрітися особисто можу в Düsseldorf і поруч."),
          ("Як оплачувати?", "За рахунком (Rechnung) після виконання роботи. Без ПДВ — я Kleinunternehmer за § 19 UStG."),
@@ -530,9 +533,9 @@ T["uk"] = dict(
 )
 
 T["ru"] = dict(
-    title="Ольга Полищук — Google-профиль, сайт-визитка и SEO в Дюссельдорфе",
-    desc="Чтобы клиенты находили вас в Google: профиль в Google Maps, сайт-визитка и поддержка для русско- и украиноязычного бизнеса в Германии. Düsseldorf и вся Германия.",
-    og_title="Ольга Полищук — Google-профиль, сайт и SEO · Düsseldorf",
+    title="Сайт-визитка и Google-профиль для мастеров в Германии | Ольга Полищук",
+    desc="Сайт-визитка на немецком и профиль в Google Maps для мастеров маникюра, бровистов, косметологов и парикмахеров по всей Германии. Общаемся по-русски или по-украински.",
+    og_title="Сайт-визитка и Google-профиль для мастеров в Германии · Ольга Полищук",
     nav=["Пакеты", "Как работаем", "Результаты", "Обо мне", "Контакт"],
     cta_nav="Бесплатный аудит",
     eyebrow="Düsseldorf · NRW · по всей Германии удалённо",
@@ -541,7 +544,7 @@ T["ru"] = dict(
     btn1="Получить бесплатный аудит в Google →", btn2="Пакеты и цены",
     photo_alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе",
     badge_num="№ 1", badge_lbl="в Google для клиента",
-    metrics=[("3 языка", "общения: DE · UA · RU"), ("Google SEO", "практический опыт"), ("Вся Германия", "удалённо и в Düsseldorf")],
+    metrics=[("RU · UA", "общаемся — сайт на немецком"), ("Google SEO", "практический опыт"), ("Вся Германия", "удалённо и в Düsseldorf")],
     why_label="Почему со мной удобно", why_title="Просто, понятно и на вашем языке",
     why=[("chat", "Говорим на одном языке", "Вы объясняете по-русски или по-украински, я пишу для ваших клиентов по-немецки. Без переводчика и без недопонимания."),
          ("hand", "Делаю за вас", "Вы присылаете фото и пару слов о своей работе — остальное на мне. От вас нужно только проверить и сказать «да»."),
@@ -578,7 +581,7 @@ T["ru"] = dict(
                     "каждый месяц улучшаю для Google одну страницу или услугу",
                     "короткий отчёт раз в месяц: сколько людей вас нашли, позвонили, проложили маршрут"],
              term="Минимум 3 месяца — первые результаты в Google обычно видны через 2–3 месяца.")],
-    pk_combo="<strong>A + B вместе — 590 €</strong> вместо 640 €. Google-профиль и сайт в одних руках.",
+    pk_combo="<strong>A + B вместе — 590 €</strong> вместо 640 €. Google-профиль и сайт в одних руках. Сайт-визитка для мастера маникюра — <a class=\"inl\" href=\"/ru/sait-vizitka-dlya-mastera-manikyura.html\">подробно →</a>",
     pk_addon="<strong>Дополнительно к поддержке: контент за вас — +190 € в месяц.</strong> 12 постов в месяц для Instagram, Telegram или Threads: тексты, простые картинки, публикация по расписанию.",
     pk_note="Цены окончательные: как Kleinunternehmer по § 19 UStG я не начисляю НДС. Точный объём работ фиксируем письменно в предложении.",
     st_label="Как мы работаем", st_title="Четыре шага — и вас видно",
@@ -612,11 +615,12 @@ T["ru"] = dict(
                 res=[("39 933", "просмотра у лучшего поста"), ("×6", "охват с цифрой в первой строке"), ("×2", "треды против одиночных постов")])],
     also="<strong>Также могу помочь:</strong> ведение Instagram и Telegram, настройка и оптимизация Shopify-магазинов, тексты на немецком, русском и украинском. Напишите — обсудим.",
     ab_label="Обо мне", ab_title="Привет, я Ольга", ab_img_alt="Ольга Полищук за ноутбуком",
-    ab_langs="Языки",
+    ab_langs="Общаемся",
     ab=["Живу в Düsseldorf. По образованию и опыту — программирование и анализ данных, поэтому смотрю не только на «красиво», но и на цифры: сколько людей вас нашли и что они сделали дальше.",
-        "Говорю на немецком, украинском, русском и английском. Работаю с небольшими бизнесами: мастерами, салонами, кафе, магазинами, ремонтом и услугами."],
+        "Общаемся по-русски или по-украински, а сайт и тексты для ваших клиентов — на немецком. Работаю с небольшими бизнесами: мастерами, салонами, кафе, магазинами, ремонтом и услугами."],
     fq_label="Частые вопросы", fq_title="Ответы на частые вопросы",
     faq=[("У меня есть Instagram. Зачем ещё Google?", "Когда человек ищет «маникюр рядом» или «Friseur Düsseldorf», он открывает Google и Google Maps, а не Instagram. Профиль в Google — это бесплатная вывеска там, где вас ищут прямо сейчас."),
+         ("Сколько стоит сайт для мастера маникюра?", "Сайт-визитка на немецком — 350 € для первых 3 клиентов, дальше 450 €. Вместе с профилем в Google Maps — 590 €. Срок — 1–2 недели после ваших материалов.", "/ru/sait-vizitka-dlya-mastera-manikyura.html", "Подробно →"),
          ("Что мне нужно для начала?", "Пару фото вашей работы, список услуг с ценами, адрес и часы работы. Если чего-то нет — подскажу, как быстро сделать."),
          ("Вы работаете только в Düsseldorf?", "Нет, по всей Германии удалённо. Встретиться лично могу в Düsseldorf и рядом."),
          ("Как оплачивать?", "По счёту (Rechnung) после выполнения работы. Без НДС — я Kleinunternehmer по § 19 UStG."),
@@ -827,7 +831,7 @@ def jsonld(lang, t):
         "areaServed": [{"@type": "City", "name": "Düsseldorf"},
                        {"@type": "State", "name": "Nordrhein-Westfalen"},
                        {"@type": "Country", "name": "Deutschland"}],
-        "knowsLanguage": ["de", "uk", "ru", "en"],
+        "knowsLanguage": ["uk", "ru"],
         "priceRange": "150–590 €",
         "currenciesAccepted": "EUR",
         "founder": {"@type": "Person", "@id": SITE + "#olha", "name": "Olha Polishchuk",
@@ -841,7 +845,7 @@ def jsonld(lang, t):
                          "inLanguage": ["de", "uk", "ru"], "publisher": {"@id": biz_id}}}
     faq = {"@type": "FAQPage", "@id": url + "#faq", "inLanguage": lang,
            "mainEntity": [{"@type": "Question", "name": _plain(q),
-                           "acceptedAnswer": {"@type": "Answer", "text": _plain(a)}} for q, a in t["faq"]]}
+                           "acceptedAnswer": {"@type": "Answer", "text": _plain(a)}} for q, a, *_ in t["faq"]]}
     data = {"@context": "https://schema.org", "@graph": [biz, page, faq]}
     js = json.dumps(data, ensure_ascii=False, indent=1).replace("</", "<\\/")
     return '<script type="application/ld+json">\n' + js + '\n</script>\n'
@@ -990,7 +994,7 @@ def render(lang):
     w('<section class="about" id="about">\n  <div class="wrap about-grid">\n    <div class="about-img">\n')
     w('      <div class="about-img-frame"><img src="/images/olha-arbeit.jpg" width="1100" height="734" loading="lazy" alt="%s"></div>\n' % esc(t["ab_img_alt"]))
     w('      <div class="about-card"><div class="about-card-title">%s</div><div class="about-card-langs">' % esc(t["ab_langs"]))
-    for color, nm, l2 in (("#000", "Deutsch", "de"), ("#005BBB", "Українська", "uk"), ("#CC0000", "Русский", "ru"), ("#00247D", "English", "en")):
+    for color, nm, l2 in (("#005BBB", "Українська", "uk"), ("#CC0000", "Русский", "ru")):
         w('<div class="lang-row" lang="%s"><span class="lang-dot" style="background:%s"></span>%s</div>' % (l2, color, nm))
     w('</div></div>\n    </div>\n    <div class="about-text">\n      <div class="sec-label">%s</div>\n      <h2>%s</h2>\n' % (esc(t["ab_label"]), esc(t["ab_title"])))
     for p in t["ab"]:
@@ -1004,8 +1008,10 @@ def render(lang):
 
     # faq
     w('<section class="faq" id="faq">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="faq-list">\n' % (esc(t["fq_label"]), esc(t["fq_title"])))
-    for q, a in t["faq"]:
-        w('      <details><summary>%s</summary><p>%s</p></details>\n' % (esc(q), esc(a)))
+    for f in t["faq"]:
+        q, a = f[0], f[1]
+        more = ' <a class="inl" href="%s">%s</a>' % (f[2], esc(f[3])) if len(f) > 2 else ""
+        w('      <details><summary>%s</summary><p>%s%s</p></details>\n' % (esc(q), esc(a), more))
     w('    </div>\n  </div>\n</section>\n\n')
 
     # contact
