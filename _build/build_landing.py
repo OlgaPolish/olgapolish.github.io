@@ -181,15 +181,15 @@ def render(pg, lang):
         json.dumps(svc, ensure_ascii=False), json.dumps(crumbs, ensure_ascii=False))
     o = [BL.head(lang, a["seo_title"], a["desc"], url, alts, extra, "images/case-feinschliff.jpg"),
          B.header_html(lang, home=False, alt_paths=hdr_alt)]
-    o.append('<main>\n<article class="post">\n')
+    o.append('<main id="inhalt" tabindex="-1">\n<article class="post">\n')
     o.append('<nav class="crumbs" aria-label="Breadcrumb"><a href="/%s">%s</a></nav>\n' % (B.PATHS[lang], esc(u["home"])))
     o.append('<h1>%s</h1>\n<p class="lead">%s</p>\n' % (esc(a["h1"]), esc(a["lead"])))
-    o.append('<figure><img src="/images/case-feinschliff.jpg" alt="%s" width="1200" height="750" decoding="async"></figure>\n' % esc(a["img_alt"]))
+    o.append('<figure>%s</figure>\n' % B.pic("/images/case-feinschliff.jpg", 1200, 750, a["img_alt"], (600, 1200), "(max-width:760px) 92vw, 720px", 'decoding="async"'))
     o.append(BL.md(a["body"]) + "\n")
     o.append('<div class="post-cta"><h2>%s</h2><p>%s</p><div class="btns"><a class="b1" href="/%s#contact">%s</a><a class="b2" href="/%s#pakete">%s</a></div></div>\n' % (
         esc(u["cta_t"]), esc(u["cta_p"]), B.PATHS[lang], esc(u["cta_b1"]), B.PATHS[lang], esc(u["cta_b2"])))
     o.append('</article>\n</main>\n')
-    o.append(BL.tail())
+    o.append(BL.tail(lang))
     return "".join(o).replace(" €", " €")
 
 

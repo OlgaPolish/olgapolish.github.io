@@ -248,13 +248,14 @@ def render(lang):
     wa = "https://wa.me/%s?text=%s" % (B.WA_NUM, quote(c["wa_text"]))
     w = []
     w.append('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n' % lang)
+    w.append('<meta name="robots" content="noindex, follow">\n')
     w.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
     w.append('<title>%s</title>\n<meta name="description" content="%s">\n' % (html.escape(c["title"]), html.escape(c["desc"])))
     w.append('<link rel="canonical" href="%s">\n' % url)
     for l2 in ("de", "uk", "ru"):
         w.append('<link rel="alternate" hreflang="%s" href="%s%s%s">\n' % (l2, B.SITE, B.PATHS[l2], SLUG))
     w.append('<link rel="alternate" hreflang="x-default" href="%s%s">\n' % (B.SITE, SLUG))
-    w.append('<style>\n' + B.FONTS + CSS + '</style>\n</head>\n<body>\n')
+    w.append('<style>\n' + B.FONTS + CSS + '</style>\n' + B.analytics_html() + '</head>\n<body>\n')
     w.append('<div class="top"><div class="in"><a class="brand" href="/%s">Olha <span>Polishchuk</span></a><a href="/%s">%s</a></div></div>\n' % (B.PATHS[lang], B.PATHS[lang], html.escape(c["back"])))
     w.append('<main>\n<h1>%s</h1>\n<p class="lead">%s</p>\n' % (html.escape(c["h1"]), html.escape(c["lead"])))
     w.append('<button class="print" type="button" onclick="window.print()">%s</button>\n' % html.escape(c["print_btn"]))

@@ -267,7 +267,7 @@ def md(text):
         lines = block.split("\n")
         m = re.match(r"^!\[(.*?)\]\((.+?)\)$", block)
         if m:
-            out.append('<figure><img src="%s" alt="%s" width="1200" height="630" loading="lazy" decoding="async"></figure>' % (esc(m.group(2)), esc(m.group(1))))
+            out.append('<figure>%s</figure>' % B.pic(m.group(2), 1200, 630, m.group(1), (600, 1200), "(max-width:760px) 92vw, 720px"))
         elif all(l.startswith("|") for l in lines):
             rows = [[c.strip() for c in l.strip().strip("|").split("|")] for l in lines]
             th = "".join("<th>%s</th>" % inline(c) for c in rows[0])
@@ -307,12 +307,12 @@ def head(lang, title, desc, url, alts, extra="", og_img="images/olha-portrait.jp
     for l2, u in alts.items():
         o.append('<link rel="alternate" hreflang="%s" href="%s">\n' % (l2, u))
     o.append(extra)
-    o.append('<style>\n' + B.FONTS + B.CSS + BLOG_CSS + '</style>\n</head>\n<body>\n\n')
+    o.append('<style>\n' + B.FONTS + B.CSS + BLOG_CSS + '</style>\n' + B.analytics_html() + '</head>\n<body>\n\n')
     return "".join(o)
 
 
-def tail():
-    return B.footer_html() + B.BURGER_JS + '</body>\n</html>\n'
+def tail(lang):
+    return B.footer_html() + B.wa_float(lang) + B.BURGER_JS + '</body>\n</html>\n'
 
 
 def render_index(lang):
@@ -322,7 +322,7 @@ def render_index(lang):
     alts["x-default"] = alts["de"]
     hdr_alt = {l2: "/" + B.PATHS[l2] + "blog/" for l2 in B.BLOG_LANGS}
     o = [head(lang, u["title"], u["desc"], url, alts), B.header_html(lang, home=False, alt_paths=hdr_alt, current="blog")]
-    o.append('<main>\n<section class="blog-hero"><div class="wrap"><div class="sec-label">%s</div><h1>%s</h1><p>%s</p></div></section>\n' % (esc(u["blog"]), esc(u["h1"]), esc(u["lead"])))
+    o.append('<main id="inhalt" tabindex="-1">\n<section class="blog-hero"><div class="wrap"><div class="sec-label">%s</div><h1>%s</h1><p>%s</p></div></section>\n' % (esc(u["blog"]), esc(u["h1"]), esc(u["lead"])))
     o.append('<div class="wrap post-list">\n')
     for p in sorted(POSTS, key=lambda x: x["date"], reverse=True):
         if lang not in p:
@@ -332,7 +332,7 @@ def render_index(lang):
         o.append('<a class="post-card" href="/%sblog/%s"><div class="post-meta">%s · %d %s</div><h2>%s</h2><p>%s</p><span class="post-more">%s</span></a>\n' % (
             B.PATHS[lang], a["slug"], nice_date(p["date"], lang), mins, u["min"], esc(a["title"]), esc(a["excerpt"]), u["more"]))
     o.append('</div>\n</main>\n')
-    o.append(tail())
+    o.append(tail(lang))
     return "".join(o)
 
 
@@ -363,7 +363,7 @@ def render_post(p, lang):
         json.dumps(ld, ensure_ascii=False), json.dumps(crumbs, ensure_ascii=False))
     mins = max(1, round(words(a["body"]) / 180))
     o = [head(lang, a["seo_title"], a["desc"], url, alts, extra, og_img), B.header_html(lang, home=False, alt_paths=hdr_alt, current="blog")]
-    o.append('<main>\n<article class="post">\n')
+    o.append('<main id="inhalt" tabindex="-1">\n<article class="post">\n')
     o.append('<nav class="crumbs" aria-label="Breadcrumb"><a href="/%s">%s</a> / <a href="/%sblog/">%s</a></nav>\n' % (B.PATHS[lang], esc(u["home"]), B.PATHS[lang], esc(u["blog"])))
     o.append('<div class="post-meta">%s · %d %s</div>\n<h1>%s</h1>\n<p class="lead">%s</p>\n' % (
         nice_date(p["date"], lang), mins, u["min"], esc(a["title"]), esc(a["lead"])))
@@ -371,7 +371,7 @@ def render_post(p, lang):
     o.append('<div class="post-cta"><h2>%s</h2><p>%s</p><div class="btns"><a class="b1" href="/%s#contact">%s</a><a class="b2" href="/%s%s">%s</a></div></div>\n' % (
         esc(u["cta_t"]), esc(u["cta_p"]), B.PATHS[lang], esc(u["cta_b1"]), B.PATHS[lang], CHECKLIST, esc(u["cta_b2"])))
     o.append('</article>\n</main>\n')
-    o.append(tail())
+    o.append(tail(lang))
     return "".join(o).replace(" €", " €")
 
 

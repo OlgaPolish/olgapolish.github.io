@@ -253,6 +253,10 @@ img{display:block;max-width:100%}
 .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
 section[id]{scroll-margin-top:72px}
 
+/* SKIP-LINK (Tastatur/Screenreader) */
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600}
+.skip:focus{top:10px}
+main:focus{outline:none}
 /* NAV */
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
@@ -412,6 +416,12 @@ a.inl:hover{color:var(--ink)}
 .contact-methods{display:flex;flex-direction:row;flex-wrap:wrap;gap:16px}
 .cm{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transition:all .25s;color:#fff}
 .cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateY(-3px)}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:150;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.22);transition:transform .2s,box-shadow .2s}
+.wa-float svg{width:30px;height:30px}
+.wa-float:hover{transform:scale(1.07);box-shadow:0 8px 26px rgba(0,0,0,0.28)}
+.wa-float:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+@media(max-width:560px){.wa-float{right:14px;bottom:14px;width:54px;height:54px}}
+@media print{.wa-float{display:none}}
 .cm.wa{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4)}
 .cm-ic{width:44px;height:44px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cm.wa .cm-ic{background:rgba(37,211,102,0.22)}
@@ -429,6 +439,16 @@ a.inl:hover{color:var(--ink)}
 .form-row textarea{height:90px}
 .form-submit{width:100%;padding:13px;background:var(--amber);color:#fff;border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;margin-top:4px}
 .form-submit:hover{background:var(--amber-light)}
+.form-submit:disabled{opacity:.7;cursor:wait}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{font-size:13.5px;line-height:1.5;margin-top:12px;min-height:1px}
+.form-status.err{color:#FFC9A8}
+.form-status a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.form-ok{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:36px 28px;text-align:center;color:#fff}
+.form-ok:focus{outline:none}
+.form-ok-ic{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700}
+.form-ok h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.form-ok p{font-size:14.5px;color:rgba(255,255,255,0.75)}
 .form-note{font-size:12px;color:rgba(255,255,255,0.55);margin-top:12px;line-height:1.5}
 .form-note a{color:rgba(255,255,255,0.8);text-decoration:underline}
 
@@ -543,9 +563,11 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 .pz-a2:hover{filter:brightness(1.06)}
 @media (max-width:860px){.pz{grid-template-columns:1fr;padding:26px 18px;gap:24px;margin-top:56px}}
 </style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="fe1a89e7-ba92-4d19-99cf-5949bb100cdd" data-domains="olhapolishchuk.de" data-do-not-track="true"></script>
 </head>
 <body>
 
+<a class="skip" href="#inhalt">Перейти к содержанию</a>
 <header id="hdr">
   <nav class="wrap" aria-label="Navigation">
     <a class="brand" href="/ru/"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>
@@ -576,6 +598,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   </div>
 </header>
 
+<main id="inhalt" tabindex="-1">
+
 <section class="hero" id="top">
   <div class="wrap hero-inner">
     <div class="hero-text">
@@ -583,12 +607,12 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <h1>Клиенты ищут вас в Google. Сделаю так, чтобы они вас <em>нашли</em>.</h1>
       <p class="hero-sub">Помогаю русско- и украиноязычному малому бизнесу в Германии: профиль в Google Maps, сайт-визитка и регулярная поддержка. Общаемся по-русски или по-украински — тексты для ваших клиентов пишу на грамотном немецком.</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Получить бесплатный аудит в Google →</a>
+        <a href="#contact" class="btn-primary" data-umami-event="hero-cta">Получить бесплатный аудит в Google →</a>
         <a href="#pakete" class="btn-outline">Пакеты и цены</a>
       </div>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-frame"><img src="/images/olha-portrait.jpg" width="900" height="1350" alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе" fetchpriority="high"></div>
+      <div class="hero-photo-frame"><picture><source media="(max-width:900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><source type="image/avif" srcset="/images/olha-portrait-480.avif 480w, /images/olha-portrait-900.avif 900w" sizes="(min-width:1200px) 460px, 40vw"><source type="image/webp" srcset="/images/olha-portrait-480.webp 480w, /images/olha-portrait-900.webp 900w" sizes="(min-width:1200px) 460px, 40vw"><img src="/images/olha-portrait.jpg" width="900" height="1350" alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе" fetchpriority="high" decoding="async"></picture></div>
       <div class="hero-badge"><div class="hero-badge-num">№ 1</div><div class="hero-badge-lbl">в Google для клиента</div></div>
     </div>
   </div>
@@ -634,7 +658,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
           <li>если у вас есть сайт — заголовки и описания главных страниц, подключение Google Search Console</li>
         </ul>
         <p class="pkg-term">Срок: около 1 недели.</p>
-        <a href="#contact" class="pkg-btn">Обсудить</a>
+        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="A">Обсудить</a>
       </article>
       <article class="pkg">
         <div class="pkg-tag">Разово</div>
@@ -652,7 +676,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
           <li>2 круга правок</li>
         </ul>
         <p class="pkg-term">Срок: 1–2 недели после того, как получу ваши материалы.</p>
-        <a href="#contact" class="pkg-btn">Обсудить</a>
+        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="B">Обсудить</a>
       </article>
       <article class="pkg feat">
         <div class="pkg-tag">Каждый месяц</div>
@@ -669,7 +693,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
           <li>короткий отчёт раз в месяц: сколько людей вас нашли, позвонили, проложили маршрут</li>
         </ul>
         <p class="pkg-term">Минимум 3 месяца — первые результаты в Google обычно видны через 2–3 месяца.</p>
-        <a href="#contact" class="pkg-btn">Обсудить</a>
+        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="C">Обсудить</a>
       </article>
     </div>
     <div class="pkg-extras">
@@ -699,7 +723,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <h2 class="sec-title">Реальные результаты для реального бизнеса</h2>
     <div class="cases-grid">
       <div class="case wide has-img">
-        <a class="case-img" href="https://jana-nails-beauty.de/" target="_blank" rel="noopener"><img src="/images/case-jana-nails.jpg" width="1200" height="750" loading="lazy" alt="Главная страница jana-nails-beauty.de — сайт ногтевой студии JANA NAILS &amp; Beauty"></a>
+        <a class="case-img" href="https://jana-nails-beauty.de/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-jana-nails-600.avif 600w, /images/case-jana-nails-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-jana-nails-600.webp 600w, /images/case-jana-nails-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-jana-nails.jpg" width="1200" height="750" alt="Главная страница jana-nails-beauty.de — сайт ногтевой студии JANA NAILS &amp; Beauty" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Сайт-визитка · онлайн-запись · свой домен</div>
         <h3><a href="https://jana-nails-beauty.de/" target="_blank" rel="noopener">JANA NAILS &amp; Beauty — сайт ногтевой студии в Düsseldorf-Benrath</a></h3>
@@ -743,7 +767,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <div class="demo-head"><h3>Демо-дизайн — так может выглядеть ваш сайт</h3><p>Пример для вымышленной студии, чтобы вы увидели стиль и структуру.</p></div>
     <div class="cases-grid">
       <div class="case wide has-img">
-        <a class="case-img" href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener"><img src="/images/case-feinschliff.jpg" width="1200" height="750" loading="lazy" alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия"></a>
+        <a class="case-img" href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-feinschliff-600.avif 600w, /images/case-feinschliff-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-feinschliff-600.webp 600w, /images/case-feinschliff-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-feinschliff.jpg" width="1200" height="750" alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Демо · вымышленная студия</div>
         <h3><a href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener">Feinschliff — пример сайта для ногтевой студии</a></h3>
@@ -759,7 +783,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 <section class="about" id="about">
   <div class="wrap about-grid">
     <div class="about-img">
-      <div class="about-img-frame"><img src="/images/olha-arbeit.jpg" width="1100" height="734" loading="lazy" alt="Ольга Полищук за ноутбуком"></div>
+      <div class="about-img-frame"><picture><source type="image/avif" srcset="/images/olha-arbeit-550.avif 550w, /images/olha-arbeit-1100.avif 1100w" sizes="(max-width:900px) 92vw, 520px"><source type="image/webp" srcset="/images/olha-arbeit-550.webp 550w, /images/olha-arbeit-1100.webp 1100w" sizes="(max-width:900px) 92vw, 520px"><img src="/images/olha-arbeit.jpg" width="1100" height="734" alt="Ольга Полищук за ноутбуком" loading="lazy" decoding="async"></picture></div>
       <div class="about-card"><div class="about-card-title">Общаемся</div><div class="about-card-langs"><div class="lang-row" lang="uk"><span class="lang-dot" style="background:#005BBB"></span>Українська</div><div class="lang-row" lang="ru"><span class="lang-dot" style="background:#CC0000"></span>Русский</div></div></div>
     </div>
     <div class="about-text">
@@ -779,7 +803,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <p class="pz-hint">Нажмите по очереди на два кусочка, чтобы поменять их местами.</p>
       <div class="pz-bar"><span>Ходов: <b id="pz-moves">0</b></span><button type="button" class="pz-btn" id="pz-shuffle">Перемешать</button></div>
     </div>
-    <div class="pz-board" id="pz-board" role="group" aria-label="Пазл: Ольга Полищук за ноутбуком" data-img="/images/puzzle-ru.jpg"></div>
+    <div class="pz-board" id="pz-board" role="group" aria-label="Пазл: Ольга Полищук за ноутбуком" data-img="/images/puzzle-ru.jpg" data-webp="/images/puzzle-ru-1024.webp"></div>
   </div>
   </div>
   <div class="pz-modal" id="pz-modal" role="dialog" aria-modal="true" aria-labelledby="pz-mt"><div class="pz-dialog">
@@ -788,7 +812,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <div class="pz-pass-l">Ваше слово-пароль</div>
     <div class="pz-word">УСПЕХ</div>
     <p>Забирайте чек-лист «10 проверок профиля в Google Maps». А если назовёте пароль в WhatsApp — проверю ваш профиль вне очереди.</p>
-    <div class="pz-acts"><a class="pz-a1" href="/ru/checklist-google-maps.html">Открыть чек-лист</a><a class="pz-a2" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9C%D0%BE%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D1%8C%3A%20%D0%A3%D0%A1%D0%9F%D0%95%D0%A5.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D1%83%20%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F%20%D0%B2%20Google." target="_blank" rel="noopener">Отправить пароль в WhatsApp</a></div>
+    <div class="pz-acts"><a class="pz-a1" href="/ru/checklist-google-maps.html" data-umami-event="puzzle-checkliste">Открыть чек-лист</a><a class="pz-a2" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9C%D0%BE%D0%B9%20%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D1%8C%3A%20%D0%A3%D0%A1%D0%9F%D0%95%D0%A5.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D1%83%20%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F%20%D0%B2%20Google." target="_blank" rel="noopener" data-umami-event="puzzle-whatsapp">Отправить пароль в WhatsApp</a></div>
   </div></div>
   <script>
 (function(){
@@ -819,7 +843,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     var p=+e.currentTarget.dataset.pos;
     if(sel===null){sel=p}else if(sel===p){sel=null}else{
       var t=order[sel];order[sel]=order[p];order[p]=t;sel=null;moves++;
-      if(solved()){done=true;board.classList.add('done');paint();setTimeout(openM,700);return}
+      if(solved()){done=true;if(window.umami)umami.track('puzzle-geloest');board.classList.add('done');paint();setTimeout(openM,700);return}
     }
     paint();
   }
@@ -830,7 +854,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   modal.addEventListener('click',function(e){if(e.target===modal)closeM()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeM()});
   document.getElementById('pz-shuffle').addEventListener('click',shuffle);
-  function load(){var u='url('+board.dataset.img+')';tiles.forEach(function(t){t.style.backgroundImage=u})}
+  function load(){var wp=board.dataset.webp&&document.createElement('canvas').toDataURL('image/webp').indexOf('image/webp')===5;var u='url('+(wp?board.dataset.webp:board.dataset.img)+')';tiles.forEach(function(t){t.style.backgroundImage=u})}
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){load();io.disconnect()}},{rootMargin:'400px'});io.observe(board);
   }else load();
@@ -860,21 +884,26 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <h2>Получите бесплатный <em>аудит</em> в Google</h2>
       <p class="contact-sub">Напишите, чем вы занимаетесь и в каком городе. Я посмотрю ваш профиль и сайт и пришлю короткий чек-лист точек роста: что уже хорошо и что мешает клиентам вас найти. Бесплатно и без обязательств. Отвечаю в течение 24 часов.</p>
       <div class="contact-methods">
-        <a class="cm wa" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B2%20Google." target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.3 1.2-1.3 1.8-2.4 1.6A6.5 6.5 0 0 1 8.4 10c-.2-1.1.4-2.1 1.6-2.4l.9 2z"/></svg></span></a>
-        <a class="cm" href="mailto:olha.polishchuk.web@gmail.com?subject=%5BWebsite%5D%20Google-Check" title="E-Mail" aria-label="E-Mail"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span></a>
-        <a class="cm" href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span></a>
+        <a class="cm wa" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B2%20Google." target="_blank" rel="noopener" data-umami-event="kontakt-whatsapp" title="WhatsApp" aria-label="WhatsApp"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.3 1.2-1.3 1.8-2.4 1.6A6.5 6.5 0 0 1 8.4 10c-.2-1.1.4-2.1 1.6-2.4l.9 2z"/></svg></span></a>
+        <a class="cm" href="mailto:olha.polishchuk.web@gmail.com?subject=%5BWebsite%5D%20Google-Check" data-umami-event="kontakt-email" title="E-Mail" aria-label="E-Mail"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span></a>
+        <a class="cm" href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener" data-umami-event="kontakt-linkedin" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span></a>
       </div>
     </div>
-    <form class="contact-form" onsubmit="return sendMsg(event)">
+    <form class="contact-form" id="kform" action="https://kontakt.olha-polishchuk-web.workers.dev" method="post" novalidate>
       <h3>Бесплатный аудит</h3>
-      <div class="form-row"><label for="f-name">Имя</label><input id="f-name" type="text" autocomplete="name" placeholder="Ваше имя"></div>
-      <div class="form-row"><label for="f-mail">E-Mail</label><input id="f-mail" type="email" autocomplete="email" placeholder="name@email.de"></div>
-      <div class="form-row"><label for="f-msg">Чем вы занимаетесь и в каком городе?</label><textarea id="f-msg" placeholder="Например: маникюр, Düsseldorf-Benrath"></textarea></div>
+      <div class="form-row"><label for="f-name">Имя</label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Ваше имя"></div>
+      <div class="form-row"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="name@email.de"></div>
+      <div class="form-row"><label for="f-msg">Чем вы занимаетесь и в каком городе?</label><textarea id="f-msg" name="message" maxlength="3000" placeholder="Например: маникюр, Düsseldorf-Benrath"></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
       <button type="submit" class="form-submit">Получить бесплатный аудит →</button>
-      <p class="form-note">При отправке откроется ваша почтовая программа. Сайт не сохраняет никаких данных. <a href="/datenschutz.html">Datenschutz</a></p>
+      <p class="form-note">Ваши данные приходят только мне на e-mail — чтобы ответить на запрос. <a href="/datenschutz.html">Datenschutz</a></p>
+      <div class="form-status" id="kform-status" role="status" aria-live="polite"></div>
     </form>
+    <div class="form-ok" id="kform-ok" tabindex="-1" hidden><div class="form-ok-ic" aria-hidden="true">✓</div><h3>Спасибо, заявка получена!</h3><p>Я напишу вам на e-mail в ближайшее время.</p></div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap foot-inner">
@@ -884,14 +913,37 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 </footer>
 
 <script>
-function sendMsg(e){
-  e.preventDefault();
-  var n=document.getElementById("f-name").value.trim(),m=document.getElementById("f-mail").value.trim(),t=document.getElementById("f-msg").value;
-  if(!n||!m){alert("Пожалуйста, заполните имя и e-mail.");return false;}
-  window.location.href="mailto:olha.polishchuk.web@gmail.com?subject="+encodeURIComponent("[Website] Google-Check: "+n+" (RU)")+"&body="+encodeURIComponent(t+"\n\nE-Mail: "+m);
-  return false;
-}
+(function(){
+  var f=document.getElementById('kform'); if(!f) return;
+  var st=document.getElementById('kform-status'), ok=document.getElementById('kform-ok'), btn=f.querySelector('.form-submit');
+  var t0=Date.now(), label=btn.textContent;
+  function fail(n,m,msg){
+    var body=encodeURIComponent(msg+"\n\nE-Mail: "+m);
+    var mailto="mailto:"+"olha.polishchuk.web@gmail.com"+"?subject="+encodeURIComponent("[Website] Google-Check: "+n+" ("+"RU"+")")+"&body="+body;
+    st.className='form-status err';
+    st.innerHTML='';
+    st.appendChild(document.createTextNode("К сожалению, отправить не получилось. Напишите мне напрямую:"+' '));
+    var a=document.createElement('a');a.href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B2%20Google.";a.target='_blank';a.rel='noopener';a.textContent='WhatsApp';st.appendChild(a);
+    st.appendChild(document.createTextNode(' · '));
+    var b=document.createElement('a');b.href=mailto;b.textContent='E-Mail';st.appendChild(b);
+    btn.disabled=false;btn.textContent=label;
+    if(window.umami)umami.track('formular-fehler');
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var E=f.elements, n=E['name'].value.trim(), m=E['email'].value.trim(), msg=E['message'].value.trim();
+    if(!n||!m||!E['email'].checkValidity()){st.className='form-status err';st.textContent="Пожалуйста, заполните имя и e-mail.";(n?E['email']:E['name']).focus();return;}
+    btn.disabled=true;btn.textContent="Отправляю…";st.className='form-status';st.textContent='';
+    var data={name:n,email:m,message:msg,website:E['website'].value,lang:"ru",page:location.pathname,ms:Date.now()-t0};
+    var ctl=window.AbortController?new AbortController():null, tm=setTimeout(function(){if(ctl)ctl.abort();},15000);
+    fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
+      .then(function(r){clearTimeout(tm);return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok)throw 0;});})
+      .then(function(){f.hidden=true;ok.hidden=false;ok.focus();if(window.umami)umami.track('formular-gesendet');})
+      .catch(function(){clearTimeout(tm);fail(n,m,msg);});
+  });
+})();
 </script>
+<a class="wa-float" href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B2%20Google." target="_blank" rel="noopener" aria-label="Написать в WhatsApp" title="Написать в WhatsApp" data-umami-event="whatsapp-float"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.3 1.2-1.3 1.8-2.4 1.6A6.5 6.5 0 0 1 8.4 10c-.2-1.1.4-2.1 1.6-2.4l.9 2z"/></svg></a>
 <script>
 (function(){var h=document.getElementById('hdr');if(!h)return;var b=h.querySelector('.burger');
 function set(o){h.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');}
@@ -900,6 +952,5 @@ h.querySelectorAll('.mnav a').forEach(function(a){a.addEventListener('click',fun
 document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
 window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);});})();
 </script>
-<script>(function () { var widget = document.createElement('script'); widget.defer = true; widget.dataset.pfId = 'e95ecb09-89d8-4863-b954-200bd0a8ed56'; widget.src = 'https://widget.yourgood.app/script/widget.js?id=e95ecb09-89d8-4863-b954-200bd0a8ed56&now='+Date.now(); document.head.appendChild(widget); })()</script>
 </body>
 </html>

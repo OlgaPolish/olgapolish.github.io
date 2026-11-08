@@ -19,6 +19,60 @@ LOCALE = {"de": "de_DE", "uk": "uk_UA", "ru": "ru_RU"}
 # Ссылка на Google-профиль (Google Maps → «Поделиться» → скопировать ссылку). Пусто — не выводится.
 GBP_URL = "https://share.google/Fj5iyprSwlv8rUxlQ"
 
+# ── Форма: адрес Cloudflare Worker, который пересылает заявку письмом (через Brevo).
+#    Код воркера: _worker/kontakt.js. Если воркер недоступен — форма откроет почтовую программу, как раньше.
+FORM_ENDPOINT = "https://kontakt.olha-polishchuk-web.workers.dev"
+
+# ── Аналитика Umami Cloud (без cookies, баннер не нужен). Пустой ID → скрипт не вставляется.
+#    ID и адрес скрипта: Umami → Settings → Websites → Edit → Tracking code.
+UMAMI_SRC = "https://cloud.umami.is/script.js"
+UMAMI_ID = "fe1a89e7-ba92-4d19-99cf-5949bb100cdd"
+
+
+def analytics_html():
+    if not UMAMI_ID:
+        return ""
+    return ('<script defer src="%s" data-website-id="%s" data-domains="olhapolishchuk.de" '
+            'data-do-not-track="true"></script>\n' % (UMAMI_SRC, UMAMI_ID))
+
+
+# ── Картинки: <picture> с AVIF/WebP (файлы готовит _build/optimize_images.py)
+_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+_BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+
+
+def pic(src, w, h, alt, widths, sizes, attrs='loading="lazy" decoding="async"', hide_below=None):
+    """src — путь от корня сайта (/images/x.jpg). Если готовых AVIF/WebP нет — обычный <img>.
+    hide_below=900 — на экранах уже 900 px картинка скрыта CSS-ом, браузер её не скачивает."""
+    base = os.path.splitext(src)[0]
+    have = [x for x in widths if os.path.exists(os.path.join(_ROOT, "%s-%d.avif" % (base.lstrip("/"), x)))]
+    img = '<img src="%s" width="%d" height="%d" alt="%s" %s>' % (src, w, h, html.escape(alt, quote=True), attrs)
+    if not have:
+        return img
+    o = ["<picture>"]
+    if hide_below:
+        o.append('<source media="(max-width:%dpx)" srcset="%s">' % (hide_below, _BLANK))
+    for ext in ("avif", "webp"):
+        srcset = ", ".join("%s-%d.%s %dw" % (base, x, ext, x) for x in have)
+        o.append('<source type="image/%s" srcset="%s" sizes="%s">' % (ext, srcset, sizes))
+    o.append(img + "</picture>")
+    return "".join(o)
+
+
+FORM_UI = {
+    "de": dict(sending="Wird gesendet …", ok_t="Danke, Ihre Anfrage ist angekommen!",
+               ok="Ich melde mich in Kürze per E-Mail.",
+               err="Das hat leider nicht geklappt. Bitte schreiben Sie mir direkt:"),
+    "uk": dict(sending="Надсилаю…", ok_t="Дякую, заявку отримано!",
+               ok="Я напишу вам на e-mail найближчим часом.",
+               err="На жаль, не вдалося надіслати. Напишіть мені напряму:"),
+    "ru": dict(sending="Отправляю…", ok_t="Спасибо, заявка получена!",
+               ok="Я напишу вам на e-mail в ближайшее время.",
+               err="К сожалению, отправить не получилось. Напишите мне напрямую:"),
+}
+
+SKIP_LABEL = {"de": "Zum Inhalt springen", "uk": "Перейти до змісту", "ru": "Перейти к содержанию"}
+
 CYR = "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116"
 LAT = ("U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,"
        "U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD")
@@ -57,6 +111,10 @@ img{display:block;max-width:100%}
 .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
 section[id]{scroll-margin-top:72px}
 
+/* SKIP-LINK (Tastatur/Screenreader) */
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600}
+.skip:focus{top:10px}
+main:focus{outline:none}
 /* NAV */
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
@@ -216,6 +274,12 @@ a.inl:hover{color:var(--ink)}
 .contact-methods{display:flex;flex-direction:row;flex-wrap:wrap;gap:16px}
 .cm{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transition:all .25s;color:#fff}
 .cm:hover{background:rgba(255,255,255,0.1);border-color:var(--amber);transform:translateY(-3px)}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:150;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.22);transition:transform .2s,box-shadow .2s}
+.wa-float svg{width:30px;height:30px}
+.wa-float:hover{transform:scale(1.07);box-shadow:0 8px 26px rgba(0,0,0,0.28)}
+.wa-float:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+@media(max-width:560px){.wa-float{right:14px;bottom:14px;width:54px;height:54px}}
+@media print{.wa-float{display:none}}
 .cm.wa{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4)}
 .cm-ic{width:44px;height:44px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .cm.wa .cm-ic{background:rgba(37,211,102,0.22)}
@@ -233,6 +297,16 @@ a.inl:hover{color:var(--ink)}
 .form-row textarea{height:90px}
 .form-submit{width:100%;padding:13px;background:var(--amber);color:#fff;border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;margin-top:4px}
 .form-submit:hover{background:var(--amber-light)}
+.form-submit:disabled{opacity:.7;cursor:wait}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{font-size:13.5px;line-height:1.5;margin-top:12px;min-height:1px}
+.form-status.err{color:#FFC9A8}
+.form-status a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.form-ok{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:36px 28px;text-align:center;color:#fff}
+.form-ok:focus{outline:none}
+.form-ok-ic{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700}
+.form-ok h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.form-ok p{font-size:14.5px;color:rgba(255,255,255,0.75)}
 .form-note{font-size:12px;color:rgba(255,255,255,0.55);margin-top:12px;line-height:1.5}
 .form-note a{color:rgba(255,255,255,0.8);text-decoration:underline}
 
@@ -426,7 +500,7 @@ T["de"] = dict(
     wa_label="WhatsApp", wa_text="Hallo! Ich interessiere mich für den kostenlosen Google-Check.",
     f_title="Kostenloser Google-Check", f_name="Name", f_mail="E-Mail", f_msg="Was machen Sie und in welcher Stadt?",
     f_ph_name="Ihr Name", f_ph_msg="z. B. Nagelstudio, Düsseldorf-Benrath", f_btn="Google-Check anfordern →",
-    f_note="Beim Absenden öffnet sich Ihr E-Mail-Programm. Es werden keine Daten auf dieser Website gespeichert.",
+    f_note="Ihre Angaben gehen nur per E-Mail an mich – zur Beantwortung Ihrer Anfrage.",
     f_alert="Bitte Name und E-Mail ausfüllen.", lang_name="Sprache",
 )
 
@@ -528,7 +602,7 @@ T["uk"] = dict(
     wa_label="WhatsApp", wa_text="Добрий день! Хочу безкоштовний аудит у Google.",
     f_title="Безкоштовний аудит", f_name="Ім'я", f_mail="E-Mail", f_msg="Чим ви займаєтеся і в якому місті?",
     f_ph_name="Ваше ім'я", f_ph_msg="Наприклад: манікюр, Düsseldorf-Benrath", f_btn="Отримати безкоштовний аудит →",
-    f_note="Після натискання відкриється ваша поштова програма. Сайт не зберігає жодних даних.",
+    f_note="Ваші дані надходять лише мені на e-mail — щоб відповісти на запит.",
     f_alert="Будь ласка, заповніть ім'я та e-mail.", lang_name="Мова",
 )
 
@@ -630,7 +704,7 @@ T["ru"] = dict(
     wa_label="WhatsApp", wa_text="Здравствуйте! Хочу бесплатный аудит в Google.",
     f_title="Бесплатный аудит", f_name="Имя", f_mail="E-Mail", f_msg="Чем вы занимаетесь и в каком городе?",
     f_ph_name="Ваше имя", f_ph_msg="Например: маникюр, Düsseldorf-Benrath", f_btn="Получить бесплатный аудит →",
-    f_note="При отправке откроется ваша почтовая программа. Сайт не сохраняет никаких данных.",
+    f_note="Ваши данные приходят только мне на e-mail — чтобы ответить на запрос.",
     f_alert="Пожалуйста, заполните имя и e-mail.", lang_name="Язык",
 )
 
@@ -716,11 +790,11 @@ def puzzle_html(lang, t):
     o.append('      <div class="sec-label">%s</div>\n      <h3>%s</h3>\n' % (esc(z["label"]), esc(z["title"])))
     o.append('      <p class="pz-text">%s</p>\n      <p class="pz-hint">%s</p>\n' % (esc(z["text"]), esc(z["hint"])))
     o.append('      <div class="pz-bar"><span>%s: <b id="pz-moves">0</b></span><button type="button" class="pz-btn" id="pz-shuffle">%s</button></div>\n    </div>\n' % (esc(z["moves"]), esc(z["shuffle"])))
-    o.append('    <div class="pz-board" id="pz-board" role="group" aria-label="%s" data-img="%s"></div>\n  </div>\n  </div>\n' % (esc(z["alt"]), img))
+    o.append('    <div class="pz-board" id="pz-board" role="group" aria-label="%s" data-img="%s" data-webp="%s"></div>\n  </div>\n  </div>\n' % (esc(z["alt"]), img, img.replace(".jpg", "-1024.webp")))
     o.append('  <div class="pz-modal" id="pz-modal" role="dialog" aria-modal="true" aria-labelledby="pz-mt"><div class="pz-dialog">\n')
     o.append('    <button type="button" class="pz-x" id="pz-close" aria-label="%s">&times;</button>\n' % esc(z["close"]))
     o.append('    <h4 id="pz-mt">%s</h4>\n    <div class="pz-pass-l">%s</div>\n    <div class="pz-word">%s</div>\n' % (esc(z["m_title"]), esc(z["m_pass"]), esc(z["word"])))
-    o.append('    <p>%s</p>\n    <div class="pz-acts"><a class="pz-a1" href="%s">%s</a><a class="pz-a2" href="%s" target="_blank" rel="noopener">%s</a></div>\n' % (esc(z["m_text"]), chk, esc(z["m_btn1"]), esc(wa), esc(z["m_btn2"])))
+    o.append('    <p>%s</p>\n    <div class="pz-acts"><a class="pz-a1" href="%s" data-umami-event="puzzle-checkliste">%s</a><a class="pz-a2" href="%s" target="_blank" rel="noopener" data-umami-event="puzzle-whatsapp">%s</a></div>\n' % (esc(z["m_text"]), chk, esc(z["m_btn1"]), esc(wa), esc(z["m_btn2"])))
     o.append('  </div></div>\n')
     o.append(PZ_JS)
     return "".join(o)
@@ -755,7 +829,7 @@ PZ_JS = r"""  <script>
     var p=+e.currentTarget.dataset.pos;
     if(sel===null){sel=p}else if(sel===p){sel=null}else{
       var t=order[sel];order[sel]=order[p];order[p]=t;sel=null;moves++;
-      if(solved()){done=true;board.classList.add('done');paint();setTimeout(openM,700);return}
+      if(solved()){done=true;if(window.umami)umami.track('puzzle-geloest');board.classList.add('done');paint();setTimeout(openM,700);return}
     }
     paint();
   }
@@ -766,7 +840,7 @@ PZ_JS = r"""  <script>
   modal.addEventListener('click',function(e){if(e.target===modal)closeM()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeM()});
   document.getElementById('pz-shuffle').addEventListener('click',shuffle);
-  function load(){var u='url('+board.dataset.img+')';tiles.forEach(function(t){t.style.backgroundImage=u})}
+  function load(){var wp=board.dataset.webp&&document.createElement('canvas').toDataURL('image/webp').indexOf('image/webp')===5;var u='url('+(wp?board.dataset.webp:board.dataset.img)+')';tiles.forEach(function(t){t.style.backgroundImage=u})}
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){load();io.disconnect()}},{rootMargin:'400px'});io.observe(board);
   }else load();
@@ -776,8 +850,14 @@ PZ_JS = r"""  <script>
 """
 
 
-WIDGET = """<script>(function () { var widget = document.createElement('script'); widget.defer = true; widget.dataset.pfId = 'e95ecb09-89d8-4863-b954-200bd0a8ed56'; widget.src = 'https://widget.yourgood.app/script/widget.js?id=e95ecb09-89d8-4863-b954-200bd0a8ed56&now='+Date.now(); document.head.appendChild(widget); })()</script>
-"""
+def wa_float(lang):
+    """Плавающая кнопка WhatsApp — всегда видна в правом нижнем углу (заменила виджет YourGood 08.11.2026)."""
+    from urllib.parse import quote
+    t = T[lang]
+    href = "https://wa.me/%s?text=%s" % (WA_NUM, quote(t["wa_text"]))
+    label = {"de": "Per WhatsApp schreiben", "uk": "Написати у WhatsApp", "ru": "Написать в WhatsApp"}[lang]
+    return ('<a class="wa-float" href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s" '
+            'data-umami-event="whatsapp-float">%s</a>\n' % (html.escape(href, quote=True), label, label, ICON["wa"]))
 
 
 import re as _re
@@ -868,6 +948,7 @@ def header_html(lang, home=True, alt_paths=None, current=None):
         links.insert(4, ("/" + PATHS[lang] + "blog/", BLOG_LABEL[lang], "blog"))
     o = []
     w = o.append
+    w('<a class="skip" href="#inhalt">%s</a>\n' % SKIP_LABEL[lang])
     w('<header id="hdr">\n  <nav class="wrap" aria-label="Navigation">\n')
     w('    <a class="brand" href="/%s"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>\n' % PATHS[lang])
     w('    <div class="nav-links">\n')
@@ -904,6 +985,40 @@ def footer_html():
     return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % LINKEDIN
 
 
+FORM_JS = """<script>
+(function(){
+  var f=document.getElementById('kform'); if(!f) return;
+  var st=document.getElementById('kform-status'), ok=document.getElementById('kform-ok'), btn=f.querySelector('.form-submit');
+  var t0=Date.now(), label=btn.textContent;
+  function fail(n,m,msg){
+    var body=encodeURIComponent(msg+"\\n\\nE-Mail: "+m);
+    var mailto="mailto:"+%(mail)s+"?subject="+encodeURIComponent("[Website] Google-Check: "+n+" ("+%(label)s+")")+"&body="+body;
+    st.className='form-status err';
+    st.innerHTML='';
+    st.appendChild(document.createTextNode(%(err)s+' '));
+    var a=document.createElement('a');a.href=%(wa)s;a.target='_blank';a.rel='noopener';a.textContent='WhatsApp';st.appendChild(a);
+    st.appendChild(document.createTextNode(' · '));
+    var b=document.createElement('a');b.href=mailto;b.textContent='E-Mail';st.appendChild(b);
+    btn.disabled=false;btn.textContent=label;
+    if(window.umami)umami.track('formular-fehler');
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var E=f.elements, n=E['name'].value.trim(), m=E['email'].value.trim(), msg=E['message'].value.trim();
+    if(!n||!m||!E['email'].checkValidity()){st.className='form-status err';st.textContent=%(alert)s;(n?E['email']:E['name']).focus();return;}
+    btn.disabled=true;btn.textContent=%(sending)s;st.className='form-status';st.textContent='';
+    var data={name:n,email:m,message:msg,website:E['website'].value,lang:%(lang)s,page:location.pathname,ms:Date.now()-t0};
+    var ctl=window.AbortController?new AbortController():null, tm=setTimeout(function(){if(ctl)ctl.abort();},15000);
+    fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
+      .then(function(r){clearTimeout(tm);return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok)throw 0;});})
+      .then(function(){f.hidden=true;ok.hidden=false;ok.focus();if(window.umami)umami.track('formular-gesendet');})
+      .catch(function(){clearTimeout(tm);fail(n,m,msg);});
+  });
+})();
+</script>
+"""
+
+
 def render(lang):
     t = T[lang]
     url = SITE + PATHS[lang]
@@ -923,16 +1038,17 @@ def render(lang):
     w('<link rel="alternate" hreflang="x-default" href="%s">\n' % SITE)
     w(jsonld(lang, t))
     w('<link rel="preload" href="/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n')
-    w('<style>\n/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */\n' + FONTS + CSS + PZ_CSS + '</style>\n</head>\n<body>\n\n')
+    w('<style>\n/* Schriften lokal gehostet (keine Verbindung zu Google Fonts) */\n' + FONTS + CSS + PZ_CSS + '</style>\n' + analytics_html() + '</head>\n<body>\n\n')
 
     # header
     w(header_html(lang))
 
+    w('<main id="inhalt" tabindex="-1">\n\n')
     # hero
     w('<section class="hero" id="top">\n  <div class="wrap hero-inner">\n    <div class="hero-text">\n')
     w('      <div class="hero-eyebrow">%s</div>\n      <h1>%s</h1>\n      <p class="hero-sub">%s</p>\n' % (esc(t["eyebrow"]), t["h1"], esc(t["sub"])))
-    w('      <div class="hero-btns">\n        <a href="#contact" class="btn-primary">%s</a>\n        <a href="#pakete" class="btn-outline">%s</a>\n      </div>\n    </div>\n' % (esc(t["btn1"]), esc(t["btn2"])))
-    w('    <div class="hero-photo">\n      <div class="hero-photo-frame"><img src="/images/olha-portrait.jpg" width="900" height="1350" alt="%s" fetchpriority="high"></div>\n' % esc(t["photo_alt"]))
+    w('      <div class="hero-btns">\n        <a href="#contact" class="btn-primary" data-umami-event="hero-cta">%s</a>\n        <a href="#pakete" class="btn-outline">%s</a>\n      </div>\n    </div>\n' % (esc(t["btn1"]), esc(t["btn2"])))
+    w('    <div class="hero-photo">\n      <div class="hero-photo-frame">%s</div>\n' % pic("/images/olha-portrait.jpg", 900, 1350, t["photo_alt"], (480, 900), "(min-width:1200px) 460px, 40vw", 'fetchpriority="high" decoding="async"', hide_below=900))
     w('      <div class="hero-badge"><div class="hero-badge-num">%s</div><div class="hero-badge-lbl">%s</div></div>\n    </div>\n  </div>\n</section>\n\n' % (esc(t["badge_num"]), esc(t["badge_lbl"])))
 
     # metrics
@@ -955,7 +1071,7 @@ def render(lang):
         w('        <div class="pkg-start">%s</div>\n        <p class="pkg-desc">%s</p>\n        <ul>\n' % (p["start"], esc(p["desc"])))
         for it in p["items"]:
             w('          <li>%s</li>\n' % esc(it))
-        w('        </ul>\n        <p class="pkg-term">%s</p>\n        <a href="#contact" class="pkg-btn">%s</a>\n      </article>\n' % (esc(p["term"]), esc(t["pk_btn"])))
+        w('        </ul>\n        <p class="pkg-term">%s</p>\n        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="%s">%s</a>\n      </article>\n' % (esc(p["term"]), esc(_plain(p["name"])[:1]), esc(t["pk_btn"])))
     w('    </div>\n    <div class="pkg-extras">\n      <div class="pkg-extra">%s</div>\n      <div class="pkg-extra">%s</div>\n    </div>\n' % (t["pk_combo"], t["pk_addon"]))
     w('    <p class="pkg-note">%s</p>\n  </div>\n</section>\n\n' % esc(t["pk_note"]))
 
@@ -974,7 +1090,7 @@ def render(lang):
         cls = (" wide" if c.get("wide") else "") + (" has-img" if c.get("img") else "")
         w('      <div class="case%s">\n' % cls)
         if c.get("img"):
-            w('        <a class="case-img" href="%s" target="_blank" rel="noopener"><img src="%s" width="1200" height="750" loading="lazy" alt="%s"></a>\n        <div>\n' % (c["link"], c["img"], esc(c["img_alt"])))
+            w('        <a class="case-img" href="%s" target="_blank" rel="noopener">%s</a>\n        <div>\n' % (c["link"], pic(c["img"], 1200, 750, c["img_alt"], (600, 1200), "(max-width:900px) 92vw, 560px")))
         w('        <div class="case-tag">%s</div>\n        <h3>%s</h3>\n        <p>%s</p>\n' % (esc(c["tag"]), name, esc(c["text"])))
         if c.get("quote"):
             w('        <blockquote class="case-quote" lang="%s">„%s“<cite lang="%s">%s</cite></blockquote>\n' % (c.get("quote_lang", "de"), esc(c["quote"]), lang, esc(c["cite"])))
@@ -992,7 +1108,7 @@ def render(lang):
 
     # about
     w('<section class="about" id="about">\n  <div class="wrap about-grid">\n    <div class="about-img">\n')
-    w('      <div class="about-img-frame"><img src="/images/olha-arbeit.jpg" width="1100" height="734" loading="lazy" alt="%s"></div>\n' % esc(t["ab_img_alt"]))
+    w('      <div class="about-img-frame">%s</div>\n' % pic("/images/olha-arbeit.jpg", 1100, 734, t["ab_img_alt"], (550, 1100), "(max-width:900px) 92vw, 520px"))
     w('      <div class="about-card"><div class="about-card-title">%s</div><div class="about-card-langs">' % esc(t["ab_langs"]))
     for color, nm, l2 in (("#005BBB", "Українська", "uk"), ("#CC0000", "Русский", "ru")):
         w('<div class="lang-row" lang="%s"><span class="lang-dot" style="background:%s"></span>%s</div>' % (l2, color, nm))
@@ -1017,25 +1133,30 @@ def render(lang):
     # contact
     w('<section class="contact" id="contact">\n  <div class="wrap contact-inner">\n    <div>\n')
     w('      <h2>%s</h2>\n      <p class="contact-sub">%s</p>\n      <div class="contact-methods">\n' % (t["ct_title"], esc(t["ct_sub"])))
-    w('        <a class="cm wa" href="%s" target="_blank" rel="noopener" title="%s" aria-label="%s"><span class="cm-ic">%s</span></a>\n' % (esc(wa), esc(t["wa_label"]), esc(t["wa_label"]), ICON["wa"]))
-    w('        <a class="cm" href="mailto:%s?subject=%%5BWebsite%%5D%%20Google-Check" title="E-Mail" aria-label="E-Mail"><span class="cm-ic">%s</span></a>\n' % (EMAIL, ICON["mail"]))
-    w('        <a class="cm" href="%s" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic">%s</span></a>\n' % (LINKEDIN, ICON["in"]))
+    w('        <a class="cm wa" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-whatsapp" title="%s" aria-label="%s"><span class="cm-ic">%s</span></a>\n' % (esc(wa), esc(t["wa_label"]), esc(t["wa_label"]), ICON["wa"]))
+    w('        <a class="cm" href="mailto:%s?subject=%%5BWebsite%%5D%%20Google-Check" data-umami-event="kontakt-email" title="E-Mail" aria-label="E-Mail"><span class="cm-ic">%s</span></a>\n' % (EMAIL, ICON["mail"]))
+    w('        <a class="cm" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-linkedin" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic">%s</span></a>\n' % (LINKEDIN, ICON["in"]))
     w('      </div>\n    </div>\n')
-    w('    <form class="contact-form" onsubmit="return sendMsg(event)">\n      <h3>%s</h3>\n' % esc(t["f_title"]))
-    w('      <div class="form-row"><label for="f-name">%s</label><input id="f-name" type="text" autocomplete="name" placeholder="%s"></div>\n' % (esc(t["f_name"]), esc(t["f_ph_name"])))
-    w('      <div class="form-row"><label for="f-mail">%s</label><input id="f-mail" type="email" autocomplete="email" placeholder="name@email.de"></div>\n' % esc(t["f_mail"]))
-    w('      <div class="form-row"><label for="f-msg">%s</label><textarea id="f-msg" placeholder="%s"></textarea></div>\n' % (esc(t["f_msg"]), esc(t["f_ph_msg"])))
-    w('      <button type="submit" class="form-submit">%s</button>\n      <p class="form-note">%s <a href="/datenschutz.html">Datenschutz</a></p>\n    </form>\n  </div>\n</section>\n\n' % (esc(t["f_btn"]), esc(t["f_note"])))
+    fu = FORM_UI[lang]
+    w('    <form class="contact-form" id="kform" action="%s" method="post" novalidate>\n      <h3>%s</h3>\n' % (FORM_ENDPOINT, esc(t["f_title"])))
+    w('      <div class="form-row"><label for="f-name">%s</label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="%s"></div>\n' % (esc(t["f_name"]), esc(t["f_ph_name"])))
+    w('      <div class="form-row"><label for="f-mail">%s</label><input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="name@email.de"></div>\n' % esc(t["f_mail"]))
+    w('      <div class="form-row"><label for="f-msg">%s</label><textarea id="f-msg" name="message" maxlength="3000" placeholder="%s"></textarea></div>\n' % (esc(t["f_msg"]), esc(t["f_ph_msg"])))
+    # ловушка для ботов: человек это поле не видит и не заполняет
+    w('      <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>\n')
+    w('      <button type="submit" class="form-submit">%s</button>\n      <p class="form-note">%s <a href="/datenschutz.html">Datenschutz</a></p>\n' % (esc(t["f_btn"]), esc(t["f_note"])))
+    w('      <div class="form-status" id="kform-status" role="status" aria-live="polite"></div>\n    </form>\n')
+    w('    <div class="form-ok" id="kform-ok" tabindex="-1" hidden><div class="form-ok-ic" aria-hidden="true">✓</div><h3>%s</h3><p>%s</p></div>\n  </div>\n</section>\n\n' % (esc(fu["ok_t"]), esc(fu["ok"])))
 
+    w('</main>\n\n')
     # footer
     w(footer_html())
 
     # script
-    w('<script>\nfunction sendMsg(e){\n  e.preventDefault();\n')
-    w('  var n=document.getElementById("f-name").value.trim(),m=document.getElementById("f-mail").value.trim(),t=document.getElementById("f-msg").value;\n')
-    w('  if(!n||!m){alert(%s);return false;}\n' % json.dumps(t["f_alert"], ensure_ascii=False))
-    w('  window.location.href="mailto:%s?subject="+encodeURIComponent("[Website] Google-Check: "+n+" (%s)")+"&body="+encodeURIComponent(t+"\\n\\nE-Mail: "+m);\n  return false;\n}\n</script>\n' % (EMAIL, LABELS[lang]))
-    w(BURGER_JS + WIDGET + '</body>\n</html>\n')
+    w(FORM_JS % dict(alert=json.dumps(t["f_alert"], ensure_ascii=False), lang=json.dumps(lang),
+                     sending=json.dumps(fu["sending"], ensure_ascii=False), err=json.dumps(fu["err"], ensure_ascii=False),
+                     wa=json.dumps(wa), mail=json.dumps(EMAIL), label=json.dumps(LABELS[lang])))
+    w(wa_float(lang) + BURGER_JS + '</body>\n</html>\n')
     # неразрывный пробел перед €, чтобы цена не разрывалась
     return "".join(out).replace(" €", "\u00a0€")
 
