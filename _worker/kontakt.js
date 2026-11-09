@@ -15,6 +15,7 @@ const ALLOWED_ORIGINS = [
   "https://www.olhapolishchuk.de",
 ];
 const LANG_LABEL = { de: "DE", uk: "UA", ru: "RU" };
+const TERMIN_RE = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}:\d{2})$/;
 const EMAIL_RE = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/;
 
 function cors(origin) {
@@ -66,11 +67,20 @@ export default {
     const lang = LANG_LABEL[data.lang] || "DE";
     const page = clean(data.page, 200);
 
+    // Wunschtermin aus dem Kalender (optional), Format «2026-11-16 12:00» → «Mo., 16.11.2026, 12:00 Uhr»
+    let termin = "";
+    const tm = TERMIN_RE.exec(clean(data.termin, 20));
+    if (tm) {
+      const d = new Date(Date.UTC(+tm[1], +tm[2] - 1, +tm[3]));
+      termin = d.toLocaleDateString("de-DE", { weekday: "short", day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" }) + ", " + tm[4] + " Uhr";
+    }
+
     if (!name || !EMAIL_RE.test(email)) return json({ ok: false, error: "invalid" }, 422, origin);
 
     const when = new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" });
     const text =
       `Neue Anfrage über olhapolishchuk.de (${lang})\n\n` +
+      (termin ? `WUNSCHTERMIN: ${termin}\n(noch nicht bestätigt – bitte per E-Mail bestätigen oder Alternative vorschlagen)\n\n` : "") +
       `Name:   ${name}\nE-Mail: ${email}\n\n` +
       `Was machen Sie und in welcher Stadt?\n${message || "—"}\n\n` +
       `Seite: ${page || "/"}\nZeit:  ${when}\n\n` +
@@ -87,7 +97,7 @@ export default {
         sender: { email: env.FROM_EMAIL, name: "Website olhapolishchuk.de" },
         to: [{ email: env.TO_EMAIL, name: "Olha Polishchuk" }],
         replyTo: { email, name },
-        subject: `[Website] Google-Check: ${name} (${lang})`,
+        subject: termin ? `[Website] Termin ${termin}: ${name} (${lang})` : `[Website] Google-Check: ${name} (${lang})`,
         textContent: text,
         tags: ["website-formular"],
       }),

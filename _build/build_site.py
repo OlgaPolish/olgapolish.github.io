@@ -71,6 +71,32 @@ FORM_UI = {
                err="К сожалению, отправить не получилось. Напишите мне напрямую:"),
 }
 
+# ── Календарь записи (блок «Kontakt»). Открытые дни берутся из файла /termine.csv в корне сайта
+#    (правится прямо на GitHub: дата, время, заметка). Если файла нет или в нём нет будущих дат —
+#    запасной вариант: недельная сетка CAL_SLOTS (0 = вс, 1 = пн … 6 = сб), праздники NRW закрыты.
+#    Выбранное время уходит вместе с формой (поле termin) — подтверждать клиенту вручную по e-mail.
+CAL_SLOTS = {1: "12:00", 3: "18:00", 4: "10:00"}
+CAL_UI = {
+    "de": dict(loc="de-DE", wd=["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+               title="Oder direkt einen Termin wählen",
+               sub="Kostenloses Erstgespräch, ca. 20 Min., per Telefon oder Video.",
+               free="frei", none="keine Termine", prev="Vorheriger Monat", next="Nächster Monat",
+               chip="Wunschtermin:", remove="Termin entfernen", btn="Termin anfragen →",
+               note="Ich bestätige den Termin per E-Mail."),
+    "uk": dict(loc="uk-UA", wd=["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+               title="Або одразу оберіть час зустрічі",
+               sub="Безкоштовна перша розмова, ~20 хв, телефоном або по відео.",
+               free="вільно", none="немає прийому", prev="Попередній місяць", next="Наступний місяць",
+               chip="Бажаний час:", remove="Скасувати вибір", btn="Записатися →",
+               note="Я підтверджу зустріч на e-mail."),
+    "ru": dict(loc="ru-RU", wd=["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+               title="Или сразу выберите время встречи",
+               sub="Бесплатный первый разговор, ~20 мин, по телефону или видео.",
+               free="свободно", none="нет приёма", prev="Предыдущий месяц", next="Следующий месяц",
+               chip="Желаемое время:", remove="Отменить выбор", btn="Записаться →",
+               note="Я подтвержу встречу по e-mail."),
+}
+
 SKIP_LABEL = {"de": "Zum Inhalt springen", "uk": "Перейти до змісту", "ru": "Перейти к содержанию"}
 
 CYR = "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116"
@@ -299,6 +325,40 @@ a.inl:hover{color:var(--ink)}
 .form-submit:hover{background:var(--amber-light)}
 .form-submit:disabled{opacity:.7;cursor:wait}
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* KALENDER */
+.cal{margin-top:36px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:22px;color:#fff;max-width:440px}
+.cal h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.cal-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:16px;line-height:1.5}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-month{font-weight:600;font-size:14.5px;text-transform:capitalize}
+.cal-nav{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#fff;cursor:pointer;font-size:15px;line-height:1;font-family:inherit}
+.cal-nav:hover:not(:disabled){border-color:var(--amber)}
+.cal-nav:disabled{opacity:.25;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-wd{font-size:11px;text-align:center;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.04em;padding-bottom:4px}
+.cal-d{aspect-ratio:1;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,0.25);border:1px solid transparent;background:transparent;font-family:inherit;padding:0}
+.cal-d.free{background:rgba(212,139,58,0.16);border-color:rgba(212,139,58,0.5);color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+.cal-d.free small{font-size:10px;font-weight:500;color:var(--amber-light);line-height:1;margin-top:3px}
+.cal-d.free:hover{background:rgba(212,139,58,0.32)}
+.cal-d.free:focus-visible{outline:2px solid var(--amber-light);outline-offset:2px}
+.cal-d.sel{background:var(--amber);border-color:var(--amber)}
+.cal-d.sel small{color:#fff}
+.cal-d.today{border-color:rgba(255,255,255,0.25)}
+.cal-times{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:rgba(255,255,255,0.75)}
+.cal-times[hidden]{display:none}
+.cal-t{border:1px solid rgba(212,139,58,0.6);background:rgba(212,139,58,0.16);color:#fff;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.cal-t:hover,.cal-t.sel{background:var(--amber);border-color:var(--amber)}
+.cal-legend{display:flex;gap:18px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:12px}
+.cal-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.cal-legend .lf{background:rgba(212,139,58,0.5)}
+.cal-legend .ln{background:rgba(255,255,255,0.12)}
+.form-termin{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(212,139,58,0.16);border:1px solid rgba(212,139,58,0.5);border-radius:var(--r);padding:10px 12px 10px 14px;font-size:13.5px;color:#fff;margin-bottom:14px;line-height:1.45}
+.form-termin[hidden]{display:none}
+.form-termin b{font-weight:600}
+.form-termin em{display:block;font-style:normal;font-size:12px;color:rgba(255,255,255,0.65)}
+.form-termin button{background:none;border:0;color:rgba(255,255,255,0.75);cursor:pointer;font-size:20px;line-height:1;padding:2px 6px;font-family:inherit}
+.form-termin button:hover{color:#fff}
+@media(max-width:900px){.cal{max-width:none}}
 .form-status{font-size:13.5px;line-height:1.5;margin-top:12px;min-height:1px}
 .form-status.err{color:#FFC9A8}
 .form-status a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600}
@@ -1007,13 +1067,97 @@ FORM_JS = """<script>
     var E=f.elements, n=E['name'].value.trim(), m=E['email'].value.trim(), msg=E['message'].value.trim();
     if(!n||!m||!E['email'].checkValidity()){st.className='form-status err';st.textContent=%(alert)s;(n?E['email']:E['name']).focus();return;}
     btn.disabled=true;btn.textContent=%(sending)s;st.className='form-status';st.textContent='';
-    var data={name:n,email:m,message:msg,website:E['website'].value,lang:%(lang)s,page:location.pathname,ms:Date.now()-t0};
+    var tr=E['termin']?E['termin'].value:'';
+    var data={name:n,email:m,message:msg,termin:tr,website:E['website'].value,lang:%(lang)s,page:location.pathname,ms:Date.now()-t0};
     var ctl=window.AbortController?new AbortController():null, tm=setTimeout(function(){if(ctl)ctl.abort();},15000);
     fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:ctl?ctl.signal:undefined})
       .then(function(r){clearTimeout(tm);return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok)throw 0;});})
       .then(function(){f.hidden=true;ok.hidden=false;ok.focus();if(window.umami)umami.track('formular-gesendet');})
-      .catch(function(){clearTimeout(tm);fail(n,m,msg);});
+      .catch(function(){clearTimeout(tm);fail(n,m,(tr?'Termin: '+tr+'\\n\\n':'')+msg);});
   });
+})();
+</script>
+"""
+
+
+CAL_JS = r"""<script>
+(function(){
+  var root=document.getElementById('kcal'), f=document.getElementById('kform'); if(!root||!f||!window.Intl) return;
+  var L=%(cal)s, WEEK=%(slots)s;
+  var grid=root.querySelector('.cal-grid'), mEl=root.querySelector('.cal-month'), pv=root.querySelector('.cal-prev'), nx=root.querySelector('.cal-next'), tEl=root.querySelector('.cal-times');
+  var hid=f.elements['termin'], chip=document.getElementById('kform-termin'), chipV=chip.querySelector('.ft-val'), btn=f.querySelector('.form-submit'), btnLabel=btn.textContent;
+  function pad(n){return (n<10?'0':'')+n;}
+  function key(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  function easter(y){var a=y%%19,b=Math.floor(y/100),c=y%%100,d=Math.floor(b/4),e=b%%4,f2=Math.floor((b+8)/25),g=Math.floor((b-f2+1)/3),h=(19*a+b-d-g+15)%%30,i=Math.floor(c/4),k=c%%4,l=(32+2*e+2*i-h-k)%%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%%31)+1;return new Date(y,mo-1,da);}
+  var H={};
+  function hol(d){var y=d.getFullYear();if(!H[y]){var o={},e=easter(y);['01-01','05-01','10-03','11-01','12-24','12-25','12-26','12-31'].forEach(function(s){o[y+'-'+s]=1;});[-2,1,39,50,60].forEach(function(n){var x=new Date(e);x.setDate(x.getDate()+n);o[key(x)]=1;});H[y]=o;}return H[y][key(d)];}
+  var now=new Date(), today=new Date(now.getFullYear(),now.getMonth(),now.getDate()), month0=new Date(today.getFullYear(),today.getMonth(),1);
+  var S={}, first, last, cur, sel='';
+  // termine.csv: Datum (16.11.2026 oder 2026-11-16) , Uhrzeit (12:00; mehrere: «10:00 15:00») , Notiz
+  function parse(txt){
+    var out={},n=0;
+    txt.split(/\r?\n/).forEach(function(line){
+      var c=line.split(/[;,\t]/); if(c.length<2)return;
+      var ds=c[0].trim(), m, d;
+      if((m=/^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(ds)))d=new Date(+m[1],m[2]-1,+m[3]);
+      else if((m=/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(ds)))d=new Date(+m[3],m[2]-1,+m[1]);
+      else return;
+      if(d<=today)return;
+      var t=(c[1].match(/\d{1,2}:\d{2}/g)||[]).map(function(x){return x.length<5?'0'+x:x;}).sort();
+      if(!t.length)return;
+      out[key(d)]=t;n++;
+    });
+    return n?out:null;
+  }
+  function weekly(){var o={};for(var d=new Date(today.getFullYear(),today.getMonth(),today.getDate()+1),end=new Date(month0.getFullYear(),month0.getMonth()+2,1);d<end;d.setDate(d.getDate()+1)){if(WEEK[d.getDay()]&&!hol(d))o[key(d)]=[WEEK[d.getDay()]];}return o;}
+  function init(map){
+    S=map; var ks=Object.keys(S).sort();
+    first=new Date(month0); last=new Date(month0.getFullYear(),month0.getMonth()+1,1);
+    if(ks.length){var a=ks[0].split('-'),z=ks[ks.length-1].split('-');first=new Date(+a[0],a[1]-1,1);last=new Date(+z[0],z[1]-1,1);}
+    var max=new Date(month0.getFullYear(),month0.getMonth()+3,1); if(last>max)last=max; if(first>last)first=new Date(last);
+    cur=new Date(first); root.hidden=false; draw();
+  }
+  function day(k){var a=k.split('-');return new Date(+a[0],a[1]-1,+a[2]);}
+  function nice(d,t){return new Intl.DateTimeFormat(L.loc,{weekday:'short',day:'numeric',month:'long'}).format(d)+', '+t;}
+  function draw(){
+    mEl.textContent=new Intl.DateTimeFormat(L.loc,{month:'long',year:'numeric'}).format(cur);
+    pv.disabled=cur<=first; nx.disabled=cur>=last;
+    grid.innerHTML=''; tEl.hidden=true; tEl.innerHTML='';
+    L.wd.forEach(function(w){var s=document.createElement('span');s.className='cal-wd';s.textContent=w;grid.appendChild(s);});
+    for(var i=(cur.getDay()+6)%%7;i>0;i--)grid.appendChild(document.createElement('span'));
+    for(var d=new Date(cur);d.getMonth()===cur.getMonth();d.setDate(d.getDate()+1)){
+      var k=key(d), ts=S[k], el;
+      if(ts){
+        var on=sel.slice(0,10)===k;
+        el=document.createElement('button');el.type='button';el.className='cal-d free'+(on?' sel':'');
+        el.setAttribute('aria-pressed',on?'true':'false');el.setAttribute('aria-label',nice(d,ts.join(', ')));
+        el.innerHTML=d.getDate()+'<small>'+(ts.length>1?ts[0]+' +'+(ts.length-1):ts[0])+'</small>';
+        el.addEventListener('click',open.bind(null,k));
+      }else{el=document.createElement('span');el.className='cal-d';el.setAttribute('aria-hidden','true');el.textContent=d.getDate();}
+      if(k===key(today))el.className+=' today';
+      grid.appendChild(el);
+    }
+  }
+  function open(k){
+    var ts=S[k]; if(ts.length===1)return pick(k,ts[0]);
+    draw(); tEl.innerHTML=''; var lb=document.createElement('span');lb.textContent=nice(day(k),'').replace(/, $/,'')+':';tEl.appendChild(lb);
+    ts.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='cal-t'+(sel===k+' '+t?' sel':'');b.textContent=t;b.addEventListener('click',function(){pick(k,t);});tEl.appendChild(b);});
+    tEl.hidden=false; tEl.querySelector('button').focus();
+  }
+  function pick(k,t){
+    sel=k+' '+t;hid.value=sel;chipV.textContent=nice(day(k),t);chip.hidden=false;btn.textContent=L.btn;draw();
+    if(window.umami)umami.track('termin-gewaehlt');
+    if(window.innerWidth<900)f.scrollIntoView({behavior:'smooth',block:'start'});
+    var n=f.elements['name'];if(!n.value)setTimeout(function(){n.focus({preventScroll:true});},window.innerWidth<900?450:0);
+  }
+  chip.querySelector('button').addEventListener('click',function(){sel='';hid.value='';chip.hidden=true;btn.textContent=btnLabel;draw();});
+  pv.addEventListener('click',function(){cur=new Date(cur.getFullYear(),cur.getMonth()-1,1);draw();});
+  nx.addEventListener('click',function(){cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);draw();});
+  // Termine aus /termine.csv (auf GitHub bearbeitbar); fehlt die Datei oder steht nichts Zukünftiges drin → Wochenraster
+  var done=false; function go(m){if(done)return;done=true;init(m||weekly());}
+  setTimeout(function(){go(null);},4000);
+  if(!window.fetch||location.protocol==='file:')return go(null);
+  fetch('/termine.csv',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(t){go(parse(t));}).catch(function(){go(null);});
 })();
 </script>
 """
@@ -1136,12 +1280,19 @@ def render(lang):
     w('        <a class="cm wa" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-whatsapp" title="%s" aria-label="%s"><span class="cm-ic">%s</span></a>\n' % (esc(wa), esc(t["wa_label"]), esc(t["wa_label"]), ICON["wa"]))
     w('        <a class="cm" href="mailto:%s?subject=%%5BWebsite%%5D%%20Google-Check" data-umami-event="kontakt-email" title="E-Mail" aria-label="E-Mail"><span class="cm-ic">%s</span></a>\n' % (EMAIL, ICON["mail"]))
     w('        <a class="cm" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-linkedin" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic">%s</span></a>\n' % (LINKEDIN, ICON["in"]))
-    w('      </div>\n    </div>\n')
+    w('      </div>\n')
+    cu = CAL_UI[lang]
+    w('      <div class="cal" id="kcal" hidden>\n        <h3>%s</h3>\n        <p class="cal-sub">%s</p>\n' % (esc(cu["title"]), esc(cu["sub"])))
+    w('        <div class="cal-head"><button type="button" class="cal-nav cal-prev" aria-label="%s">&#8249;</button><div class="cal-month" aria-live="polite"></div><button type="button" class="cal-nav cal-next" aria-label="%s">&#8250;</button></div>\n' % (esc(cu["prev"]), esc(cu["next"])))
+    w('        <div class="cal-grid"></div>\n        <div class="cal-times" hidden></div>\n        <div class="cal-legend"><span><i class="lf"></i>%s</span><span><i class="ln"></i>%s</span></div>\n      </div>\n' % (esc(cu["free"]), esc(cu["none"])))
+    w('    </div>\n')
     fu = FORM_UI[lang]
     w('    <form class="contact-form" id="kform" action="%s" method="post" novalidate>\n      <h3>%s</h3>\n' % (FORM_ENDPOINT, esc(t["f_title"])))
     w('      <div class="form-row"><label for="f-name">%s</label><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="%s"></div>\n' % (esc(t["f_name"]), esc(t["f_ph_name"])))
     w('      <div class="form-row"><label for="f-mail">%s</label><input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="name@email.de"></div>\n' % esc(t["f_mail"]))
     w('      <div class="form-row"><label for="f-msg">%s</label><textarea id="f-msg" name="message" maxlength="3000" placeholder="%s"></textarea></div>\n' % (esc(t["f_msg"]), esc(t["f_ph_msg"])))
+    w('      <input type="hidden" name="termin" value="">\n')
+    w('      <div class="form-termin" id="kform-termin" hidden><span><b>%s</b> <span class="ft-val"></span><em>%s</em></span><button type="button" aria-label="%s">&times;</button></div>\n' % (esc(cu["chip"]), esc(cu["note"]), esc(cu["remove"])))
     # ловушка для ботов: человек это поле не видит и не заполняет
     w('      <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>\n')
     w('      <button type="submit" class="form-submit">%s</button>\n      <p class="form-note">%s <a href="/datenschutz.html">Datenschutz</a></p>\n' % (esc(t["f_btn"]), esc(t["f_note"])))
@@ -1156,6 +1307,9 @@ def render(lang):
     w(FORM_JS % dict(alert=json.dumps(t["f_alert"], ensure_ascii=False), lang=json.dumps(lang),
                      sending=json.dumps(fu["sending"], ensure_ascii=False), err=json.dumps(fu["err"], ensure_ascii=False),
                      wa=json.dumps(wa), mail=json.dumps(EMAIL), label=json.dumps(LABELS[lang])))
+    cu = CAL_UI[lang]
+    w(CAL_JS % dict(cal=json.dumps(dict(loc=cu["loc"], wd=cu["wd"], btn=cu["btn"]), ensure_ascii=False),
+                    slots=json.dumps({str(k): v for k, v in CAL_SLOTS.items()})))
     w(wa_float(lang) + BURGER_JS + '</body>\n</html>\n')
     # неразрывный пробел перед €, чтобы цена не разрывалась
     return "".join(out).replace(" €", "\u00a0€")
