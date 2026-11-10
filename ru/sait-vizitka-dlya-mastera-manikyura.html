@@ -68,8 +68,9 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--amber-pale);color:#9A6424;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px}
 .hero-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0}
-.hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.3rem,4.4vw,3.5rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;color:var(--ink)}
-.hero h1 em{font-style:italic;color:var(--amber)}
+.hero h1{font-size:1.02rem;font-weight:600;line-height:1.45;letter-spacing:0;margin-bottom:12px;color:var(--ink);max-width:46ch}
+.hero-claim{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.3rem,4.4vw,3.5rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;color:var(--ink)}
+.hero-claim em{font-style:italic;color:var(--amber)}
 .hero-sub{font-size:1.08rem;font-weight:300;color:var(--ink-soft);max-width:50ch;line-height:1.75;margin-bottom:34px}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--ink);color:#fff;border-radius:var(--r);font-size:14px;font-weight:600;transition:all .25s}
@@ -229,6 +230,40 @@ a.inl:hover{color:var(--ink)}
 .form-submit:hover{background:var(--amber-light)}
 .form-submit:disabled{opacity:.7;cursor:wait}
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* KALENDER */
+.cal{margin-top:36px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:22px;color:#fff;max-width:440px}
+.cal h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.cal-sub{font-size:13px;color:rgba(255,255,255,0.65);margin-bottom:16px;line-height:1.5}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-month{font-weight:600;font-size:14.5px;text-transform:capitalize}
+.cal-nav{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#fff;cursor:pointer;font-size:15px;line-height:1;font-family:inherit}
+.cal-nav:hover:not(:disabled){border-color:var(--amber)}
+.cal-nav:disabled{opacity:.25;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-wd{font-size:11px;text-align:center;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.04em;padding-bottom:4px}
+.cal-d{aspect-ratio:1;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,0.25);border:1px solid transparent;background:transparent;font-family:inherit;padding:0}
+.cal-d.free{background:rgba(212,139,58,0.16);border-color:rgba(212,139,58,0.5);color:#fff;font-weight:600;cursor:pointer;transition:background .2s}
+.cal-d.free small{font-size:10px;font-weight:500;color:var(--amber-light);line-height:1;margin-top:3px}
+.cal-d.free:hover{background:rgba(212,139,58,0.32)}
+.cal-d.free:focus-visible{outline:2px solid var(--amber-light);outline-offset:2px}
+.cal-d.sel{background:var(--amber);border-color:var(--amber)}
+.cal-d.sel small{color:#fff}
+.cal-d.today{border-color:rgba(255,255,255,0.25)}
+.cal-times{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:rgba(255,255,255,0.75)}
+.cal-times[hidden]{display:none}
+.cal-t{border:1px solid rgba(212,139,58,0.6);background:rgba(212,139,58,0.16);color:#fff;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.cal-t:hover,.cal-t.sel{background:var(--amber);border-color:var(--amber)}
+.cal-legend{display:flex;gap:18px;font-size:12px;color:rgba(255,255,255,0.6);margin-top:12px}
+.cal-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.cal-legend .lf{background:rgba(212,139,58,0.5)}
+.cal-legend .ln{background:rgba(255,255,255,0.12)}
+.form-termin{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(212,139,58,0.16);border:1px solid rgba(212,139,58,0.5);border-radius:var(--r);padding:10px 12px 10px 14px;font-size:13.5px;color:#fff;margin-bottom:14px;line-height:1.45}
+.form-termin[hidden]{display:none}
+.form-termin b{font-weight:600}
+.form-termin em{display:block;font-style:normal;font-size:12px;color:rgba(255,255,255,0.65)}
+.form-termin button{background:none;border:0;color:rgba(255,255,255,0.75);cursor:pointer;font-size:20px;line-height:1;padding:2px 6px;font-family:inherit}
+.form-termin button:hover{color:#fff}
+@media(max-width:900px){.cal{max-width:none}}
 .form-status{font-size:13.5px;line-height:1.5;margin-top:12px;min-height:1px}
 .form-status.err{color:#FFC9A8}
 .form-status a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600}
@@ -396,7 +431,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <footer>
   <div class="wrap foot-inner">
     <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>
-    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://share.google/Fj5iyprSwlv8rUxlQ" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a><a href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </footer>
 

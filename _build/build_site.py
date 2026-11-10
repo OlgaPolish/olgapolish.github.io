@@ -164,8 +164,9 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--amber-pale);color:#9A6424;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:22px}
 .hero-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0}
-.hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.3rem,4.4vw,3.5rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;color:var(--ink)}
-.hero h1 em{font-style:italic;color:var(--amber)}
+.hero h1{font-size:1.02rem;font-weight:600;line-height:1.45;letter-spacing:0;margin-bottom:12px;color:var(--ink);max-width:46ch}
+.hero-claim{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2.3rem,4.4vw,3.5rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px;color:var(--ink)}
+.hero-claim em{font-style:italic;color:var(--amber)}
 .hero-sub{font-size:1.08rem;font-weight:300;color:var(--ink-soft);max-width:50ch;line-height:1.75;margin-bottom:34px}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--ink);color:#fff;border-radius:var(--r);font-size:14px;font-weight:600;transition:all .25s}
@@ -457,6 +458,7 @@ ICON = {
     "chart": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>',
     "wa": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .9c-.3 1.2-1.3 1.8-2.4 1.6A6.5 6.5 0 0 1 8.4 10c-.2-1.1.4-2.1 1.6-2.4l.9 2z"/></svg>',
     "mail": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>',
+    "g": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.7h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9z"/><path d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.5l3.3 2.6C7.2 7.700 9.400 5.900 12 5.900z"/></svg>',
     "in": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>',
 }
 
@@ -464,13 +466,14 @@ ICON = {
 T = {}
 
 T["de"] = dict(
-    title="Webseite & Google-Profil für Beauty-Studios | Olha Polishchuk",
-    desc="Onepager-Webseite und Google-Profil für Nagel-, Kosmetik- und Friseurstudios in ganz Deutschland. Beratung auf Ukrainisch und Russisch, Webseite auf Deutsch.",
-    og_title="Webseite & Google-Profil für Beauty-Studios · Olha Polishchuk",
+    title="Webseite & Google-Profil für Selbstständige | Olha Polishchuk",
+    desc="Onepager-Webseite und Google-Maps-Profil für Selbstständige und kleine Studios in ganz Deutschland. Beratung auf Ukrainisch oder Russisch, Webseite auf Deutsch.",
+    og_title="Webseite & Google-Profil für Selbstständige · Olha Polishchuk",
     nav=["Pakete", "Ablauf", "Ergebnisse", "Über mich", "Kontakt"],
     cta_nav="Kostenloser Google-Check",
     eyebrow="Düsseldorf · NRW · deutschlandweit remote",
-    h1="Ihre Kunden suchen Sie in Google. Ich sorge dafür, dass sie Sie <em>finden</em>.",
+    h1="Webseite und Google-Unternehmensprofil für Selbstständige und kleine Betriebe in Deutschland",
+    claim="Ihre Kunden suchen Sie in Google. Ich sorge dafür, dass sie Sie <em>finden</em>.",
     sub="Google-Unternehmensprofil, Onepager-Webseite und laufende Betreuung für kleine Unternehmen in Deutschland. Wir sprechen Ukrainisch oder Russisch — Ihre Webseite und alle Texte für Ihre Kunden sind auf Deutsch, klar und korrekt.",
     btn1="Kostenloser Google-Check →", btn2="Pakete & Preise",
     photo_alt="Olha Polishchuk — Webseiten und Google-Profile für Beauty-Studios",
@@ -566,12 +569,13 @@ T["de"] = dict(
 
 T["uk"] = dict(
     title="Сайт-візитка та Google-профіль для майстрів у Німеччині | Ольга Поліщук",
-    desc="Сайт-візитка німецькою та профіль у Google Maps для майстрів манікюру, бровістів, косметологів і перукарів по всій Німеччині. Спілкуємося українською або російською.",
+    desc="Сайт-візитка німецькою та профіль у Google Maps для майстрів і самозайнятих по всій Німеччині. Спілкуємося українською або російською, тексти — німецькою.",
     og_title="Сайт-візитка та Google-профіль для майстрів у Німеччині · Ольга Поліщук",
     nav=["Пакети", "Як працюємо", "Результати", "Про мене", "Контакт"],
     cta_nav="Безкоштовний аудит",
     eyebrow="Düsseldorf · NRW · дистанційно по всій Німеччині",
-    h1="Клієнти шукають вас у Google. Зроблю так, щоб вони вас <em>знайшли</em>.",
+    h1="Сайт-візитка та профіль у Google Maps для майстрів і самозайнятих у Німеччині",
+    claim="Клієнти шукають вас у Google. Зроблю так, щоб вони вас <em>знайшли</em>.",
     sub="Допомагаю україно- та російськомовному малому бізнесу в Німеччині: профіль у Google Maps, сайт-візитка та регулярна підтримка. Спілкуємося українською або російською — тексти для ваших клієнтів пишу грамотною німецькою.",
     btn1="Отримати безкоштовний аудит у Google →", btn2="Пакети та ціни",
     photo_alt="Ольга Поліщук — Google-профіль, сайти та SEO в Дюссельдорфі",
@@ -668,12 +672,13 @@ T["uk"] = dict(
 
 T["ru"] = dict(
     title="Сайт-визитка и Google-профиль для мастеров в Германии | Ольга Полищук",
-    desc="Сайт-визитка на немецком и профиль в Google Maps для мастеров маникюра, бровистов, косметологов и парикмахеров по всей Германии. Общаемся по-русски или по-украински.",
+    desc="Сайт-визитка на немецком и профиль в Google Maps для мастеров и самозанятых по всей Германии. Общаемся по-русски или по-украински, тексты — на немецком.",
     og_title="Сайт-визитка и Google-профиль для мастеров в Германии · Ольга Полищук",
     nav=["Пакеты", "Как работаем", "Результаты", "Обо мне", "Контакт"],
     cta_nav="Бесплатный аудит",
     eyebrow="Düsseldorf · NRW · по всей Германии удалённо",
-    h1="Клиенты ищут вас в Google. Сделаю так, чтобы они вас <em>нашли</em>.",
+    h1="Сайт-визитка и профиль в Google Maps для мастеров и самозанятых в Германии",
+    claim="Клиенты ищут вас в Google. Сделаю так, чтобы они вас <em>нашли</em>.",
     sub="Помогаю русско- и украиноязычному малому бизнесу в Германии: профиль в Google Maps, сайт-визитка и регулярная поддержка. Общаемся по-русски или по-украински — тексты для ваших клиентов пишу на грамотном немецком.",
     btn1="Получить бесплатный аудит в Google →", btn2="Пакеты и цены",
     photo_alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе",
@@ -971,12 +976,13 @@ def jsonld(lang, t):
         "areaServed": [{"@type": "City", "name": "Düsseldorf"},
                        {"@type": "State", "name": "Nordrhein-Westfalen"},
                        {"@type": "Country", "name": "Deutschland"}],
-        "knowsLanguage": ["uk", "ru"],
+        "knowsLanguage": ["de", "uk", "ru"],
         "priceRange": "150–590 €",
         "currenciesAccepted": "EUR",
         "founder": {"@type": "Person", "@id": SITE + "#olha", "name": "Olha Polishchuk",
-                    "jobTitle": "Google-Profil, Webseiten & SEO", "sameAs": [LINKEDIN]},
+                    "jobTitle": "Google-Profil, Webseiten & SEO", "sameAs": same},
         "sameAs": same,
+        **({"hasMap": GBP_URL} if GBP_URL else {}),
         "hasOfferCatalog": {"@type": "OfferCatalog", "name": _plain(t["pk_title"]), "itemListElement": offers},
     }
     page = {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": t["title"],
@@ -1042,7 +1048,7 @@ window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);
 
 
 def footer_html():
-    return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % LINKEDIN
+    return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a>%s<a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % (('<a href="%s" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a>' % GBP_URL) if GBP_URL else "", LINKEDIN)
 
 
 FORM_JS = """<script>
@@ -1190,7 +1196,7 @@ def render(lang):
     w('<main id="inhalt" tabindex="-1">\n\n')
     # hero
     w('<section class="hero" id="top">\n  <div class="wrap hero-inner">\n    <div class="hero-text">\n')
-    w('      <div class="hero-eyebrow">%s</div>\n      <h1>%s</h1>\n      <p class="hero-sub">%s</p>\n' % (esc(t["eyebrow"]), t["h1"], esc(t["sub"])))
+    w('      <div class="hero-eyebrow">%s</div>\n      <h1>%s</h1>\n      <p class="hero-claim">%s</p>\n      <p class="hero-sub">%s</p>\n' % (esc(t["eyebrow"]), esc(t["h1"]), t["claim"], esc(t["sub"])))
     w('      <div class="hero-btns">\n        <a href="#contact" class="btn-primary" data-umami-event="hero-cta">%s</a>\n        <a href="#pakete" class="btn-outline">%s</a>\n      </div>\n    </div>\n' % (esc(t["btn1"]), esc(t["btn2"])))
     w('    <div class="hero-photo">\n      <div class="hero-photo-frame">%s</div>\n' % pic("/images/olha-portrait.jpg", 900, 1350, t["photo_alt"], (480, 900), "(min-width:1200px) 460px, 40vw", 'fetchpriority="high" decoding="async"', hide_below=900))
     w('      <div class="hero-badge"><div class="hero-badge-num">%s</div><div class="hero-badge-lbl">%s</div></div>\n    </div>\n  </div>\n</section>\n\n' % (esc(t["badge_num"]), esc(t["badge_lbl"])))
@@ -1280,6 +1286,8 @@ def render(lang):
     w('        <a class="cm wa" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-whatsapp" title="%s" aria-label="%s"><span class="cm-ic">%s</span></a>\n' % (esc(wa), esc(t["wa_label"]), esc(t["wa_label"]), ICON["wa"]))
     w('        <a class="cm" href="mailto:%s?subject=%%5BWebsite%%5D%%20Google-Check" data-umami-event="kontakt-email" title="E-Mail" aria-label="E-Mail"><span class="cm-ic">%s</span></a>\n' % (EMAIL, ICON["mail"]))
     w('        <a class="cm" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-linkedin" title="LinkedIn" aria-label="LinkedIn"><span class="cm-ic">%s</span></a>\n' % (LINKEDIN, ICON["in"]))
+    if GBP_URL:
+        w('        <a class="cm" href="%s" target="_blank" rel="noopener" data-umami-event="kontakt-google-profil" title="Google-Profil" aria-label="Google-Profil"><span class="cm-ic">%s</span></a>\n' % (GBP_URL, ICON["g"]))
     w('      </div>\n')
     cu = CAL_UI[lang]
     w('      <div class="cal" id="kcal" hidden>\n        <h3>%s</h3>\n        <p class="cal-sub">%s</p>\n' % (esc(cu["title"]), esc(cu["sub"])))

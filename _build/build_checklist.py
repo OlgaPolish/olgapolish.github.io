@@ -248,10 +248,11 @@ def render(lang):
     wa = "https://wa.me/%s?text=%s" % (B.WA_NUM, quote(c["wa_text"]))
     w = []
     w.append('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n' % lang)
-    w.append('<meta name="robots" content="noindex, follow">\n')
     w.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
     w.append('<title>%s</title>\n<meta name="description" content="%s">\n' % (html.escape(c["title"]), html.escape(c["desc"])))
     w.append('<link rel="canonical" href="%s">\n' % url)
+    w.append('<meta property="og:title" content="%s">\n<meta property="og:description" content="%s">\n' % (html.escape(c["title"]), html.escape(c["desc"])))
+    w.append('<meta property="og:url" content="%s">\n<meta property="og:image" content="%simages/olha-portrait.jpg">\n<meta property="og:type" content="article">\n' % (url, B.SITE))
     for l2 in ("de", "uk", "ru"):
         w.append('<link rel="alternate" hreflang="%s" href="%s%s%s">\n' % (l2, B.SITE, B.PATHS[l2], SLUG))
     w.append('<link rel="alternate" hreflang="x-default" href="%s%s">\n' % (B.SITE, SLUG))
