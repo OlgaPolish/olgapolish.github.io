@@ -22,6 +22,7 @@ IMAGES = {
     "images/olha-arbeit.jpg": (550, 1100),
     "images/case-jana-nails.jpg": (600, 1200),
     "images/case-feinschliff.jpg": (600, 1200),
+    "images/case-makova.jpg": (600, 1200),
     "images/puzzle-de.jpg": (1024,),
     "images/puzzle-uk.jpg": (1024,),
     "images/puzzle-ru.jpg": (1024,),

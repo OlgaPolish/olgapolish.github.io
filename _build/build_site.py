@@ -241,9 +241,26 @@ a.inl:hover{color:var(--ink)}
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.demo-head{margin:48px 0 18px}
+.demo-head{margin:48px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
 .demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
-.demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
+.demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:60ch}
+/* DEMO-KARUSSELL */
+.demo-nav{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.demo-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:18px;line-height:1;cursor:pointer;font-family:inherit;transition:all .2s}
+.demo-btn:hover:not(:disabled){border-color:var(--ink);background:var(--ink);color:#fff}
+.demo-btn:disabled{opacity:.3;cursor:default}
+.demo-btn:focus-visible,.demo-track:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.demo-count{font-size:13px;color:var(--ink-soft);min-width:38px;text-align:center;font-variant-numeric:tabular-nums}
+.demo-count b{color:var(--ink);font-weight:600}
+.demo-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px 0;border-radius:12px}
+.demo-track::-webkit-scrollbar{display:none}
+.demo-slide{flex:0 0 calc(100% - 72px);scroll-snap-align:start}
+.demo-slide:only-child{flex-basis:100%}
+.demo-slide:hover{transform:none}
+.demo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.demo-dots i{width:8px;height:8px;border-radius:4px;background:rgba(30,42,74,0.18);transition:all .3s}
+.demo-dots i.on{width:24px;background:var(--amber)}
+@media(prefers-reduced-motion:reduce){.demo-track{scroll-behavior:auto}}
 .case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;transition:all .3s}
 .case:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(30,42,74,0.07)}
 .case.wide{grid-column:1/-1}
@@ -437,6 +454,8 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
+  .demo-slide{flex-basis:86%;padding:20px}
+  .demo-head{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .why,.pakete,.ablauf,.cases,.about,.faq,.contact{padding:64px 0}
@@ -524,8 +543,11 @@ T["de"] = dict(
            ("Umsetzung", "Sie schicken Fotos und Infos, ich setze um. Ich zeige Ihnen das Ergebnis, wir nehmen Korrekturen vor."),
            ("Fertig", "Rechnung nach Abschluss. Auf Wunsch geht es mit der Betreuung weiter.")],
     cs_label="Ergebnisse", cs_title="Echte Ergebnisse für echte Unternehmen",
-    dm_title="Demo-Design — so kann Ihre Webseite aussehen", dm_sub="Beispiel für ein erfundenes Studio, damit Sie Stil und Aufbau sehen.",
-    demos=[dict(wide=True, img="/images/case-feinschliff.jpg", img_alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio", tag="Demo · fiktives Studio", name="Feinschliff — Beispiel-Webseite für ein Nagelstudio", link="https://german-nail-studio.netlify.app/",
+    dm_title="Demo-Design — so kann Ihre Webseite aussehen", dm_sub="Beispiele für erfundene Studios — damit Sie Stil und Aufbau sehen. Zum Blättern wischen oder die Pfeile nutzen.",
+    dm_prev="Vorheriges Beispiel", dm_next="Nächstes Beispiel", dm_of="von",
+    demos=[dict(img="/images/case-makova.jpg", img_alt="Startseite der Konzept-Webseite MAKOVA Art & Beauty Studio — fiktives Beauty-Studio", tag="Konzept · fiktives Studio", name="MAKOVA — Konzept-Webseite für ein Beauty-Studio", link="/demo/makova/",
+                text="Ein Studio mit vielen Leistungen auf einer Seite: Nägel, Pediküre, Massage, Brows & Lashes, Make-up und Workshops. Preisliste nach Kategorien, Galerie, Team, Studio und Öffnungszeiten — auf Deutsch und Ukrainisch. Eigenes Farbkonzept: Bordeaux, Creme und Mohnblumen. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[]),
+           dict(img="/images/case-feinschliff.jpg", img_alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio", tag="Demo · fiktives Studio", name="Feinschliff — Beispiel-Webseite für ein Nagelstudio", link="https://german-nail-studio.netlify.app/",
                 text="So kann eine Studio-Webseite aussehen: Leistungen und Preise, Studio, Team, Öffnungszeiten und Terminanfrage, optimiert fürs Smartphone. Das Studio ist erfunden — alle Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[])],
     
     cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Startseite von jana-nails-beauty.de — Webseite des Nagelstudios JANA NAILS & Beauty', tag='Onepager · Online-Terminbuchung · eigene Domain', name='JANA NAILS & Beauty — Webseite für ein Nagelstudio in Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
@@ -557,7 +579,13 @@ T["de"] = dict(
          ("Was brauche ich für den Start?", "Ein paar Fotos Ihrer Arbeit, Ihre Leistungen mit Preisen, Adresse und Öffnungszeiten. Fehlt etwas, sage ich Ihnen, wie Sie es schnell erstellen."),
          ("Arbeiten Sie nur in Düsseldorf?", "Nein, deutschlandweit remote. Persönliche Treffen sind in Düsseldorf und Umgebung möglich."),
          ("Wie bezahle ich?", "Per Rechnung nach Abschluss der Arbeit. Ohne Umsatzsteuer — ich bin Kleinunternehmerin nach § 19 UStG."),
-         ("Geht die Zusammenarbeit auch nur schriftlich?", "Ja, das ist sogar praktischer: Alles bleibt im Chat oder in der E-Mail, nichts geht verloren.")],
+         ("Geht die Zusammenarbeit auch nur schriftlich?", "Ja, das ist sogar praktischer: Alles bleibt im Chat oder in der E-Mail, nichts geht verloren."),
+         ('Wer erstellt Webseiten für ukrainisch- und russischsprachige Selbstständige in Deutschland?', 'Olha Polishchuk aus Düsseldorf: Onepager-Webseiten auf Deutsch und Google-Maps-Profile für Selbstständige und kleine Studios in ganz Deutschland. Beratung auf Ukrainisch oder Russisch, alle Texte für Ihre Kunden in korrektem Deutsch.'),
+         ('Was kostet die Einrichtung eines Google-Maps-Profils?', '190 €. Dazu gehören passende Kategorien und Leistungen, eine Beschreibung auf Deutsch, Fotos, Öffnungszeiten, die ersten 3 Beiträge und ein QR-Code zum Sammeln von Bewertungen.'),
+         ('Wie lange dauert eine Webseite?', '1–2 Wochen, nachdem Sie Fotos, Leistungen mit Preisen und Ihre Adresse geschickt haben.'),
+         ('Brauche ich auf der Webseite Impressum und Datenschutzerklärung?', 'Ja, in Deutschland ist das für jede geschäftliche Webseite Pflicht, auch für eine kleine. Ich erstelle beides nach Vorlage für Ihre Situation, auch als Kleinunternehmer. Eine Rechtsberatung ersetzt das nicht.'),
+         ('Was gehört zur laufenden Betreuung?', '290 € pro Monat: 4 Beiträge im Monat in Ihrem Google-Profil, Entwürfe für Antworten auf Bewertungen, aktuelle Fotos und Öffnungszeiten, kleine Änderungen an der Webseite und ein monatlicher Bericht, wie viele Menschen Sie gefunden und angerufen haben.'),
+         ('Warum eine Webseite, wenn ich Instagram oder Fresha habe?', 'Webseite und Google-Profil gehören Ihnen und werden bei Suchen wie „Nagelstudio in der Nähe“ gefunden. Instagram und Fresha sind fremde Plattformen — Regeln und Reichweite können sich jederzeit ändern.')],
     ct_title="Ihr kostenloser <em>Google-Check</em>",
     ct_sub="Schreiben Sie mir, was Sie machen und in welcher Stadt. Ich schaue mir Ihr Profil und Ihre Webseite an und schicke Ihnen eine kurze Checkliste: was schon gut ist und was Kunden davon abhält, Sie zu finden. Kostenlos und unverbindlich. Antwort innerhalb von 24 Stunden.",
     wa_label="WhatsApp", wa_text="Hallo! Ich interessiere mich für den kostenlosen Google-Check.",
@@ -626,8 +654,11 @@ T["uk"] = dict(
            ("Робота", "Ви надсилаєте фото й інформацію, я роблю. Показую результат, вносимо правки."),
            ("Готово", "Рахунок — після виконання. Якщо потрібно — далі підтримка.")],
     cs_label="Результати", cs_title="Реальні результати для реального бізнесу",
-    dm_title="Демо-дизайн — так може виглядати ваш сайт", dm_sub="Приклад для вигаданої студії, щоб ви побачили стиль і структуру.",
-    demos=[dict(wide=True, img="/images/case-feinschliff.jpg", img_alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія", tag="Демо · вигадана студія", name="Feinschliff — приклад сайту для нейл-студії", link="https://german-nail-studio.netlify.app/",
+    dm_title="Демо-дизайн — так може виглядати ваш сайт", dm_sub="Приклади для вигаданих студій — щоб ви побачили стиль і структуру. Гортайте пальцем або стрілками.",
+    dm_prev="Попередній приклад", dm_next="Наступний приклад", dm_of="з",
+    demos=[dict(img="/images/case-makova.jpg", img_alt="Головна сторінка концепт-сайту MAKOVA Art & Beauty Studio — вигадана б’юті-студія", tag="Концепт · вигадана студія", name="MAKOVA — концепт-сайт для б’юті-студії", link="/demo/makova/",
+                text="Студія з багатьма послугами на одній сторінці: нігті, педикюр, масаж, брови й вії, макіяж і майстер-класи. Прайс за категоріями, галерея, команда, студія та години роботи — німецькою й українською. Власна кольорова концепція: бордо, крем і маки. Студія вигадана — фото, відгуки й дані лише для прикладу.", res=[]),
+           dict(img="/images/case-feinschliff.jpg", img_alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія", tag="Демо · вигадана студія", name="Feinschliff — приклад сайту для нейл-студії", link="https://german-nail-studio.netlify.app/",
                 text="Так може виглядати сайт студії: послуги й ціни, студія, команда, години роботи та запис, зручно на смартфоні. Студія вигадана — усі фото, відгуки й дані лише для прикладу.", res=[])],
     
     cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Головна сторінка jana-nails-beauty.de — сайт нейл-студії JANA NAILS & Beauty', tag='Сайт-візитка · онлайн-запис · власний домен', name='JANA NAILS & Beauty — сайт нейл-студії в Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
@@ -660,7 +691,13 @@ T["uk"] = dict(
          ("Що мені потрібно для початку?", "Кілька фото вашої роботи, список послуг із цінами, адреса й години роботи. Якщо чогось немає — підкажу, як швидко це зробити."),
          ("Ви працюєте лише в Düsseldorf?", "Ні, дистанційно по всій Німеччині. Зустрітися особисто можу в Düsseldorf і поруч."),
          ("Як оплачувати?", "За рахунком (Rechnung) після виконання роботи. Без ПДВ — я Kleinunternehmer за § 19 UStG."),
-         ("Чи можна спілкуватися лише письмово?", "Так, так навіть зручніше: усе залишається в листуванні, і нічого не забувається.")],
+         ("Чи можна спілкуватися лише письмово?", "Так, так навіть зручніше: усе залишається в листуванні, і нічого не забувається."),
+         ('Хто робить сайти для україно- та російськомовних майстрів у Німеччині?', 'Ольга Поліщук із Düsseldorf: сайти-візитки німецькою та профілі в Google Maps для майстрів і самозайнятих по всій Німеччині. Спілкування українською або російською, усі тексти для клієнтів — грамотною німецькою.'),
+         ('Скільки коштує налаштувати профіль у Google Maps?', '190 €. Входять категорії та послуги, опис німецькою, фото, години роботи, перші 3 публікації та QR-код для збору відгуків.'),
+         ('Скільки часу займає сайт?', '1–2 тижні після того, як ви надіслали фото, послуги з цінами й адресу.'),
+         ('Чи потрібні на сайті Impressum і Datenschutz?', "Так, у Німеччині це обов'язково для будь-якого комерційного сайту, навіть маленького. Я роблю обидва за шаблоном для вашої ситуації, зокрема для Kleinunternehmer. Юридичної консультації це не замінює."),
+         ('Що входить у підтримку?', '290 € на місяць: 4 публікації на місяць у Google-профілі, чернетки відповідей на відгуки, оновлення фото й годин роботи, дрібні правки сайту та щомісячний звіт: скільки людей вас знайшли й зателефонували.'),
+         ('Чим сайт кращий, ніж лише Instagram або Fresha?', 'Сайт і профіль Google належать вам, їх знаходять за запитами на кшталт «Nagelstudio in der Nähe». Instagram і Fresha — чужі майданчики, де правила й охоплення можуть змінитися будь-коли.')],
     ct_title="Отримайте безкоштовний <em>аудит</em> у Google",
     ct_sub="Напишіть, чим ви займаєтеся і в якому місті. Я подивлюся ваш профіль і сайт та надішлю короткий чек-лист точок зростання: що вже добре і що заважає клієнтам вас знайти. Безкоштовно й без зобов'язань. Відповідаю протягом 24 годин.",
     wa_label="WhatsApp", wa_text="Добрий день! Хочу безкоштовний аудит у Google.",
@@ -729,8 +766,11 @@ T["ru"] = dict(
            ("Работа", "Вы присылаете фото и информацию, я делаю. Показываю результат, вносим правки."),
            ("Готово", "Счёт после выполнения. Если нужно — дальше поддержка.")],
     cs_label="Результаты", cs_title="Реальные результаты для реального бизнеса",
-    dm_title="Демо-дизайн — так может выглядеть ваш сайт", dm_sub="Пример для вымышленной студии, чтобы вы увидели стиль и структуру.",
-    demos=[dict(wide=True, img="/images/case-feinschliff.jpg", img_alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия", tag="Демо · вымышленная студия", name="Feinschliff — пример сайта для ногтевой студии", link="https://german-nail-studio.netlify.app/",
+    dm_title="Демо-дизайн — так может выглядеть ваш сайт", dm_sub="Примеры для вымышленных студий — чтобы вы увидели стиль и структуру. Листайте пальцем или стрелками.",
+    dm_prev="Предыдущий пример", dm_next="Следующий пример", dm_of="из",
+    demos=[dict(img="/images/case-makova.jpg", img_alt="Главная страница концепт-сайта MAKOVA Art & Beauty Studio — вымышленная бьюти-студия", tag="Концепт · вымышленная студия", name="MAKOVA — концепт-сайт для бьюти-студии", link="/demo/makova/",
+                text="Студия с множеством услуг на одной странице: ногти, педикюр, массаж, брови и ресницы, макияж и мастер-классы. Прайс по категориям, галерея, команда, студия и часы работы — на немецком и украинском. Собственная цветовая концепция: бордо, крем и маки. Студия вымышленная — фото, отзывы и данные только для примера.", res=[]),
+           dict(img="/images/case-feinschliff.jpg", img_alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия", tag="Демо · вымышленная студия", name="Feinschliff — пример сайта для ногтевой студии", link="https://german-nail-studio.netlify.app/",
                 text="Так может выглядеть сайт студии: услуги и цены, студия, команда, часы работы и запись, удобно на смартфоне. Студия вымышленная — все фото, отзывы и данные только для примера.", res=[])],
     
     cases=[dict(wide=True, img="/images/case-jana-nails.jpg", img_alt='Главная страница jana-nails-beauty.de — сайт ногтевой студии JANA NAILS & Beauty', tag='Сайт-визитка · онлайн-запись · свой домен', name='JANA NAILS & Beauty — сайт ногтевой студии в Düsseldorf-Benrath', link="https://jana-nails-beauty.de/",
@@ -763,7 +803,13 @@ T["ru"] = dict(
          ("Что мне нужно для начала?", "Пару фото вашей работы, список услуг с ценами, адрес и часы работы. Если чего-то нет — подскажу, как быстро сделать."),
          ("Вы работаете только в Düsseldorf?", "Нет, по всей Германии удалённо. Встретиться лично могу в Düsseldorf и рядом."),
          ("Как оплачивать?", "По счёту (Rechnung) после выполнения работы. Без НДС — я Kleinunternehmer по § 19 UStG."),
-         ("Можно ли общаться только письменно?", "Да, так даже удобнее: всё остаётся в переписке, и ничего не забывается.")],
+         ("Можно ли общаться только письменно?", "Да, так даже удобнее: всё остаётся в переписке, и ничего не забывается."),
+         ('Кто делает сайты для русско- и украиноязычных мастеров в Германии?', 'Ольга Полищук из Düsseldorf: сайты-визитки на немецком и профили в Google Maps для мастеров и самозанятых по всей Германии. Общение по-русски или по-украински, все тексты для клиентов — на грамотном немецком.'),
+         ('Сколько стоит настроить профиль в Google Maps?', '190 €. Входят категории и услуги, описание на немецком, фото, часы работы, первые 3 публикации и QR-код для сбора отзывов.'),
+         ('Сколько времени занимает сайт?', '1–2 недели после того, как вы прислали фото, услуги с ценами и адрес.'),
+         ('Нужны ли на сайте Impressum и Datenschutz?', 'Да, в Германии это обязательно для любого коммерческого сайта, даже маленького. Я делаю оба по шаблону для вашей ситуации, в том числе для Kleinunternehmer. Юридическую консультацию это не заменяет.'),
+         ('Что входит в поддержку?', '290 € в месяц: 4 публикации в месяц в Google-профиле, черновики ответов на отзывы, обновление фото и часов работы, мелкие правки сайта и ежемесячный отчёт: сколько людей вас нашли и позвонили.'),
+         ('Чем сайт лучше, чем только Instagram или Fresha?', 'Сайт и профиль Google принадлежат вам, их находят по запросам вроде «Nagelstudio in der Nähe». Instagram и Fresha — чужие площадки, где правила и охват могут измениться в любой момент.')],
     ct_title="Получите бесплатный <em>аудит</em> в Google",
     ct_sub="Напишите, чем вы занимаетесь и в каком городе. Я посмотрю ваш профиль и сайт и пришлю короткий чек-лист точек роста: что уже хорошо и что мешает клиентам вас найти. Бесплатно и без обязательств. Отвечаю в течение 24 часов.",
     wa_label="WhatsApp", wa_text="Здравствуйте! Хочу бесплатный аудит в Google.",
@@ -1051,6 +1097,22 @@ def footer_html():
     return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a>%s<a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % (('<a href="%s" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a>' % GBP_URL) if GBP_URL else "", LINKEDIN)
 
 
+DEMO_JS = """<script>
+(function(){document.querySelectorAll('.demo-car').forEach(function(car){
+var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('.demo-btn'),
+dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b');if(sl.length<2)return;
+function cur(){var x=tr.scrollLeft,b=0,d=1e9;sl.forEach(function(s,i){var v=Math.abs(s.offsetLeft-tr.offsetLeft-x);if(v<d){d=v;b=i;}});
+if(tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4)b=sl.length-1;return b;}
+function upd(){var i=cur();bt[0].disabled=i===0;bt[1].disabled=i===sl.length-1;if(cnt)cnt.textContent=i+1;
+dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
+function go(i){i=Math.max(0,Math.min(sl.length-1,i));tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft});}
+bt.forEach(function(b){b.addEventListener('click',function(){go(cur()+(+b.dataset.dir));});});
+tr.addEventListener('keydown',function(e){if(e.target!==tr)return;if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1);}});
+var t;tr.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(upd,60);},{passive:true});
+window.addEventListener('resize',upd);upd();});})();
+</script>
+"""
+
 FORM_JS = """<script>
 (function(){
   var f=document.getElementById('kform'); if(!f) return;
@@ -1233,28 +1295,43 @@ def render(lang):
 
     # cases
     w('<section class="cases" id="ergebnisse">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="cases-grid">\n' % (esc(t["cs_label"]), esc(t["cs_title"])))
-    def case_html(c):
+    def case_html(c, extra_cls="", attrs=""):
         name = esc(c["name"])
         if c.get("link"):
             name = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (c["link"], name)
-        cls = (" wide" if c.get("wide") else "") + (" has-img" if c.get("img") else "")
-        w('      <div class="case%s">\n' % cls)
+        cls = (" wide" if c.get("wide") else "") + (" has-img" if c.get("img") else "") + extra_cls
+        w('      <div class="case%s"%s>\n' % (cls, attrs))
         if c.get("img"):
             w('        <a class="case-img" href="%s" target="_blank" rel="noopener">%s</a>\n        <div>\n' % (c["link"], pic(c["img"], 1200, 750, c["img_alt"], (600, 1200), "(max-width:900px) 92vw, 560px")))
         w('        <div class="case-tag">%s</div>\n        <h3>%s</h3>\n        <p>%s</p>\n' % (esc(c["tag"]), name, esc(c["text"])))
         if c.get("quote"):
             w('        <blockquote class="case-quote" lang="%s">„%s“<cite lang="%s">%s</cite></blockquote>\n' % (c.get("quote_lang", "de"), esc(c["quote"]), lang, esc(c["cite"])))
-        w('        <div class="case-result">')
-        for num, lbl in c["res"]:
-            w('<div class="result-item"><div class="r-num">%s</div><div class="r-lbl">%s</div></div>' % (esc(num), esc(lbl)))
-        w('</div>\n' + ('        </div>\n' if c.get("img") else '') + '      </div>\n')
+        if c["res"]:
+            w('        <div class="case-result">')
+            for num, lbl in c["res"]:
+                w('<div class="result-item"><div class="r-num">%s</div><div class="r-lbl">%s</div></div>' % (esc(num), esc(lbl)))
+            w('</div>\n')
+        w(('        </div>\n' if c.get("img") else '') + '      </div>\n')
     for c in t["cases"]:
         case_html(c)
+    w('    </div>\n')
     if t.get("demos"):
-        w('    </div>\n    <div class="demo-head"><h3>%s</h3><p>%s</p></div>\n    <div class="cases-grid">\n' % (esc(t["dm_title"]), esc(t["dm_sub"])))
-        for c in t["demos"]:
-            case_html(c)
-    w('    </div>\n    <p class="also">%s</p>\n  </div>\n</section>\n\n' % t["also"])
+        # Demo-Karussell: horizontal wischen (scroll-snap), Pfeile, Punkte; ohne JS bleibt es wischbar
+        n = len(t["demos"])
+        w('    <div class="demo-car" role="region" aria-roledescription="carousel" aria-label="%s">\n' % esc(t["dm_title"]))
+        w('    <div class="demo-head"><div><h3>%s</h3><p>%s</p></div>' % (esc(t["dm_title"]), esc(t["dm_sub"])))
+        if n > 1:
+            w('<div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="%s" disabled>&#8592;</button>'
+              '<span class="demo-count" aria-live="polite"><b>1</b> / %d</span>'
+              '<button type="button" class="demo-btn" data-dir="1" aria-label="%s" data-umami-event="demo-karussell">&#8594;</button></div>' % (esc(t["dm_prev"]), n, esc(t["dm_next"])))
+        w('</div>\n    <div class="demo-track" tabindex="0">\n')
+        for i, c in enumerate(t["demos"], 1):
+            case_html(c, " demo-slide", ' role="group" aria-roledescription="slide" aria-label="%d %s %d"' % (i, t["dm_of"], n))
+        w('    </div>\n')
+        if n > 1:
+            w('    <div class="demo-dots" aria-hidden="true">%s</div>\n' % "".join('<i%s></i>' % (' class="on"' if i == 0 else '') for i in range(n)))
+        w('    </div>\n')
+    w('    <p class="also">%s</p>\n  </div>\n</section>\n\n' % t["also"])
 
     # about
     w('<section class="about" id="about">\n  <div class="wrap about-grid">\n    <div class="about-img">\n')
@@ -1318,7 +1395,7 @@ def render(lang):
     cu = CAL_UI[lang]
     w(CAL_JS % dict(cal=json.dumps(dict(loc=cu["loc"], wd=cu["wd"], btn=cu["btn"]), ensure_ascii=False),
                     slots=json.dumps({str(k): v for k, v in CAL_SLOTS.items()})))
-    w(wa_float(lang) + BURGER_JS + '</body>\n</html>\n')
+    w(wa_float(lang) + BURGER_JS + DEMO_JS + '</body>\n</html>\n')
     # неразрывный пробел перед €, чтобы цена не разрывалась
     return "".join(out).replace(" €", "\u00a0€")
 
