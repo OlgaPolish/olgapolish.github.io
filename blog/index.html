@@ -48,7 +48,7 @@ main:focus{outline:none}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-init{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;letter-spacing:0.02em;flex-shrink:0}
+.brand-logo{width:44px;height:44px;border-radius:50%;flex-shrink:0}
 .brand-name{font-size:15px;font-weight:600;letter-spacing:-0.01em}
 .brand-name span{color:var(--amber)}
 .nav-links{display:flex;gap:24px}
@@ -79,6 +79,33 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-photo{position:relative}
 .hero-photo-frame{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--bg-mid)}
 .hero-photo-frame img{width:100%;height:100%;object-fit:cover}
+/* Social Proof unter den Buttons */
+.hero-proof{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.hp-av{display:flex;flex-shrink:0}
+.hp-av span{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:#fff;background:var(--ink);border:2px solid #fff}
+.hp-av span+span{margin-left:-10px;background:var(--amber)}
+.hp-stars{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.hp-stars>span{color:#E3A008;letter-spacing:2px;font-size:14px}
+.hp-stars a{font-weight:600;color:var(--ink);font-size:13px;text-decoration:underline;text-decoration-color:rgba(212,139,58,0.6);text-underline-offset:3px}
+.hp-stars a:hover{color:var(--amber)}
+.hp-q span{font-style:italic;color:var(--ink)}
+/* Handy-Mockup: Google-Profil + Webseite (Illustration) */
+.hero-phone{position:absolute;left:-58px;bottom:42px;width:178px;background:#fff;border:6px solid #1E2A4A;border-radius:28px;padding:16px 10px 12px;box-shadow:0 24px 48px rgba(30,42,74,0.22);font-size:10px;line-height:1.35;color:#202124;z-index:2}
+.ph-notch{position:absolute;top:5px;left:50%;width:46px;height:6px;margin-left:-23px;border-radius:4px;background:#1E2A4A}
+.ph-search{display:flex;align-items:center;gap:6px;border:1px solid #DADCE0;border-radius:14px;padding:5px 9px;color:#5F6368;font-size:9.5px}
+.ph-search svg{width:11px;height:11px;fill:none;stroke:#5F6368;stroke-width:2.2;flex-shrink:0}
+.ph-map{position:relative;height:58px;margin:8px 0 6px;border-radius:9px;background:linear-gradient(115deg,transparent 46%,#fff 46% 50%,transparent 50%),linear-gradient(20deg,transparent 60%,#fff 60% 63%,transparent 63%),#E8EEE4}
+.ph-pin{position:absolute;left:54%;top:12px;width:16px;height:16px;border-radius:50% 50% 50% 0;background:#EA4335;transform:rotate(-45deg)}
+.ph-pin::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}
+.ph-name{font-size:12.5px;font-weight:600;color:#1E2A4A}
+.ph-rate{color:#5F6368}.ph-rate b{color:#202124;font-weight:600}.ph-rate span{color:#E3A008;letter-spacing:.5px}
+.ph-meta{color:#5F6368}
+.ph-open b{color:#188038;font-weight:600}
+.ph-acts{display:flex;gap:4px;margin:8px 0 6px}
+.ph-acts span{flex:1;text-align:center;border:1px solid #DADCE0;border-radius:10px;padding:3px 0;font-size:8.5px;color:#1A73E8;font-weight:600}
+.ph-acts span.on{background:#E8F0FE;border-color:#E8F0FE}
+.ph-book{text-align:center;background:var(--amber);color:#fff;font-weight:600;border-radius:10px;padding:5px 0;font-size:9.5px}
+@media(max-width:1180px){.hero-phone{left:-30px}}
 .hero-badge{position:absolute;bottom:-18px;right:-18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 24px rgba(30,42,74,0.08);max-width:190px}
 .hero-badge-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--ink);line-height:1}
 .hero-badge-lbl{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.4}
@@ -144,9 +171,41 @@ a.inl:hover{color:var(--ink)}
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.demo-head{margin:48px 0 18px}
+.demo-head{margin:48px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
 .demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
-.demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
+.demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:60ch}
+/* DEMO-KARUSSELL */
+.demo-nav{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.demo-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:18px;line-height:1;cursor:pointer;font-family:inherit;transition:all .2s}
+.demo-btn:hover:not(:disabled){border-color:var(--ink);background:var(--ink);color:#fff}
+.demo-btn:disabled{opacity:.3;cursor:default}
+.demo-btn:focus-visible,.demo-track:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.demo-count{font-size:13px;color:var(--ink-soft);min-width:38px;text-align:center;font-variant-numeric:tabular-nums}
+.demo-count b{color:var(--ink);font-weight:600}
+.demo-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px 0;border-radius:12px}
+.demo-track::-webkit-scrollbar{display:none}
+.demo-slide{flex:0 0 calc(100% - 72px);scroll-snap-align:start}
+.demo-slide:only-child{flex-basis:100%}
+.demo-slide:hover{transform:none}
+.demo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.demo-dots i{width:8px;height:8px;border-radius:4px;background:rgba(30,42,74,0.18);transition:all .3s}
+.demo-dots i.on{width:24px;background:var(--amber)}
+@media(prefers-reduced-motion:reduce){.demo-track{scroll-behavior:auto}}
+/* BEWEGUNG — nur wenn der Nutzer Animationen nicht abgeschaltet hat */
+@keyframes rise{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@media(prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  .hero-eyebrow,.hero-btns,.hero-proof{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero-btns{animation-delay:.12s}.hero-proof{animation-delay:.24s}
+  .hero-phone{animation:rise .8s .35s cubic-bezier(.2,.7,.2,1) both,floaty 7s 1.2s ease-in-out infinite}
+  @supports (animation-timeline:view()){
+    .sec-title,.svc,.pkg,.pkg-extra,.step,.cases-grid>.case,.demo-car,.also,.about-img,.about-text,.faq details,.contact-inner>*{animation:rise linear both;animation-timeline:view();animation-range:entry 5% entry 75%}
+    .why-grid>.svc:nth-child(2),.pkg-grid>.pkg:nth-child(2),.steps>.step:nth-child(2){animation-range:entry 10% entry 85%}
+    .why-grid>.svc:nth-child(3),.pkg-grid>.pkg:nth-child(3),.steps>.step:nth-child(3){animation-range:entry 15% entry 95%}
+    .why-grid>.svc:nth-child(4),.steps>.step:nth-child(4){animation-range:entry 20% entry 100%}
+  }
+}
 .case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;transition:all .3s}
 .case:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(30,42,74,0.07)}
 .case.wide{grid-column:1/-1}
@@ -277,6 +336,8 @@ a.inl:hover{color:var(--ink)}
 /* FOOTER */
 footer{background:#111827;padding:32px 0}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-brand{display:flex;align-items:center;gap:16px}
+.foot-brand img{width:64px;height:64px;border-radius:50%;flex-shrink:0}
 .foot-copy{font-size:13px;color:rgba(255,255,255,0.5)}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap}
 .foot-links a{font-size:13px;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -336,10 +397,19 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 @media(max-width:980px){.nav-links{display:none}}
 @media(max-width:900px){
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
-  .hero-photo{display:none}
+  /* Handy/Tablet: Foto + Handy-Mockup oben als Blickfang */
+  .hero-photo{order:-1;width:100%;max-width:440px;margin:0 auto -8px;padding-left:72px}
+  .hero-photo-frame{aspect-ratio:1/1;border-radius:22px}
+  .hero-photo-frame img{object-position:center 22%}
+  .hero-phone{left:0;bottom:-18px;transform:scale(.8);transform-origin:left bottom}
+  .hero-badge{right:-6px;bottom:-16px;padding:10px 14px;max-width:150px}
+  .hero-badge-num{font-size:1.5rem}
+  .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
+  .demo-slide{flex-basis:86%;padding:20px}
+  .demo-head{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .why,.pakete,.ablauf,.cases,.about,.faq,.contact{padding:64px 0}
@@ -369,7 +439,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 <header id="hdr">
   <nav class="wrap" aria-label="Navigation">
-    <a class="brand" href="/"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>
+    <a class="brand" href="/"><img class="brand-logo" src="/images/logo-navy-96.webp" width="44" height="44" alt="" aria-hidden="true"><span class="brand-name">Olha <span>Polishchuk</span></span></a>
     <div class="nav-links">
       <a href="/#pakete">Pakete</a>
       <a href="/#ablauf">Ablauf</a>
@@ -406,7 +476,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 </main>
 <footer>
   <div class="wrap foot-inner">
-    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>
+    <div class="foot-brand"><img src="/images/logo-white-128.webp" width="64" height="64" alt="Olha Polishchuk — Logo" loading="lazy" decoding="async"><div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div></div>
     <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://share.google/Fj5iyprSwlv8rUxlQ" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a><a href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </footer>

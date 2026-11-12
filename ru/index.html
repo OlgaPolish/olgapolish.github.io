@@ -312,7 +312,7 @@ main:focus{outline:none}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-init{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;letter-spacing:0.02em;flex-shrink:0}
+.brand-logo{width:44px;height:44px;border-radius:50%;flex-shrink:0}
 .brand-name{font-size:15px;font-weight:600;letter-spacing:-0.01em}
 .brand-name span{color:var(--amber)}
 .nav-links{display:flex;gap:24px}
@@ -600,6 +600,8 @@ a.inl:hover{color:var(--ink)}
 /* FOOTER */
 footer{background:#111827;padding:32px 0}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-brand{display:flex;align-items:center;gap:16px}
+.foot-brand img{width:64px;height:64px;border-radius:50%;flex-shrink:0}
 .foot-copy{font-size:13px;color:rgba(255,255,255,0.5)}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap}
 .foot-links a{font-size:13px;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -659,7 +661,14 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 @media(max-width:980px){.nav-links{display:none}}
 @media(max-width:900px){
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
-  .hero-photo{display:none}
+  /* Handy/Tablet: Foto + Handy-Mockup oben als Blickfang */
+  .hero-photo{order:-1;width:100%;max-width:440px;margin:0 auto -8px;padding-left:72px}
+  .hero-photo-frame{aspect-ratio:1/1;border-radius:22px}
+  .hero-photo-frame img{object-position:center 22%}
+  .hero-phone{left:0;bottom:-18px;transform:scale(.8);transform-origin:left bottom}
+  .hero-badge{right:-6px;bottom:-16px;padding:10px 14px;max-width:150px}
+  .hero-badge-num{font-size:1.5rem}
+  .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
@@ -717,7 +726,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 <a class="skip" href="#inhalt">Перейти к содержанию</a>
 <header id="hdr">
   <nav class="wrap" aria-label="Navigation">
-    <a class="brand" href="/ru/"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>
+    <a class="brand" href="/ru/"><img class="brand-logo" src="/images/logo-navy-96.webp" width="44" height="44" alt="" aria-hidden="true"><span class="brand-name">Olha <span>Polishchuk</span></span></a>
     <div class="nav-links">
       <a href="#pakete">Пакеты</a>
       <a href="#ablauf">Как работаем</a>
@@ -761,7 +770,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <div class="hero-proof"><div class="hp-av" aria-hidden="true"><span>J</span><span>K</span></div><div class="hp-txt"><div class="hp-stars"><span aria-hidden="true">★★★★★</span><a href="https://share.google/Fj5iyprSwlv8rUxlQ" target="_blank" rel="noopener" data-umami-event="hero-reviews">Отзывы в Google ↗</a></div><div class="hp-q"><span lang="de">„Eine absolute Herzensempfehlung!“</span> — Яна, JANA NAILS &amp; Beauty</div></div></div>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-frame"><picture><source media="(max-width:900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><source type="image/avif" srcset="/images/olha-portrait-480.avif 480w, /images/olha-portrait-900.avif 900w" sizes="(min-width:1200px) 460px, 40vw"><source type="image/webp" srcset="/images/olha-portrait-480.webp 480w, /images/olha-portrait-900.webp 900w" sizes="(min-width:1200px) 460px, 40vw"><img src="/images/olha-portrait.jpg" width="900" height="1350" alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе" fetchpriority="high" decoding="async"></picture></div>
+      <div class="hero-photo-frame"><picture><source type="image/avif" srcset="/images/olha-portrait-480.avif 480w, /images/olha-portrait-900.avif 900w" sizes="(max-width:900px) 75vw, (min-width:1200px) 460px, 40vw"><source type="image/webp" srcset="/images/olha-portrait-480.webp 480w, /images/olha-portrait-900.webp 900w" sizes="(max-width:900px) 75vw, (min-width:1200px) 460px, 40vw"><img src="/images/olha-portrait.jpg" width="900" height="1350" alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе" fetchpriority="high" decoding="async"></picture></div>
       <div class="hero-phone" aria-hidden="true">
         <div class="ph-notch"></div>
         <div class="ph-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>nagelstudio in der nähe</div>
@@ -1096,7 +1105,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 
 <footer>
   <div class="wrap foot-inner">
-    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>
+    <div class="foot-brand"><img src="/images/logo-white-128.webp" width="64" height="64" alt="Olha Polishchuk — Logo" loading="lazy" decoding="async"><div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div></div>
     <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://share.google/Fj5iyprSwlv8rUxlQ" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a><a href="https://linkedin.com/in/olha-882b30113" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
 </footer>

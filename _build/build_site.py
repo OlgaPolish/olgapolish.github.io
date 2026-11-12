@@ -145,7 +145,7 @@ main:focus{outline:none}
 header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-init{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;letter-spacing:0.02em;flex-shrink:0}
+.brand-logo{width:44px;height:44px;border-radius:50%;flex-shrink:0}
 .brand-name{font-size:15px;font-weight:600;letter-spacing:-0.01em}
 .brand-name span{color:var(--amber)}
 .nav-links{display:flex;gap:24px}
@@ -176,6 +176,33 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-photo{position:relative}
 .hero-photo-frame{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--bg-mid)}
 .hero-photo-frame img{width:100%;height:100%;object-fit:cover}
+/* Social Proof unter den Buttons */
+.hero-proof{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.hp-av{display:flex;flex-shrink:0}
+.hp-av span{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:#fff;background:var(--ink);border:2px solid #fff}
+.hp-av span+span{margin-left:-10px;background:var(--amber)}
+.hp-stars{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.hp-stars>span{color:#E3A008;letter-spacing:2px;font-size:14px}
+.hp-stars a{font-weight:600;color:var(--ink);font-size:13px;text-decoration:underline;text-decoration-color:rgba(212,139,58,0.6);text-underline-offset:3px}
+.hp-stars a:hover{color:var(--amber)}
+.hp-q span{font-style:italic;color:var(--ink)}
+/* Handy-Mockup: Google-Profil + Webseite (Illustration) */
+.hero-phone{position:absolute;left:-58px;bottom:42px;width:178px;background:#fff;border:6px solid #1E2A4A;border-radius:28px;padding:16px 10px 12px;box-shadow:0 24px 48px rgba(30,42,74,0.22);font-size:10px;line-height:1.35;color:#202124;z-index:2}
+.ph-notch{position:absolute;top:5px;left:50%;width:46px;height:6px;margin-left:-23px;border-radius:4px;background:#1E2A4A}
+.ph-search{display:flex;align-items:center;gap:6px;border:1px solid #DADCE0;border-radius:14px;padding:5px 9px;color:#5F6368;font-size:9.5px}
+.ph-search svg{width:11px;height:11px;fill:none;stroke:#5F6368;stroke-width:2.2;flex-shrink:0}
+.ph-map{position:relative;height:58px;margin:8px 0 6px;border-radius:9px;background:linear-gradient(115deg,transparent 46%,#fff 46% 50%,transparent 50%),linear-gradient(20deg,transparent 60%,#fff 60% 63%,transparent 63%),#E8EEE4}
+.ph-pin{position:absolute;left:54%;top:12px;width:16px;height:16px;border-radius:50% 50% 50% 0;background:#EA4335;transform:rotate(-45deg)}
+.ph-pin::after{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}
+.ph-name{font-size:12.5px;font-weight:600;color:#1E2A4A}
+.ph-rate{color:#5F6368}.ph-rate b{color:#202124;font-weight:600}.ph-rate span{color:#E3A008;letter-spacing:.5px}
+.ph-meta{color:#5F6368}
+.ph-open b{color:#188038;font-weight:600}
+.ph-acts{display:flex;gap:4px;margin:8px 0 6px}
+.ph-acts span{flex:1;text-align:center;border:1px solid #DADCE0;border-radius:10px;padding:3px 0;font-size:8.5px;color:#1A73E8;font-weight:600}
+.ph-acts span.on{background:#E8F0FE;border-color:#E8F0FE}
+.ph-book{text-align:center;background:var(--amber);color:#fff;font-weight:600;border-radius:10px;padding:5px 0;font-size:9.5px}
+@media(max-width:1180px){.hero-phone{left:-30px}}
 .hero-badge{position:absolute;bottom:-18px;right:-18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 24px rgba(30,42,74,0.08);max-width:190px}
 .hero-badge-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--ink);line-height:1}
 .hero-badge-lbl{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.4}
@@ -261,6 +288,21 @@ a.inl:hover{color:var(--ink)}
 .demo-dots i{width:8px;height:8px;border-radius:4px;background:rgba(30,42,74,0.18);transition:all .3s}
 .demo-dots i.on{width:24px;background:var(--amber)}
 @media(prefers-reduced-motion:reduce){.demo-track{scroll-behavior:auto}}
+/* BEWEGUNG — nur wenn der Nutzer Animationen nicht abgeschaltet hat */
+@keyframes rise{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+@keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@media(prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  .hero-eyebrow,.hero-btns,.hero-proof{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero-btns{animation-delay:.12s}.hero-proof{animation-delay:.24s}
+  .hero-phone{animation:rise .8s .35s cubic-bezier(.2,.7,.2,1) both,floaty 7s 1.2s ease-in-out infinite}
+  @supports (animation-timeline:view()){
+    .sec-title,.svc,.pkg,.pkg-extra,.step,.cases-grid>.case,.demo-car,.also,.about-img,.about-text,.faq details,.contact-inner>*{animation:rise linear both;animation-timeline:view();animation-range:entry 5% entry 75%}
+    .why-grid>.svc:nth-child(2),.pkg-grid>.pkg:nth-child(2),.steps>.step:nth-child(2){animation-range:entry 10% entry 85%}
+    .why-grid>.svc:nth-child(3),.pkg-grid>.pkg:nth-child(3),.steps>.step:nth-child(3){animation-range:entry 15% entry 95%}
+    .why-grid>.svc:nth-child(4),.steps>.step:nth-child(4){animation-range:entry 20% entry 100%}
+  }
+}
 .case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;transition:all .3s}
 .case:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(30,42,74,0.07)}
 .case.wide{grid-column:1/-1}
@@ -391,6 +433,8 @@ a.inl:hover{color:var(--ink)}
 /* FOOTER */
 footer{background:#111827;padding:32px 0}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.foot-brand{display:flex;align-items:center;gap:16px}
+.foot-brand img{width:64px;height:64px;border-radius:50%;flex-shrink:0}
 .foot-copy{font-size:13px;color:rgba(255,255,255,0.5)}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap}
 .foot-links a{font-size:13px;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -450,7 +494,14 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 @media(max-width:980px){.nav-links{display:none}}
 @media(max-width:900px){
   .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
-  .hero-photo{display:none}
+  /* Handy/Tablet: Foto + Handy-Mockup oben als Blickfang */
+  .hero-photo{order:-1;width:100%;max-width:440px;margin:0 auto -8px;padding-left:72px}
+  .hero-photo-frame{aspect-ratio:1/1;border-radius:22px}
+  .hero-photo-frame img{object-position:center 22%}
+  .hero-phone{left:0;bottom:-18px;transform:scale(.8);transform-origin:left bottom}
+  .hero-badge{right:-6px;bottom:-16px;padding:10px 14px;max-width:150px}
+  .hero-badge-num{font-size:1.5rem}
+  .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
@@ -497,6 +548,7 @@ T["de"] = dict(
     btn1="Kostenloser Google-Check →", btn2="Pakete & Preise",
     photo_alt="Olha Polishchuk — Webseiten und Google-Profile für Beauty-Studios",
     badge_num="Nr. 1", badge_lbl="in Google für einen Kunden",
+    proof_q="Eine absolute Herzensempfehlung!", proof_who="Jana, JANA NAILS & Beauty", proof_link="Bewertungen bei Google",
     metrics=[("UA · RU", "Beratung — Webseite auf Deutsch"), ("Google SEO", "praktische Erfahrung"), ("Ganz Deutschland", "remote und in Düsseldorf")],
     why_label="Warum mit mir", why_title="Einfach, verständlich — in Ihrer Sprache",
     why=[("chat", "Wir sprechen dieselbe Sprache", "Sie erklären auf Ukrainisch oder Russisch, Ihre Kunden lesen alles auf Deutsch. Ohne Dolmetscher, ohne Missverständnisse."),
@@ -608,6 +660,7 @@ T["uk"] = dict(
     btn1="Отримати безкоштовний аудит у Google →", btn2="Пакети та ціни",
     photo_alt="Ольга Поліщук — Google-профіль, сайти та SEO в Дюссельдорфі",
     badge_num="№ 1", badge_lbl="у Google для клієнта",
+    proof_q="Eine absolute Herzensempfehlung!", proof_who="Яна, JANA NAILS & Beauty", proof_link="Відгуки в Google",
     metrics=[("UA · RU", "спілкуємося — сайт німецькою"), ("Google SEO", "практичний досвід"), ("Уся Німеччина", "дистанційно та в Düsseldorf")],
     why_label="Чому зі мною зручно", why_title="Просто, зрозуміло й вашою мовою",
     why=[("chat", "Говоримо однією мовою", "Ви пояснюєте українською чи російською, я пишу для ваших клієнтів німецькою. Без перекладача й без непорозумінь."),
@@ -720,6 +773,7 @@ T["ru"] = dict(
     btn1="Получить бесплатный аудит в Google →", btn2="Пакеты и цены",
     photo_alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе",
     badge_num="№ 1", badge_lbl="в Google для клиента",
+    proof_q="Eine absolute Herzensempfehlung!", proof_who="Яна, JANA NAILS & Beauty", proof_link="Отзывы в Google",
     metrics=[("RU · UA", "общаемся — сайт на немецком"), ("Google SEO", "практический опыт"), ("Вся Германия", "удалённо и в Düsseldorf")],
     why_label="Почему со мной удобно", why_title="Просто, понятно и на вашем языке",
     why=[("chat", "Говорим на одном языке", "Вы объясняете по-русски или по-украински, я пишу для ваших клиентов по-немецки. Без переводчика и без недопонимания."),
@@ -1062,7 +1116,7 @@ def header_html(lang, home=True, alt_paths=None, current=None):
     w = o.append
     w('<a class="skip" href="#inhalt">%s</a>\n' % SKIP_LABEL[lang])
     w('<header id="hdr">\n  <nav class="wrap" aria-label="Navigation">\n')
-    w('    <a class="brand" href="/%s"><span class="brand-init" aria-hidden="true">OP</span><span class="brand-name">Olha <span>Polishchuk</span></span></a>\n' % PATHS[lang])
+    w('    <a class="brand" href="/%s"><img class="brand-logo" src="/images/logo-navy-96.webp" width="44" height="44" alt="" aria-hidden="true"><span class="brand-name">Olha <span>Polishchuk</span></span></a>\n' % PATHS[lang])
     w('    <div class="nav-links">\n')
     for href, label, key in links:
         cur = ' class="cur" aria-current="page"' if key and key == current else ''
@@ -1094,8 +1148,25 @@ window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);
 
 
 def footer_html():
-    return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a>%s<a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % (('<a href="%s" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a>' % GBP_URL) if GBP_URL else "", LINKEDIN)
+    return '<footer>\n  <div class="wrap foot-inner">\n    <div class="foot-brand"><img src="/images/logo-white-128.webp" width="64" height="64" alt="Olha Polishchuk — Logo" loading="lazy" decoding="async"><div class="foot-copy">© 2026 Olha Polishchuk · Düsseldorf</div></div>\n    <div class="foot-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a>%s<a href="%s" target="_blank" rel="noopener">LinkedIn</a></div>\n  </div>\n</footer>\n\n' % (('<a href="%s" target="_blank" rel="noopener" data-umami-event="footer-google-profil">Google-Profil</a>' % GBP_URL) if GBP_URL else "", LINKEDIN)
 
+
+# Illustration (dekorativ): so sieht ein gepflegtes Google-Profil mit Webseite auf dem Handy aus.
+# Bewusst „Ihr Studio“ — kein echtes Unternehmen. Inhalt auf Deutsch, weil es die deutsche Google-Suche zeigt.
+PHONE_MOCK = """      <div class="hero-phone" aria-hidden="true">
+        <div class="ph-notch"></div>
+        <div class="ph-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>nagelstudio in der nähe</div>
+        <div class="ph-map"><i class="ph-pin"></i></div>
+        <div class="ph-card">
+          <div class="ph-name">Ihr Studio</div>
+          <div class="ph-rate"><b>4,9</b> <span>★★★★★</span> (128)</div>
+          <div class="ph-meta">Nagelstudio · Düsseldorf</div>
+          <div class="ph-open"><b>Geöffnet</b> · schließt um 19:00</div>
+          <div class="ph-acts"><span class="on">Website</span><span>Route</span><span>Anrufen</span></div>
+          <div class="ph-book">Termin buchen</div>
+        </div>
+      </div>
+"""
 
 DEMO_JS = """<script>
 (function(){document.querySelectorAll('.demo-car').forEach(function(car){
@@ -1259,8 +1330,15 @@ def render(lang):
     # hero
     w('<section class="hero" id="top">\n  <div class="wrap hero-inner">\n    <div class="hero-text">\n')
     w('      <div class="hero-eyebrow">%s</div>\n      <h1>%s</h1>\n      <p class="hero-claim">%s</p>\n      <p class="hero-sub">%s</p>\n' % (esc(t["eyebrow"]), esc(t["h1"]), t["claim"], esc(t["sub"])))
-    w('      <div class="hero-btns">\n        <a href="#contact" class="btn-primary" data-umami-event="hero-cta">%s</a>\n        <a href="#pakete" class="btn-outline">%s</a>\n      </div>\n    </div>\n' % (esc(t["btn1"]), esc(t["btn2"])))
-    w('    <div class="hero-photo">\n      <div class="hero-photo-frame">%s</div>\n' % pic("/images/olha-portrait.jpg", 900, 1350, t["photo_alt"], (480, 900), "(min-width:1200px) 460px, 40vw", 'fetchpriority="high" decoding="async"', hide_below=900))
+    w('      <div class="hero-btns">\n        <a href="#contact" class="btn-primary" data-umami-event="hero-cta">%s</a>\n        <a href="#pakete" class="btn-outline">%s</a>\n      </div>\n' % (esc(t["btn1"]), esc(t["btn2"])))
+    # Social Proof direkt unter den Buttons (echte Google-Bewertungen, siehe Kunden-Fälle)
+    w('      <div class="hero-proof"><div class="hp-av" aria-hidden="true"><span>J</span><span>K</span></div>'
+      '<div class="hp-txt"><div class="hp-stars"><span aria-hidden="true">★★★★★</span>%s</div>'
+      '<div class="hp-q"><span lang="de">„%s“</span> — %s</div></div></div>\n    </div>\n'
+      % (('<a href="%s" target="_blank" rel="noopener" data-umami-event="hero-reviews">%s ↗</a>' % (GBP_URL, esc(t["proof_link"]))) if GBP_URL else "",
+         esc(t["proof_q"]), esc(t["proof_who"])))
+    w('    <div class="hero-photo">\n      <div class="hero-photo-frame">%s</div>\n' % pic("/images/olha-portrait.jpg", 900, 1350, t["photo_alt"], (480, 900), "(max-width:900px) 75vw, (min-width:1200px) 460px, 40vw", 'fetchpriority="high" decoding="async"'))
+    w(PHONE_MOCK)
     w('      <div class="hero-badge"><div class="hero-badge-num">%s</div><div class="hero-badge-lbl">%s</div></div>\n    </div>\n  </div>\n</section>\n\n' % (esc(t["badge_num"]), esc(t["badge_lbl"])))
 
     # metrics
