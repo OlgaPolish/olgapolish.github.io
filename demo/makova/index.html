@@ -50,6 +50,8 @@ a{color:inherit;text-decoration:none}
 /* announcement */
 .bar{background:var(--espresso);color:#e2d3c6;text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px}
 .bar b{color:var(--gold);font-weight:500}
+.demobar{background:var(--poppy);color:#fff;text-align:center;font-size:13px;line-height:1.4;padding:8px 14px}
+.demobar a{color:#fff;font-weight:600;text-decoration:underline;margin-left:6px;white-space:nowrap}
 /* header */
 header{position:sticky;top:0;z-index:10;background:rgba(255,253,251,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
@@ -240,7 +242,7 @@ section.studio{padding:0 0 96px}
 .studio .card p{font-size:14px;color:#e2d3c6}
 @media(max-width:600px){.studio .card{margin-top:-60px;padding:30px 24px}}
 /* портфолио: без мессенджеров и Instagram реальной студии */
-.wa,.igf,.ig,.igl{display:none!important}
+.igf,.ig,.igl{display:none!important}
 </style>
 </head>
 <body>
@@ -331,6 +333,7 @@ section.studio{padding:0 0 96px}
 </defs>
 </svg>
 
+<div class="demobar"><span id="db-t"></span> <a id="db-a" href="https://olhapolishchuk.de/" target="_blank" rel="noopener"></a></div>
 <div class="bar" id="bar"></div>
 
 <header><div class="wrap nav">
@@ -350,7 +353,7 @@ section.studio{padding:0 0 96px}
     <div class="meta" id="h-meta"></div>
   </div>
   <div class="art">
-    <img class="cover" id="h-cover" src="img/hero.jpg" alt="MAKOVA Art & Beauty Studio Düsseldorf" onerror="this.parentNode.remove();document.querySelector('.hero').classList.add('nocover')">
+    <img class="cover" id="h-cover" src="img/hero.webp" alt="MAKOVA Art & Beauty Studio Düsseldorf" onerror="this.parentNode.remove();document.querySelector('.hero').classList.add('nocover')">
     <svg class="pp pp-b bob" viewBox="-130 -130 260 260" aria-hidden="true"><use href="#poppy" x="-130" y="-130" width="260" height="260"/></svg>
     <svg class="pp pp-a" viewBox="0 0 420 560" aria-hidden="true">
       <g class="sway s3"><path d="M228 560C230 500 225 450 232 410" fill="none" stroke="#56743f" stroke-width="5" stroke-linecap="round"/><use href="#bud" x="196" y="300" width="70" height="140" style="color:#f3e1d6"/></g>
@@ -370,7 +373,7 @@ section.studio{padding:0 0 96px}
 </div></section>
 
 <section class="studio" id="studio">
-  <img id="st-img" src="img/studio.jpg" alt="MAKOVA Studio" loading="lazy" onerror="document.getElementById('studio').style.display='none'">
+  <img id="st-img" src="img/studio.webp" alt="MAKOVA Studio" loading="lazy" onerror="document.getElementById('studio').style.display='none'">
   <div class="wrap"><div class="card">
     <div class="eyebrow" id="st-eyebrow"></div>
     <h2 id="st-title"></h2>
@@ -437,16 +440,16 @@ section.studio{padding:0 0 96px}
 /* ===================== ДАННЫЕ КЛИЕНТА ===================== */
 const SITE = {
   name: "MAKOVA", sub: "Art & Beauty Studio",
-  wa: "",                // портфолио: реального номера нет
+  wa: "380666578075",    // WhatsApp Оли: все кнопки ведут к ней с текстом «хочу такой сайт»
   book: "#kontakt",      // портфолио: кнопки записи ведут к блоку «Kontakt»
   address: "Beispielstraße 1<br>40210 Düsseldorf<br><small style=\"opacity:.7\">Adresse im Beispiel fiktiv</small>",
   map: "https://www.google.com/maps/place/D%C3%BCsseldorf",
   instagram: "#kontakt",
   google: { rating: "5,0", count: 0 },
   images: {
-    logo: "img/logo.jpg", portrait: "img/team.jpg",
-    tiles: ["img/manikuere.jpg","img/pedikuere.jpg","img/massage.jpg","img/augenbrauen.jpg","img/makeup.jpg","img/workshops.jpg"],
-    gallery: ["img/galerie-1.jpg","img/galerie-2.jpg","img/galerie-3.jpg","img/galerie-4.jpg","img/galerie-5.jpg"]
+    logo: "img/logo.jpg", portrait: "img/team.webp",
+    tiles: ["img/manikuere.webp","img/pedikuere.webp","img/massage.webp","img/augenbrauen.webp","img/makeup.webp","img/workshops.webp"],
+    gallery: ["img/galerie-1.webp","img/galerie-2.webp","img/galerie-3.webp","img/galerie-4.webp","img/galerie-5.webp"]
   },
   hours: [["Mo – Fr","10:00 – 19:00"],["Sa","10:00 – 16:00"],["So","geschlossen"]],   // пример
   /* Прайс — пример (структура как у реальной студии). */
@@ -524,6 +527,8 @@ const T = {
   offer:"<span class='eyebrow' style='color:#e3c9b0'>Raum mieten</span><b>Workshops, Beauty-Brunches & Events bei MAKOVA</b><span style='color:var(--gold)'>Gemütlicher Raum mitten in Düsseldorf – und ein freier Arbeitsplatz für eine Nageldesignerin. Schreiben Sie uns!</span>",
   pNote:"Beispielpreise in Euro. Bei jeder Leistung ein Button – im echten Projekt führt er direkt zur Buchung (WhatsApp, Fresha oder Treatwell).",
   ask:"Anfragen", askMsg:n=>`Hallo! Ich möchte gern einen Termin anfragen: ${n}.`,
+  waMsg:"Hallo Olha! Ich habe die Demo „MAKOVA Art & Beauty Studio“ gesehen und möchte so eine Website.",
+  banner:"Demo · fiktives Studio · Website von Olha Polishchuk", bannerCta:"So eine Website bestellen →",
   values:[["Ukrainische Qualität","Präzise Maniküre und Pediküre, große Farbauswahl und Beschichtungen, die lange halten."],
           ["Alles an einem Ort","Nägel, Massage, Augenbrauen, Wimpern und Make-up – in einem gemütlichen Studio."],
           ["Mehr als ein Salon","Workshops, Beauty-Brunches und Events – und ein Raum, den Sie mieten können."]],
@@ -557,6 +562,8 @@ const T = {
   offer:"<span class='eyebrow' style='color:#e3c9b0'>Оренда простору</span><b>Воркшопи, б’юті-бранчі та події у MAKOVA</b><span style='color:var(--gold)'>Затишний простір у центрі Дюссельдорфа — і вільне робоче місце для майстра манікюру. Пишіть нам!</span>",
   pNote:"Приклад цін у євро. Біля кожної послуги — кнопка; у справжньому проєкті вона веде одразу до запису (WhatsApp, Fresha або Treatwell).",
   ask:"Записатися", askMsg:n=>`Добрий день! Хочу записатися: ${n}.`,
+  waMsg:"Добрий день, Олю! Переглянула демо «MAKOVA Art & Beauty Studio» — хочу такий сайт.",
+  banner:"Демо · вигадана студія · сайт зробила Olha Polishchuk", bannerCta:"Замовити такий сайт →",
   values:[["Українська якість","Точний манікюр і педикюр, великий вибір кольорів і покриття, яке довго тримається."],
           ["Усе в одному місці","Нігті, масаж, брови, вії та макіяж — у затишній студії."],
           ["Більше, ніж салон","Воркшопи, б’юті-бранчі й події — і простір, який можна орендувати."]],
@@ -584,7 +591,7 @@ const grad=["linear-gradient(160deg,#efe3d8,#c9a48c)","linear-gradient(160deg,#e
 function render(l){
   const t=T[l]; document.documentElement.lang=l;
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
-  const wa=`https://wa.me/${SITE.wa}`; const main=SITE.book||wa;
+  const wa=`https://wa.me/${SITE.wa}?text=${encodeURIComponent(t.waMsg)}`; const main=wa;
   $('bar').innerHTML=t.bar;
   /* три круга с маком посередине — как логотип в Instagram */
   $('logo').innerHTML=`<svg class="mark" viewBox="0 0 44 44" style="width:44px" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="#7a1f2c" stroke="currentColor" stroke-width="1.6"/><use href="#poppy-line" x="7" y="7" width="30" height="30" style="color:#f3e1d6"/></svg><span class="sep"></span><span>${SITE.name}<small>${SITE.sub}</small></span>`;
@@ -599,7 +606,7 @@ function render(l){
   $('g-eyebrow').textContent=t.gEyebrow; $('g-title').textContent=t.gTitle;
   $('gal').innerHTML=SITE.images.gallery.map(g=>`<img src="${g}" alt="MAKOVA Art & Beauty Studio Düsseldorf" loading="lazy" onerror="this.outerHTML='<div class=&quot;ph&quot;></div>'">`).join('');
   $('p-eyebrow').textContent=t.pEyebrow; $('p-title').textContent=t.pTitle; $('p-note').textContent=t.pNote; $('offer').innerHTML=t.offer;
-  const bookHref=n=>SITE.book||`${wa}?text=${encodeURIComponent(t.askMsg(n))}`;
+  const bookHref=n=>wa; // демо: запись тоже ведёт к Оле
   $('cats').innerHTML=SITE.price.map(c=>`<div class="cat"><h3>${c[l]}</h3>${c.who?`<div class="who">${c.who}</div>`:'<div class="who">&nbsp;</div>'}${c.items.map(i=>i.sub?`<div class="sub">${i.sub[l]}</div>`:
     `<div class="row"><span class="n">${i[l]}${i['s'+l]?`<small>${i['s'+l]}</small>`:''}</span>${i.d?`<span class="d">${i.d}</span>`:''}<span class="p">${i.p}</span><a class="ask" href="${bookHref(i[l])}" target="_blank" rel="noopener" aria-label="${t.ask}: ${i[l]}">${t.ask}</a></div>`).join('')}</div>`).join('');
   $('t-eyebrow').textContent=t.tEyebrow; $('t-title').textContent=t.tTitle; $('t-text').textContent=t.tText;
@@ -616,7 +623,7 @@ function render(l){
   $('c-hours-h').textContent=t.hoursH; $('c-hours').innerHTML=SITE.hours.map(([d,h])=>`<div><span>${d}</span><span>${h}</span></div>`).join('');
   $('c-book-h').textContent=t.bookH; $('c-book').textContent=t.book; $('c-btn').textContent=t.btn; $('c-btn').href=main;
   ['ig-h','ig-f','ig-c'].forEach(i=>$(i).href=SITE.instagram);
-  $('wa').href=wa; document.querySelectorAll('a[href^="#"]').forEach(x=>x.removeAttribute('target')); $('c-btn').href='https://olhapolishchuk.de'; $('c-btn').textContent=l==='de'?'So eine Website für Ihr Studio ↗':'Такий сайт для вашої студії ↗'; $('copy').textContent=t.copy; $('demo').textContent=t.demo;
+  $('wa').href=wa; $('db-t').textContent=t.banner; $('db-a').textContent=t.bannerCta; document.querySelectorAll('a[href^="#"]').forEach(x=>x.removeAttribute('target')); $('c-btn').href='https://olhapolishchuk.de'; $('c-btn').textContent=l==='de'?'So eine Website für Ihr Studio ↗':'Такий сайт для вашої студії ↗'; $('copy').textContent=t.copy; $('demo').textContent=t.demo;
 }
 /* язык запоминается и передаётся на страницу блога */
 let LANG='de'; try{const s=localStorage.getItem('makova-lang'); if(s==='uk'||s==='de') LANG=s;}catch(e){}

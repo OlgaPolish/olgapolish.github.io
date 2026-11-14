@@ -425,6 +425,12 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .cta-nav{display:none}
   .about-card{position:static;margin-top:14px}
 }
+.blog-cover{margin:0 0 34px;border-radius:18px;overflow:hidden;aspect-ratio:2.6/1;box-shadow:0 18px 50px rgba(30,42,74,.12)}
+.blog-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start}
+.blog-deko{position:sticky;top:96px;padding:56px 0 88px}
+.blog-deko img{width:300px;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(30,42,74,.10))}
+@media(max-width:900px){.blog-layout{display:block}.blog-deko{display:none}}
 article.post figure{margin:28px 0 30px}
 article.post figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
 article.post figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:8px}

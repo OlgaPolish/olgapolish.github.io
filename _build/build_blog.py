@@ -242,7 +242,16 @@ POSTS[0]["de"] = DE_GOOGLE_MAPS
 POSTS.append(INSTAGRAM_POST)
 
 # Доп. стили блога: картинки и таблицы в статьях
-BLOG_CSS = """article.post figure{margin:28px 0 30px}
+HEADER = "/images/blog/blog-header.jpg"  # фото-шапка списка статей (Canva, 2:1)
+DEKO = "/images/blog/blog-deko.png"  # иллюстрация в списке статей; исходник — blog-deko.svg рядом
+
+BLOG_CSS = """.blog-cover{margin:0 0 34px;border-radius:18px;overflow:hidden;aspect-ratio:2.6/1;box-shadow:0 18px 50px rgba(30,42,74,.12)}
+.blog-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start}
+.blog-deko{position:sticky;top:96px;padding:56px 0 88px}
+.blog-deko img{width:300px;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(30,42,74,.10))}
+@media(max-width:900px){.blog-layout{display:block}.blog-deko{display:none}}
+article.post figure{margin:28px 0 30px}
 article.post figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
 article.post figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:8px}
 .tbl-wrap{overflow-x:auto;margin:0 0 22px}
@@ -322,8 +331,13 @@ def render_index(lang):
     alts["x-default"] = alts["de"]
     hdr_alt = {l2: "/" + B.PATHS[l2] + "blog/" for l2 in B.BLOG_LANGS}
     o = [head(lang, u["title"], u["desc"], url, alts), B.header_html(lang, home=False, alt_paths=hdr_alt, current="blog")]
-    o.append('<main id="inhalt" tabindex="-1">\n<section class="blog-hero"><div class="wrap"><div class="sec-label">%s</div><h1>%s</h1><p>%s</p></div></section>\n' % (esc(u["blog"]), esc(u["h1"]), esc(u["lead"])))
-    o.append('<div class="wrap post-list">\n')
+    # Двухколонка: слева заголовок + статьи, справа декоративная иллюстрация (на телефоне скрыта и не скачивается)
+    o.append('<main id="inhalt" tabindex="-1">\n<div class="wrap blog-layout">\n<div class="blog-main">\n')
+    head_img = ""
+    if os.path.exists(os.path.join(B._ROOT, HEADER.lstrip("/"))):  # шапка появляется, только когда файл лежит в images/blog/
+        head_img = '<div class="blog-cover">%s</div>' % B.pic(HEADER, 1600, 800, "", (800, 1600), "(max-width:900px) 92vw, 820px", 'fetchpriority="high" decoding="async"')
+    o.append('<section class="blog-hero">%s<div class="sec-label">%s</div><h1>%s</h1><p>%s</p></section>\n' % (head_img, esc(u["blog"]), esc(u["h1"]), esc(u["lead"])))
+    o.append('<div class="post-list">\n')
     for p in sorted(POSTS, key=lambda x: x["date"], reverse=True):
         if lang not in p:
             continue
@@ -331,6 +345,8 @@ def render_index(lang):
         mins = max(1, round(words(a["body"]) / 180))
         o.append('<a class="post-card" href="/%sblog/%s"><div class="post-meta">%s · %d %s</div><h2>%s</h2><p>%s</p><span class="post-more">%s</span></a>\n' % (
             B.PATHS[lang], a["slug"], nice_date(p["date"], lang), mins, u["min"], esc(a["title"]), esc(a["excerpt"]), u["more"]))
+    o.append('</div>\n</div>\n')
+    o.append('<aside class="blog-deko" aria-hidden="true">%s</aside>\n' % B.pic(DEKO, 600, 1400, "", (300, 600), "300px", hide_below=900))
     o.append('</div>\n</main>\n')
     o.append(tail(lang))
     return "".join(o)

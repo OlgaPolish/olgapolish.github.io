@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1400" width="600" height="1400" xmlns:c2pa="http://c2pa.org/manifest">
+  <defs>
+    <clipPath id="arch"><path d="M0 300 A300 300 0 0 1 600 300 V1400 H0 Z"/></clipPath>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF3E7"/>
+      <stop offset="0.55" stop-color="#FBEEDF"/>
+      <stop offset="1" stop-color="#F4E2CE"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F6CF98"/>
+      <stop offset="1" stop-color="#F6CF98" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8A84F"/>
+      <stop offset="1" stop-color="#C97A2C"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EDE6DE"/>
+    </linearGradient>
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D9895F"/>
+      <stop offset="1" stop-color="#B9673F"/>
+    </linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#1E2A4A" flood-opacity="0.16"/>
+    </filter>
+    <filter id="shs" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1E2A4A" flood-opacity="0.14"/>
+    </filter>
+    <g id="spark"><path d="M0 -14 C2 -4 4 -2 14 0 C4 2 2 4 0 14 C-2 4 -4 2 -14 0 C-4 -2 -2 -4 0 -14 Z"/></g>
+    <g id="star"><path d="M0 -9 L2.6 -3 L9 -2.8 L4 1.4 L5.6 7.8 L0 4.2 L-5.6 7.8 L-4 1.4 L-9 -2.8 L-2.6 -3 Z"/></g>
+    <path id="leaf" d="M0 0 C14 -10 34 -10 46 0 C34 10 14 10 0 0 Z"/>
+  </defs>
+
+  <g clip-path="url(#arch)">
+    <rect width="600" height="1400" fill="url(#bg)"/>
+    <!-- weiche Flecken -->
+    <circle cx="300" cy="250" r="230" fill="url(#sun)" opacity="0.75"/>
+    <circle cx="560" cy="760" r="170" fill="#EEF0F5" opacity="0.8"/>
+    <circle cx="20" cy="1040" r="150" fill="#F8DDBA" opacity="0.55"/>
+    <ellipse cx="300" cy="1395" rx="420" ry="150" fill="#EBD3B8"/>
+    <ellipse cx="300" cy="1395" rx="420" ry="150" fill="none" stroke="#E2C5A5" stroke-width="2"/>
+
+    <!-- hängender Zweig links oben -->
+    <g fill="#7E9A82">
+      <path d="M118 60 C128 160 120 250 96 330" fill="none" stroke="#6C8870" stroke-width="3" stroke-linecap="round"/>
+      <use href="#leaf" transform="translate(124 120) rotate(30)"/>
+      <use href="#leaf" transform="translate(124 140) rotate(150)" fill="#93AE96"/>
+      <use href="#leaf" transform="translate(122 200) rotate(35)" fill="#93AE96"/>
+      <use href="#leaf" transform="translate(120 222) rotate(160)"/>
+      <use href="#leaf" transform="translate(110 282) rotate(45)"/>
+      <use href="#leaf" transform="translate(104 304) rotate(170)" fill="#93AE96"/>
+    </g>
+    <g fill="#7E9A82">
+      <path d="M470 40 C478 110 476 170 492 232" fill="none" stroke="#6C8870" stroke-width="3" stroke-linecap="round"/>
+      <use href="#leaf" transform="translate(474 96) rotate(150) scale(0.85)" fill="#93AE96"/>
+      <use href="#leaf" transform="translate(476 120) rotate(20) scale(0.85)"/>
+      <use href="#leaf" transform="translate(482 176) rotate(160) scale(0.85)"/>
+      <use href="#leaf" transform="translate(486 200) rotate(25) scale(0.85)" fill="#93AE96"/>
+    </g>
+
+    <!-- gepunkteter Weg vom Pin zum Telefon -->
+    <path d="M300 330 C300 370 230 380 236 420" fill="none" stroke="#D48B3A" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 12"/>
+
+    <!-- großer Pin -->
+    <g filter="url(#sh)">
+      <path d="M300 150 C248 150 214 188 214 236 C214 290 268 330 300 368 C332 330 386 290 386 236 C386 188 352 150 300 150 Z" fill="url(#pin)"/>
+      <circle cx="300" cy="234" r="34" fill="#FFFFFF"/>
+      <use href="#star" transform="translate(300 236) scale(2)" fill="#D48B3A"/>
+    </g>
+
+    <!-- Telefon -->
+    <g filter="url(#sh)">
+      <rect x="150" y="440" width="300" height="580" rx="42" fill="#1E2A4A"/>
+      <rect x="164" y="454" width="272" height="552" rx="30" fill="#EEF0F5"/>
+    </g>
+    <g clip-path="url(#screen)">
+      <clipPath id="screen"><rect x="164" y="454" width="272" height="552" rx="30"/></clipPath>
+      <!-- Karte -->
+      <rect x="164" y="454" width="272" height="330" fill="#E9ECF2"/>
+      <path d="M164 560 C230 540 300 600 436 560 V610 C300 650 230 590 164 612 Z" fill="#CFE0EA"/>
+      <rect x="196" y="640" width="78" height="70" rx="12" fill="#D6E6D2"/>
+      <rect x="350" y="470" width="70" height="60" rx="10" fill="#D6E6D2"/>
+      <g stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" fill="none">
+        <path d="M164 520 H436"/><path d="M250 454 V784"/><path d="M164 740 C260 720 330 760 436 700"/><path d="M380 454 C370 560 400 660 360 784"/>
+      </g>
+      <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9">
+        <path d="M164 676 H436"/><path d="M310 454 V784"/>
+      </g>
+      <!-- kleiner Pin auf der Karte -->
+      <g filter="url(#shs)">
+        <path d="M316 600 C301 600 291 611 291 625 C291 641 306 652 316 664 C326 652 341 641 341 625 C341 611 331 600 316 600 Z" fill="#D48B3A"/>
+        <circle cx="316" cy="624" r="8" fill="#FFFFFF"/>
+      </g>
+      <!-- Karte unten: Profil -->
+      <rect x="164" y="760" width="272" height="246" rx="26" fill="#FFFFFF"/>
+      <rect x="276" y="772" width="48" height="5" rx="2.5" fill="#D9DDE6"/>
+      <rect x="186" y="796" width="150" height="14" rx="7" fill="#1E2A4A"/>
+      <g fill="#E8A84F">
+        <use href="#star" transform="translate(196 832)"/><use href="#star" transform="translate(216 832)"/><use href="#star" transform="translate(236 832)"/><use href="#star" transform="translate(256 832)"/><use href="#star" transform="translate(276 832)"/>
+      </g>
+      <rect x="296" y="827" width="40" height="10" rx="5" fill="#D9DDE6"/>
+      <rect x="186" y="856" width="222" height="9" rx="4.5" fill="#E3E6ED"/>
+      <rect x="186" y="874" width="180" height="9" rx="4.5" fill="#E3E6ED"/>
+      <rect x="186" y="904" width="104" height="36" rx="18" fill="#D48B3A"/>
+      <rect x="300" y="904" width="104" height="36" rx="18" fill="none" stroke="#D48B3A" stroke-width="2.5"/>
+      <rect x="206" y="918" width="64" height="8" rx="4" fill="#FFFFFF"/>
+      <rect x="320" y="918" width="64" height="8" rx="4" fill="#E8A84F"/>
+    </g>
+    <rect x="262" y="462" width="76" height="20" rx="10" fill="#1E2A4A"/>
+
+    <!-- Bewertungs-Blase rechts -->
+    <g filter="url(#sh)">
+      <path d="M352 640 H530 a22 22 0 0 1 22 22 V708 a22 22 0 0 1 -22 22 H404 L380 750 L384 730 H352 a22 22 0 0 1 -22 -22 V662 a22 22 0 0 1 22 -22 Z" fill="#FFFFFF"/>
+      <g fill="#E8A84F">
+        <use href="#star" transform="translate(362 668) scale(1.15)"/><use href="#star" transform="translate(388 668) scale(1.15)"/><use href="#star" transform="translate(414 668) scale(1.15)"/><use href="#star" transform="translate(440 668) scale(1.15)"/><use href="#star" transform="translate(466 668) scale(1.15)"/>
+      </g>
+      <path d="M512 660 c-6 -9 -20 -6 -20 4 c0 9 12 15 20 22 c8 -7 20 -13 20 -22 c0 -10 -14 -13 -20 -4 Z" fill="#E07A6A"/>
+      <rect x="352" y="694" width="160" height="8" rx="4" fill="#E3E6ED"/>
+      <rect x="352" y="710" width="110" height="8" rx="4" fill="#E3E6ED"/>
+    </g>
+
+    <!-- Termin-Karte links -->
+    <g filter="url(#sh)" transform="translate(-8 -262)">
+      <rect x="48" y="820" width="150" height="128" rx="22" fill="#FFFFFF"/>
+      <rect x="48" y="820" width="150" height="38" rx="22" fill="#1E2A4A"/>
+      <rect x="48" y="840" width="150" height="18" fill="#1E2A4A"/>
+      <rect x="82" y="810" width="8" height="24" rx="4" fill="#D48B3A"/>
+      <rect x="156" y="810" width="8" height="24" rx="4" fill="#D48B3A"/>
+      <g fill="#E3E6ED">
+        <circle cx="76" cy="882" r="6"/><circle cx="100" cy="882" r="6"/><circle cx="124" cy="882" r="6"/><circle cx="148" cy="882" r="6"/><circle cx="172" cy="882" r="6"/>
+        <circle cx="76" cy="906" r="6"/><circle cx="100" cy="906" r="6"/><circle cx="148" cy="906" r="6"/><circle cx="172" cy="906" r="6"/>
+        <circle cx="76" cy="930" r="6"/><circle cx="100" cy="930" r="6"/><circle cx="124" cy="930" r="6"/>
+      </g>
+      <circle cx="124" cy="906" r="13" fill="#D48B3A"/>
+      <path d="M117 906 l5 5 l9 -10" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Tasse -->
+    <g>
+      <path d="M150 1112 c-14 -22 14 -30 0 -52" fill="none" stroke="#D9B48E" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+      <path d="M180 1104 c-14 -22 14 -30 0 -52" fill="none" stroke="#D9B48E" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <ellipse cx="165" cy="1250" rx="92" ry="14" fill="#D9BC9C"/>
+      <g filter="url(#shs)">
+        <path d="M222 1150 c34 0 40 50 -4 58" fill="none" stroke="#EDE6DE" stroke-width="13" stroke-linecap="round"/>
+        <path d="M98 1128 H232 L222 1222 a24 24 0 0 1 -24 22 H132 a24 24 0 0 1 -24 -22 Z" fill="url(#cup)"/>
+        <ellipse cx="165" cy="1128" rx="67" ry="13" fill="#7A4A2A"/>
+        <ellipse cx="165" cy="1126" rx="58" ry="8" fill="#9A6440"/>
+        <rect x="114" y="1172" width="102" height="14" rx="7" fill="#D48B3A" opacity="0.85"/>
+      </g>
+    </g>
+
+    <!-- Pflanze -->
+    <g>
+      <ellipse cx="440" cy="1300" rx="86" ry="14" fill="#D9BC9C"/>
+      <g fill="#7E9A82">
+        <path d="M440 1150 C420 1080 380 1050 352 1052 C360 1094 398 1134 440 1150 Z"/>
+        <path d="M440 1150 C460 1070 500 1040 530 1042 C524 1090 484 1132 440 1150 Z" fill="#93AE96"/>
+        <path d="M440 1150 C432 1060 446 1000 470 980 C484 1024 470 1100 440 1150 Z" fill="#6C8870"/>
+        <path d="M440 1150 C420 1100 400 1088 376 1100 C392 1126 414 1142 440 1150 Z" fill="#93AE96"/>
+      </g>
+      <g filter="url(#shs)">
+        <path d="M374 1148 H506 L490 1278 a20 20 0 0 1 -20 18 H410 a20 20 0 0 1 -20 -18 Z" fill="url(#pot)"/>
+        <rect x="366" y="1140" width="148" height="26" rx="8" fill="#C9785A"/>
+      </g>
+    </g>
+
+    <!-- Funkeln -->
+    <g fill="#D48B3A">
+      <use href="#spark" transform="translate(470 330) scale(1.1)"/>
+      <use href="#spark" transform="translate(96 470) scale(0.8)" opacity="0.8"/>
+      <use href="#spark" transform="translate(520 560) scale(0.6)" opacity="0.7"/>
+      <use href="#spark" transform="translate(70 1030) scale(0.7)" opacity="0.7"/>
+      <use href="#spark" transform="translate(300 1110) scale(0.9)"/>
+      <use href="#spark" transform="translate(540 940) scale(0.75)" opacity="0.85"/>
+    </g>
+    <g fill="#1E2A4A" opacity="0.18">
+      <circle cx="420" cy="400" r="5"/><circle cx="560" cy="1060" r="5"/><circle cx="250" cy="1330" r="4"/>
+    </g>
+  </g>
+  <!-- feiner Rahmen -->
+  <path d="M1.5 300 A298.5 298.5 0 0 1 598.5 300 V1398.5 H1.5 Z" fill="none" stroke="#E7CBA9" stroke-width="3"/>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo0MWRkZjU3Ny01Njg0LTRiYjgtOWE1NC00OWE2Mzc5OGM3OGQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaJAwgMsYWAbOTcl+yHiB/EwAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDplY2FlMjJmYS05YTU4LTQyYWMtYTRjMi0yZmU0MjZhZDIyOTFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoB0UofvS2kYFxZhvABXiutQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg3P0TdraPk1NS1nSkMVfxP2acp4c8VozZWdWp5sUzUcOkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaNjth1ziQpoI4J2TgIMkhF0AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYINlyhCfSLzASUD9MhDFOYPQzxAtOaxNeeBt96rYOGyoWZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSsWZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjQxZGRmNTc3LTU2ODQtNGJiOC05YTU0LTQ5YTYzNzk4Yzc4ZC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjY2MDljYjZjLTU1NDctNGVjNi1hMDlmLTMwOWFjZGJhYTA1NXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDc/RN2to+TU1LWdKQxV/E/ZpynhzxWjNlZ1anmxTNRw6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggZSW6JlU7GgKMNIzS9VRnBBoPcX9jVWZb8o7q7T4acdqiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggjJJzk1NgogK3aq5mnYTiZLW7i7vjNbrGfbN+L/VNdnl0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQDYRX9hzAjq1NjoEM+abOthkkL1WNouunzihDtMGyofajxZOjjWEZdsfe0FrqwGmmkon+rsHXuUkng7TII1cRXw=</c2pa:manifest></metadata></svg>

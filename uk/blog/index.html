@@ -422,6 +422,12 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .cta-nav{display:none}
   .about-card{position:static;margin-top:14px}
 }
+.blog-cover{margin:0 0 34px;border-radius:18px;overflow:hidden;aspect-ratio:2.6/1;box-shadow:0 18px 50px rgba(30,42,74,.12)}
+.blog-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start}
+.blog-deko{position:sticky;top:96px;padding:56px 0 88px}
+.blog-deko img{width:300px;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(30,42,74,.10))}
+@media(max-width:900px){.blog-layout{display:block}.blog-deko{display:none}}
 article.post figure{margin:28px 0 30px}
 article.post figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
 article.post figcaption{font-size:13.5px;color:var(--ink-soft);margin-top:8px}
@@ -468,10 +474,15 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 </header>
 
 <main id="inhalt" tabindex="-1">
-<section class="blog-hero"><div class="wrap"><div class="sec-label">Блог</div><h1>Блог</h1><p>Пояснюю простими словами, як малому бізнесу в Німеччині отримувати клієнтів із Google: профіль на картах, сайт, відгуки.</p></div></section>
-<div class="wrap post-list">
+<div class="wrap blog-layout">
+<div class="blog-main">
+<section class="blog-hero"><div class="sec-label">Блог</div><h1>Блог</h1><p>Пояснюю простими словами, як малому бізнесу в Німеччині отримувати клієнтів із Google: профіль на картах, сайт, відгуки.</p></section>
+<div class="post-list">
 <a class="post-card" href="/uk/blog/tilky-instagram-tse-orenda.html"><div class="post-meta">7 листопада 2026 · 4 хв читання</div><h2>Тільки Instagram — це оренда</h2><p>Акаунт можуть заблокувати за один день. Чому поруч з Instagram потрібне те, що належить вам: сайт і Google-профіль.</p><span class="post-more">Читати →</span></a>
 <a class="post-card" href="/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html"><div class="post-meta">28 жовтня 2026 · 4 хв читання</div><h2>Чому вас не знаходять у Google Maps: 7 причин, про які мовчать чек-листи</h2><p>Профіль заповнений, фото є — а дзвінків немає. Пояснюю, як Google обирає, кого показати на карті, і що заважає саме вам.</p><span class="post-more">Читати →</span></a>
+</div>
+</div>
+<aside class="blog-deko" aria-hidden="true"><picture><source media="(max-width:900px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><source type="image/avif" srcset="/images/blog/blog-deko-300.avif 300w, /images/blog/blog-deko-600.avif 600w" sizes="300px"><source type="image/webp" srcset="/images/blog/blog-deko-300.webp 300w, /images/blog/blog-deko-600.webp 600w" sizes="300px"><img src="/images/blog/blog-deko.png" width="600" height="1400" alt="" loading="lazy" decoding="async"></picture></aside>
 </div>
 </main>
 <footer>

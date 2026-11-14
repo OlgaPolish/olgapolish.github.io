@@ -23,6 +23,7 @@ IMAGES = {
     "images/case-jana-nails.jpg": (600, 1200),
     "images/case-feinschliff.jpg": (600, 1200),
     "images/case-makova.jpg": (600, 1200),
+    "images/case-elle.jpg": (600, 1200),
     "images/puzzle-de.jpg": (1024,),
     "images/puzzle-uk.jpg": (1024,),
     "images/puzzle-ru.jpg": (1024,),
@@ -32,6 +33,8 @@ IMAGES = {
     "images/blog/put-klientki-de.png": (600, 1200),
     "images/blog/put-klientki-uk.png": (600, 1200),
     "images/blog/put-klientki-ru.png": (600, 1200),
+    "images/blog/blog-deko.png": (300, 600),
+    "images/blog/blog-header.jpg": (800, 1600),
 }
 
 # качество: фото чуть сильнее сжимаем, схемы с текстом (PNG) — бережнее
