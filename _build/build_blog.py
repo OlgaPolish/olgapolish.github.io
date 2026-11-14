@@ -247,6 +247,7 @@ DEKO = "/images/blog/blog-deko.png"  # иллюстрация в списке с
 
 BLOG_CSS = """.blog-cover{margin:0 0 34px;border-radius:18px;overflow:hidden;aspect-ratio:2.6/1;box-shadow:0 18px 50px rgba(30,42,74,.12)}
 .blog-cover img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:600px){.blog-cover{aspect-ratio:16/10;margin-bottom:26px}.blog-cover img{object-position:45% 50%}}
 .blog-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:start}
 .blog-deko{position:sticky;top:96px;padding:56px 0 88px}
 .blog-deko img{width:300px;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(30,42,74,.10))}
