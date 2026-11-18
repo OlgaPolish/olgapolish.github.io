@@ -427,7 +427,10 @@ a.inl:hover{color:var(--ink)}
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.demo-head{margin:48px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.demo-head{margin:56px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.car-first .demo-head{margin-top:0}
+.car-first .demo-head .sec-title{margin-bottom:10px}
+.beispiele{padding:8px 0 88px}
 .demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
 .demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:60ch}
 /* DEMO-KARUSSELL */
@@ -441,6 +444,14 @@ a.inl:hover{color:var(--ink)}
 .demo-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px 0;border-radius:12px}
 .demo-track::-webkit-scrollbar{display:none}
 .demo-slide{flex:0 0 calc(100% - 72px);scroll-snap-align:start}
+.demo-slide.no-img{flex-basis:min(440px,calc(100% - 72px))}
+.car-view{position:relative}
+.car-side{position:absolute;top:50%;translate:0 -50%;z-index:2;width:56px;height:56px;padding:0;border-radius:50%;border:3px solid #fff;background:var(--amber);color:#fff;font-family:inherit;font-size:20px;font-weight:600;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(30,42,74,.28);transition:opacity .25s,background .2s}
+.car-side:hover{background:var(--ink)}
+.car-side[hidden]{display:none}
+.car-next{right:-4px}.car-prev{left:-22px;background:var(--ink)}
+@keyframes nudge{0%,100%{translate:0 -50%}50%{translate:6px -50%}}
+@media(prefers-reduced-motion:no-preference){.car-next:not(.used){animation:nudge 1.6s ease-in-out 3}}
 .demo-slide:only-child{flex-basis:100%}
 .demo-slide:hover{transform:none}
 .demo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
@@ -664,7 +675,9 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
-  .demo-slide{flex-basis:86%;padding:20px}
+  .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
+  .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
+  .beispiele{padding:0 0 64px}
   .demo-head{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
@@ -802,6 +815,61 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   </div>
 </section>
 
+<section class="beispiele" id="beispiele">
+  <div class="wrap">
+    <div class="sec-label">Beispiele</div>
+    <div class="demo-car car-first" role="region" aria-roledescription="carousel" aria-label="Demo-Design — so kann Ihre Webseite aussehen">
+    <div class="demo-head"><div><h2 class="sec-title">Demo-Design — so kann Ihre Webseite aussehen</h2><p>Beispiele für erfundene Studios — damit Sie Stil und Aufbau sehen. Zum Blättern wischen oder die Pfeile nutzen.</p></div><div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="Vorheriges Beispiel" disabled>&#8592;</button><span class="demo-count" aria-live="polite"><b>1</b> / 5</span><button type="button" class="demo-btn" data-dir="1" aria-label="Nächstes Beispiel" data-umami-event="demo-karussell">&#8594;</button></div></div>
+    <div class="car-view">
+    <div class="demo-track" tabindex="0">
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 von 5">
+        <a class="case-img" href="/demo/elle/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-elle-600.avif 600w, /images/case-elle-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-elle-600.webp 600w, /images/case-elle-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-elle.jpg" width="1200" height="750" alt="Startseite der Portfolio-Webseite Elle&#x27;s Beauty Studio — fiktives Beauty-Studio in Düsseldorf" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Portfolio-Case · fiktives Studio</div>
+        <h3><a href="/demo/elle/" target="_blank" rel="noopener">Elle&#x27;s Beauty Studio — Webseite für ein Beauty-Studio in der Innenstadt</a></h3>
+        <p>Dunkles Graphit, Gold und Pink mit Federn — ein eleganter Auftritt für ein Studio im gehobenen Segment. Maniküre, Pediküre, Wimpern, Brauen und Permanent Make-up: Preisliste nach Stylistinnen, Terminanfrage per WhatsApp mit vorbereitetem Text, Regeln zu Absage und Verspätung gut sichtbar, Galerie, Bewertungen und Öffnungszeiten — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 von 5">
+        <a class="case-img" href="/demo/rose/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-rose-600.avif 600w, /images/case-rose-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-rose-600.webp 600w, /images/case-rose-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-rose.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite ROSÉ beauty space — fiktives Beauty-Studio in Düsseldorf" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Konzept · fiktives Studio</div>
+        <h3><a href="/demo/rose/" target="_blank" rel="noopener">ROSÉ beauty space — Konzept-Webseite für Nägel, Wimpern &amp; Augenbrauen</a></h3>
+        <p>Ruhiges Taupe und Graphit, elegante Bodoni-Schrift, ein Bogen mit Ranunkel und fallende Rosenblätter. Leistungen als Kacheln, ausführliche Preisliste, Studio, Team, Galerie, Bewertungen und häufige Fragen — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 von 5">
+        <a class="case-img" href="/demo/midna/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-midna-600.avif 600w, /images/case-midna-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-midna-600.webp 600w, /images/case-midna-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-midna.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite Midna Nails — fiktives Nagelstudio mit Kursen" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Konzept · fiktives Studio</div>
+        <h3><a href="/demo/midna/" target="_blank" rel="noopener">Midna Nails — Konzept-Webseite für ein Nagelstudio mit Kursen</a></h3>
+        <p>Kupfer und Creme, im Header bewegt der Wind die Haare. Preise in zwei Stufen, Arbeiten, Studio, Team, Maniküre-Kurse mit Programm und häufige Fragen — auf Deutsch und Ukrainisch. Das Studio ist erfunden — Fotos, Zahlen und Angaben dienen nur als Beispiel.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="4 von 5">
+        <a class="case-img" href="/demo/makova/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-makova-600.avif 600w, /images/case-makova-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-makova-600.webp 600w, /images/case-makova-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-makova.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite MAKOVA Art &amp; Beauty Studio — fiktives Beauty-Studio" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Konzept · fiktives Studio</div>
+        <h3><a href="/demo/makova/" target="_blank" rel="noopener">MAKOVA — Konzept-Webseite für ein Beauty-Studio</a></h3>
+        <p>Ein Studio mit vielen Leistungen auf einer Seite: Nägel, Pediküre, Massage, Brows &amp; Lashes, Make-up und Workshops. Preisliste nach Kategorien, Galerie, Team, Studio und Öffnungszeiten — auf Deutsch und Ukrainisch. Eigenes Farbkonzept: Bordeaux, Creme und Mohnblumen. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="5 von 5">
+        <a class="case-img" href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-feinschliff-600.avif 600w, /images/case-feinschliff-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-feinschliff-600.webp 600w, /images/case-feinschliff-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-feinschliff.jpg" width="1200" height="750" alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Demo · fiktives Studio</div>
+        <h3><a href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener">Feinschliff — Beispiel-Webseite für ein Nagelstudio</a></h3>
+        <p>So kann eine Studio-Webseite aussehen: Leistungen und Preise, Studio, Team, Öffnungszeiten und Terminanfrage, optimiert fürs Smartphone. Das Studio ist erfunden — alle Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="car-side car-prev" data-dir="-1" tabindex="-1" aria-hidden="true" hidden>&#8592;</button><button type="button" class="car-side car-next" data-dir="1" tabindex="-1" aria-hidden="true" data-umami-event="demo-karussell" title="Weiter blättern">&#8594;</button>
+    </div>
+    <div class="demo-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
 <section class="pakete" id="pakete">
   <div class="wrap">
     <div class="sec-label">Pakete &amp; Preise</div>
@@ -883,9 +951,11 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 <section class="cases" id="ergebnisse">
   <div class="wrap">
     <div class="sec-label">Ergebnisse</div>
-    <h2 class="sec-title">Echte Ergebnisse für echte Unternehmen</h2>
-    <div class="cases-grid">
-      <div class="case wide has-img">
+    <div class="demo-car car-first" role="region" aria-roledescription="carousel" aria-label="Echte Ergebnisse für echte Unternehmen">
+    <div class="demo-head"><div><h2 class="sec-title">Echte Ergebnisse für echte Unternehmen</h2><p>Fertige Projekte für Kundinnen und Kunden — mit Zahlen und Bewertungen.</p></div><div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="Vorheriges Projekt" disabled>&#8592;</button><span class="demo-count" aria-live="polite"><b>1</b> / 6</span><button type="button" class="demo-btn" data-dir="1" aria-label="Nächstes Projekt" data-umami-event="projekte-karussell">&#8594;</button></div></div>
+    <div class="car-view">
+    <div class="demo-track" tabindex="0">
+      <div class="case wide has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 von 6">
         <a class="case-img" href="https://jana-nails-beauty.de/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-jana-nails-600.avif 600w, /images/case-jana-nails-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-jana-nails-600.webp 600w, /images/case-jana-nails-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-jana-nails.jpg" width="1200" height="750" alt="Startseite von jana-nails-beauty.de — Webseite des Nagelstudios JANA NAILS &amp; Beauty" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Onepager · Online-Terminbuchung · eigene Domain</div>
@@ -895,67 +965,41 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <div class="case-result"><div class="result-item"><div class="r-num">11 Tage</div><div class="r-lbl">vom Demo bis zum Start auf der Studio-Domain</div></div><div class="result-item"><div class="r-num">24/7</div><div class="r-lbl">Online-Termine ohne WhatsApp-Hin-und-Her</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">Sprachen: Deutsch und Russisch</div></div></div>
         </div>
       </div>
-      <div class="case wide">
+      <div class="case wide no-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 von 6">
         <div class="case-tag">Onepager · Domain · Firmen-E-Mail</div>
         <h3><a href="https://avkoncepcia.com/" target="_blank" rel="noopener">АВ-Концепція — Webseite für ein Ingenieurbüro aus Charkiw</a></h3>
         <p>Onepager mit Portfolio auf Ukrainisch und Englisch — erstellt aus PDFs, alten .doc-Dateien und über 80 Fotos des Kunden. Dazu eigene Domain und Firmen-E-Mail-Adressen mit Weiterleitung. Der Kunde musste nur noch prüfen.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">51</div><div class="r-lbl">Objekte mit Filter und Suche</div></div><div class="result-item"><div class="r-num">279 → 8 MB</div><div class="r-lbl">Bilder komprimiert — schnell auf dem Smartphone</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">Sprachen: Ukrainisch und Englisch</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 von 6">
         <div class="case-tag">SEO · Shopify · Düsseldorf</div>
         <h3><a href="https://kaneliastore.com/" target="_blank" rel="noopener">Kanelia — Shop für Nageldesign-Bedarf</a></h3>
         <p>SEO-Überarbeitung des Shopify-Shops: Produktseiten, Seitenstruktur, lokale Sichtbarkeit. Ergebnisse nach 2–3 Monaten — laut Google Search Console und Shopify.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">Nr. 1</div><div class="r-lbl">in Google für „nagelsticker kaufen“</div></div><div class="result-item"><div class="r-num">4–5 → 65</div><div class="r-lbl">Besuche aus Google pro Monat</div></div><div class="result-item"><div class="r-num">9 von 11</div><div class="r-lbl">ersten Online-Bestellungen kamen über Google</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="4 von 6">
         <div class="case-tag">Eigenes Projekt · Webseite · Pinterest</div>
         <h3><a href="https://easemyfeed.com/" target="_blank" rel="noopener">EaseMyFeed — mein eigenes Projekt</a></h3>
         <p>Webseite mit 13 Seiten und eigener Domain, Search Console, Pinterest und Instagram — alles selbst umgesetzt. Hier teste ich zuerst, was ich später für Kunden mache.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">7.057</div><div class="r-lbl">Pinterest-Impressionen in 30 Tagen</div></div><div class="result-item"><div class="r-num">+61 %</div><div class="r-lbl">zum Vormonat</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="5 von 6">
         <div class="case-tag">Instagram · SMM</div>
         <h3><a href="https://www.instagram.com/katerynaiakovlieva/" target="_blank" rel="noopener">Katerina Yakovleva — Instagram für eine Finanzberaterin in Düsseldorf</a></h3>
         <p>Komplette Betreuung des Instagram-Accounts: Strategie, Karussells, Reels und Stories, Texte und Veröffentlichung nach Plan. Jeder Beitrag wird vor der Veröffentlichung auf Compliance geprüft.</p>
         <blockquote class="case-quote" lang="de">„Ich freue mich sehr über die Zusammenarbeit mit Olga! Ich schätze ihre Aufmerksamkeit, ihre Freundlichkeit und die angenehme Kommunikation. Besonders freuen mich die positiven Ergebnisse der Arbeit an meinem beruflichen Instagram-Account, auf dem ich als Finanzberaterin nützliche Informationen teile.“<cite lang="de">— Katerina Y., Finanzberaterin · Google-Bewertung ★★★★★ (aus dem Russischen übersetzt)</cite></blockquote>
         <div class="case-result"><div class="result-item"><div class="r-num">2 → 113</div><div class="r-lbl">Follower seit Juli 2026</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="6 von 6">
         <div class="case-tag">Telegram · Threads · SMM</div>
         <h3>FinanzGuide GE — Telegram und Threads für ein Team von Finanzberatern</h3>
         <p>Seit August 2026: Markenstimme, visuelles System und eine Compliance-Checkliste (§ 34d/f GewO, Werbekennzeichnung, DSGVO), die jeder Beitrag durchläuft. Content für russisch- und ukrainischsprachige Familien in NRW. Nach der Analyse von 35 Threads-Beiträgen die Strategie umgebaut: konkreter Betrag oder Frist in der ersten Zeile, Threads statt Einzelposts, Frage am Ende. Dazu kostenlose Zuordnung der Anfragen über WhatsApp-Links mit vorausgefülltem Text und ein Vertrags-Tracker in Google Sheets als Lead-Magnet.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">39.933</div><div class="r-lbl">Aufrufe des besten Beitrags (Threads)</div></div></div>
       </div>
     </div>
-    <div class="demo-car" role="region" aria-roledescription="carousel" aria-label="Demo-Design — so kann Ihre Webseite aussehen">
-    <div class="demo-head"><div><h3>Demo-Design — so kann Ihre Webseite aussehen</h3><p>Beispiele für erfundene Studios — damit Sie Stil und Aufbau sehen. Zum Blättern wischen oder die Pfeile nutzen.</p></div><div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="Vorheriges Beispiel" disabled>&#8592;</button><span class="demo-count" aria-live="polite"><b>1</b> / 3</span><button type="button" class="demo-btn" data-dir="1" aria-label="Nächstes Beispiel" data-umami-event="demo-karussell">&#8594;</button></div></div>
-    <div class="demo-track" tabindex="0">
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 von 3">
-        <a class="case-img" href="/demo/elle/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-elle-600.avif 600w, /images/case-elle-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-elle-600.webp 600w, /images/case-elle-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-elle.jpg" width="1200" height="750" alt="Startseite der Portfolio-Webseite Elle&#x27;s Beauty Studio — fiktives Beauty-Studio in Düsseldorf" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Portfolio-Case · fiktives Studio</div>
-        <h3><a href="/demo/elle/" target="_blank" rel="noopener">Elle&#x27;s Beauty Studio — Webseite für ein Beauty-Studio in der Innenstadt</a></h3>
-        <p>Dunkles Graphit, Gold und Pink mit Federn — ein eleganter Auftritt für ein Studio im gehobenen Segment. Maniküre, Pediküre, Wimpern, Brauen und Permanent Make-up: Preisliste nach Stylistinnen, Terminanfrage per WhatsApp mit vorbereitetem Text, Regeln zu Absage und Verspätung gut sichtbar, Galerie, Bewertungen und Öffnungszeiten — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
-        </div>
-      </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 von 3">
-        <a class="case-img" href="/demo/makova/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-makova-600.avif 600w, /images/case-makova-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-makova-600.webp 600w, /images/case-makova-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-makova.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite MAKOVA Art &amp; Beauty Studio — fiktives Beauty-Studio" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Konzept · fiktives Studio</div>
-        <h3><a href="/demo/makova/" target="_blank" rel="noopener">MAKOVA — Konzept-Webseite für ein Beauty-Studio</a></h3>
-        <p>Ein Studio mit vielen Leistungen auf einer Seite: Nägel, Pediküre, Massage, Brows &amp; Lashes, Make-up und Workshops. Preisliste nach Kategorien, Galerie, Team, Studio und Öffnungszeiten — auf Deutsch und Ukrainisch. Eigenes Farbkonzept: Bordeaux, Creme und Mohnblumen. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
-        </div>
-      </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 von 3">
-        <a class="case-img" href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-feinschliff-600.avif 600w, /images/case-feinschliff-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-feinschliff-600.webp 600w, /images/case-feinschliff-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-feinschliff.jpg" width="1200" height="750" alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Demo · fiktives Studio</div>
-        <h3><a href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener">Feinschliff — Beispiel-Webseite für ein Nagelstudio</a></h3>
-        <p>So kann eine Studio-Webseite aussehen: Leistungen und Preise, Studio, Team, Öffnungszeiten und Terminanfrage, optimiert fürs Smartphone. Das Studio ist erfunden — alle Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
-        </div>
-      </div>
+    <button type="button" class="car-side car-prev" data-dir="-1" tabindex="-1" aria-hidden="true" hidden>&#8592;</button><button type="button" class="car-side car-next" data-dir="1" tabindex="-1" aria-hidden="true" data-umami-event="projekte-karussell" title="Weiter blättern">&#8594;</button>
     </div>
-    <div class="demo-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <div class="demo-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
     <p class="also"><strong>Außerdem:</strong> Betreuung von Instagram und Telegram, Einrichtung und Optimierung von Shopify-Shops, Texte auf Deutsch, Ukrainisch und Russisch. Schreiben Sie mir — wir besprechen es.</p>
   </div>
@@ -1232,12 +1276,13 @@ window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);
 </script>
 <script>
 (function(){document.querySelectorAll('.demo-car').forEach(function(car){
-var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('.demo-btn'),
-dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b');if(sl.length<2)return;
+var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('[data-dir]'),
+dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b'),nx=car.querySelector('.car-next');if(sl.length<2)return;
 function cur(){var x=tr.scrollLeft,b=0,d=1e9;sl.forEach(function(s,i){var v=Math.abs(s.offsetLeft-tr.offsetLeft-x);if(v<d){d=v;b=i;}});
 if(tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4)b=sl.length-1;return b;}
-function upd(){var i=cur();bt[0].disabled=i===0;bt[1].disabled=i===sl.length-1;if(cnt)cnt.textContent=i+1;
-dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
+function upd(){var i=cur(),last=sl.length-1;bt.forEach(function(b){var f=+b.dataset.dir<0?i===0:i===last;
+if(b.classList.contains('car-side'))b.hidden=f;else b.disabled=f;});if(cnt)cnt.textContent=i+1;
+if(i>0&&nx)nx.classList.add('used');dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
 function go(i){i=Math.max(0,Math.min(sl.length-1,i));tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft});}
 bt.forEach(function(b){b.addEventListener('click',function(){go(cur()+(+b.dataset.dir));});});
 tr.addEventListener('keydown',function(e){if(e.target!==tr)return;if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1);}});

@@ -268,7 +268,10 @@ a.inl:hover{color:var(--ink)}
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.demo-head{margin:48px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.demo-head{margin:56px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.car-first .demo-head{margin-top:0}
+.car-first .demo-head .sec-title{margin-bottom:10px}
+.beispiele{padding:8px 0 88px}
 .demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
 .demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:60ch}
 /* DEMO-KARUSSELL */
@@ -282,6 +285,14 @@ a.inl:hover{color:var(--ink)}
 .demo-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px 0;border-radius:12px}
 .demo-track::-webkit-scrollbar{display:none}
 .demo-slide{flex:0 0 calc(100% - 72px);scroll-snap-align:start}
+.demo-slide.no-img{flex-basis:min(440px,calc(100% - 72px))}
+.car-view{position:relative}
+.car-side{position:absolute;top:50%;translate:0 -50%;z-index:2;width:56px;height:56px;padding:0;border-radius:50%;border:3px solid #fff;background:var(--amber);color:#fff;font-family:inherit;font-size:20px;font-weight:600;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(30,42,74,.28);transition:opacity .25s,background .2s}
+.car-side:hover{background:var(--ink)}
+.car-side[hidden]{display:none}
+.car-next{right:-4px}.car-prev{left:-22px;background:var(--ink)}
+@keyframes nudge{0%,100%{translate:0 -50%}50%{translate:6px -50%}}
+@media(prefers-reduced-motion:no-preference){.car-next:not(.used){animation:nudge 1.6s ease-in-out 3}}
 .demo-slide:only-child{flex-basis:100%}
 .demo-slide:hover{transform:none}
 .demo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
@@ -505,7 +516,9 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
-  .demo-slide{flex-basis:86%;padding:20px}
+  .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
+  .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
+  .beispiele{padding:0 0 64px}
   .demo-head{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
@@ -594,11 +607,13 @@ T["de"] = dict(
            ("Angebot", "Wenn ich das für Sie umsetzen soll, bekommen Sie ein Angebot mit Preis, Umfang und Termin."),
            ("Umsetzung", "Sie schicken Fotos und Infos, ich setze um. Ich zeige Ihnen das Ergebnis, wir nehmen Korrekturen vor."),
            ("Fertig", "Rechnung nach Abschluss. Auf Wunsch geht es mit der Betreuung weiter.")],
-    cs_label="Ergebnisse", cs_title="Echte Ergebnisse für echte Unternehmen",
+    cs_label="Ergebnisse", cs_title="Echte Ergebnisse für echte Unternehmen", cs_sub="Fertige Projekte für Kundinnen und Kunden — mit Zahlen und Bewertungen.", dm_label="Beispiele",
     dm_title="Demo-Design — so kann Ihre Webseite aussehen", dm_sub="Beispiele für erfundene Studios — damit Sie Stil und Aufbau sehen. Zum Blättern wischen oder die Pfeile nutzen.",
-    dm_prev="Vorheriges Beispiel", dm_next="Nächstes Beispiel", dm_of="von",
+    dm_prev="Vorheriges Beispiel", dm_next="Nächstes Beispiel", dm_of="von", cs_prev="Vorheriges Projekt", cs_next="Nächstes Projekt", swipe="Weiter blättern",
     demos=[dict(img="/images/case-elle.jpg", img_alt="Startseite der Portfolio-Webseite Elle's Beauty Studio — fiktives Beauty-Studio in Düsseldorf", tag="Portfolio-Case · fiktives Studio", name="Elle's Beauty Studio — Webseite für ein Beauty-Studio in der Innenstadt", link="/demo/elle/",
                 text="Dunkles Graphit, Gold und Pink mit Federn — ein eleganter Auftritt für ein Studio im gehobenen Segment. Maniküre, Pediküre, Wimpern, Brauen und Permanent Make-up: Preisliste nach Stylistinnen, Terminanfrage per WhatsApp mit vorbereitetem Text, Regeln zu Absage und Verspätung gut sichtbar, Galerie, Bewertungen und Öffnungszeiten — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[]),
+           dict(img='/images/case-rose.jpg', img_alt='Startseite der Konzept-Webseite ROSÉ beauty space — fiktives Beauty-Studio in Düsseldorf', tag='Konzept · fiktives Studio', name='ROSÉ beauty space — Konzept-Webseite für Nägel, Wimpern & Augenbrauen', link='/demo/rose/', text='Ruhiges Taupe und Graphit, elegante Bodoni-Schrift, ein Bogen mit Ranunkel und fallende Rosenblätter. Leistungen als Kacheln, ausführliche Preisliste, Studio, Team, Galerie, Bewertungen und häufige Fragen — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.', res=[]),
+           dict(img='/images/case-midna.jpg', img_alt='Startseite der Konzept-Webseite Midna Nails — fiktives Nagelstudio mit Kursen', tag='Konzept · fiktives Studio', name='Midna Nails — Konzept-Webseite für ein Nagelstudio mit Kursen', link='/demo/midna/', text='Kupfer und Creme, im Header bewegt der Wind die Haare. Preise in zwei Stufen, Arbeiten, Studio, Team, Maniküre-Kurse mit Programm und häufige Fragen — auf Deutsch und Ukrainisch. Das Studio ist erfunden — Fotos, Zahlen und Angaben dienen nur als Beispiel.', res=[]),
            dict(img="/images/case-makova.jpg", img_alt="Startseite der Konzept-Webseite MAKOVA Art & Beauty Studio — fiktives Beauty-Studio", tag="Konzept · fiktives Studio", name="MAKOVA — Konzept-Webseite für ein Beauty-Studio", link="/demo/makova/",
                 text="Ein Studio mit vielen Leistungen auf einer Seite: Nägel, Pediküre, Massage, Brows & Lashes, Make-up und Workshops. Preisliste nach Kategorien, Galerie, Team, Studio und Öffnungszeiten — auf Deutsch und Ukrainisch. Eigenes Farbkonzept: Bordeaux, Creme und Mohnblumen. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[]),
            dict(img="/images/case-feinschliff.jpg", img_alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio", tag="Demo · fiktives Studio", name="Feinschliff — Beispiel-Webseite für ein Nagelstudio", link="https://german-nail-studio.netlify.app/",
@@ -708,11 +723,13 @@ T["uk"] = dict(
            ("Пропозиція", "Якщо хочете, щоб я зробила це за вас, — надсилаю пропозицію з ціною, обсягом і терміном."),
            ("Робота", "Ви надсилаєте фото й інформацію, я роблю. Показую результат, вносимо правки."),
            ("Готово", "Рахунок — після виконання. Якщо потрібно — далі підтримка.")],
-    cs_label="Результати", cs_title="Реальні результати для реального бізнесу",
+    cs_label="Результати", cs_title="Реальні результати для реального бізнесу", cs_sub="Завершені проєкти для клієнтів — з цифрами та відгуками.", dm_label="Приклади сайтів",
     dm_title="Демо-дизайн — так може виглядати ваш сайт", dm_sub="Приклади для вигаданих студій — щоб ви побачили стиль і структуру. Гортайте пальцем або стрілками.",
-    dm_prev="Попередній приклад", dm_next="Наступний приклад", dm_of="з",
+    dm_prev="Попередній приклад", dm_next="Наступний приклад", dm_of="з", cs_prev="Попередній проєкт", cs_next="Наступний проєкт", swipe="Гортайте далі",
     demos=[dict(img="/images/case-elle.jpg", img_alt="Головна сторінка сайту-портфоліо Elle's Beauty Studio — вигадана б’юті-студія в Дюссельдорфі", tag="Кейс портфоліо · вигадана студія", name="Elle's Beauty Studio — сайт для б’юті-студії в центрі міста", link="/demo/elle/",
                 text="Темний графіт, золото й рожевий із пір’ям — образ студії преміум-класу. Манікюр, педикюр, вії, брови й перманент: прайс за майстринями, запис у WhatsApp із готовим текстом, правила скасування й запізнень на видноті, галерея робіт, відгуки та години роботи — німецькою й російською. Студія вигадана — фото, відгуки й дані лише для прикладу.", res=[]),
+           dict(img='/images/case-rose.jpg', img_alt='Головна сторінка концепт-сайту ROSÉ beauty space — вигадана б’юті-студія в Дюссельдорфі', tag='Концепт · вигадана студія', name='ROSÉ beauty space — концепт-сайт для нігтів, вій і брів', link='/demo/rose/', text='Спокійний тауп і графіт, елегантний шрифт Bodoni, арка з ранункулюсом і пелюстки, що падають. Послуги плитками, детальний прайс, студія, команда, галерея, відгуки й часті запитання — німецькою та російською. Студія вигадана — фото, відгуки й дані лише для прикладу.', res=[]),
+           dict(img='/images/case-midna.jpg', img_alt='Головна сторінка концепт-сайту Midna Nails — вигадана нейл-студія з курсами', tag='Концепт · вигадана студія', name='Midna Nails — концепт-сайт для нейл-студії з курсами', link='/demo/midna/', text='Мідь і крем, у шапці вітер ворушить волосся. Ціни у два рівні, роботи, студія, команда, курси манікюру з програмою й часті запитання — німецькою та українською. Студія вигадана — фото, цифри й дані лише для прикладу.', res=[]),
            dict(img="/images/case-makova.jpg", img_alt="Головна сторінка концепт-сайту MAKOVA Art & Beauty Studio — вигадана б’юті-студія", tag="Концепт · вигадана студія", name="MAKOVA — концепт-сайт для б’юті-студії", link="/demo/makova/",
                 text="Студія з багатьма послугами на одній сторінці: нігті, педикюр, масаж, брови й вії, макіяж і майстер-класи. Прайс за категоріями, галерея, команда, студія та години роботи — німецькою й українською. Власна кольорова концепція: бордо, крем і маки. Студія вигадана — фото, відгуки й дані лише для прикладу.", res=[]),
            dict(img="/images/case-feinschliff.jpg", img_alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія", tag="Демо · вигадана студія", name="Feinschliff — приклад сайту для нейл-студії", link="https://german-nail-studio.netlify.app/",
@@ -825,11 +842,13 @@ T["ru"] = dict(
            ("Предложение", "Если хотите, чтобы я сделала это за вас, — присылаю предложение с ценой, объёмом и сроком."),
            ("Работа", "Вы присылаете фото и информацию, я делаю. Показываю результат, вносим правки."),
            ("Готово", "Счёт после выполнения. Если нужно — дальше поддержка.")],
-    cs_label="Результаты", cs_title="Реальные результаты для реального бизнеса",
+    cs_label="Результаты", cs_title="Реальные результаты для реального бизнеса", cs_sub="Готовые проекты для клиентов — с цифрами и отзывами.", dm_label="Примеры сайтов",
     dm_title="Демо-дизайн — так может выглядеть ваш сайт", dm_sub="Примеры для вымышленных студий — чтобы вы увидели стиль и структуру. Листайте пальцем или стрелками.",
-    dm_prev="Предыдущий пример", dm_next="Следующий пример", dm_of="из",
+    dm_prev="Предыдущий пример", dm_next="Следующий пример", dm_of="из", cs_prev="Предыдущий проект", cs_next="Следующий проект", swipe="Листайте дальше",
     demos=[dict(img="/images/case-elle.jpg", img_alt="Главная страница сайта-портфолио Elle's Beauty Studio — вымышленная бьюти-студия в Дюссельдорфе", tag="Кейс портфолио · вымышленная студия", name="Elle's Beauty Studio — сайт для бьюти-студии в центре города", link="/demo/elle/",
                 text="Тёмный графит, золото и розовый с перьями — образ студии премиум-класса. Маникюр, педикюр, ресницы, брови и перманент: прайс по мастерам, запись в WhatsApp с готовым текстом, правила отмены и опозданий на виду, галерея работ, отзывы и часы работы — на немецком и русском. Студия вымышленная — фото, отзывы и данные только для примера.", res=[]),
+           dict(img='/images/case-rose.jpg', img_alt='Главная страница концепт-сайта ROSÉ beauty space — вымышленная бьюти-студия в Дюссельдорфе', tag='Концепт · вымышленная студия', name='ROSÉ beauty space — концепт-сайт для ногтей, ресниц и бровей', link='/demo/rose/', text='Спокойный тауп и графит, элегантный шрифт Bodoni, арка с ранункулюсом и падающие лепестки. Услуги плитками, подробный прайс, студия, команда, галерея, отзывы и частые вопросы — на немецком и русском. Студия вымышленная — фото, отзывы и данные только для примера.', res=[]),
+           dict(img='/images/case-midna.jpg', img_alt='Главная страница концепт-сайта Midna Nails — вымышленная нейл-студия с курсами', tag='Концепт · вымышленная студия', name='Midna Nails — концепт-сайт для нейл-студии с курсами', link='/demo/midna/', text='Медь и крем, в шапке ветер шевелит волосы. Цены в два уровня, работы, студия, команда, курсы маникюра с программой и частые вопросы — на немецком и украинском. Студия вымышленная — фото, цифры и данные только для примера.', res=[]),
            dict(img="/images/case-makova.jpg", img_alt="Главная страница концепт-сайта MAKOVA Art & Beauty Studio — вымышленная бьюти-студия", tag="Концепт · вымышленная студия", name="MAKOVA — концепт-сайт для бьюти-студии", link="/demo/makova/",
                 text="Студия с множеством услуг на одной странице: ногти, педикюр, массаж, брови и ресницы, макияж и мастер-классы. Прайс по категориям, галерея, команда, студия и часы работы — на немецком и украинском. Собственная цветовая концепция: бордо, крем и маки. Студия вымышленная — фото, отзывы и данные только для примера.", res=[]),
            dict(img="/images/case-feinschliff.jpg", img_alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия", tag="Демо · вымышленная студия", name="Feinschliff — пример сайта для ногтевой студии", link="https://german-nail-studio.netlify.app/",
@@ -1180,12 +1199,13 @@ PHONE_MOCK = """      <div class="hero-phone" aria-hidden="true">
 
 DEMO_JS = """<script>
 (function(){document.querySelectorAll('.demo-car').forEach(function(car){
-var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('.demo-btn'),
-dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b');if(sl.length<2)return;
+var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('[data-dir]'),
+dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b'),nx=car.querySelector('.car-next');if(sl.length<2)return;
 function cur(){var x=tr.scrollLeft,b=0,d=1e9;sl.forEach(function(s,i){var v=Math.abs(s.offsetLeft-tr.offsetLeft-x);if(v<d){d=v;b=i;}});
 if(tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4)b=sl.length-1;return b;}
-function upd(){var i=cur();bt[0].disabled=i===0;bt[1].disabled=i===sl.length-1;if(cnt)cnt.textContent=i+1;
-dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
+function upd(){var i=cur(),last=sl.length-1;bt.forEach(function(b){var f=+b.dataset.dir<0?i===0:i===last;
+if(b.classList.contains('car-side'))b.hidden=f;else b.disabled=f;});if(cnt)cnt.textContent=i+1;
+if(i>0&&nx)nx.classList.add('used');dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
 function go(i){i=Math.max(0,Math.min(sl.length-1,i));tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft});}
 bt.forEach(function(b){b.addEventListener('click',function(){go(cur()+(+b.dataset.dir));});});
 tr.addEventListener('keydown',function(e){if(e.target!==tr)return;if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1);}});
@@ -1363,6 +1383,50 @@ def render(lang):
         w('      <div class="svc"><div class="svc-icon">%s</div><h3>%s</h3><p>%s</p></div>\n' % (ICON[ic], esc(h), esc(p)))
     w('    </div>\n  </div>\n</section>\n\n')
 
+    # Demo-Beispiele (Angebot) — vor Paketen & Preisen: erst das Produkt, dann der Preis
+    def case_html(c, extra_cls="", attrs=""):
+        name = esc(c["name"])
+        if c.get("link"):
+            name = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (c["link"], name)
+        cls = (" wide" if c.get("wide") else "") + (" has-img" if c.get("img") else " no-img") + extra_cls
+        w('      <div class="case%s"%s>\n' % (cls, attrs))
+        if c.get("img"):
+            w('        <a class="case-img" href="%s" target="_blank" rel="noopener">%s</a>\n        <div>\n' % (c["link"], pic(c["img"], 1200, 750, c["img_alt"], (600, 1200), "(max-width:900px) 92vw, 560px")))
+        w('        <div class="case-tag">%s</div>\n        <h3>%s</h3>\n        <p>%s</p>\n' % (esc(c["tag"]), name, esc(c["text"])))
+        if c.get("quote"):
+            w('        <blockquote class="case-quote" lang="%s">„%s“<cite lang="%s">%s</cite></blockquote>\n' % (c.get("quote_lang", "de"), esc(c["quote"]), lang, esc(c["cite"])))
+        if c["res"]:
+            w('        <div class="case-result">')
+            for num, lbl in c["res"]:
+                w('<div class="result-item"><div class="r-num">%s</div><div class="r-lbl">%s</div></div>' % (esc(num), esc(lbl)))
+            w('</div>\n')
+        w(('        </div>\n' if c.get("img") else '') + '      </div>\n')
+    def carousel(items, title_html, sub, label, prev, nxt, event, extra=""):
+        # Karussell: horizontal wischen (scroll-snap), Pfeile oben + großer Pfeil am Rand, Punkte; ohne JS bleibt es wischbar
+        n = len(items)
+        w('    <div class="demo-car%s" role="region" aria-roledescription="carousel" aria-label="%s">\n' % (extra, esc(label)))
+        w('    <div class="demo-head"><div>%s<p>%s</p></div>' % (title_html, esc(sub)))
+        if n > 1:
+            w('<div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="%s" disabled>&#8592;</button>'
+              '<span class="demo-count" aria-live="polite"><b>1</b> / %d</span>'
+              '<button type="button" class="demo-btn" data-dir="1" aria-label="%s" data-umami-event="%s">&#8594;</button></div>' % (esc(prev), n, esc(nxt), event))
+        w('</div>\n    <div class="car-view">\n    <div class="demo-track" tabindex="0">\n')
+        for i, c in enumerate(items, 1):
+            case_html(c, " demo-slide", ' role="group" aria-roledescription="slide" aria-label="%d %s %d"' % (i, t["dm_of"], n))
+        w('    </div>\n')
+        if n > 1:
+            w('    <button type="button" class="car-side car-prev" data-dir="-1" tabindex="-1" aria-hidden="true" hidden>&#8592;</button>'
+              '<button type="button" class="car-side car-next" data-dir="1" tabindex="-1" aria-hidden="true" data-umami-event="%s" title="%s">&#8594;</button>\n' % (event, esc(t.get("swipe", ""))))
+        w('    </div>\n')
+        if n > 1:
+            w('    <div class="demo-dots" aria-hidden="true">%s</div>\n' % "".join('<i%s></i>' % (' class="on"' if i == 0 else '') for i in range(n)))
+        w('    </div>\n')
+    if t.get("demos"):
+        w('<section class="beispiele" id="beispiele">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n' % esc(t.get("dm_label", "")))
+        carousel(t["demos"], '<h2 class="sec-title">%s</h2>' % esc(t["dm_title"]), t["dm_sub"], t["dm_title"],
+                 t["dm_prev"], t["dm_next"], "demo-karussell", " car-first")
+        w('  </div>\n</section>\n\n')
+
     # packages
     w('<section class="pakete" id="pakete">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="pkg-grid">\n' % (esc(t["pk_label"]), esc(t["pk_title"])))
     for p in t["pk"]:
@@ -1381,44 +1445,10 @@ def render(lang):
         w('      <li class="step"><div class="step-num" aria-hidden="true">%d</div><h3>%s</h3><p>%s</p></li>\n' % (i, esc(h), esc(p)))
     w('    </ol>\n  </div>\n</section>\n\n')
 
-    # cases
-    w('<section class="cases" id="ergebnisse">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="cases-grid">\n' % (esc(t["cs_label"]), esc(t["cs_title"])))
-    def case_html(c, extra_cls="", attrs=""):
-        name = esc(c["name"])
-        if c.get("link"):
-            name = '<a href="%s" target="_blank" rel="noopener">%s</a>' % (c["link"], name)
-        cls = (" wide" if c.get("wide") else "") + (" has-img" if c.get("img") else "") + extra_cls
-        w('      <div class="case%s"%s>\n' % (cls, attrs))
-        if c.get("img"):
-            w('        <a class="case-img" href="%s" target="_blank" rel="noopener">%s</a>\n        <div>\n' % (c["link"], pic(c["img"], 1200, 750, c["img_alt"], (600, 1200), "(max-width:900px) 92vw, 560px")))
-        w('        <div class="case-tag">%s</div>\n        <h3>%s</h3>\n        <p>%s</p>\n' % (esc(c["tag"]), name, esc(c["text"])))
-        if c.get("quote"):
-            w('        <blockquote class="case-quote" lang="%s">„%s“<cite lang="%s">%s</cite></blockquote>\n' % (c.get("quote_lang", "de"), esc(c["quote"]), lang, esc(c["cite"])))
-        if c["res"]:
-            w('        <div class="case-result">')
-            for num, lbl in c["res"]:
-                w('<div class="result-item"><div class="r-num">%s</div><div class="r-lbl">%s</div></div>' % (esc(num), esc(lbl)))
-            w('</div>\n')
-        w(('        </div>\n' if c.get("img") else '') + '      </div>\n')
-    for c in t["cases"]:
-        case_html(c)
-    w('    </div>\n')
-    if t.get("demos"):
-        # Demo-Karussell: horizontal wischen (scroll-snap), Pfeile, Punkte; ohne JS bleibt es wischbar
-        n = len(t["demos"])
-        w('    <div class="demo-car" role="region" aria-roledescription="carousel" aria-label="%s">\n' % esc(t["dm_title"]))
-        w('    <div class="demo-head"><div><h3>%s</h3><p>%s</p></div>' % (esc(t["dm_title"]), esc(t["dm_sub"])))
-        if n > 1:
-            w('<div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="%s" disabled>&#8592;</button>'
-              '<span class="demo-count" aria-live="polite"><b>1</b> / %d</span>'
-              '<button type="button" class="demo-btn" data-dir="1" aria-label="%s" data-umami-event="demo-karussell">&#8594;</button></div>' % (esc(t["dm_prev"]), n, esc(t["dm_next"])))
-        w('</div>\n    <div class="demo-track" tabindex="0">\n')
-        for i, c in enumerate(t["demos"], 1):
-            case_html(c, " demo-slide", ' role="group" aria-roledescription="slide" aria-label="%d %s %d"' % (i, t["dm_of"], n))
-        w('    </div>\n')
-        if n > 1:
-            w('    <div class="demo-dots" aria-hidden="true">%s</div>\n' % "".join('<i%s></i>' % (' class="on"' if i == 0 else '') for i in range(n)))
-        w('    </div>\n')
+    # echte Projekte (Karussell)
+    w('<section class="cases" id="ergebnisse">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n' % esc(t["cs_label"]))
+    carousel(t["cases"], '<h2 class="sec-title">%s</h2>' % esc(t["cs_title"]), t.get("cs_sub", ""), t["cs_title"],
+             t.get("cs_prev", t["dm_prev"]), t.get("cs_next", t["dm_next"]), "projekte-karussell", " car-first")
     w('    <p class="also">%s</p>\n  </div>\n</section>\n\n' % t["also"])
 
     # about

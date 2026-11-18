@@ -24,6 +24,8 @@ IMAGES = {
     "images/case-feinschliff.jpg": (600, 1200),
     "images/case-makova.jpg": (600, 1200),
     "images/case-elle.jpg": (600, 1200),
+    "images/case-rose.jpg": (600, 1200),
+    "images/case-midna.jpg": (600, 1200),
     "images/puzzle-de.jpg": (1024,),
     "images/puzzle-uk.jpg": (1024,),
     "images/puzzle-ru.jpg": (1024,),

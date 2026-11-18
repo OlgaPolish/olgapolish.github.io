@@ -451,7 +451,10 @@ a.inl:hover{color:var(--ink)}
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.demo-head{margin:48px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.demo-head{margin:56px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.car-first .demo-head{margin-top:0}
+.car-first .demo-head .sec-title{margin-bottom:10px}
+.beispiele{padding:8px 0 88px}
 .demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
 .demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:60ch}
 /* DEMO-KARUSSELL */
@@ -465,6 +468,14 @@ a.inl:hover{color:var(--ink)}
 .demo-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px 0;border-radius:12px}
 .demo-track::-webkit-scrollbar{display:none}
 .demo-slide{flex:0 0 calc(100% - 72px);scroll-snap-align:start}
+.demo-slide.no-img{flex-basis:min(440px,calc(100% - 72px))}
+.car-view{position:relative}
+.car-side{position:absolute;top:50%;translate:0 -50%;z-index:2;width:56px;height:56px;padding:0;border-radius:50%;border:3px solid #fff;background:var(--amber);color:#fff;font-family:inherit;font-size:20px;font-weight:600;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(30,42,74,.28);transition:opacity .25s,background .2s}
+.car-side:hover{background:var(--ink)}
+.car-side[hidden]{display:none}
+.car-next{right:-4px}.car-prev{left:-22px;background:var(--ink)}
+@keyframes nudge{0%,100%{translate:0 -50%}50%{translate:6px -50%}}
+@media(prefers-reduced-motion:no-preference){.car-next:not(.used){animation:nudge 1.6s ease-in-out 3}}
 .demo-slide:only-child{flex-basis:100%}
 .demo-slide:hover{transform:none}
 .demo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
@@ -688,7 +699,9 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
-  .demo-slide{flex-basis:86%;padding:20px}
+  .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
+  .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
+  .beispiele{padding:0 0 64px}
   .demo-head{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
@@ -826,6 +839,61 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   </div>
 </section>
 
+<section class="beispiele" id="beispiele">
+  <div class="wrap">
+    <div class="sec-label">Приклади сайтів</div>
+    <div class="demo-car car-first" role="region" aria-roledescription="carousel" aria-label="Демо-дизайн — так може виглядати ваш сайт">
+    <div class="demo-head"><div><h2 class="sec-title">Демо-дизайн — так може виглядати ваш сайт</h2><p>Приклади для вигаданих студій — щоб ви побачили стиль і структуру. Гортайте пальцем або стрілками.</p></div><div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="Попередній приклад" disabled>&#8592;</button><span class="demo-count" aria-live="polite"><b>1</b> / 5</span><button type="button" class="demo-btn" data-dir="1" aria-label="Наступний приклад" data-umami-event="demo-karussell">&#8594;</button></div></div>
+    <div class="car-view">
+    <div class="demo-track" tabindex="0">
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 з 5">
+        <a class="case-img" href="/demo/elle/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-elle-600.avif 600w, /images/case-elle-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-elle-600.webp 600w, /images/case-elle-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-elle.jpg" width="1200" height="750" alt="Головна сторінка сайту-портфоліо Elle&#x27;s Beauty Studio — вигадана б’юті-студія в Дюссельдорфі" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Кейс портфоліо · вигадана студія</div>
+        <h3><a href="/demo/elle/" target="_blank" rel="noopener">Elle&#x27;s Beauty Studio — сайт для б’юті-студії в центрі міста</a></h3>
+        <p>Темний графіт, золото й рожевий із пір’ям — образ студії преміум-класу. Манікюр, педикюр, вії, брови й перманент: прайс за майстринями, запис у WhatsApp із готовим текстом, правила скасування й запізнень на видноті, галерея робіт, відгуки та години роботи — німецькою й російською. Студія вигадана — фото, відгуки й дані лише для прикладу.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 з 5">
+        <a class="case-img" href="/demo/rose/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-rose-600.avif 600w, /images/case-rose-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-rose-600.webp 600w, /images/case-rose-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-rose.jpg" width="1200" height="750" alt="Головна сторінка концепт-сайту ROSÉ beauty space — вигадана б’юті-студія в Дюссельдорфі" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Концепт · вигадана студія</div>
+        <h3><a href="/demo/rose/" target="_blank" rel="noopener">ROSÉ beauty space — концепт-сайт для нігтів, вій і брів</a></h3>
+        <p>Спокійний тауп і графіт, елегантний шрифт Bodoni, арка з ранункулюсом і пелюстки, що падають. Послуги плитками, детальний прайс, студія, команда, галерея, відгуки й часті запитання — німецькою та російською. Студія вигадана — фото, відгуки й дані лише для прикладу.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 з 5">
+        <a class="case-img" href="/demo/midna/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-midna-600.avif 600w, /images/case-midna-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-midna-600.webp 600w, /images/case-midna-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-midna.jpg" width="1200" height="750" alt="Головна сторінка концепт-сайту Midna Nails — вигадана нейл-студія з курсами" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Концепт · вигадана студія</div>
+        <h3><a href="/demo/midna/" target="_blank" rel="noopener">Midna Nails — концепт-сайт для нейл-студії з курсами</a></h3>
+        <p>Мідь і крем, у шапці вітер ворушить волосся. Ціни у два рівні, роботи, студія, команда, курси манікюру з програмою й часті запитання — німецькою та українською. Студія вигадана — фото, цифри й дані лише для прикладу.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="4 з 5">
+        <a class="case-img" href="/demo/makova/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-makova-600.avif 600w, /images/case-makova-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-makova-600.webp 600w, /images/case-makova-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-makova.jpg" width="1200" height="750" alt="Головна сторінка концепт-сайту MAKOVA Art &amp; Beauty Studio — вигадана б’юті-студія" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Концепт · вигадана студія</div>
+        <h3><a href="/demo/makova/" target="_blank" rel="noopener">MAKOVA — концепт-сайт для б’юті-студії</a></h3>
+        <p>Студія з багатьма послугами на одній сторінці: нігті, педикюр, масаж, брови й вії, макіяж і майстер-класи. Прайс за категоріями, галерея, команда, студія та години роботи — німецькою й українською. Власна кольорова концепція: бордо, крем і маки. Студія вигадана — фото, відгуки й дані лише для прикладу.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="5 з 5">
+        <a class="case-img" href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-feinschliff-600.avif 600w, /images/case-feinschliff-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-feinschliff-600.webp 600w, /images/case-feinschliff-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-feinschliff.jpg" width="1200" height="750" alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Демо · вигадана студія</div>
+        <h3><a href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener">Feinschliff — приклад сайту для нейл-студії</a></h3>
+        <p>Так може виглядати сайт студії: послуги й ціни, студія, команда, години роботи та запис, зручно на смартфоні. Студія вигадана — усі фото, відгуки й дані лише для прикладу.</p>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="car-side car-prev" data-dir="-1" tabindex="-1" aria-hidden="true" hidden>&#8592;</button><button type="button" class="car-side car-next" data-dir="1" tabindex="-1" aria-hidden="true" data-umami-event="demo-karussell" title="Гортайте далі">&#8594;</button>
+    </div>
+    <div class="demo-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
 <section class="pakete" id="pakete">
   <div class="wrap">
     <div class="sec-label">Пакети та ціни</div>
@@ -907,9 +975,11 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 <section class="cases" id="ergebnisse">
   <div class="wrap">
     <div class="sec-label">Результати</div>
-    <h2 class="sec-title">Реальні результати для реального бізнесу</h2>
-    <div class="cases-grid">
-      <div class="case wide has-img">
+    <div class="demo-car car-first" role="region" aria-roledescription="carousel" aria-label="Реальні результати для реального бізнесу">
+    <div class="demo-head"><div><h2 class="sec-title">Реальні результати для реального бізнесу</h2><p>Завершені проєкти для клієнтів — з цифрами та відгуками.</p></div><div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="Попередній проєкт" disabled>&#8592;</button><span class="demo-count" aria-live="polite"><b>1</b> / 6</span><button type="button" class="demo-btn" data-dir="1" aria-label="Наступний проєкт" data-umami-event="projekte-karussell">&#8594;</button></div></div>
+    <div class="car-view">
+    <div class="demo-track" tabindex="0">
+      <div class="case wide has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 з 6">
         <a class="case-img" href="https://jana-nails-beauty.de/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-jana-nails-600.avif 600w, /images/case-jana-nails-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-jana-nails-600.webp 600w, /images/case-jana-nails-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-jana-nails.jpg" width="1200" height="750" alt="Головна сторінка jana-nails-beauty.de — сайт нейл-студії JANA NAILS &amp; Beauty" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Сайт-візитка · онлайн-запис · власний домен</div>
@@ -919,67 +989,41 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <div class="case-result"><div class="result-item"><div class="r-num">11 днів</div><div class="r-lbl">від демоверсії до запуску на домені студії</div></div><div class="result-item"><div class="r-num">24/7</div><div class="r-lbl">онлайн-запис без листування у WhatsApp</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">мови: німецька та російська</div></div></div>
         </div>
       </div>
-      <div class="case wide">
+      <div class="case wide no-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 з 6">
         <div class="case-tag">Сайт-візитка · домен · корпоративна пошта</div>
         <h3><a href="https://avkoncepcia.com/" target="_blank" rel="noopener">«АВ-Концепція» — сайт інженерної компанії (Харків)</a></h3>
         <p>Сайт-візитка з портфоліо українською та англійською — зібраний із PDF, старих .doc-файлів і 80+ фото замовника. Плюс власний домен і корпоративні адреси пошти з переадресацією. Клієнт лише перевіряв.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">51</div><div class="r-lbl">об&#x27;єкт із фільтрами й пошуком</div></div><div class="result-item"><div class="r-num">279 → 8 МБ</div><div class="r-lbl">фото стиснуто — сайт швидко відкривається з телефона</div></div><div class="result-item"><div class="r-num">2</div><div class="r-lbl">мови: українська та англійська</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 з 6">
         <div class="case-tag">SEO · Shopify · Düsseldorf</div>
         <h3><a href="https://kaneliastore.com/" target="_blank" rel="noopener">Kanelia — магазин матеріалів для манікюру</a></h3>
         <p>SEO-переробка Shopify-магазину: картки товарів, структура сайту, локальна видимість. Результати через 2–3 місяці — за даними Google Search Console і Shopify.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">№ 1</div><div class="r-lbl">у Google за запитом «nagelsticker kaufen»</div></div><div class="result-item"><div class="r-num">4–5 → 65</div><div class="r-lbl">візитів із Google на місяць</div></div><div class="result-item"><div class="r-num">9 з 11</div><div class="r-lbl">перших онлайн-замовлень — із Google</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="4 з 6">
         <div class="case-tag">Власний проєкт · Сайт · Pinterest</div>
         <h3><a href="https://easemyfeed.com/" target="_blank" rel="noopener">EaseMyFeed — мій власний проєкт</a></h3>
         <p>Сайт на 13 сторінок із власним доменом, Search Console, Pinterest та Instagram — усе зроблено самостійно. Тут я спершу перевіряю те, що потім роблю для клієнтів.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">7 057</div><div class="r-lbl">показів у Pinterest за 30 днів</div></div><div class="result-item"><div class="r-num">+61 %</div><div class="r-lbl">до минулого місяця</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="5 з 6">
         <div class="case-tag">Instagram · SMM</div>
         <h3><a href="https://www.instagram.com/katerynaiakovlieva/" target="_blank" rel="noopener">Катерина Яковлева — Instagram фінансової консультантки в Düsseldorf</a></h3>
         <p>Голос бренду, візуальна система та регулярні публікації для україно- та російськомовної аудиторії в NRW: стратегія, каруселі, Reels і Stories, тексти та публікація за планом.</p>
         <blockquote class="case-quote" lang="ru">„Очень рада сотрудничеству с Ольгой! Ценю её внимательное отношение, доброжелательность и приятное общение. Особенно радуют положительные результаты работы над моим профессиональным Instagram, где я делюсь полезной информацией как финансовый консультант.“<cite lang="uk">— Екатерина Я., фінансова консультантка · відгук у Google ★★★★★ (мовою оригіналу)</cite></blockquote>
         <div class="case-result"><div class="result-item"><div class="r-num">2 → 113</div><div class="r-lbl">підписників з липня 2026</div></div></div>
       </div>
-      <div class="case">
+      <div class="case no-img demo-slide" role="group" aria-roledescription="slide" aria-label="6 з 6">
         <div class="case-tag">Telegram · Threads · SMM</div>
         <h3>FinanzGuide GE — Telegram і Threads для команди фінансових консультантів</h3>
         <p>З серпня 2026: голос бренду, візуальна система й чек-лист комплаєнсу (§ 34d/f GewO, маркування реклами, DSGVO), через який проходить кожна публікація. Контент для україно- та російськомовних родин у NRW. Після розбору 35 публікацій у Threads перебудувала стратегію: конкретна сума або термін у першому рядку, треди замість поодиноких дописів, запитання наприкінці. А також безкоштовна атрибуція через WhatsApp-посилання з готовим текстом і трекер договорів у Google Sheets як лід-магніт.</p>
         <div class="case-result"><div class="result-item"><div class="r-num">39 933</div><div class="r-lbl">переглядів найкращого допису</div></div><div class="result-item"><div class="r-num">×6</div><div class="r-lbl">охоплення з цифрою в першому рядку</div></div><div class="result-item"><div class="r-num">×2</div><div class="r-lbl">треди проти поодиноких дописів</div></div></div>
       </div>
     </div>
-    <div class="demo-car" role="region" aria-roledescription="carousel" aria-label="Демо-дизайн — так може виглядати ваш сайт">
-    <div class="demo-head"><div><h3>Демо-дизайн — так може виглядати ваш сайт</h3><p>Приклади для вигаданих студій — щоб ви побачили стиль і структуру. Гортайте пальцем або стрілками.</p></div><div class="demo-nav"><button type="button" class="demo-btn" data-dir="-1" aria-label="Попередній приклад" disabled>&#8592;</button><span class="demo-count" aria-live="polite"><b>1</b> / 3</span><button type="button" class="demo-btn" data-dir="1" aria-label="Наступний приклад" data-umami-event="demo-karussell">&#8594;</button></div></div>
-    <div class="demo-track" tabindex="0">
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 з 3">
-        <a class="case-img" href="/demo/elle/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-elle-600.avif 600w, /images/case-elle-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-elle-600.webp 600w, /images/case-elle-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-elle.jpg" width="1200" height="750" alt="Головна сторінка сайту-портфоліо Elle&#x27;s Beauty Studio — вигадана б’юті-студія в Дюссельдорфі" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Кейс портфоліо · вигадана студія</div>
-        <h3><a href="/demo/elle/" target="_blank" rel="noopener">Elle&#x27;s Beauty Studio — сайт для б’юті-студії в центрі міста</a></h3>
-        <p>Темний графіт, золото й рожевий із пір’ям — образ студії преміум-класу. Манікюр, педикюр, вії, брови й перманент: прайс за майстринями, запис у WhatsApp із готовим текстом, правила скасування й запізнень на видноті, галерея робіт, відгуки та години роботи — німецькою й російською. Студія вигадана — фото, відгуки й дані лише для прикладу.</p>
-        </div>
-      </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 з 3">
-        <a class="case-img" href="/demo/makova/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-makova-600.avif 600w, /images/case-makova-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-makova-600.webp 600w, /images/case-makova-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-makova.jpg" width="1200" height="750" alt="Головна сторінка концепт-сайту MAKOVA Art &amp; Beauty Studio — вигадана б’юті-студія" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Концепт · вигадана студія</div>
-        <h3><a href="/demo/makova/" target="_blank" rel="noopener">MAKOVA — концепт-сайт для б’юті-студії</a></h3>
-        <p>Студія з багатьма послугами на одній сторінці: нігті, педикюр, масаж, брови й вії, макіяж і майстер-класи. Прайс за категоріями, галерея, команда, студія та години роботи — німецькою й українською. Власна кольорова концепція: бордо, крем і маки. Студія вигадана — фото, відгуки й дані лише для прикладу.</p>
-        </div>
-      </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 з 3">
-        <a class="case-img" href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-feinschliff-600.avif 600w, /images/case-feinschliff-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-feinschliff-600.webp 600w, /images/case-feinschliff-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-feinschliff.jpg" width="1200" height="750" alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Демо · вигадана студія</div>
-        <h3><a href="https://german-nail-studio.netlify.app/" target="_blank" rel="noopener">Feinschliff — приклад сайту для нейл-студії</a></h3>
-        <p>Так може виглядати сайт студії: послуги й ціни, студія, команда, години роботи та запис, зручно на смартфоні. Студія вигадана — усі фото, відгуки й дані лише для прикладу.</p>
-        </div>
-      </div>
+    <button type="button" class="car-side car-prev" data-dir="-1" tabindex="-1" aria-hidden="true" hidden>&#8592;</button><button type="button" class="car-side car-next" data-dir="1" tabindex="-1" aria-hidden="true" data-umami-event="projekte-karussell" title="Гортайте далі">&#8594;</button>
     </div>
-    <div class="demo-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <div class="demo-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
     <p class="also"><strong>Також можу допомогти:</strong> ведення Instagram і Telegram, налаштування й оптимізація Shopify-магазинів, тексти німецькою, українською та російською. Напишіть — обговоримо.</p>
   </div>
@@ -1259,12 +1303,13 @@ window.addEventListener('resize',function(){if(window.innerWidth>980)set(false);
 </script>
 <script>
 (function(){document.querySelectorAll('.demo-car').forEach(function(car){
-var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('.demo-btn'),
-dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b');if(sl.length<2)return;
+var tr=car.querySelector('.demo-track'),sl=tr.querySelectorAll('.demo-slide'),bt=car.querySelectorAll('[data-dir]'),
+dots=car.querySelectorAll('.demo-dots i'),cnt=car.querySelector('.demo-count b'),nx=car.querySelector('.car-next');if(sl.length<2)return;
 function cur(){var x=tr.scrollLeft,b=0,d=1e9;sl.forEach(function(s,i){var v=Math.abs(s.offsetLeft-tr.offsetLeft-x);if(v<d){d=v;b=i;}});
 if(tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4)b=sl.length-1;return b;}
-function upd(){var i=cur();bt[0].disabled=i===0;bt[1].disabled=i===sl.length-1;if(cnt)cnt.textContent=i+1;
-dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
+function upd(){var i=cur(),last=sl.length-1;bt.forEach(function(b){var f=+b.dataset.dir<0?i===0:i===last;
+if(b.classList.contains('car-side'))b.hidden=f;else b.disabled=f;});if(cnt)cnt.textContent=i+1;
+if(i>0&&nx)nx.classList.add('used');dots.forEach(function(d,k){d.classList.toggle('on',k===i);});}
 function go(i){i=Math.max(0,Math.min(sl.length-1,i));tr.scrollTo({left:sl[i].offsetLeft-tr.offsetLeft});}
 bt.forEach(function(b){b.addEventListener('click',function(){go(cur()+(+b.dataset.dir));});});
 tr.addEventListener('keydown',function(e){if(e.target!==tr)return;if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1);}});

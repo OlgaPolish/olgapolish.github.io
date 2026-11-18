@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MIDNA Nails · Konzept-Website für ein Nagelstudio · olhapolishchuk.de</title>
+<meta name="description" content="Konzept-Website (Beispiel) für ein Nagelstudio mit Maniküre-Kursen – erstellt von olhapolishchuk.de. Studio, Namen und Adresse sind fiktiv.">
+<!--
+  ПОРТФОЛИО-КЕЙС «MIDNA Nails» (18.11.2026, olhapolishchuk.de). Вымышленная студия, на основе неопубликованного демо.
+  Все фото — из kejsy/foto free или сгенерированы (Canva AI). Имена, адрес, цифры — вымышленные. Подробности — README.md.
+-->
+<style>
+/* Schriften lokal (DSGVO) — statt Google Fonts */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/fraunces-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/fraunces-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/fraunces-latin-400-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/manrope-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/manrope-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/manrope-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/manrope-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/manrope-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/manrope-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/manrope-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/manrope-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+:root{
+  /* Copper & Cream */
+  --cream:#FBF6F1; --sand:#F3E6DA; --blush:#EBCFBE; --line:#E6D6C8;
+  --ink:#2A1C16; --muted:#76625A;
+  --copper:#9A3F1C;      /* медь (волосы, средний тон) — кнопки, акценты на светлом */
+  --copper-2:#B9562C;    /* hover */
+  --glow:#E39466;        /* светлая медь — акценты на тёмном */
+  --espresso:#261611; --espresso-2:#3A231A; --on-dark:#F1E4D8; --on-dark-2:#B9A396;
+  --teal:#1E3F3D; --teal-2:#2A5250; --teal-soft:#A9C4BE;
+  --serif:"Fraunces",Georgia,serif; --sans:Manrope,"Helvetica Neue",Arial,sans-serif;
+  --arch:999px 999px 0 0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font:16px/1.7 var(--sans)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--copper);font-weight:700;display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
+h2 em,h1 em{font-style:italic;color:var(--copper)}
+.bar{background:var(--copper);color:#FBF6F1;text-align:center;font-size:12px;letter-spacing:.08em;padding:9px 16px}
+.bar b{font-weight:700}
+header{position:sticky;top:0;z-index:10;background:rgba(251,246,241,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:14px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mk{width:40px;height:40px;border-radius:50%;background:var(--copper);color:var(--cream);display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1}
+.logo b{font-family:var(--serif);font-weight:500;font-size:21px;display:block;line-height:1}
+.logo small{display:block;white-space:nowrap;font-size:9px;letter-spacing:.32em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-top:4px}
+.menu{display:flex;gap:26px;font-size:13px;font-weight:600}
+.menu a{position:relative;padding:4px 0;color:var(--ink)}
+.menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--copper);transition:.3s}
+.menu a:hover::after{right:0}
+.right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px}
+.lang button{border:0;background:none;padding:5px 11px;border-radius:99px;cursor:pointer;color:var(--muted);font:600 11px var(--sans);letter-spacing:.1em}
+.lang button.on{background:var(--ink);color:var(--cream)}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:none;cursor:pointer;font-size:17px}
+@media(max-width:960px){
+  .burger{display:block}
+  .menu{display:none;position:absolute;left:0;right:0;top:74px;background:var(--cream);border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:8px 22px 16px}
+  .menu.open{display:flex}
+  .menu a{padding:13px 0;border-bottom:1px solid var(--line)}
+}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--copper);color:var(--cream);padding:15px 28px;border-radius:99px;font-size:13px;font-weight:700;letter-spacing:.06em;border:1.5px solid var(--copper);transition:.25s}
+.btn:hover{background:var(--copper-2);border-color:var(--copper-2)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream)}
+.on-dark .btn{background:var(--glow);border-color:var(--glow);color:var(--espresso)}
+.on-dark .btn:hover{background:transparent;color:var(--glow)}
+.ph{background-color:var(--blush);background-size:cover;background-position:center}
+/* hero — фото с ветром в волосах (hero-wind.js), растворяется в креме слева */
+.hero{position:relative;overflow:hidden;background:var(--cream)}
+.hero .bg{position:absolute;top:0;right:0;bottom:0;width:62%;background:url(img/hero-bg.webp) center 30%/cover;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(154,63,28,.10),rgba(38,22,17,.18));mix-blend-mode:multiply;z-index:1;pointer-events:none}
+.hero .grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;align-items:center;min-height:min(86vh,800px);padding:56px 22px 72px}
+.hero .grid>div{max-width:560px}
+.hero h1{font-size:clamp(56px,8.4vw,124px);line-height:.92;margin:22px 0 26px;font-weight:400}
+.hero h1 em{display:block;font-weight:400}
+.hero p.tag{font-size:clamp(18px,1.8vw,21px);color:#4E3B32;max-width:470px;margin-bottom:34px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:46px;padding-top:24px;border-top:1px solid var(--line);max-width:520px}
+.hero .meta b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;line-height:1;color:var(--copper)}
+.hero .meta span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hero .badge{position:absolute;right:max(22px,calc((100vw - 1200px)/2 + 22px));bottom:48px;z-index:3;width:122px;height:122px;border-radius:50%;background:var(--espresso);color:var(--on-dark);display:grid;place-items:center;text-align:center;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;line-height:1.4;box-shadow:0 14px 34px rgba(38,22,17,.35)}
+.hero .badge b{display:block;font-family:var(--serif);font-size:34px;letter-spacing:0;color:var(--glow);font-weight:400;text-transform:none}
+@media(max-width:900px){
+  .hero .bg{position:relative;width:100%;height:62vh;min-height:340px;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+  .hero .grid{min-height:0;padding:0 22px 56px;margin-top:-40px}
+  .hero .badge{top:calc(62vh - 150px);bottom:auto;right:18px;width:100px;height:100px}
+}
+section{padding:100px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:50px;flex-wrap:wrap}
+.head h2{font-size:clamp(38px,5vw,62px);line-height:1.04;margin-top:14px;max-width:700px}
+.head p{max-width:380px;color:var(--muted)}
+.head.c{flex-direction:column;align-items:center;text-align:center}
+/* values strip */
+.values{background:var(--espresso);color:var(--on-dark);padding:46px 0}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+@media(max-width:800px){.vgrid{grid-template-columns:1fr;gap:26px}}
+.val{display:flex;gap:18px;padding:0 30px;border-left:1px solid rgba(227,148,102,.25)}
+.val:first-child{border-left:0;padding-left:0}
+@media(max-width:800px){.val{border-left:0;padding:0}}
+.val .num{font-family:var(--serif);font-style:italic;font-size:40px;line-height:1;color:var(--glow)}
+.val h3{font-size:22px;margin-bottom:6px;color:#FBF6F1}
+.val p{color:var(--on-dark-2);font-size:14px}
+/* service tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:960px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.tiles{grid-template-columns:1fr}}
+.tile{display:block;group:1}
+.tile .img{aspect-ratio:3/4;border-radius:var(--arch);overflow:hidden;position:relative}
+.tile .img div{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .img div{transform:scale(1.06)}
+.tile .from{position:absolute;right:14px;bottom:14px;background:var(--cream);color:var(--copper);font-weight:700;font-size:13px;padding:7px 13px;border-radius:99px}
+.tile h3{font-size:26px;margin:18px 0 4px;display:flex;justify-content:space-between;align-items:baseline}
+.tile h3 i{font-style:normal;color:var(--copper);font-family:var(--sans);font-size:18px;transition:.25s}
+.tile:hover h3 i{transform:translateX(5px)}
+.tile p{color:var(--muted);font-size:14px}
+/* price */
+.on-dark{background:var(--espresso);color:var(--on-dark)}
+.on-dark .eyebrow{color:var(--glow)}
+.on-dark h2{color:#FBF6F1}
+.on-dark h2 em{color:var(--glow)}
+.on-dark .head p{color:var(--on-dark-2)}
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:800px){.cats{grid-template-columns:1fr}}
+.cat{border:1px solid rgba(227,148,102,.22);border-radius:22px;padding:34px 32px 26px;background:var(--espresso-2)}
+.cat.first{background:linear-gradient(160deg,#4A2A1C,#2E1A13)}
+.cat.wide{grid-column:1/-1;background:transparent}
+.cat h3{font-size:34px;color:#FBF6F1}
+.cat .who{font-size:13px;color:var(--glow);margin:2px 0 16px;font-weight:600}
+.grp{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-2);margin:18px 0 2px;font-weight:700}
+.row{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px dashed rgba(241,228,216,.16);font-size:15px}
+.row .n{flex:1}
+.row .p{white-space:nowrap;font-weight:700;color:var(--glow)}
+.extras{display:grid;grid-template-columns:repeat(2,1fr);column-gap:44px}
+@media(max-width:700px){.extras{grid-template-columns:1fr}}
+.note{text-align:center;margin-top:30px;color:var(--on-dark-2);font-size:14px}
+.center{text-align:center;margin-top:30px}
+/* gallery */
+.gal{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:min(80vw,680px)}
+.gal>div{border-radius:20px;background-position:center}
+.gal>div:nth-child(1){grid-row:1/3;border-radius:var(--arch)}
+.gal>div:nth-child(4){grid-column:3;grid-row:1/3;border-radius:var(--arch);background-position:center 70%}
+@media(max-width:700px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:auto;height:auto}.gal>div{aspect-ratio:3/4}.gal>div:nth-child(1),.gal>div:nth-child(4){grid-row:auto;grid-column:auto;aspect-ratio:3/4}}
+/* studio */
+.studio{background:var(--sand)}
+.sgrid{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:64px;align-items:center}
+.sgrid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--arch);background:var(--blush)}
+.sgrid h2{font-size:clamp(36px,4.4vw,54px);line-height:1.05;margin:14px 0 18px}
+.sgrid p{color:#4E3B32;margin-bottom:28px;max-width:520px}
+.sgrid .work{width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;object-position:center 30%;border-radius:20px}
+@media(max-width:800px){.sgrid{grid-template-columns:1fr;gap:30px}.sgrid video{max-width:300px;margin:0 auto}}
+/* team */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+.portrait-w{position:relative;max-width:460px}
+.portrait{aspect-ratio:4/5;border-radius:var(--arch)}
+.portrait-w::after{content:"";position:absolute;left:-18px;bottom:-18px;width:55%;height:45%;background:var(--copper);border-radius:0 0 0 0;z-index:-1;opacity:.9}
+.split h2{font-size:clamp(40px,4.8vw,60px);line-height:1.02;margin:14px 0 22px}
+.split p{color:#4E3B32;margin-bottom:22px}
+.facts{display:flex;gap:34px;flex-wrap:wrap;margin:6px 0 26px}
+.facts b{display:block;font-family:var(--serif);font-size:40px;font-weight:400;line-height:1;color:var(--copper)}
+.facts span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px}
+@media(max-width:700px){.masters{grid-template-columns:1fr}}
+.master{border:1px solid var(--line);border-radius:18px;padding:22px 24px;background:#fff;display:flex;align-items:center;gap:16px}
+.master .av{width:46px;height:46px;border-radius:50%;background:var(--sand);color:var(--copper);display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:22px;flex:none}
+.master:first-child .av{background:var(--copper);color:var(--cream)}
+.master b{font-family:var(--serif);font-size:22px;font-weight:400;display:block;line-height:1.2}
+.master span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);font-weight:700}
+/* course — teal */
+.course{background:var(--teal);color:var(--on-dark)}
+.course .eyebrow{color:var(--glow)}
+.course h2{color:#FBF6F1}
+.course h2 em{color:var(--glow)}
+.course .head p{color:var(--teal-soft)}
+.days{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:d}
+@media(max-width:960px){.days{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.days{grid-template-columns:1fr}}
+.day{background:var(--teal-2);border-radius:20px;padding:28px 26px;border:1px solid rgba(169,196,190,.18)}
+.day .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--glow);font-weight:700}
+.day h3{font-size:24px;margin:8px 0 10px;color:#FBF6F1}
+.day p{font-size:14px;color:var(--teal-soft)}
+.bonus{max-width:800px;margin:36px auto 0;text-align:center;color:var(--on-dark)}
+.bonus b{color:var(--glow)}
+.course .btn{background:var(--glow);border-color:var(--glow);color:var(--espresso)}
+.course .btn:hover{background:transparent;color:var(--glow)}
+/* faq */
+.faqw{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+@media(max-width:860px){.faqw{grid-template-columns:1fr;gap:20px}}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+details:first-child{border-top:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:var(--serif);font-size:22px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--copper);color:var(--copper);display:grid;place-items:center;font:500 18px/1 var(--sans);transition:.25s}
+details[open] summary::after{transform:rotate(45deg);background:var(--copper);color:var(--cream)}
+details p{margin-top:12px;color:#4E3B32}
+/* contact */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:860px){.cgrid{grid-template-columns:1fr}}
+.cbox{border:1px solid rgba(227,148,102,.22);border-radius:22px;padding:30px}
+.cbox h3{font:700 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--glow);margin-bottom:14px}
+.on-dark a.u{border-bottom:1px solid var(--glow);color:var(--glow)}
+footer{background:#1A0F0B;color:var(--on-dark-2);font-size:12px;padding:26px 0 70px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.igf{position:fixed;right:18px;bottom:18px;z-index:20;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--copper);box-shadow:0 10px 26px rgba(90,40,20,.4);transition:.25s}
+.igf:hover{transform:scale(1.06)}
+.igf svg{width:25px;height:25px;fill:var(--cream)}
+.demo{position:fixed;left:12px;bottom:12px;z-index:20;background:var(--cream);border:1px solid var(--line);border-radius:99px;font-size:11px;padding:6px 12px;color:var(--muted)}
+.igf{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar"></div>
+
+<header><div class="wrap nav">
+  <a href="#top" class="logo"><span class="mk">M</span><span><b>Midna</b><small>Nails · Düsseldorf</small></span></a>
+  <nav class="menu" id="menu"></nav>
+  <div class="right"><div class="lang"><button data-l="de">DE</button><button data-l="uk">UA</button></div><button class="burger" id="burger" aria-label="Menü">☰</button></div>
+</div></header>
+
+<div class="hero" id="top">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap grid"><div>
+    <div class="eyebrow" id="h-eyebrow"></div>
+    <h1>Midna <em>Nails</em></h1>
+    <p class="tag" id="h-tag"></p>
+    <div class="cta"><a class="btn" id="h-btn"></a><a class="btn ghost" href="#preise" id="h-btn2"></a></div>
+    <div class="meta" id="h-meta"></div>
+  </div></div>
+  <div class="badge" id="h-badge"></div>
+</div>
+
+<section class="values"><div class="wrap vgrid" id="values"></div></section>
+
+<section id="leistungen"><div class="wrap">
+  <div class="head"><div><div class="eyebrow" id="s-eyebrow"></div><h2 id="s-title"></h2></div><p id="s-lead"></p></div>
+  <div class="tiles" id="tiles"></div>
+</div></section>
+
+<section class="on-dark" id="preise"><div class="wrap">
+  <div class="head c"><div class="eyebrow" id="p-eyebrow"></div><h2 id="p-title"></h2></div>
+  <div class="cats" id="cats"></div>
+  <p class="note" id="p-note"></p>
+  <div class="center"><a class="btn" id="p-btn"></a></div>
+</div></section>
+
+<section id="galerie"><div class="wrap">
+  <div class="head"><div><div class="eyebrow" id="g-eyebrow"></div><h2 id="g-title"></h2></div><a class="btn ghost" id="g-btn" href="#kontakt">Termin anfragen →</a></div>
+  <div class="gal" id="gal"></div>
+</div></section>
+
+<section class="studio" id="studio"><div class="wrap sgrid">
+  <video id="st-video" autoplay muted loop playsinline preload="metadata"></video>
+  <div>
+    <div class="eyebrow" id="st-eyebrow"></div>
+    <h2 id="st-title"></h2>
+    <p id="st-text"></p>
+    <img class="work" id="st-photo" alt="Nageldesignerin bei der Arbeit (Beispielfoto)" loading="lazy">
+  </div>
+</div></section>
+
+<section id="team"><div class="wrap">
+  <div class="split">
+    <div class="portrait-w"><div class="portrait ph" id="portrait" role="img" aria-label="Nageldesignerin (Beispielfoto)"></div></div>
+    <div>
+      <div class="eyebrow" id="t-eyebrow"></div>
+      <h2 id="t-title"></h2>
+      <div class="facts" id="t-facts"></div>
+      <p id="t-text"></p>
+      <a class="btn" id="t-btn"></a>
+    </div>
+  </div>
+  <div class="masters" id="masters"></div>
+</div></section>
+
+<section class="course" id="kurse"><div class="wrap">
+  <div class="head"><div><div class="eyebrow" id="k-eyebrow"></div><h2 id="k-title"></h2></div><p id="k-lead"></p></div>
+  <div class="days" id="days"></div>
+  <p class="bonus" id="k-bonus"></p>
+  <div class="center"><a class="btn" id="k-btn"></a></div>
+</div></section>
+
+<section id="faq"><div class="wrap faqw">
+  <div><div class="eyebrow">FAQ</div><h2 id="f-title" style="font-size:clamp(38px,5vw,58px);line-height:1.05;margin-top:14px"></h2></div>
+  <div id="faqs"></div>
+</div></section>
+
+<section class="on-dark" id="kontakt"><div class="wrap">
+  <div class="head c"><div class="eyebrow" id="c-eyebrow"></div><h2 id="c-title"></h2></div>
+  <div class="cgrid">
+    <div class="cbox"><h3 id="c-addr-h"></h3><p id="c-addr"></p><p style="margin-top:12px"><a class="u" id="c-map" target="_blank" rel="noopener"></a></p></div>
+    <div class="cbox"><h3 id="c-hours-h"></h3><p id="c-hours"></p></div>
+    <div class="cbox"><h3 id="c-book-h"></h3><p id="c-book" style="margin-bottom:18px"></p><a class="btn" id="c-btn" target="_blank" rel="noopener"></a></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span id="copy"></span><span id="legal"></span></div></footer>
+
+<a class="igf" id="ig-f" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+<div class="demo" id="demo"></div>
+
+<script>
+/* ===================== ДАННЫЕ КЛИЕНТКИ ===================== */
+const SITE = {
+  /* Запись: WhatsApp-номер не известен → все кнопки ведут в Instagram Direct.
+     Появится номер — вписать в wa (без +), кнопки сами переключатся на WhatsApp. */
+  /* ПОРТФОЛИО-КЕЙС: студия вымышленная. Телефонов и Instagram нет, кнопки записи ведут к блоку «Kontakt». */
+  wa: "",
+  direct: "#kontakt",
+  instagram: "#kontakt",
+  olha: "https://olhapolishchuk.de/",
+  address: "Beispielstraße 7<br>40225 Düsseldorf<br><small style='color:#B9A396'>Adresse fiktiv</small>",
+  map: "",
+  images: {
+    hero: "img/hero-bg.webp" /* фон шапки; ветер — hero-wind.js (картинка встроена в него) */, portrait: "img/meisterin.webp",
+    tiles: ["img/manikuere.webp","img/gel-lack.webp","img/gel.webp","img/pedikuere.webp"], /* сгенерированы (Canva AI) */
+    gallery: ["img/arbeit-1.webp","img/arbeit-2.webp","img/arbeit-3.webp","img/arbeit-4.webp"] /* все из kejsy/foto free */, /* сетка по 4 в ряд (на телефоне по 2) */
+    studioVideo: "", studioPoster: "img/studio-poster.webp", studioPhoto: "img/studio-arbeit.webp"
+  },
+  /* Прайс — из её актуального «Preisliste» в Instagram (сторис ~37 недель назад). ПРОВЕРИТЬ у Юлии, что цены не менялись.
+     Kleinunternehmerin? — «inkl. MwSt.» не писать, пока не уточнили. */
+  levels: [
+    { name:"Art Director", who:{de:"Olena Koval", uk:"Олена Коваль"}, p:["35 €","50 €","52 €","58 €","65 €","60–65 €","60 €","65 €"] },
+    { name:"Top Master",   who:{de:"Daria · Sofia",   uk:"Дар'я · Софія"},     p:["30 €","45 €","50 €","55 €","60 €","55–60 €","55 €","60 €"] }
+  ],
+  extras: ["ab 70 €","5 €","5 €","15 €"],
+  /* «от»-цены на плитках услуг — по уровню Top Master */
+  tileFrom: ["30 €","50 €","55 €","45 €"]
+};
+
+const T = {
+ de:{
+  bar:"<b>Konzept-Website</b> · Beispiel für ein Nagelstudio mit Kursen · Studio und Namen sind fiktiv",
+  menu:[["#leistungen","Leistungen"],["#preise","Preise"],["#galerie","Arbeiten"],["#studio","Studio"],["#team","Team"],["#kurse","Kurse"],["#kontakt","Kontakt"]],
+  hEyebrow:"Ukrainische Maniküre · Düsseldorf", hSub:"Maniküre · Pediküre · Kurse",
+  hTag:"Designs, die 4–5 Wochen halten.",
+  btn:"Termin anfragen →", meta:"12 Jahre Erfahrung · Düsseldorf · Termine nach Vereinbarung",
+  values:[["Hält 4–5 Wochen","Saubere Vorbereitung und präzise Arbeit am Nagel – damit Ihre Maniküre lange schön bleibt."],
+          ["12 Jahre Erfahrung","Olena Koval arbeitet seit 12 Jahren als Nageldesignerin und bildet selbst Meisterinnen aus."],
+          ["Zwei Preisstufen","Art Director oder Top Master – Sie wählen, bei wem Sie buchen. Die Qualität bleibt dieselbe."]],
+  sEyebrow:"Leistungen", sTitle:"Für Hände und Füße, die *gepflegt* aussehen", sLead:"Vier Leistungen, ein Standard: saubere Vorbereitung, präzise Form und Farbe, die hält.", btn2:"Preise ansehen", badge:["12","Jahre<br>Erfahrung"], metaF:[["4–5","Wochen Halt"],["2","Preisstufen"],["UA · DE","Sprachen"]],
+  tiles:["Maniküre","Gel-Lack","Gel & Verlängerung","Pediküre"],
+  tileText:["Pflege, Form und Nagelhaut – sauber und präzise.","Glänzende Farbe, die 4–5 Wochen hält.","Stabile Form und Länge – natürlich oder mit Design.","Gepflegte Füße mit Gel-Lack oder ohne."],from:"ab",
+  pEyebrow:"Preisliste", pTitle:"Klare Preise, *zwei* Stufen",
+  grp:["Maniküre + Gel-Lack","Pediküre + Gel-Lack","Zusätzlich"],
+  rows:["Maniküre","Pediküre","Basis","Farbe","French / Design","Maniküre + Gel","Basis / Farbe","French"],
+  extras:["Nagelverlängerung","Reparatur eines Nagels","Design / Stamping (pro Nagel)","SPA-Pflege"],
+  pNote:"Alle Preise in Euro. Nicht sicher, was passt? Schreiben Sie kurz – wir beraten Sie gern.",
+  gEyebrow:"Arbeiten", gTitle:"Ein Blick auf *unsere* Maniküren",
+  stEyebrow:"Das Studio", stTitle:"Hier entsteht *Ihre* Maniküre",
+  stText:"Ein heller Arbeitsplatz, vorbereitete Instrumente, frische Handschuhe und Maske für jede Kundin.",
+  tEyebrow:"Über mich", tTitle:"Olena *Koval*",
+  facts:[["12","Jahre Erfahrung"],["10.000+","Maniküren"],["5.000+","Pediküren"]],
+  tText:"Angefangen habe ich in einem großen Salon, heute habe ich mein eigenes Studio in Düsseldorf – und gebe mein Wissen in Kursen an neue Meisterinnen weiter. Ich arbeite schnell, sauber und so, dass das Ergebnis wochenlang hält.",
+  tBtn:"Termin bei Olena anfragen →",
+  masters:[["Olena Koval","Art Director"],["Daria","Top Master"],["Sofia","Top Master"]],
+  kEyebrow:"Maniküre-Kurse", kTitle:"In *drei Tagen* zum ersten eigenen Ergebnis",
+  kLead:"Für alle, die den Beruf wechseln und Nageldesignerin werden möchten. Der Kurs findet auf Ukrainisch statt, offline im Studio – jede Teilnehmerin arbeitet am Modell.",
+  days:[["Vorab","Theorie als Video","Eine Woche vor dem Start: Hygiene, Desinfektion und Sterilisation, Infektionen, Aufbau des Nagels. Wird am ersten Tag abgefragt."],
+        ["Tag 1","Maniküre am Modell","Alle Schritte der Maniküre von Anfang an – unter Anleitung, Handgriff für Handgriff."],
+        ["Tag 2","Farbe und Form","Maniküre mit Farbauftrag, klare Square-Form, Arbeit mit Polygel und Gel-Jelly. Dazu: die eigenen Arbeiten fotografieren. Bis 17:00 Uhr."],
+        ["Tag 3","French und Zertifikat","French in der Form Ihrer Wahl, alle Schritte am Modell ab 10:00 Uhr. Abschlussarbeit und Zertifikat."]],
+  kBonus:"<b>Auch nach dem Kurs nicht allein:</b> persönliches Feedback, Hilfe bei der Auswahl von Werkzeug und Material sowie kurze Video-Lektionen zur Apparat-Maniküre.",
+  kBtn:"Kurs anfragen →",
+  fTitle:"Häufige *Fragen*",
+  faq:[["Wie buche ich einen Termin?","Schreiben Sie uns die gewünschte Leistung und ein paar passende Zeiten. Wir bestätigen jeden Termin persönlich."],
+       ["Was ist der Unterschied zwischen Art Director und Top Master?","Art Director ist Olena Koval selbst. Top Master sind die Nageldesignerinnen aus ihrem Team – sie arbeiten nach denselben Standards, zu einem etwas günstigeren Preis."],
+       ["Wie lange hält die Maniküre?","In der Regel 4–5 Wochen – abhängig von Ihren Nägeln und Ihrem Alltag."],
+       ["Für wen sind die Kurse?","Für Einsteigerinnen ohne Vorkenntnisse. Termine und Preis nennen wir Ihnen gern auf Anfrage."]],
+  cEyebrow:"Kontakt", cTitle:"Wir freuen uns *auf Sie*", addrH:"Adresse", map:"In Google Maps öffnen ↗",
+  hoursH:"Öffnungszeiten", hours:"Termine nur nach Vereinbarung.",
+  bookH:"Termin", book:"Dies ist eine Konzept-Website – das Studio gibt es nicht. Sie möchten so eine Website für Ihr Studio?",
+  copy:"Midna Nails – fiktives Studio · Konzept-Website", legal:"Website: olhapolishchuk.de", demo:"Konzept · Demo von olhapolishchuk.de"
+ },
+ uk:{
+  bar:"<b>Концепт-сайт</b> · приклад для нейл-студії з курсами · студія та імена вигадані",
+  menu:[["#leistungen","Послуги"],["#preise","Ціни"],["#galerie","Роботи"],["#studio","Студія"],["#team","Команда"],["#kurse","Курси"],["#kontakt","Контакти"]],
+  hEyebrow:"Український манікюр · Дюссельдорф", hSub:"Манікюр · Педикюр · Курси",
+  hTag:"Дизайн, який тримається 4–5 тижнів.",
+  btn:"Записатися →", meta:"12 років досвіду · Дюссельдорф · за попереднім записом",
+  values:[["Тримається 4–5 тижнів","Ретельна підготовка і точна робота з нігтем — щоб манікюр довго залишався охайним."],
+          ["12 років досвіду","Олена Коваль працює майстром манікюру 12 років і сама навчає майстринь."],
+          ["Два рівні цін","Art Director або Top Master — ви обираєте, до кого записатися. Якість та сама."]],
+  sEyebrow:"Послуги", sTitle:"Для *доглянутих* рук і ніг", sLead:"Чотири послуги, один стандарт: ретельна підготовка, точна форма і колір, що тримається.", btn2:"Дивитися ціни", badge:["12","років<br>досвіду"], metaF:[["4–5","тижнів носіння"],["2","рівні цін"],["UA · DE","мови"]],
+  tiles:["Манікюр","Гель-лак","Гель і нарощування","Педикюр"],
+  tileText:["Догляд, форма і кутикула — чисто й точно.","Глянцевий колір, що тримається 4–5 тижнів.","Міцна форма й довжина — природно або з дизайном.","Доглянуті стопи з гель-лаком або без."],from:"від",
+  pEyebrow:"Прайс", pTitle:"Зрозумілі ціни, *два* рівні",
+  grp:["Манікюр + гель-лак","Педикюр + гель-лак","Додатково"],
+  rows:["Манікюр","Педикюр","База","Колір","Френч / дизайн","Манікюр + гель","База / колір","Френч"],
+  extras:["Нарощування нігтів","Ремонт одного нігтя","Дизайн / стемпінг (за ніготь)","SPA-догляд"],
+  pNote:"Усі ціни в євро. Не знаєте, що обрати? Напишіть — підкажемо.",
+  gEyebrow:"Роботи", gTitle:"*Наші* манікюри",
+  stEyebrow:"Студія", stTitle:"Тут народжується *ваш* манікюр",
+  stText:"Світле робоче місце, підготовлені інструменти, свіжі рукавички й маска для кожної клієнтки.",
+  tEyebrow:"Про мене", tTitle:"Олена *Коваль*",
+  facts:[["12","років досвіду"],["10 000+","манікюрів"],["5 000+","педикюрів"]],
+  tText:"Починала у великому салоні, сьогодні маю власну студію в Дюссельдорфі й передаю свої знання новим майстриням на курсах. Працюю швидко, чисто і так, щоб результат тримався тижнями.",
+  tBtn:"Записатися до Олени →",
+  masters:[["Олена Коваль","Art Director"],["Дар'я","Top Master"],["Софія","Top Master"]],
+  kEyebrow:"Курси манікюру", kTitle:"За *три дні* — до першого власного результату",
+  kLead:"Для тих, хто хоче змінити сферу діяльності та стати нейл-майстром. Навчання українською, офлайн у студії — кожна учениця працює на моделі.",
+  days:[["Заздалегідь","Теорія у відео","За тиждень до початку: гігієна, дезінфекція і стерилізація, інфекції, будова нігтя. У перший день — перевірка."],
+        ["День 1","Манікюр на моделі","Усі етапи манікюру з самого початку — під наглядом, крок за кроком."],
+        ["День 2","Колір і форма","Манікюр із покриттям кольором, чіткий квадрат, робота з полігелем і гелем-желе. Вчимося фотографувати роботи. До 17:00."],
+        ["День 3","Френч і сертифікат","Френч у формі на вибір, усі етапи на моделі з 10:00. Здаємо роботу й отримуємо сертифікат."]],
+  kBonus:"<b>Після курсу ви не самі:</b> зворотний зв'язок, допомога з вибором інструменту та матеріалів і короткі відеоуроки з апаратного манікюру.",
+  kBtn:"Дізнатися про курс →",
+  fTitle:"Часті *запитання*",
+  faq:[["Як записатися?","Напишіть нам, яку послугу ви хочете і коли вам зручно. Кожен запис підтверджуємо особисто."],
+       ["Чим відрізняються Art Director і Top Master?","Art Director — це сама Олена Коваль. Top Master — майстрині її команди: працюють за тими самими стандартами, ціна трохи нижча."],
+       ["Скільки тримається манікюр?","Зазвичай 4–5 тижнів — залежить від нігтів і способу життя."],
+       ["Для кого курси?","Для початківців без досвіду. Дати і ціну підкажемо на запит."]],
+  cEyebrow:"Контакти", cTitle:"Чекаємо *на вас*", addrH:"Адреса", map:"Відкрити в Google Maps ↗",
+  hoursH:"Години роботи", hours:"Тільки за попереднім записом.",
+  bookH:"Запис", book:"Це концепт-сайт — такої студії не існує. Хочете такий сайт для своєї студії?",
+  copy:"Midna Nails — вигадана студія · концепт-сайт", legal:"Сайт: olhapolishchuk.de", demo:"Концепт · демо від olhapolishchuk.de"
+ }
+};
+/* ========================================================= */
+const $=id=>document.getElementById(id);
+const em=s=>s.replace(/\*(.+?)\*/g,'<em>$1</em>');
+const grad=["linear-gradient(160deg,#EBCFBE,#B9562C)","linear-gradient(160deg,#F3E6DA,#9A3F1C)","linear-gradient(160deg,#E6D6C8,#3A231A)","linear-gradient(160deg,#EBCFBE,#2A5250)"];
+const bg=(src,i)=>`background-image:url(${src}),${grad[i%grad.length]}`;
+function render(l){
+  const t=T[l]; document.documentElement.lang=l;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  const book=SITE.wa?`https://wa.me/${SITE.wa}`:SITE.direct;
+  $('bar').innerHTML=t.bar;
+  $('menu').innerHTML=t.menu.map(([h,x])=>`<a href="${h}">${x}</a>`).join('');
+  $('h-eyebrow').textContent=t.hEyebrow; $('h-tag').textContent=t.hTag;
+  $('h-meta').innerHTML=t.metaF.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+  $('h-badge').innerHTML=`<div><b>${t.badge[0]}</b>${t.badge[1]}</div>`;
+  $('h-btn2').textContent=t.btn2;
+  $('portrait').style.cssText=bg(SITE.images.portrait,0);
+  ['h-btn','p-btn','c-btn'].forEach(i=>{$(i).textContent=t.btn;$(i).href=book});
+  $('values').innerHTML=t.values.map(([h,p],k)=>`<div class="val"><span class="num">0${k+1}</span><div><h3>${h}</h3><p>${p}</p></div></div>`).join('');
+  $('s-eyebrow').textContent=t.sEyebrow; $('s-title').innerHTML=em(t.sTitle); $('s-lead').textContent=t.sLead;
+  $('tiles').innerHTML=t.tiles.map((x,i)=>`<a class="tile" href="#preise"><div class="img"><div style="${bg(SITE.images.tiles[i],i)}" role="img" aria-label="${x} – Beispielfoto"></div><span class="from">${t.from} ${SITE.tileFrom[i]}</span></div><h3>${x}<i>→</i></h3><p>${t.tileText[i]}</p></a>`).join('');
+  $('p-eyebrow').textContent=t.pEyebrow; $('p-title').innerHTML=em(t.pTitle); $('p-note').textContent=t.pNote;
+  const row=(n,p)=>`<div class="row"><span class="n">${n}</span><span class="p">${p}</span></div>`;
+  $('cats').innerHTML=SITE.levels.map((L,k)=>`<div class="cat${k?'':' first'}"><h3>${L.name}</h3><div class="who">${L.who[l]}</div>
+    ${row(t.rows[0],L.p[0])}${row(t.rows[1],L.p[1])}
+    <div class="grp">${t.grp[0]}</div>${row(t.rows[2],L.p[2])}${row(t.rows[3],L.p[3])}${row(t.rows[4],L.p[4])}
+    ${row(t.rows[5],L.p[5])}
+    <div class="grp">${t.grp[1]}</div>${row(t.rows[6],L.p[6])}${row(t.rows[7],L.p[7])}</div>`).join('')
+    +`<div class="cat wide"><div class="grp" style="margin-top:0">${t.grp[2]}</div><div class="extras">${t.extras.map((n,i)=>row(n,SITE.extras[i])).join('')}</div></div>`;
+  $('g-eyebrow').textContent=t.gEyebrow; $('g-title').innerHTML=em(t.gTitle); $('g-btn').href=SITE.instagram;
+  $('gal').innerHTML=SITE.images.gallery.map((g,i)=>`<div class="ph" role="img" aria-label="Beispielfoto Maniküre" style="${bg(g,i)}"></div>`).join('');
+  $('st-eyebrow').textContent=t.stEyebrow; $('st-title').innerHTML=em(t.stTitle); $('st-text').textContent=t.stText;
+  if(!$('st-photo').getAttribute('src')){$('st-video').poster=SITE.images.studioPoster;if(SITE.images.studioVideo)$('st-video').src=SITE.images.studioVideo;$('st-photo').src=SITE.images.studioPhoto;}
+  $('t-eyebrow').textContent=t.tEyebrow; $('t-title').innerHTML=em(t.tTitle); $('t-text').textContent=t.tText;
+  $('t-facts').innerHTML=t.facts.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+  $('t-btn').textContent=t.tBtn; $('t-btn').href=book;
+  $('masters').innerHTML=t.masters.map(([n,r])=>`<div class="master"><span class="av">${n[0]}</span><div><span>${r}</span><b>${n}</b></div></div>`).join('');
+  $('k-eyebrow').textContent=t.kEyebrow; $('k-title').innerHTML=em(t.kTitle); $('k-lead').textContent=t.kLead;
+  $('days').innerHTML=t.days.map(([k,h,p])=>`<div class="day"><div class="k">${k}</div><h3>${h}</h3><p>${p}</p></div>`).join('');
+  $('k-bonus').innerHTML=t.kBonus; $('k-btn').textContent=t.kBtn; $('k-btn').href=book;
+  $('f-title').innerHTML=em(t.fTitle);
+  $('faqs').innerHTML=t.faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
+  $('c-eyebrow').textContent=t.cEyebrow; $('c-title').innerHTML=em(t.cTitle);
+  $('c-addr-h').textContent=t.addrH; $('c-addr').innerHTML=SITE.address; $('c-map').textContent=SITE.map?t.map:''; if(SITE.map)$('c-map').href=SITE.map; else $('c-map').removeAttribute('href');
+  $('c-hours-h').textContent=t.hoursH; $('c-hours').textContent=t.hours;
+  $('c-book-h').textContent=t.bookH; $('c-book').textContent=t.book; $('c-btn').textContent=l==='de'?'So eine Website für Ihr Studio ↗':'Такий сайт для вашої студії ↗'; $('c-btn').href=SITE.olha;
+  $('copy').textContent=t.copy; $('legal').innerHTML=`<a href="${SITE.olha}" target="_blank" rel="noopener" style="color:inherit">${t.legal}</a>`; $('demo').innerHTML=`<a href="${SITE.olha}" target="_blank" rel="noopener" style="color:inherit">${t.demo}</a>`;
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>render(b.dataset.l));
+$('burger').onclick=()=>$('menu').classList.toggle('open');
+$('menu').onclick=()=>$('menu').classList.remove('open');
+render('de');
+</script>
+<script src="hero-wind.js" defer></script>
+</body>
+</html>
