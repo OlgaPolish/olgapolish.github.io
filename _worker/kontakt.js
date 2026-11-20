@@ -95,7 +95,7 @@ async function websiteSelbst(data, env, origin) {
     `BESTÄTIGT: Fotorechte ✓ · Inhalte/Impressum in eigener Verantwortung ✓ · Bedingungen + Unternehmer (§ 14 BGB) ✓\n\n` +
     (clean(s.note, 600) ? `NACHRICHT:\n${clean(s.note, 600)}\n\n` : "") +
     `Vor Veröffentlichung: Texte prüfen (HWG/UWG – keine Heilversprechen, kein Vorher/Nachher).\n` +
-    `Fotos/Logo schickt die Kundin per WhatsApp. Alle Felder: Anhang website-selbst.json\n\n` +
+    `Neuen Kundensite anlegen: https://seiten.olha-polishchuk-web.workers.dev/admin → JSON aus dem Anhang einfügen. Fotos lädt die Kundin danach selbst über ihren Link hoch.\n\n` +
     `Zeit: ${when}\nAntworten: einfach auf diese E-Mail antworten (geht direkt an ${email}).`;
 
   const attachment = JSON.stringify(s, null, 2).slice(0, 50000);

@@ -162,6 +162,9 @@ footer a:hover{border-color:currentColor}
 .legal .close{margin-bottom:28px}
 .wa{position:fixed;right:18px;bottom:18px;z-index:20;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--copper);box-shadow:0 10px 26px rgba(0,0,0,.28)}
 .wa svg{width:28px;height:28px;fill:var(--cream)}
+body.live .demo{display:none}
+.split.solo{grid-template-columns:1fr;max-width:760px}
+.legal h3+p{margin-bottom:4px}
 .demo{position:fixed;left:12px;bottom:12px;z-index:20;background:var(--cream);border:1px solid var(--line);border-radius:99px;font-size:11px;padding:6px 12px;color:var(--muted)}
 @media(max-width:700px){.demo{display:none}}
 </style>
@@ -280,12 +283,17 @@ const L={
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const em=s=>esc(s).replace(/\*(.+?)\*/g,"<em>$1</em>");
-const or=(v,d)=>{v=String(v??"").trim();return v?esc(v):`<span class="empty">${esc(d)}</span>`};
+/* LIVE: живой сайт клиентки (данные вставляет Worker «seiten»), иначе — предпросмотр в конструкторе */
+const LIVE=window.SITE||null;
+if(LIVE)document.body.classList.add("live");
+const or=(v,d,keep)=>{v=String(v??"").trim();return v?esc(v):LIVE?(keep?esc(d):""):`<span class="empty">${esc(d)}</span>`};
 const img=u=>`url('${String(u).replace(/['"\\]/g,c=>encodeURIComponent(c))}')`; // одинарные кавычки: значение стоит внутри style="…"
 function digits(p){let d=String(p||"").replace(/[^\d+]/g,"");if(d.startsWith("+"))d=d.slice(1);else if(d.startsWith("00"))d=d.slice(2);else if(d.startsWith("0"))d="49"+d.slice(1);return d.replace(/\D/g,"")}
 function price(p){p=String(p||"").trim();if(!p)return"";return /^\d+([.,]\d+)?([–-]\d+([.,]\d+)?)?$/.test(p)?p+" €":p}
 function splitTitle(name){const w=String(name).trim().split(/\s+/);if(w.length<2)return esc(name);const last=w.pop();return esc(w.join(" "))+" <em>"+esc(last)+"</em>"}
 let S={},I={},G={},legalMode="";
+if(LIVE){const u=id=>id?LIVE.imgBase+id:"",im=(LIVE.data&&LIVE.data.images)||{};S=LIVE.data||{};
+  I={logo:u(im.logo),hero:u(im.hero),portrait:u(im.portrait),gallery:(im.gallery||[]).map(u),svc:(im.svc||[]).map(u)}}
 
 function render(){
   const d=S,t={...(L[d.siteLang]||L.de),...G};
@@ -301,7 +309,10 @@ function render(){
   $("mk").className="mk"+(I.logo?" img":"");
   $("mk").innerHTML=I.logo?`<img src="${esc(I.logo)}" alt="">`:esc(name.trim()[0]||"·");
   $("lg-name").textContent=name; $("lg-sub").textContent=cat+(city?" · "+city:"");
-  $("menu").innerHTML=t.menu.map(([h,x])=>`<a href="${h}">${esc(x)}</a>`).join("");
+  const ownGal=[0,1,2,3].map(i=>I.gallery&&I.gallery[i]).filter(Boolean);
+  const hideGal=LIVE&&!ownGal.length, hideAbout=LIVE&&!String(d.owner||"").trim()&&!String(d.about||"").trim();
+  $("galerie").hidden=!!hideGal; $("ueber").hidden=!!hideAbout;
+  $("menu").innerHTML=t.menu.filter(([h])=>!(h==="#galerie"&&hideGal)&&!(h==="#ueber"&&hideAbout)).map(([h,x])=>`<a href="${h}">${esc(x)}</a>`).join("");
   // hero
   $("hero-bg").style.backgroundImage=img(I.hero||DEF.hero);
   $("h-eyebrow").textContent=cat+(city?" · "+city:"");
@@ -328,22 +339,25 @@ function render(){
   // gallery
   $("g-eyebrow").textContent=t.gEyebrow; $("g-title").innerHTML=em(t.gTitle);
   $("g-btn").textContent=t.ig; $("g-btn").style.display=ig?"":"none"; if(ig)$("g-btn").href="https://www.instagram.com/"+encodeURIComponent(ig)+"/";
-  const gal=[0,1,2,3].map(i=>(I.gallery&&I.gallery[i])||DEF.gallery[i]);
+  const gal=LIVE?ownGal:[0,1,2,3].map(i=>(I.gallery&&I.gallery[i])||DEF.gallery[i]);
   $("gal").innerHTML=gal.map(g=>`<div role="img" style="background-image:${img(g)}"></div>`).join("");
   // about
-  $("portrait").style.backgroundImage=img(I.portrait||DEF.portrait);
+  // на живом сайте без своего фото — без чужого портрета
+  const noPortrait=LIVE&&!I.portrait;
+  document.querySelector(".portrait-w").hidden=!!noPortrait; document.querySelector("#ueber .split").classList.toggle("solo",!!noPortrait);
+  $("portrait").style.backgroundImage=noPortrait?"none":img(I.portrait||DEF.portrait);
   $("t-eyebrow").textContent=t.tEyebrow;
-  $("t-title").innerHTML=d.owner?splitTitle(d.owner):`<span class="empty">${esc(t.tName)}</span>`;
+  $("t-title").innerHTML=d.owner?splitTitle(d.owner):LIVE?"":`<span class="empty">${esc(t.tName)}</span>`;
   $("t-text").innerHTML=or(d.about,t.tText);
   // final CTA
-  $("f-title").innerHTML=d.ctaTitle&&d.ctaTitle.trim()?em(d.ctaTitle):`<span class="empty">${esc(t.ctaTitle)}</span>`; $("f-sub").textContent=t.ctaSub;
+  $("f-title").innerHTML=d.ctaTitle&&d.ctaTitle.trim()?em(d.ctaTitle):LIVE?esc(t.ctaTitle):`<span class="empty">${esc(t.ctaTitle)}</span>`; $("f-sub").textContent=t.ctaSub;
   // contact
   $("c-eyebrow").textContent=t.cEyebrow; $("c-title").innerHTML=em(t.cTitle);
   $("c-addr-h").textContent=t.addrH;
   const addr=[d.street,[d.zip,d.city].filter(Boolean).join(" ")].filter(s=>String(s||"").trim()).join("\n");
   $("c-addr").innerHTML=or(addr,t.addr);
   if(addr){$("c-map").textContent=t.map;$("c-map").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(name+", "+addr.replace("\n",", "))}else{$("c-map").textContent="";$("c-map").removeAttribute("href")}
-  $("c-hours-h").textContent=t.hoursH; $("c-hours").innerHTML=or(d.hours,t.hours);
+  $("c-hours-h").textContent=t.hoursH; $("c-hours").innerHTML=or(d.hours,t.hours,true);
   $("c-book-h").textContent=t.bookH; $("c-book").textContent=t.book;
   let acts="";
   if(ph)acts+=`<a class="btn" href="${esc(book)}" target="_blank" rel="noopener">${esc(bookTxt)}</a>`;
@@ -355,6 +369,7 @@ function render(){
   $("f-imp").textContent=t.imp; $("f-ds").textContent=t.ds; $("legal-close").textContent=t.back;
   $("wa").style.display=hasWa?"":"none"; if(hasWa)$("wa").href=book;
   $("demo").textContent=t.demo;
+  if(LIVE){$("f-imp").href=LIVE.base+"impressum";$("f-ds").href=LIVE.base+"datenschutz"}
   if(legalMode)openLegal(legalMode,true);
 }
 function miss(v,label){v=String(v||"").trim();return v?esc(v):`<span class="miss">[${esc(label)} fehlt]</span>`}
@@ -377,21 +392,27 @@ E-Mail: ${miss(m.email,"E-Mail")}</p>
     <h3>Verbraucherstreitbeilegung</h3>
     <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>`;
   }else{
+    const ph=S.phone||m.phone;
     h=`<div class="eyebrow">Datenschutz</div><h2>Datenschutzerklärung</h2>
-    <p>Die vollständige Datenschutzerklärung erstellt Olha Polishchuk vor der Veröffentlichung – passend zu Ihrer Website: ohne Kontaktformular, ohne Analyse-Tools, mit WhatsApp-Button und Links zu Instagram und Google Maps.</p>
-    <h3>Verantwortlich</h3><p>${miss(m.name,"Name")}
+    <h3>1. Verantwortlich</h3><p>${S.studio?esc(S.studio)+"\n":""}${miss(m.name,"Name")}
 ${miss(street,"Straße")}
 ${miss([zip,city].filter(Boolean).join(" "),"PLZ und Ort")}
-E-Mail: ${miss(m.email,"E-Mail")}</p>`;
+E-Mail: ${miss(m.email,"E-Mail")}${ph?"\nTelefon: "+esc(ph):""}</p>
+    <h3>2. Aufruf der Website und Hosting</h3><p>Beim Aufruf dieser Website werden technisch notwendige Daten verarbeitet (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser und Betriebssystem), damit die Seite ausgeliefert und vor Missbrauch geschützt werden kann. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Die Website wird über die Infrastruktur der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA bereitgestellt; technisch betreut wird sie von Olha Polishchuk (Webdesign, Düsseldorf) im Auftrag des Verantwortlichen. Für Übermittlungen in die USA gelten der EU-US Data Privacy Framework bzw. Standardvertragsklauseln. Wir selbst speichern keine Zugriffsdaten.</p>
+    <h3>3. Keine Cookies, keine Analyse</h3><p>Diese Website setzt keine Cookies, verwendet keine Analyse- oder Werbedienste und hat kein Kontaktformular. Schriften und Bilder werden vom eigenen Server geladen, nicht von Drittanbietern.</p>
+    <h3>4. Kontakt per WhatsApp, Telefon oder E-Mail</h3><p>Wenn Sie uns kontaktieren, verarbeiten wir Ihre Angaben, um Ihre Anfrage zu beantworten und Termine zu vereinbaren (Art. 6 Abs. 1 lit. b DSGVO). WhatsApp ist ein Dienst der WhatsApp Ireland Ltd.; dort gelten deren Datenschutzhinweise. Wir löschen Ihre Daten, sobald sie nicht mehr benötigt werden und keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+    <h3>5. Links zu Instagram und Google Maps</h3><p>Links zu Instagram (Meta Platforms Ireland Ltd.) und Google Maps (Google Ireland Ltd.) sind einfache Verweise. Daten werden erst übertragen, wenn Sie einen Link anklicken; dann gelten die Datenschutzhinweise des jeweiligen Anbieters.</p>
+    <h3>6. Ihre Rechte</h3><p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Wenden Sie sich dazu an die oben genannte Adresse. Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren.</p>
+    <p style="margin-top:22px;font-size:13px;color:var(--muted)">Stand: ${new Date(LIVE&&LIVE.updated?LIVE.updated:Date.now()).toLocaleDateString("de-DE",{month:"long",year:"numeric"})}</p>`;
   }
   $("legal-body").innerHTML=h;$("legal").classList.add("open");if(!silent)$("legal").scrollTop=0;
 }
-$("f-imp").onclick=()=>openLegal("imp");
-$("f-ds").onclick=()=>openLegal("ds");
-$("legal-close").onclick=()=>{legalMode="";$("legal").classList.remove("open")};
+$("f-imp").onclick=e=>{if(LIVE)return;e.preventDefault();openLegal("imp")};
+$("f-ds").onclick=e=>{if(LIVE)return;e.preventDefault();openLegal("ds")};
+$("legal-close").onclick=()=>{if(LIVE&&LIVE.legal){location.href=LIVE.base;return}legalMode="";$("legal").classList.remove("open")};
 $("burger").onclick=()=>$("menu").classList.toggle("open");
 $("menu").onclick=()=>$("menu").classList.remove("open");
-window.addEventListener("message",e=>{
+if(!LIVE)window.addEventListener("message",e=>{
   if(e.origin!==location.origin&&!(location.origin==="null"))return;
   const m=e.data||{};
   if(m.type==="render"){S=m.data||{};I=m.imgs||{};G=m.sug||{};render()}
@@ -399,7 +420,8 @@ window.addEventListener("message",e=>{
   if(m.type==="scroll"&&m.to){legalMode="";$("legal").classList.remove("open");const el=document.querySelector(m.to);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
 });
 render();
-if(parent!==window)parent.postMessage({type:"ready"},location.origin==="null"?"*":location.origin);
+if(LIVE&&LIVE.legal)openLegal(LIVE.legal);
+if(!LIVE&&parent!==window)parent.postMessage({type:"ready"},location.origin==="null"?"*":location.origin);
 </script>
 </body>
 </html>
