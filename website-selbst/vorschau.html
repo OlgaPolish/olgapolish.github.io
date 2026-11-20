@@ -92,7 +92,8 @@ section{padding:96px 0}
 .tiles.n1{grid-template-columns:minmax(0,320px)}.tiles.n2{grid-template-columns:repeat(2,minmax(0,320px))}.tiles.n3{grid-template-columns:repeat(3,1fr)}
 @media(max-width:960px){.tiles,.tiles.n3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.tiles,.tiles.n2,.tiles.n3{grid-template-columns:1fr}}
-.tile .img{aspect-ratio:3/4;border-radius:var(--arch);overflow:hidden;position:relative}
+.tile .img{aspect-ratio:3/4;border-radius:var(--arch);overflow:hidden;position:relative;background:var(--blush)}
+@media(max-width:520px){.tile .img{aspect-ratio:4/3;border-radius:160px 160px 0 0}}
 .tile .img div{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .tile:hover .img div{transform:scale(1.06)}
 .tile .from{position:absolute;right:14px;bottom:14px;background:var(--cream);color:var(--copper);font-weight:700;font-size:13px;padding:7px 13px;border-radius:99px}
@@ -127,6 +128,15 @@ section{padding:96px 0}
 .portrait-w::after{content:"";position:absolute;left:-18px;bottom:-18px;width:55%;height:45%;background:var(--copper);z-index:-1;opacity:.9}
 .split h2{font-size:clamp(38px,4.6vw,58px);line-height:1.04;margin:14px 0 22px;overflow-wrap:anywhere}
 .split p{color:var(--body);margin-bottom:26px;white-space:pre-line}
+/* final CTA */
+.final{background:var(--copper);color:var(--cream);padding:84px 0;text-align:center;position:relative;overflow:hidden}
+.final::before,.final::after{content:"";position:absolute;border-radius:50%;border:1px solid color-mix(in srgb,var(--cream) 22%,transparent)}
+.final::before{width:420px;height:420px;left:-140px;top:-160px}.final::after{width:300px;height:300px;right:-90px;bottom:-140px}
+.final h2{font-size:clamp(36px,5.4vw,64px);line-height:1.05;color:var(--cream);max-width:860px;margin:0 auto 18px;overflow-wrap:anywhere}
+.final h2 em{color:var(--cream);opacity:.85}
+.final p{color:color-mix(in srgb,var(--cream) 82%,transparent);max-width:520px;margin:0 auto 30px}
+.final .btn{background:var(--cream);border-color:var(--cream);color:var(--copper)}
+.final .btn:hover{background:transparent;color:var(--cream)}
 /* contact */
 .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:860px){.cgrid{grid-template-columns:1fr}}
@@ -199,6 +209,8 @@ footer a:hover{border-color:currentColor}
   </div>
 </div></section>
 
+<section class="final" id="termin"><div class="wrap"><h2 id="f-title"></h2><p id="f-sub"></p><a class="btn" id="f-btn" target="_blank" rel="noopener"></a></div></section>
+
 <section class="on-dark" id="kontakt"><div class="wrap">
   <div class="head c"><div class="eyebrow" id="c-eyebrow"></div><h2 id="c-title"></h2></div>
   <div class="cgrid">
@@ -236,6 +248,7 @@ const L={
   cEyebrow:"Kontakt",cTitle:"Wir freuen uns *auf Sie*",addrH:"Adresse",addr:"Straße und Hausnummer\nPLZ Ort",map:"In Google Maps öffnen ↗",
   hoursH:"Öffnungszeiten",hours:"Termine nach Vereinbarung",bookH:"Termin",book:"Schreiben Sie uns – wir antworten so schnell wie möglich.",call:"Anrufen",
   metaCity:"Standort",metaHours:"Termine",metaLang:"Termin",metaLangV:"per WhatsApp",
+  ctaTitle:"Bereit für Ihren *schönsten* Look?",ctaSub:"Schreiben Sie uns – wir finden gemeinsam einen passenden Termin.",
   imp:"Impressum",ds:"Datenschutz",back:"← Zurück zur Seite",demo:"Vorschau · olhapolishchuk.de"},
  uk:{menu:[["#leistungen","Послуги"],["#preise","Ціни"],["#galerie","Роботи"],["#ueber","Про мене"],["#kontakt","Контакти"]],
   studio:"Ваша студія",cat:"Нейл-студія",slogan:"Тут буде ваш слоган — одне речення про вашу студію.",
@@ -247,6 +260,7 @@ const L={
   cEyebrow:"Контакти",cTitle:"Чекаємо *на вас*",addrH:"Адреса",addr:"Вулиця і номер будинку\nІндекс Місто",map:"Відкрити в Google Maps ↗",
   hoursH:"Години роботи",hours:"За попереднім записом",bookH:"Запис",book:"Напишіть нам — відповімо якнайшвидше.",call:"Зателефонувати",
   metaCity:"Місто",metaHours:"Запис",metaLang:"Запис",metaLangV:"у WhatsApp",
+  ctaTitle:"Готові до *найкрасивішої* себе?",ctaSub:"Напишіть нам — разом підберемо зручний час.",
   imp:"Impressum",ds:"Datenschutz",back:"← Назад до сайту",demo:"Попередній перегляд · olhapolishchuk.de"},
  ru:{menu:[["#leistungen","Услуги"],["#preise","Цены"],["#galerie","Работы"],["#ueber","Обо мне"],["#kontakt","Контакты"]],
   studio:"Ваша студия",cat:"Нейл-студия",slogan:"Здесь будет ваш слоган — одно предложение о вашей студии.",
@@ -258,13 +272,14 @@ const L={
   cEyebrow:"Контакты",cTitle:"Ждём *вас*",addrH:"Адрес",addr:"Улица и номер дома\nИндекс Город",map:"Открыть в Google Maps ↗",
   hoursH:"Часы работы",hours:"По предварительной записи",bookH:"Запись",book:"Напишите нам — ответим как можно скорее.",call:"Позвонить",
   metaCity:"Город",metaHours:"Запись",metaLang:"Запись",metaLangV:"в WhatsApp",
+  ctaTitle:"Готовы к *самой красивой* себе?",ctaSub:"Напишите нам — вместе подберём удобное время.",
   imp:"Impressum",ds:"Datenschutz",back:"← Назад на сайт",demo:"Предпросмотр · olhapolishchuk.de"}
 };
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const em=s=>esc(s).replace(/\*(.+?)\*/g,"<em>$1</em>");
 const or=(v,d)=>{v=String(v??"").trim();return v?esc(v):`<span class="empty">${esc(d)}</span>`};
-const img=u=>`url("${String(u).replace(/"/g,"%22")}")`;
+const img=u=>`url('${String(u).replace(/['"\\]/g,c=>encodeURIComponent(c))}')`; // одинарные кавычки: значение стоит внутри style="…"
 function digits(p){let d=String(p||"").replace(/[^\d+]/g,"");if(d.startsWith("+"))d=d.slice(1);else if(d.startsWith("00"))d=d.slice(2);else if(d.startsWith("0"))d="49"+d.slice(1);return d.replace(/\D/g,"")}
 function price(p){p=String(p||"").trim();if(!p)return"";return /^\d+([.,]\d+)?([–-]\d+([.,]\d+)?)?$/.test(p)?p+" €":p}
 function splitTitle(name){const w=String(name).trim().split(/\s+/);if(w.length<2)return esc(name);const last=w.pop();return esc(w.join(" "))+" <em>"+esc(last)+"</em>"}
@@ -291,7 +306,7 @@ function render(){
   $("h-title").innerHTML=d.studio?splitTitle(d.studio):`<span class="empty">${esc(t.studio)}</span>`;
   $("h-title").classList.toggle("long",name.length>16);
   $("h-tag").innerHTML=or(d.slogan,t.slogan);
-  ["h-btn","p-btn","t-btn"].forEach(i=>{$(i).textContent=bookTxt;$(i).href=book});
+  ["h-btn","p-btn","t-btn","f-btn"].forEach(i=>{$(i).textContent=bookTxt;$(i).href=book});
   $("h-btn2").textContent=t.prices;
   const firstHours=String(d.hours||"").split("\n").map(s=>s.trim()).filter(Boolean)[0];
   const meta=[[city||"—",t.metaCity],[firstHours||t.hours,t.metaHours]];
@@ -303,7 +318,7 @@ function render(){
   const tiles=list.slice(0,4);
   $("s-eyebrow").textContent=t.sEyebrow; $("s-title").innerHTML=em(t.sTitle);
   $("tiles").className="tiles n"+tiles.length;
-  $("tiles").innerHTML=tiles.map((s,i)=>`<a class="tile" href="#preise"><div class="img"><div style="background-image:${img(DEF.tiles[i%4])}"></div>${price(s.price)?`<span class="from">${esc(price(s.price))}</span>`:""}</div><h3>${or(s.name,t.svc)}<i>→</i></h3>${s.desc?`<p>${esc(s.desc)}</p>`:""}</a>`).join("");
+  $("tiles").innerHTML=tiles.map((s,i)=>`<a class="tile" href="#preise"><div class="img"><div style="background-image:${img((I.svc&&I.svc[i])||DEF.tiles[i%4])}"></div>${price(s.price)?`<span class="from">${esc(price(s.price))}</span>`:""}</div><h3>${or(s.name,t.svc)}<i>→</i></h3>${s.desc?`<p>${esc(s.desc)}</p>`:""}</a>`).join("");
   $("p-eyebrow").textContent=t.pEyebrow; $("p-title").innerHTML=em(t.pTitle); $("p-note").textContent=t.pNote;
   $("cat").innerHTML=list.map(s=>`<div class="row"><span class="n">${or(s.name,t.svc)}${s.desc?`<small>${esc(s.desc)}</small>`:""}</span><span class="p">${esc(price(s.price)||"–")}</span></div>`).join("");
   // gallery
@@ -316,6 +331,8 @@ function render(){
   $("t-eyebrow").textContent=t.tEyebrow;
   $("t-title").innerHTML=d.owner?splitTitle(d.owner):`<span class="empty">${esc(t.tName)}</span>`;
   $("t-text").innerHTML=or(d.about,t.tText);
+  // final CTA
+  $("f-title").innerHTML=d.ctaTitle&&d.ctaTitle.trim()?em(d.ctaTitle):em(t.ctaTitle); $("f-sub").textContent=t.ctaSub;
   // contact
   $("c-eyebrow").textContent=t.cEyebrow; $("c-title").innerHTML=em(t.cTitle);
   $("c-addr-h").textContent=t.addrH;

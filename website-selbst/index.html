@@ -85,6 +85,10 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 .svc .d{grid-column:1/3}
 .svc .x{width:34px;height:40px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;font-size:16px;color:var(--ink-soft)}
 .svc .x:hover{color:var(--err);border-color:var(--err)}
+.svc .ph{grid-column:3;width:34px;height:40px;border:1px dashed rgba(30,42,74,.35);border-radius:8px;background:#fff center/cover no-repeat;display:grid;place-items:center;cursor:pointer;font-size:15px;position:relative}
+.svc .ph.has{border-style:solid;font-size:0}
+.svc .ph input{position:absolute;width:1px;height:1px;opacity:0}
+.svc .d.full{grid-column:1/-1}
 .add{margin-top:10px;border:1.5px dashed rgba(30,42,74,.3);background:none;border-radius:var(--r);padding:10px;width:100%;cursor:pointer;font-weight:600}
 .add:hover{border-color:var(--ink);background:var(--bg-soft)}
 /* uploads */
@@ -186,6 +190,7 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
       <label class="f"><span data-t="phone"></span> <span class="req">*</span><input type="tel" name="phone" maxlength="30" autocomplete="tel" data-ph="phonePh" required></label>
       <label class="chk"><input type="checkbox" name="whatsapp" checked><span data-t="wa"></span></label>
       <label class="f"><span data-t="instagram"></span><input type="text" name="instagram" maxlength="60" data-ph="instagramPh"></label>
+      <label class="f"><span data-t="ctaTitle"></span><input type="text" name="ctaTitle" maxlength="70" data-ph="ctaPh"></label>
     </fieldset>
 
     <fieldset id="fs-svc"><legend><i>3</i><span data-t="l3"></span></legend>
@@ -277,7 +282,7 @@ const U={
   scheme:"Farbschema",sc:{kupfer:"Kupfer",rose:"Rosé",salbei:"Salbei",nacht:"Schwarz-Gold"},logo:"Logo (optional)",pick:"Datei wählen",remove:"entfernen",
   l2:"Adresse & Kontakt",street:"Straße und Hausnummer",streetPh:"Musterstraße 12",zip:"PLZ",city:"Ort",hours:"Öffnungszeiten",hoursPh:"Mo–Fr 10–19 Uhr\nSa 10–15 Uhr",
   phone:"Telefon für Termine",phonePh:"0151 2345678",wa:"Diese Nummer ist auf WhatsApp erreichbar (Button „Termin per WhatsApp“)",instagram:"Instagram",instagramPh:"@ihr.studio",
-  l3:"Leistungen & Preise",svcHint:"Die ersten vier Leistungen erscheinen als Kacheln, alle zusammen in der Preisliste.",svcName:"Leistung",svcPrice:"Preis",svcDesc:"Kurze Beschreibung (optional)",add:"+ Leistung hinzufügen",del:"Zeile löschen",
+  l3:"Leistungen & Preise",svcHint:"Die ersten vier Leistungen erscheinen als Kacheln, alle zusammen in der Preisliste. 📷 – eigenes Foto für die Kachel (nur Vorschau).",svcPhoto:"Foto für die Kachel",ctaTitle:"Satz vor dem Kontakt-Block (optional)",ctaPh:"Bereit für Ihren schönsten Look?",svcName:"Leistung",svcPrice:"Preis",svcDesc:"Kurze Beschreibung (optional)",add:"+ Leistung hinzufügen",del:"Zeile löschen",
   l4:"Über mich",owner:"Ihr Name",about:"Text „Über mich“",aboutPh:"Wie Sie angefangen haben, wie Sie arbeiten, welche Sprachen Sie sprechen …",portrait:"Ihr Foto (optional)",
   l5:"Fotos",photoHint:"Fotos und Logo sehen Sie nur hier in der Vorschau – sie werden nicht gespeichert und nicht mitgeschickt. Nach der Anfrage senden Sie sie mir per WhatsApp. Ohne eigene Fotos zeigt die Vorschau Beispielbilder.",hero:"Titelbild (oben)",gallery:"Ihre Arbeiten (bis zu 4)",
   l6:"Impressum (Pflicht)",impHint:"Jede geschäftliche Website in Deutschland braucht ein Impressum (§ 5 DDG). Diese Angaben stehen öffentlich auf Ihrer Website.",
@@ -301,7 +306,7 @@ const U={
   scheme:"Кольорова схема",sc:{kupfer:"Мідь",rose:"Рожева",salbei:"Шавлія",nacht:"Чорне золото"},logo:"Логотип (необов'язково)",pick:"Обрати файл",remove:"прибрати",
   l2:"Адреса й контакти",street:"Вулиця і номер будинку",streetPh:"Musterstraße 12",zip:"Індекс",city:"Місто",hours:"Години роботи",hoursPh:"Mo–Fr 10–19 Uhr\nSa 10–15 Uhr",
   phone:"Телефон для запису",phonePh:"0151 2345678",wa:"Цей номер є у WhatsApp (кнопка «Записатися у WhatsApp»)",instagram:"Instagram",instagramPh:"@vasha.studio",
-  l3:"Послуги й ціни",svcHint:"Перші чотири послуги — плитками, усі разом — у прайсі.",svcName:"Послуга",svcPrice:"Ціна",svcDesc:"Короткий опис (необов'язково)",add:"+ Додати послугу",del:"Видалити рядок",
+  l3:"Послуги й ціни",svcHint:"Перші чотири послуги — плитками, усі разом — у прайсі. 📷 — своє фото для плитки (тільки перегляд).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необов'язково)",ctaPh:"Готові до найкрасивішої себе?",svcName:"Послуга",svcPrice:"Ціна",svcDesc:"Короткий опис (необов'язково)",add:"+ Додати послугу",del:"Видалити рядок",
   l4:"Про мене",owner:"Ваше ім'я",about:"Текст «Про мене»",aboutPh:"З чого почали, як працюєте, якими мовами говорите …",portrait:"Ваше фото (необов'язково)",
   l5:"Фото",photoHint:"Фото й логотип видно тільки тут, у попередньому перегляді — вони не зберігаються і не надсилаються. Після заявки надішліть їх мені у WhatsApp. Без своїх фото показуються приклади.",hero:"Головне фото (вгорі)",gallery:"Ваші роботи (до 4)",
   l6:"Impressum (обов'язково)",impHint:"Кожен комерційний сайт у Німеччині має містити Impressum (§ 5 DDG). Ці дані будуть публічно на сайті.",
@@ -325,7 +330,7 @@ const U={
   scheme:"Цветовая схема",sc:{kupfer:"Медь",rose:"Розовая",salbei:"Шалфей",nacht:"Чёрное золото"},logo:"Логотип (необязательно)",pick:"Выбрать файл",remove:"убрать",
   l2:"Адрес и контакты",street:"Улица и номер дома",streetPh:"Musterstraße 12",zip:"Индекс",city:"Город",hours:"Часы работы",hoursPh:"Mo–Fr 10–19 Uhr\nSa 10–15 Uhr",
   phone:"Телефон для записи",phonePh:"0151 2345678",wa:"Этот номер есть в WhatsApp (кнопка «Записаться в WhatsApp»)",instagram:"Instagram",instagramPh:"@vasha.studia",
-  l3:"Услуги и цены",svcHint:"Первые четыре услуги — плитками, все вместе — в прайсе.",svcName:"Услуга",svcPrice:"Цена",svcDesc:"Короткое описание (необязательно)",add:"+ Добавить услугу",del:"Удалить строку",
+  l3:"Услуги и цены",svcHint:"Первые четыре услуги — плитками, все вместе — в прайсе. 📷 — своё фото для плитки (только предпросмотр).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необязательно)",ctaPh:"Готовы к самой красивой себе?",svcName:"Услуга",svcPrice:"Цена",svcDesc:"Короткое описание (необязательно)",add:"+ Добавить услугу",del:"Удалить строку",
   l4:"Обо мне",owner:"Ваше имя",about:"Текст «Обо мне»",aboutPh:"С чего начинали, как работаете, на каких языках говорите …",portrait:"Ваше фото (необязательно)",
   l5:"Фото",photoHint:"Фото и логотип видны только здесь, в предпросмотре — они не сохраняются и не отправляются. После заявки пришлите их мне в WhatsApp. Без своих фото показываются примеры.",hero:"Главное фото (вверху)",gallery:"Ваши работы (до 4)",
   l6:"Impressum (обязательно)",impHint:"Любой коммерческий сайт в Германии обязан иметь Impressum (§ 5 DDG). Эти данные будут публично на сайте.",
@@ -344,13 +349,13 @@ const U={
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const F=$("#f"), frame=$("#frame");
 const t0=Date.now();
-let ui="de", data=null, imgs={logo:"",hero:"",portrait:"",gallery:["","","",""]}, ready=false, saveTimer=0;
+let ui="de", data=null, imgs={logo:"",hero:"",portrait:"",gallery:["","","",""],svc:[]}, ready=false, saveTimer=0;
 const track=(n,p)=>{try{window.umami&&umami.track(n,p)}catch(e){}};
 const ALTNOTE={de:" (Einführungspreis für die ersten {neu} Studios, regulär {alt}; für diese Studios ist der Monatspreis {fix} Monate ab Veröffentlichung garantiert)",uk:" (стартова ціна для перших {neu} студій, звичайна — {alt}; для цих студій місячна ціна гарантована на {fix} місяців від публікації)",ru:" (стартовая цена для первых {neu} студий, обычная — {alt}; для этих студий месячная цена гарантирована на {fix} месяцев с момента публикации)"};
 const fill=(s)=>String(s).replace(/\{altNote\}/g,()=>PREIS.alt?ALTNOTE[ui]:"").replace(/\{(\w+)\}/g,(m,k)=>k==="wa"?"https://wa.me/"+OLHA_WA:(PREIS[k]??m));
 
 function blank(){return{v:1,siteLang:"de",scheme:"kupfer",studio:"",category:"",slogan:"",street:"",zip:"",city:"",hours:"",phone:"",whatsapp:true,instagram:"",
-  services:[{name:"",price:"",desc:""},{name:"",price:"",desc:""},{name:"",price:"",desc:""}],owner:"",about:"",
+  services:[{name:"",price:"",desc:""},{name:"",price:"",desc:""},{name:"",price:"",desc:""}],owner:"",about:"",ctaTitle:"",
   imp:{name:"",company:"",same:true,street:"",zip:"",city:"",phone:"",email:"",ustid:"",klein:false},domain:"",ok:{photos:false,content:false,terms:false},note:""}}
 function load(){try{const s=JSON.parse(localStorage.getItem(STORE)||"null");if(s&&s.v===1){const b=blank();return{...b,...s,imp:{...b.imp,...s.imp},ok:{...b.ok,...s.ok}}}}catch(e){}return blank()}
 function store(manual){try{localStorage.setItem(STORE,JSON.stringify(data));const tm=new Date().toLocaleTimeString(ui==="de"?"de-DE":ui==="uk"?"uk-UA":"ru-RU",{hour:"2-digit",minute:"2-digit"});$("#status").textContent=U[ui].savedAt+" · "+tm;if(manual){$("#save").textContent="✓ "+U[ui].saved;setTimeout(()=>$("#save").textContent=U[ui].save,1800);track("website-selbst-gespeichert")}}catch(e){$("#status").textContent=""}}
@@ -375,11 +380,12 @@ function renderSvcs(){
     <input type="text" data-k="name" maxlength="50" placeholder="${u.svcName} ${i+1}" value="${escA(s.name)}" aria-label="${u.svcName}">
     <input type="text" data-k="price" maxlength="16" placeholder="${u.svcPrice}" value="${escA(s.price)}" aria-label="${u.svcPrice}">
     <button type="button" class="x" title="${u.del}" aria-label="${u.del}">×</button>
-    <input type="text" class="d" data-k="desc" maxlength="90" placeholder="${u.svcDesc}" value="${escA(s.desc)}" aria-label="${u.svcDesc}"></div>`).join("");
+    <input type="text" class="d${i<4?"":" full"}" data-k="desc" maxlength="90" placeholder="${u.svcDesc}" value="${escA(s.desc)}" aria-label="${u.svcDesc}">${i<4?`<label class="ph${imgs.svc[i]?" has":""}" title="${u.svcPhoto}" style="${imgs.svc[i]?`background-image:url('${imgs.svc[i]}')`:""}">📷<input type="file" accept="image/png,image/jpeg,image/webp" data-s="${i}" aria-label="${u.svcPhoto}"></label>`:""}</div>`).join("");
 }
 function escA(s){return String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
 $("#svcs").addEventListener("input",e=>{const r=e.target.closest(".svc");if(!r)return;data.services[+r.dataset.i][e.target.dataset.k]=e.target.value;changed()});
-$("#svcs").addEventListener("click",e=>{if(!e.target.classList.contains("x"))return;const i=+e.target.closest(".svc").dataset.i;data.services.splice(i,1);if(!data.services.length)data.services.push({name:"",price:"",desc:""});renderSvcs();changed()});
+$("#svcs").addEventListener("change",async e=>{if(e.target.dataset.s===undefined)return;const i=+e.target.dataset.s,f=e.target.files[0];if(!f)return;try{imgs.svc[i]=await shrink(f,1000);renderSvcs();send()}catch(err){}});
+$("#svcs").addEventListener("click",e=>{if(!e.target.classList.contains("x"))return;const i=+e.target.closest(".svc").dataset.i;data.services.splice(i,1);imgs.svc.splice(i,1);if(!data.services.length)data.services.push({name:"",price:"",desc:""});renderSvcs();changed()});
 $("#add").onclick=()=>{if(data.services.length>=20)return;data.services.push({name:"",price:"",desc:""});renderSvcs();$("#svcs .svc:last-child input").focus();changed()};
 /* --- images (nur Vorschau) --- */
 function shrink(file,max,keepPng){return new Promise((res,rej)=>{
@@ -415,7 +421,7 @@ function send(opt){if(!ready)return;frame.contentWindow.postMessage({type:"rende
 window.addEventListener("message",e=>{if(e.source!==frame.contentWindow)return;if(e.data&&e.data.type==="ready"){ready=true;send()}});
 frame.addEventListener("load",()=>{ready=true;send()});
 /* section focus -> scroll preview */
-const SCROLL={"fs-studio":"#top","fs-contact":"#kontakt","fs-svc":"#preise","fs-about":"#ueber","fs-photos":"#galerie"};
+const SCROLL={"fs-studio":"#top","fs-contact":"#termin","fs-svc":"#preise","fs-about":"#ueber","fs-photos":"#galerie"};
 let lastSec="";
 F.addEventListener("focusin",e=>{const fs=e.target.closest("fieldset");if(!fs||!ready||fs.id===lastSec)return;lastSec=fs.id;if(fs.id==="fs-imp"){send({legal:"imp"});return}const to=SCROLL[fs.id];if(to)frame.contentWindow.postMessage({type:"scroll",to},"*")});
 $("#show-imp").onclick=e=>{e.preventDefault();send({legal:"imp"});if(innerWidth<=980)tab("prev")};
@@ -426,7 +432,7 @@ $$("#ui-lang button").forEach(b=>b.onclick=()=>applyUI(b.dataset.l));
 $("#save").onclick=()=>store(true);
 let resetArm=0;
 $("#reset").onclick=()=>{const b=$("#reset");if(!resetArm){resetArm=setTimeout(()=>{resetArm=0;b.textContent=U[ui].reset},3500);b.textContent=U[ui].resetQ;return}
-  clearTimeout(resetArm);resetArm=0;try{localStorage.removeItem(STORE)}catch(e){}data=blank();imgs={logo:"",hero:"",portrait:"",gallery:["","","",""]};
+  clearTimeout(resetArm);resetArm=0;try{localStorage.removeItem(STORE)}catch(e){}data=blank();imgs={logo:"",hero:"",portrait:"",gallery:["","","",""],svc:[]};
   $$(".up .pv").forEach(p=>p.style.backgroundImage="");$$(".up .rm").forEach(r=>r.hidden=true);$("#msg").className="msg";
   toForm();applyUI(ui);send();$("#status").textContent="";F.scrollTop=0;track("website-selbst-neu")};
 $$("#dev button").forEach(b=>b.onclick=()=>{$$("#dev button").forEach(x=>x.classList.toggle("on",x===b));$("#stage").classList.toggle("mob",b.dataset.d==="mob")});

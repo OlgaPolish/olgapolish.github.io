@@ -210,6 +210,11 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-badge{position:absolute;bottom:-18px;right:-18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 24px rgba(30,42,74,0.08);max-width:190px}
 .hero-badge-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--ink);line-height:1}
 .hero-badge-lbl{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.4}
+a.hero-badge.ws{display:block;text-decoration:none;color:inherit;border-color:rgba(212,139,58,0.55);box-shadow:0 8px 30px rgba(212,139,58,0.18);transition:transform .2s,box-shadow .2s}
+a.hero-badge.ws:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(212,139,58,0.28)}
+.hero-badge-tag{display:inline-block;background:var(--amber);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:2px 9px;margin-bottom:6px}
+a.hero-badge.ws .hero-badge-lbl{color:var(--ink);font-weight:500}
+a.hero-badge.ws .hero-badge-lbl b{color:#9A6424;font-weight:700}
 
 /* METRICS */
 .metrics{background:var(--ink);padding:28px 0}
@@ -258,6 +263,26 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 a.inl{color:#9A6424;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 a.inl:hover{color:var(--ink)}
 .pkg-note{font-size:13px;color:var(--ink-soft);margin-top:22px;max-width:85ch}
+.pkg{scroll-margin-top:90px}.pkg:target{border-color:var(--amber);box-shadow:0 0 0 3px rgba(212,139,58,.35),0 12px 40px rgba(212,139,58,.18)}
+/* Mini-Quiz «Was brauchen Sie?» */
+.quiz{padding:72px 0;background:var(--bg-soft)}
+.quiz-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 34px 30px;box-shadow:0 10px 40px rgba(30,42,74,.06)}
+.quiz-q{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;margin:6px 0 22px}
+.quiz-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;text-align:left;border:1.5px solid var(--line);border-radius:12px;padding:16px 16px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--ink);text-decoration:none;transition:border-color .2s,background .2s,transform .2s}
+.quiz-opt:hover{border-color:var(--amber);transform:translateY(-2px)}
+.quiz-opt[aria-pressed=true]{border-color:var(--amber);background:var(--amber-pale)}
+.quiz-opt b{font-size:15.5px;font-weight:600;line-height:1.3}
+.quiz-opt span{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.quiz-opt i{font-style:normal;font-size:22px;line-height:1}
+.quiz-res{display:none;margin-top:18px;border-radius:12px;background:var(--ink);color:#fff;padding:20px 22px;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.quiz-res.on{display:flex}
+.quiz-res p{font-size:15px;line-height:1.55;max-width:62ch;color:rgba(255,255,255,.9)}
+.quiz-res p b{color:#fff}
+.quiz-res a{display:inline-flex;padding:12px 20px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;text-decoration:none}
+.quiz-res a:hover{background:var(--amber-light)}
+@media(max-width:900px){.quiz-opts{grid-template-columns:repeat(2,minmax(0,1fr))}.quiz-box{padding:24px 18px}}
+@media(max-width:420px){.quiz-opts{grid-template-columns:1fr}}
 .ws-teaser{display:grid;grid-template-columns:minmax(0,1.5fr) auto auto;gap:26px;align-items:center;margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:26px 28px}
 .ws-teaser h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.7rem;line-height:1.15;margin:6px 0 8px}
 .ws-teaser p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);max-width:56ch}
@@ -576,6 +601,16 @@ T["de"] = dict(
     btn1="Kostenloser Google-Check →", btn2="Pakete & Preise",
     photo_alt="Olha Polishchuk — Webseiten und Google-Profile für Beauty-Studios",
     badge_num="Nr. 1", badge_lbl="in Google für einen Kunden",
+    quiz_label="Mini-Check", quiz_q="Was brauchen Sie?",
+    quiz=[("✏️", "Website selbst gestalten", "Formular ausfüllen – Ihre Website sofort sehen", "ws",
+           "Im <b>Website-Baukasten</b> füllen Sie Ihre Angaben aus und sehen Ihre Website sofort. Ich prüfe, registriere die Domain und veröffentliche – Start {start}, danach {monat} im Monat.", "Website selbst gestalten →"),
+          ("🗝️", "Website zum Festpreis", "Ich mache alles – Sie schicken nur Fotos und Infos", "#paket-b",
+           "<b>Paket B · Onepager-Webseite</b>: Ich schreibe die Texte, gestalte die Seite und kümmere mich um Impressum und Datenschutz. Sie schicken nur Fotos und Infos.", "Zu Paket B →"),
+          ("📍", "Google-Profil", "Damit man Sie in Google Maps findet", "#paket-a",
+           "<b>Paket A · „Man findet Sie in Google“</b>: Ich richte Ihr Google-Unternehmensprofil ein oder bringe es in Ordnung – mit Fotos, Leistungen und Kategorien.", "Zu Paket A →"),
+          ("💬", "Ich weiß es noch nicht", "Kurz schreiben – ich schaue mir Ihre Situation an", "#contact",
+           "Kein Problem. Schreiben Sie mir kurz, was Sie machen und in welcher Stadt – ich schaue kostenlos, wie man Sie in Google sieht, und empfehle Ihnen den passenden Weg.", "Kostenloser Google-Check →")],
+    ws_badge_tag="Neu", ws_badge_lbl="Startpreis: Ihre Website selbst gestalten", ws_badge_go="Ausprobieren →",
     proof_q="Eine absolute Herzensempfehlung!", proof_who="Jana, JANA NAILS & Beauty", proof_link="Bewertungen bei Google",
     metrics=[("UA · RU", "Beratung — Webseite auf Deutsch"), ("Google SEO", "praktische Erfahrung"), ("Ganz Deutschland", "remote und in Düsseldorf")],
     why_label="Warum mit mir", why_title="Einfach, verständlich — in Ihrer Sprache",
@@ -695,6 +730,16 @@ T["uk"] = dict(
     btn1="Отримати безкоштовний аудит у Google →", btn2="Пакети та ціни",
     photo_alt="Ольга Поліщук — Google-профіль, сайти та SEO в Дюссельдорфі",
     badge_num="№ 1", badge_lbl="у Google для клієнта",
+    quiz_label="Міні-тест", quiz_q="Що вам потрібно?",
+    quiz=[("✏️", "Зробити сайт самостійно", "Заповнюєте форму — і одразу бачите свій сайт", "ws",
+           "У <b>конструкторі</b> ви заповнюєте дані й одразу бачите свій сайт. Я перевіряю, реєструю домен і публікую — старт {start}, далі {monat} на місяць.", "Створити сайт самостійно →"),
+          ("🗝️", "Сайт під ключ", "Я роблю все — ви надсилаєте лише фото й інформацію", "#paket-b",
+           "<b>Пакет B · Сайт-візитка</b>: я пишу тексти, створюю сайт і подбаю про Impressum і Datenschutz. Від вас — лише фото й інформація.", "До пакета B →"),
+          ("📍", "Профіль у Google", "Щоб вас знаходили в Google Картах", "#paket-a",
+           "<b>Пакет A · «Вас знаходять у Google»</b>: створю або впорядкую ваш профіль у Google — фото, послуги, категорії.", "До пакета A →"),
+          ("💬", "Ще не знаю", "Напишіть коротко — я подивлюся на вашу ситуацію", "#contact",
+           "Нічого страшного. Напишіть, чим займаєтеся і в якому місті — я безкоштовно подивлюся, як вас видно в Google, і підкажу, з чого почати.", "Безкоштовний аудит →")],
+    ws_badge_tag="Новинка", ws_badge_lbl="старт: створіть свій сайт самі", ws_badge_go="Спробувати →",
     proof_q="Eine absolute Herzensempfehlung!", proof_who="Яна, JANA NAILS & Beauty", proof_link="Відгуки в Google",
     metrics=[("UA · RU", "спілкуємося — сайт німецькою"), ("Google SEO", "практичний досвід"), ("Уся Німеччина", "дистанційно та в Düsseldorf")],
     why_label="Чому зі мною зручно", why_title="Просто, зрозуміло й вашою мовою",
@@ -817,6 +862,16 @@ T["ru"] = dict(
     btn1="Получить бесплатный аудит в Google →", btn2="Пакеты и цены",
     photo_alt="Ольга Полищук — Google-профиль, сайты и SEO в Дюссельдорфе",
     badge_num="№ 1", badge_lbl="в Google для клиента",
+    quiz_label="Мини-тест", quiz_q="Что вам нужно?",
+    quiz=[("✏️", "Сделать сайт самостоятельно", "Заполняете форму — и сразу видите свой сайт", "ws",
+           "В <b>конструкторе</b> вы заполняете данные и сразу видите свой сайт. Я проверяю, регистрирую домен и публикую — старт {start}, дальше {monat} в месяц.", "Сделать сайт самой →"),
+          ("🗝️", "Сайт под ключ", "Я делаю всё — вы присылаете только фото и информацию", "#paket-b",
+           "<b>Пакет B · Сайт-визитка</b>: я пишу тексты, делаю сайт и беру на себя Impressum и Datenschutz. От вас — только фото и информация.", "К пакету B →"),
+          ("📍", "Профиль в Google", "Чтобы вас находили в Google Картах", "#paket-a",
+           "<b>Пакет A · «Вас находят в Google»</b>: создам или приведу в порядок ваш профиль в Google — фото, услуги, категории.", "К пакету A →"),
+          ("💬", "Пока не знаю", "Напишите коротко — я посмотрю на вашу ситуацию", "#contact",
+           "Ничего страшного. Напишите, чем занимаетесь и в каком городе — я бесплатно посмотрю, как вас видно в Google, и подскажу, с чего начать.", "Бесплатный аудит →")],
+    ws_badge_tag="Новинка", ws_badge_lbl="старт: создайте свой сайт сами", ws_badge_go="Попробовать →",
     proof_q="Eine absolute Herzensempfehlung!", proof_who="Яна, JANA NAILS & Beauty", proof_link="Отзывы в Google",
     metrics=[("RU · UA", "общаемся — сайт на немецком"), ("Google SEO", "практический опыт"), ("Вся Германия", "удалённо и в Düsseldorf")],
     why_label="Почему со мной удобно", why_title="Просто, понятно и на вашем языке",
@@ -1393,13 +1448,33 @@ def render(lang):
          esc(t["proof_q"]), esc(t["proof_who"])))
     w('    <div class="hero-photo">\n      <div class="hero-photo-frame">%s</div>\n' % pic("/images/olha-portrait.jpg", 900, 1350, t["photo_alt"], (480, 900), "(max-width:900px) 75vw, (min-width:1200px) 460px, 40vw", 'fetchpriority="high" decoding="async"'))
     w(PHONE_MOCK)
-    w('      <div class="hero-badge"><div class="hero-badge-num">%s</div><div class="hero-badge-lbl">%s</div></div>\n    </div>\n  </div>\n</section>\n\n' % (esc(t["badge_num"]), esc(t["badge_lbl"])))
+    if WS_URL:  # плашка в шапке ведёт в конструктор (раньше: «Nr. 1 in Google»)
+        w('      <a class="hero-badge ws" href="%s?lang=%s" data-umami-event="website-selbst-hero"><span class="hero-badge-tag">%s</span><div class="hero-badge-num">%s</div><div class="hero-badge-lbl">%s <b>%s</b></div></a>\n    </div>\n  </div>\n</section>\n\n' % (WS_URL, lang, esc(t["ws_badge_tag"]), esc(WS_START), esc(t["ws_badge_lbl"]), esc(t["ws_badge_go"])))
+    else:
+        w('      <div class="hero-badge"><div class="hero-badge-num">%s</div><div class="hero-badge-lbl">%s</div></div>\n    </div>\n  </div>\n</section>\n\n' % (esc(t["badge_num"]), esc(t["badge_lbl"])))
 
     # metrics
     w('<div class="metrics">\n  <div class="wrap metrics-inner">\n')
     for num, lbl in t["metrics"]:
         w('    <div class="metric"><div class="metric-num">%s</div><div class="metric-lbl">%s</div></div>\n' % (esc(num), esc(lbl)))
     w('  </div>\n</div>\n\n')
+
+    # Mini-Quiz «Was brauchen Sie?» — ведёт в конструктор, пакет B, пакет A или к бесплатному аудиту
+    if t.get("quiz"):
+        w('<section class="quiz" id="quiz">\n  <div class="wrap">\n    <div class="quiz-box">\n      <div class="sec-label">%s</div>\n      <h2 class="quiz-q">%s</h2>\n      <div class="quiz-opts">\n' % (esc(t["quiz_label"]), esc(t["quiz_q"])))
+        for i, (ic, h, sub, target, res, btn) in enumerate(t["quiz"]):
+            if target == "ws":
+                if not WS_URL:
+                    continue
+                target = "%s?lang=%s" % (WS_URL, lang)
+            res = res.replace("{start}", WS_START).replace("{monat}", WS_MONAT)
+            w('        <a class="quiz-opt" href="%s" aria-pressed="false" data-res="%s" data-btn="%s" data-n="%d"><i aria-hidden="true">%s</i><b>%s</b><span>%s</span></a>\n'
+              % (target, esc(res), esc(btn), i + 1, ic, esc(h), esc(sub)))
+        w('      </div>\n      <div class="quiz-res" id="quiz-res" aria-live="polite"><p></p><a href="#"></a></div>\n    </div>\n  </div>\n</section>\n')
+        w('''<script>{const box=document.getElementById("quiz");if(box){const r=document.getElementById("quiz-res"),rp=r.querySelector("p"),ra=r.querySelector("a");
+box.querySelectorAll(".quiz-opt").forEach(o=>o.addEventListener("click",e=>{e.preventDefault();box.querySelectorAll(".quiz-opt").forEach(x=>x.setAttribute("aria-pressed",x===o));
+rp.innerHTML=o.dataset.res;ra.textContent=o.dataset.btn;ra.href=o.getAttribute("href");ra.setAttribute("data-umami-event","quiz-weiter-"+o.dataset.n);r.classList.add("on");r.scrollIntoView({behavior:"smooth",block:"nearest"});
+try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>\n\n''')
 
     # why
     w('<section class="why">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="why-grid">\n' % (esc(t["why_label"]), esc(t["why_title"])))
@@ -1454,7 +1529,7 @@ def render(lang):
     # packages
     w('<section class="pakete" id="pakete">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="pkg-grid">\n' % (esc(t["pk_label"]), esc(t["pk_title"])))
     for p in t["pk"]:
-        w('      <article class="pkg%s">\n' % (" feat" if p.get("feat") else ""))
+        w('      <article class="pkg%s" id="paket-%s">\n' % (" feat" if p.get("feat") else "", _plain(p["name"])[:1].lower()))
         w('        <div class="pkg-tag">%s</div>\n        <h3>%s</h3>\n        <div class="pkg-price">%s</div>\n' % (esc(p["tag"]), esc(p["name"]), p["price"]))
         w('        <div class="pkg-start">%s</div>\n        <p class="pkg-desc">%s</p>\n        <ul>\n' % (p["start"], esc(p["desc"])))
         for it in p["items"]:

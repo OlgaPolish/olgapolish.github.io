@@ -389,6 +389,11 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-badge{position:absolute;bottom:-18px;right:-18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 24px rgba(30,42,74,0.08);max-width:190px}
 .hero-badge-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--ink);line-height:1}
 .hero-badge-lbl{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.4}
+a.hero-badge.ws{display:block;text-decoration:none;color:inherit;border-color:rgba(212,139,58,0.55);box-shadow:0 8px 30px rgba(212,139,58,0.18);transition:transform .2s,box-shadow .2s}
+a.hero-badge.ws:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(212,139,58,0.28)}
+.hero-badge-tag{display:inline-block;background:var(--amber);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:2px 9px;margin-bottom:6px}
+a.hero-badge.ws .hero-badge-lbl{color:var(--ink);font-weight:500}
+a.hero-badge.ws .hero-badge-lbl b{color:#9A6424;font-weight:700}
 
 /* METRICS */
 .metrics{background:var(--ink);padding:28px 0}
@@ -437,6 +442,26 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 a.inl{color:#9A6424;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 a.inl:hover{color:var(--ink)}
 .pkg-note{font-size:13px;color:var(--ink-soft);margin-top:22px;max-width:85ch}
+.pkg{scroll-margin-top:90px}.pkg:target{border-color:var(--amber);box-shadow:0 0 0 3px rgba(212,139,58,.35),0 12px 40px rgba(212,139,58,.18)}
+/* Mini-Quiz «Was brauchen Sie?» */
+.quiz{padding:72px 0;background:var(--bg-soft)}
+.quiz-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 34px 30px;box-shadow:0 10px 40px rgba(30,42,74,.06)}
+.quiz-q{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;margin:6px 0 22px}
+.quiz-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;text-align:left;border:1.5px solid var(--line);border-radius:12px;padding:16px 16px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--ink);text-decoration:none;transition:border-color .2s,background .2s,transform .2s}
+.quiz-opt:hover{border-color:var(--amber);transform:translateY(-2px)}
+.quiz-opt[aria-pressed=true]{border-color:var(--amber);background:var(--amber-pale)}
+.quiz-opt b{font-size:15.5px;font-weight:600;line-height:1.3}
+.quiz-opt span{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.quiz-opt i{font-style:normal;font-size:22px;line-height:1}
+.quiz-res{display:none;margin-top:18px;border-radius:12px;background:var(--ink);color:#fff;padding:20px 22px;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.quiz-res.on{display:flex}
+.quiz-res p{font-size:15px;line-height:1.55;max-width:62ch;color:rgba(255,255,255,.9)}
+.quiz-res p b{color:#fff}
+.quiz-res a{display:inline-flex;padding:12px 20px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;text-decoration:none}
+.quiz-res a:hover{background:var(--amber-light)}
+@media(max-width:900px){.quiz-opts{grid-template-columns:repeat(2,minmax(0,1fr))}.quiz-box{padding:24px 18px}}
+@media(max-width:420px){.quiz-opts{grid-template-columns:1fr}}
 .ws-teaser{display:grid;grid-template-columns:minmax(0,1.5fr) auto auto;gap:26px;align-items:center;margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:26px 28px}
 .ws-teaser h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.7rem;line-height:1.15;margin:6px 0 8px}
 .ws-teaser p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);max-width:56ch}
@@ -824,7 +849,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
           <div class="ph-book">Termin buchen</div>
         </div>
       </div>
-      <div class="hero-badge"><div class="hero-badge-num">№ 1</div><div class="hero-badge-lbl">у Google для клієнта</div></div>
+      <a class="hero-badge ws" href="/website-selbst/?lang=uk" data-umami-event="website-selbst-hero"><span class="hero-badge-tag">Новинка</span><div class="hero-badge-num">50 €</div><div class="hero-badge-lbl">старт: створіть свій сайт самі <b>Спробувати →</b></div></a>
     </div>
   </div>
 </section>
@@ -836,6 +861,26 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <div class="metric"><div class="metric-num">Уся Німеччина</div><div class="metric-lbl">дистанційно та в Düsseldorf</div></div>
   </div>
 </div>
+
+<section class="quiz" id="quiz">
+  <div class="wrap">
+    <div class="quiz-box">
+      <div class="sec-label">Міні-тест</div>
+      <h2 class="quiz-q">Що вам потрібно?</h2>
+      <div class="quiz-opts">
+        <a class="quiz-opt" href="/website-selbst/?lang=uk" aria-pressed="false" data-res="У &lt;b&gt;конструкторі&lt;/b&gt; ви заповнюєте дані й одразу бачите свій сайт. Я перевіряю, реєструю домен і публікую — старт 50 €, далі 19 € на місяць." data-btn="Створити сайт самостійно →" data-n="1"><i aria-hidden="true">✏️</i><b>Зробити сайт самостійно</b><span>Заповнюєте форму — і одразу бачите свій сайт</span></a>
+        <a class="quiz-opt" href="#paket-b" aria-pressed="false" data-res="&lt;b&gt;Пакет B · Сайт-візитка&lt;/b&gt;: я пишу тексти, створюю сайт і подбаю про Impressum і Datenschutz. Від вас — лише фото й інформація." data-btn="До пакета B →" data-n="2"><i aria-hidden="true">🗝️</i><b>Сайт під ключ</b><span>Я роблю все — ви надсилаєте лише фото й інформацію</span></a>
+        <a class="quiz-opt" href="#paket-a" aria-pressed="false" data-res="&lt;b&gt;Пакет A · «Вас знаходять у Google»&lt;/b&gt;: створю або впорядкую ваш профіль у Google — фото, послуги, категорії." data-btn="До пакета A →" data-n="3"><i aria-hidden="true">📍</i><b>Профіль у Google</b><span>Щоб вас знаходили в Google Картах</span></a>
+        <a class="quiz-opt" href="#contact" aria-pressed="false" data-res="Нічого страшного. Напишіть, чим займаєтеся і в якому місті — я безкоштовно подивлюся, як вас видно в Google, і підкажу, з чого почати." data-btn="Безкоштовний аудит →" data-n="4"><i aria-hidden="true">💬</i><b>Ще не знаю</b><span>Напишіть коротко — я подивлюся на вашу ситуацію</span></a>
+      </div>
+      <div class="quiz-res" id="quiz-res" aria-live="polite"><p></p><a href="#"></a></div>
+    </div>
+  </div>
+</section>
+<script>{const box=document.getElementById("quiz");if(box){const r=document.getElementById("quiz-res"),rp=r.querySelector("p"),ra=r.querySelector("a");
+box.querySelectorAll(".quiz-opt").forEach(o=>o.addEventListener("click",e=>{e.preventDefault();box.querySelectorAll(".quiz-opt").forEach(x=>x.setAttribute("aria-pressed",x===o));
+rp.innerHTML=o.dataset.res;ra.textContent=o.dataset.btn;ra.href=o.getAttribute("href");ra.setAttribute("data-umami-event","quiz-weiter-"+o.dataset.n);r.classList.add("on");r.scrollIntoView({behavior:"smooth",block:"nearest"});
+try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
 
 <section class="why">
   <div class="wrap">
@@ -910,7 +955,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
     <div class="sec-label">Пакети та ціни</div>
     <h2 class="sec-title">Зрозумілі ціни — без сюрпризів</h2>
     <div class="pkg-grid">
-      <article class="pkg">
+      <article class="pkg" id="paket-a">
         <div class="pkg-tag">Разово</div>
         <h3>A · «Вас знаходять у Google»</h3>
         <div class="pkg-price"><s class="old">190 €</s> 150 €</div>
@@ -926,7 +971,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <p class="pkg-term">Термін: близько 1 тижня.</p>
         <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="A">Обговорити</a>
       </article>
-      <article class="pkg">
+      <article class="pkg" id="paket-b">
         <div class="pkg-tag">Разово</div>
         <h3>B · Сайт-візитка</h3>
         <div class="pkg-price"><s class="old">450 €</s> 350 €</div>
@@ -944,7 +989,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <p class="pkg-term">Термін: 1–2 тижні після того, як отримаю ваші матеріали.</p>
         <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="B">Обговорити</a>
       </article>
-      <article class="pkg feat">
+      <article class="pkg feat" id="paket-c">
         <div class="pkg-tag">Щомісяця</div>
         <h3>C · Підтримка</h3>
         <div class="pkg-price"><s class="old">290 €</s> 220 € <small>перший місяць</small></div>
