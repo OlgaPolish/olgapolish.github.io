@@ -241,6 +241,10 @@ from blog_posts_2026_11 import DE_GOOGLE_MAPS, INSTAGRAM_POST  # noqa: E402
 POSTS[0]["de"] = DE_GOOGLE_MAPS
 POSTS.append(INSTAGRAM_POST)
 
+# Добавлено 20.11.2026: «Tilda или заказать сайт» (RU/UK/DE)
+from blog_posts_tilda import TILDA_POST  # noqa: E402
+POSTS.append(TILDA_POST)
+
 # Доп. стили блога: картинки и таблицы в статьях
 HEADER = "/images/blog/blog-header.jpg"  # фото-шапка списка статей (Canva, 2:1)
 DEKO = "/images/blog/blog-deko.png"  # иллюстрация в списке статей; исходник — blog-deko.svg рядом

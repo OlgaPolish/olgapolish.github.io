@@ -109,6 +109,11 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 .hero-badge{position:absolute;bottom:-18px;right:-18px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:0 4px 24px rgba(30,42,74,0.08);max-width:190px}
 .hero-badge-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--ink);line-height:1}
 .hero-badge-lbl{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.4}
+a.hero-badge.ws{display:block;text-decoration:none;color:inherit;border-color:rgba(212,139,58,0.55);box-shadow:0 8px 30px rgba(212,139,58,0.18);transition:transform .2s,box-shadow .2s}
+a.hero-badge.ws:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(212,139,58,0.28)}
+.hero-badge-tag{display:inline-block;background:var(--amber);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:2px 9px;margin-bottom:6px}
+a.hero-badge.ws .hero-badge-lbl{color:var(--ink);font-weight:500}
+a.hero-badge.ws .hero-badge-lbl b{color:#9A6424;font-weight:700}
 
 /* METRICS */
 .metrics{background:var(--ink);padding:28px 0}
@@ -157,6 +162,37 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 a.inl{color:#9A6424;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 a.inl:hover{color:var(--ink)}
 .pkg-note{font-size:13px;color:var(--ink-soft);margin-top:22px;max-width:85ch}
+.pkg{scroll-margin-top:90px}.pkg:target{border-color:var(--amber);box-shadow:0 0 0 3px rgba(212,139,58,.35),0 12px 40px rgba(212,139,58,.18)}
+/* Mini-Quiz «Was brauchen Sie?» */
+.quiz{padding:72px 0;background:var(--bg-soft)}
+.quiz-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 34px 30px;box-shadow:0 10px 40px rgba(30,42,74,.06)}
+.quiz-q{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;margin:6px 0 22px}
+.quiz-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.quiz-opt{display:flex;flex-direction:column;gap:6px;text-align:left;border:1.5px solid var(--line);border-radius:12px;padding:16px 16px 14px;background:#fff;cursor:pointer;font:inherit;color:var(--ink);text-decoration:none;transition:border-color .2s,background .2s,transform .2s}
+.quiz-opt:hover{border-color:var(--amber);transform:translateY(-2px)}
+.quiz-opt[aria-pressed=true]{border-color:var(--amber);background:var(--amber-pale)}
+.quiz-opt b{font-size:15.5px;font-weight:600;line-height:1.3}
+.quiz-opt span{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.quiz-opt i{font-style:normal;font-size:22px;line-height:1}
+.quiz-res{display:none;margin-top:18px;border-radius:12px;background:var(--ink);color:#fff;padding:20px 22px;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.quiz-res.on{display:flex}
+.quiz-res p{font-size:15px;line-height:1.55;max-width:62ch;color:rgba(255,255,255,.9)}
+.quiz-res p b{color:#fff}
+.quiz-res a{display:inline-flex;padding:12px 20px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;text-decoration:none}
+.quiz-res a:hover{background:var(--amber-light)}
+@media(max-width:900px){.quiz-opts{grid-template-columns:repeat(2,minmax(0,1fr))}.quiz-box{padding:24px 18px}}
+@media(max-width:420px){.quiz-opts{grid-template-columns:1fr}}
+.ws-teaser{display:grid;grid-template-columns:minmax(0,1.5fr) auto auto;gap:26px;align-items:center;margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:26px 28px}
+.ws-teaser h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.7rem;line-height:1.15;margin:6px 0 8px}
+.ws-teaser p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);max-width:56ch}
+.ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
+.ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
+.ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
+.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
+.ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
+.ws-btn:hover{background:var(--amber-light)}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -171,7 +207,10 @@ a.inl:hover{color:var(--ink)}
 /* CASES */
 .cases{padding:88px 0;background:var(--bg-soft)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.demo-head{margin:48px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.demo-head{margin:56px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.car-first .demo-head{margin-top:0}
+.car-first .demo-head .sec-title{margin-bottom:10px}
+.beispiele{padding:8px 0 88px}
 .demo-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.6rem;line-height:1.2}
 .demo-head p{color:var(--ink-soft);font-size:14.5px;margin-top:6px;max-width:60ch}
 /* DEMO-KARUSSELL */
@@ -185,6 +224,14 @@ a.inl:hover{color:var(--ink)}
 .demo-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px 0;border-radius:12px}
 .demo-track::-webkit-scrollbar{display:none}
 .demo-slide{flex:0 0 calc(100% - 72px);scroll-snap-align:start}
+.demo-slide.no-img{flex-basis:min(440px,calc(100% - 72px))}
+.car-view{position:relative}
+.car-side{position:absolute;top:50%;translate:0 -50%;z-index:2;width:56px;height:56px;padding:0;border-radius:50%;border:3px solid #fff;background:var(--amber);color:#fff;font-family:inherit;font-size:20px;font-weight:600;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(30,42,74,.28);transition:opacity .25s,background .2s}
+.car-side:hover{background:var(--ink)}
+.car-side[hidden]{display:none}
+.car-next{right:-4px}.car-prev{left:-22px;background:var(--ink)}
+@keyframes nudge{0%,100%{translate:0 -50%}50%{translate:6px -50%}}
+@media(prefers-reduced-motion:no-preference){.car-next:not(.used){animation:nudge 1.6s ease-in-out 3}}
 .demo-slide:only-child{flex-basis:100%}
 .demo-slide:hover{transform:none}
 .demo-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
@@ -408,7 +455,9 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px}
-  .demo-slide{flex-basis:86%;padding:20px}
+  .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
+  .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
+  .beispiele{padding:0 0 64px}
   .demo-head{flex-direction:column;align-items:flex-start}
   .steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
@@ -479,6 +528,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <div class="blog-main">
 <section class="blog-hero"><div class="blog-cover"><picture><source type="image/avif" srcset="/images/blog/blog-header-800.avif 800w, /images/blog/blog-header-1600.avif 1600w" sizes="(max-width:900px) 92vw, 820px"><source type="image/webp" srcset="/images/blog/blog-header-800.webp 800w, /images/blog/blog-header-1600.webp 1600w" sizes="(max-width:900px) 92vw, 820px"><img src="/images/blog/blog-header.jpg" width="1600" height="800" alt="" fetchpriority="high" decoding="async"></picture></div><div class="sec-label">Blog</div><h1>Blog</h1><p>Ich erkläre in einfachen Worten, wie kleine Unternehmen in Deutschland über Google Kundschaft gewinnen: Profil in Google Maps, Website, Bewertungen.</p></section>
 <div class="post-list">
+<a class="post-card" href="/blog/tilda-oder-website-erstellen-lassen.html"><div class="post-meta">20. November 2026 · 5 Min. Lesezeit</div><h2>Tilda oder Website erstellen lassen: Was passt für kleine Studios in Deutschland?</h2><p>Der Baukasten kostet 10 Dollar im Monat – aber eine Website ist mehr als Blöcke. Drei Wege im Vergleich: selbst mit Tilda, fertige Vorlage oder Website zum Festpreis.</p><span class="post-more">Weiterlesen →</span></a>
 <a class="post-card" href="/blog/nur-instagram-ist-miete.html"><div class="post-meta">7. November 2026 · 4 Min. Lesezeit</div><h2>Nur Instagram ist Miete</h2><p>Ein Account kann an einem Tag gesperrt werden. Warum Sie neben Instagram etwas brauchen, das Ihnen gehört: Website und Google-Profil.</p><span class="post-more">Weiterlesen →</span></a>
 <a class="post-card" href="/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html"><div class="post-meta">28. Oktober 2026 · 5 Min. Lesezeit</div><h2>Warum Sie bei Google Maps nicht gefunden werden: 7 Gründe, die in Checklisten fehlen</h2><p>Profil ausgefüllt, Fotos hochgeladen – und trotzdem keine Anrufe. Wie Google auswählt, wen es auf der Karte zeigt, und was gerade Sie ausbremst.</p><span class="post-more">Weiterlesen →</span></a>
 </div>
