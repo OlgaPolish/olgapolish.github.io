@@ -95,13 +95,14 @@ async function websiteSelbst(data, env, origin) {
     `BESTÄTIGT: Fotorechte ✓ · Inhalte/Impressum in eigener Verantwortung ✓ · Bedingungen + Unternehmer (§ 14 BGB) ✓\n\n` +
     (clean(s.note, 600) ? `NACHRICHT:\n${clean(s.note, 600)}\n\n` : "") +
     `Vor Veröffentlichung: Texte prüfen (HWG/UWG – keine Heilversprechen, kein Vorher/Nachher).\n` +
-    `Neuen Kundensite anlegen: https://seiten.olha-polishchuk-web.workers.dev/admin → JSON aus dem Anhang einfügen. Fotos lädt die Kundin danach selbst über ihren Link hoch.\n\n` +
+    `Neuen Kundensite anlegen: https://seiten.olha-polishchuk-web.workers.dev/admin → Inhalt des .txt-Anhangs einfügen. Fotos lädt die Kundin danach selbst über ihren Link hoch.\n\n` +
     `Zeit: ${when}\nAntworten: einfach auf diese E-Mail antworten (geht direkt an ${email}).`;
 
   const attachment = JSON.stringify(s, null, 2).slice(0, 50000);
   const fileBase = (domain || studio).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "anfrage";
 
-  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+  // Brevo erlaubt kein .json als Anhang → .txt (Inhalt = JSON). Falls der Anhang trotzdem abgelehnt wird: ohne Anhang senden.
+  const send = (withFile) => fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json", "Accept": "application/json" },
     body: JSON.stringify({
@@ -109,11 +110,16 @@ async function websiteSelbst(data, env, origin) {
       to: [{ email: env.TO_EMAIL, name: "Olha Polishchuk" }],
       replyTo: { email, name },
       subject: `[Website selbst] ${studio} – ${domain || "ohne Domain"} (${lang})`,
-      textContent: text,
-      attachment: [{ name: `website-selbst-${fileBase}.json`, content: b64(attachment) }],
+      textContent: withFile ? text : text + "\n\n--- JSON (Anhang nicht möglich) ---\n" + attachment.slice(0, 20000),
+      ...(withFile ? { attachment: [{ name: `website-selbst-${fileBase}.txt`, content: b64(attachment) }] } : {}),
       tags: ["website-selbst"],
     }),
   });
+  let res = await send(true);
+  if (!res.ok) {
+    console.log("Brevo error (website-selbst, mit Anhang)", res.status, (await res.text()).slice(0, 500));
+    res = await send(false);
+  }
   if (!res.ok) {
     console.log("Brevo error (website-selbst)", res.status, (await res.text()).slice(0, 500));
     return json({ ok: false, error: "send" }, 502, origin);

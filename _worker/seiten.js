@@ -443,7 +443,7 @@ td .acts{display:flex;gap:6px;flex-wrap:wrap}.out{background:#FDF3E7;border:1px 
 <section><h2>Новый сайт из заявки</h2>
 <div class="row"><label>Slug (адрес для проверки, a–z, 0–9, -)<input id="slug" placeholder="lumi-nails"></label>
 <label>Домен (можно позже)<input id="hosts" placeholder="lumi-nails.de www.lumi-nails.de"></label></div>
-<label>JSON из письма (вложение website-selbst-….json)<textarea id="data" placeholder="{ … }"></textarea></label>
+<label>Текст из вложения письма (website-selbst-….txt) — скопировать всё и вставить<textarea id="data" placeholder="{ … }"></textarea></label>
 <button id="create">Создать сайт</button> <small>После создания: ссылку для правок отправьте клиентке (WhatsApp/E-Mail). Фото она загружает сама.</small>
 <div class="out" id="cout"></div></section>
 </main>

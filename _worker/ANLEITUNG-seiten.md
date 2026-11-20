@@ -11,7 +11,7 @@
 ---
 
 ## 1. Хранилище KV (≈ 2 мин)
-Cloudflare (аккаунт olha.polishchuk.web) → **Storage & Databases → Workers KV → Create** → имя `seiten` → Create.
+Cloudflare (аккаунт olha.polishchuk.web) → **Storage & Databases → Workers KV → Create** → имя `seiten`, Data location: **Jurisdiction → EU** → Create.
 
 ## 2. Worker (≈ 3 мин)
 **Workers & Pages → Create → Worker** → имя **`seiten`** → Deploy → **Edit code** → удалить всё → вставить `_worker/seiten.js` → **Deploy**.
@@ -33,7 +33,7 @@ Worker `seiten` → **Settings → Variables and Secrets → Add**:
 
 ## 5. Проверка (≈ 5 мин)
 1. Открыть `https://seiten.olha-polishchuk-web.workers.dev/admin` → ввести `ADMIN_TOKEN` → «Войти».
-2. «Новый сайт из заявки»: slug `test`, в поле JSON вставить вложение из любого тестового письма «[Website selbst] …» (или сам JSON заявки) → «Создать сайт».
+2. «Новый сайт из заявки»: slug `test`, в поле вставить содержимое вложения website-selbst-….txt из письма «[Website selbst] …» (открыть файл, Ctrl+A, Ctrl+C) → «Создать сайт».
 3. Открыть ссылку проверки `…/s/test/` — сайт виден (без своих фото: без галереи и без портрета — так и задумано).
 4. **Ссылку для правок** открыть **после шага 6** (конструктор должен быть уже на сайте): поменять слоган, загрузить фото, поставить галочку → «Änderungen veröffentlichen» → в Gmail письмо «[Website selbst] Änderung: …».
 5. В /admin: «Откатить» → сайт вернулся к прежней версии. Потом «Удалить» тестовый сайт.
@@ -52,7 +52,7 @@ git push
 
 ## Запуск сайта клиентки (каждый раз)
 1. Пришла заявка «[Website selbst] Studio – domain» → проверить тексты (HWG/UWG), Impressum, договор, счёт.
-2. /admin → «Новый сайт из заявки»: slug (напр. `lumi-nails`), JSON из вложения → «Создать». Проверить `…/s/lumi-nails/`.
+2. /admin → «Новый сайт из заявки»: slug (напр. `lumi-nails`), содержимое .txt-вложения → «Создать». Проверить `…/s/lumi-nails/`.
 3. **Домен** на имя клиентки у INWX. В Cloudflare: **Add a domain** → Free → у INWX поменять nameserver на те, что покажет Cloudflare (вступает в силу до 24 ч).
 4. Worker `seiten` → **Settings → Domains & Routes → Add → Custom domain**: `lumi-nails.de`, потом ещё раз `www.lumi-nails.de`. Cloudflare сам выпустит https.
 5. /admin → у сайта «Домен» → `lumi-nails.de www.lumi-nails.de` (первый — главный, www перенаправляется).
@@ -72,5 +72,5 @@ git push
 
 ## Юридическое — сделать до первой клиентки
 - **AVV (Auftragsverarbeitungsvertrag)** с каждой клиенткой: ты хостишь её сайт через Cloudflare → ты её Auftragsverarbeiter (IP-адреса посетителей). Шаблон AVV — добавить к договору.
-- **Datenschutz на сайтах клиенток** (текст в `vorschau.html`, функция `openLegal`): проверить формулировки, особенно фразу про EU-US Data Privacy Framework / Standardvertragsklauseln у Cloudflare, и сверить со своим `datenschutz.html`.
+- **Datenschutz на сайтах клиенток** (текст в `vorschau.html`, функция `openLegal`): KV создан с jurisdiction **EU** (20.11) → в тексте «Inhalte … in der EU gespeichert». Проверить фразу про EU-US Data Privacy Framework / Standardvertragsklauseln у Cloudflare и сверить со своим `datenschutz.html`.
 - **Договор** (`Uslugi/vorlagen/vertrag-webseite.md`): самостоятельные правки — ответственность клиентки за тексты и фото; твой сервис — техника, домен, юр. тексты, помощь в течение 2 рабочих дней; гарантия 19 €/мес на 12 месяцев для первых 5 студий; круг правок при запуске; что происходит при расторжении (JSON и домен — клиентке).

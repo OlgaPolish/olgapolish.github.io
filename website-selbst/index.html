@@ -112,9 +112,12 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 .up input[type=file]{position:absolute;width:1px;height:1px;opacity:0}
 .up .rm{border:0;background:none;color:var(--err);cursor:pointer;font-size:13px;text-decoration:underline}
 .gal4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
-.gal4 label{aspect-ratio:3/4;border-radius:8px;border:1.5px dashed rgba(30,42,74,.3);background:var(--bg-soft) center/cover no-repeat;display:grid;place-items:center;cursor:pointer;font-size:22px;color:var(--ink-soft);position:relative}
+.gal4 label{display:grid;aspect-ratio:3/4;border-radius:8px;border:1.5px dashed rgba(30,42,74,.3);background:var(--bg-soft) center/cover no-repeat;display:grid;place-items:center;cursor:pointer;font-size:22px;color:var(--ink-soft);position:relative}
 .gal4 label.has{border-style:solid;color:transparent}
 .gal4 input{position:absolute;width:1px;height:1px;opacity:0}
+.gal4 .gi{position:relative}
+.gal4 .gi label{width:100%}
+.gal4 .gx{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(30,42,74,.85);color:#fff;font-size:15px;line-height:1;cursor:pointer}
 /* submit */
 .terms{margin-top:12px;font-size:13px;background:var(--bg-soft);border-radius:var(--r);padding:10px 12px}
 .terms summary{cursor:pointer;font-weight:600}
@@ -144,6 +147,11 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
 .frame{width:100%;height:100%;border:0;background:#fff;display:block}
 .stage.mob .frame{width:390px;height:780px;max-height:calc(100% - 0px);border-radius:28px;box-shadow:0 0 0 10px #1E2A4A,0 20px 50px rgba(0,0,0,.3)}
 .tabs{display:none}
+.edit-only{display:none}
+body.editing .edit-only{display:flex}
+body.editing .new-only,body.editing .steps,body.editing #price,body.editing .incl,body.editing #fs-domain,body.editing #save{display:none!important}
+.editbar{background:#E8F5EE;border:1px solid #B7DFC8;color:#14532D;border-radius:var(--r);padding:10px 12px;font-size:13.5px;margin-bottom:14px}
+.editbar a{font-weight:700}
 @media(max-width:980px){
   .app{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:auto;min-height:100vh;overflow:visible}
   .side{border-right:0;padding-bottom:110px}
@@ -172,6 +180,7 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
 
   <form class="side" id="f" novalidate autocomplete="on">
     <div class="intro">
+      <div class="editbar" id="editbar" hidden></div>
       <h1 data-t="h1"></h1>
       <p data-t="lead"></p>
       <div class="steps"><div data-t="st1"></div><div data-t="st2"></div><div data-t="st3"></div></div>
@@ -256,15 +265,16 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
     </fieldset>
 
     <fieldset id="fs-send"><legend><i>8</i><span data-t="l8"></span></legend>
-      <label class="chk"><input type="checkbox" name="ok.photos"><span data-t="okPhotos"></span></label>
-      <label class="chk"><input type="checkbox" name="ok.content"><span data-t="okContent"></span></label>
-      <label class="chk"><input type="checkbox" name="ok.terms"><span data-t="okTerms"></span></label>
-      <details class="terms"><summary data-t="termsT"></summary><ul id="terms"></ul></details>
-      <label class="f"><span data-t="note"></span><textarea name="note" rows="3" maxlength="600"></textarea></label>
+      <label class="chk edit-only"><input type="checkbox" id="edit-ok"><span data-t="editOk"></span></label>
+      <label class="chk new-only"><input type="checkbox" name="ok.photos"><span data-t="okPhotos"></span></label>
+      <label class="chk new-only"><input type="checkbox" name="ok.content"><span data-t="okContent"></span></label>
+      <label class="chk new-only"><input type="checkbox" name="ok.terms"><span data-t="okTerms"></span></label>
+      <details class="terms new-only"><summary data-t="termsT"></summary><ul id="terms"></ul></details>
+      <label class="f new-only"><span data-t="note"></span><textarea name="note" rows="3" maxlength="600"></textarea></label>
       <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <button class="send" id="send" type="submit" data-t="send"></button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <p class="small"><span data-t="privacy"></span> <a href="/datenschutz.html" target="_blank" data-t="dsLink"></a></p>
+      <p class="small new-only"><span data-t="privacy"></span> <a href="/datenschutz.html" target="_blank" data-t="dsLink"></a></p>
     </fieldset>
   </form>
 
@@ -285,6 +295,11 @@ const LIVE_HOSTS=["olhapolishchuk.de","www.olhapolishchuk.de"]; // на друг
 const OLHA_WA="380666578075";
 const PREIS={start:"50 €",alt:"79 €",monat:"19 €",neu:"5",frei:"5",fix:"12"}; // frei — сколько мест осталось: после каждой подписанной студии уменьшить (только правду!) // Einführungspreis: старт 50 € вместо 79 € для первых {neu} студий. Закончилась акция → start:"79 €", alt:"" (зачёркнутая цена и плашка исчезнут)
 const STORE="websiteSelbst.v1";
+const SITES_API="https://seiten.olha-polishchuk-web.workers.dev"; // Worker «seiten»: живые сайты клиенток
+/* Режим правки: личная ссылка …/website-selbst/#edit=<slug>.<ключ> (ключ в # не уходит на сервер в логи) */
+const EM=location.hash.match(/edit=([a-z0-9-]+)\.([A-Za-z0-9_-]{10,})/);
+const EDIT=EM?{slug:EM[1],key:EM[2],url:"",hosts:[]}:null;
+let dirty=false;
 /* =================================== */
 /* Готовые тексты: видны серым в предпросмотре, кнопкой «Взять этот текст» попадают в поле. Язык — язык сайта. */
 const SUG={
@@ -301,9 +316,9 @@ const SUG={
 const SUG_FIELD={category:"cat",slogan:"slogan",about:"tText",ctaTitle:"ctaTitle",hours:"hoursSug"};
 const SCHEMES=[["kupfer",["#FBF6F1","#9A3F1C","#261611","#E39466"]],["rose",["#FDF7F7","#A3405B","#2A161D","#F0A6B7"]],["salbei",["#F7F8F4","#46644C","#1C2620","#B7CFA3"]],["nacht",["#F8F5EF","#7E6026","#141210","#D4B26A"]]];
 const U={
- de:{brandSub:"· Website selbst",inclT:"Im Monatspreis enthalten",incl:["<b>Domain auf Ihren Namen</b> und sicheres Hosting (https)", "<b>Impressum und Datenschutzerklärung</b> – ich halte sie aktuell", "<b>Bis zu 2 kleine Änderungen pro Monat</b>: Fotos, Preise, Öffnungszeiten, Leistungstexte", "Einfach per WhatsApp schicken – <b>umgesetzt in 2 Werktagen</b>", "Größere Änderungen nach Preisliste – den Preis nenne ich vorher", "Persönlicher Kontakt auf Deutsch, Ukrainisch oder Russisch"],back:"← Zurück zur Website",backSub:"· Ihr Entwurf bleibt gespeichert",priceInc:"<span class=\"fix\">✓ Im Start enthalten: <b>eine Korrekturrunde mit mir</b> – persönlicher Feinschliff wie Animationen und Details, die Ihre Seite einzigartig machen</span>",sugBtn:"Diesen Text übernehmen",save:"Speichern",reset:"Neu beginnen",resetQ:"Wirklich alles löschen?",saved:"Entwurf gespeichert",savedAt:"Gespeichert",
+ de:{brandSub:"· Website selbst",editL8:"Veröffentlichen",editBack:"← Zu meiner Website",photoHintEdit:"Fotos werden beim Auswählen hochgeladen und erscheinen nach „Änderungen veröffentlichen“ auf Ihrer Website. Bitte nur eigene Fotos verwenden.",editH1:"Ihre Website bearbeiten: {studio}",editLead:"Ändern Sie Texte, Preise, Öffnungszeiten und Fotos. Nach „Änderungen veröffentlichen“ ist alles sofort online.",editBar:"Bearbeitungsmodus · Ihre Website:",editOk:"Ich bin für die Texte und Fotos auf meiner Website verantwortlich (Rechte an Fotos, keine Heilversprechen).",publish:"Änderungen veröffentlichen",publishing:"Wird veröffentlicht …",published:"✓ Veröffentlicht – Ihre Website ist aktualisiert.",unchanged:"Es gab keine Änderungen.",view:"Website ansehen ↗",publishedAt:"Veröffentlicht",pubErr:"Die Änderungen konnten nicht veröffentlicht werden.",loading:"Wird geladen …",loadErr:"Ihre Website konnte nicht geladen werden. Ist der Link vollständig?",help:"Hilfe: <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>",dirty:"Nicht veröffentlichte Änderungen",discard:"Änderungen verwerfen",uploading:"Foto wird hochgeladen …",uploadErr:"Foto konnte nicht hochgeladen werden",inclT:"Im Monatspreis enthalten",incl:["<b>Domain auf Ihren Namen</b> und sicheres Hosting (https)", "<b>Sie ändern selbst</b>: Texte, Preise, Öffnungszeiten und Fotos – jederzeit über Ihren persönlichen Link, sofort online", "<b>Impressum und Datenschutzerklärung</b> – ich halte sie aktuell", "<b>Technischer Service</b>: Wenn etwas nicht funktioniert, kümmere ich mich – per WhatsApp, innerhalb von 2 Werktagen", "Größere Anpassungen (z. B. neue Bereiche) nach Preisliste – den Preis nenne ich vorher", "Persönlicher Kontakt auf Deutsch, Ukrainisch oder Russisch"],back:"← Zurück zur Website",backSub:"· Ihr Entwurf bleibt gespeichert",priceInc:"<span class=\"fix\">✓ Im Start enthalten: <b>eine Korrekturrunde mit mir</b> – persönlicher Feinschliff wie Animationen und Details, die Ihre Seite einzigartig machen</span>",sugBtn:"Diesen Text übernehmen",save:"Speichern",reset:"Neu beginnen",resetQ:"Wirklich alles löschen?",saved:"Entwurf gespeichert",savedAt:"Gespeichert",
   h1:"Ihre Studio-Website – selbst gestaltet",lead:"Füllen Sie Ihre Angaben aus – die Vorschau zeigt sofort, wie Ihre Website aussieht. Ihr Entwurf bleibt in diesem Browser gespeichert.",
-  st1:"Angaben ausfüllen und Vorschau ansehen",st2:"Anfrage zur Veröffentlichung senden",st3:"Ich prüfe alles, registriere die Domain und schalte die Seite frei",
+  st1:"Angaben ausfüllen und Vorschau ansehen",st2:"Anfrage zur Veröffentlichung senden",st3:"Ich prüfe alles und schalte die Seite frei – danach ändern Sie sie selbst",
   priceNeu:"<span class=\"neu\">Neu</span><b>Einführungspreis für die ersten {neu} Studios</b><br>",priceFix:"<span class=\"fix\">✓ {monat} / Monat – <b>{fix} Monate garantiert</b>, ohne Preiserhöhung</span>",seats:"Noch {frei} von {neu} Plätzen frei",seatsNone:"Alle {neu} Plätze sind vergeben",price:"Start <s>{alt}</s> <b>{start}</b> einmalig · danach <b>{monat} / Monat</b> – was enthalten ist, steht unten. Keine USt. (§ 19 UStG).",
   l1:"Studio",studio:"Name des Studios",studioPh:"z. B. Lumi Nails",category:"Art des Studios",categoryPh:"Nagelstudio",siteLang:"Sprache der Website",
   slogan:"Slogan",sloganPh:"Eigener Slogan – oder Vorschlag unten",hwg:"Bitte keine Heilversprechen, Garantien oder „Vorher/Nachher“-Aussagen – das ist für Beauty-Websites rechtlich riskant (HWG, UWG). Ich prüfe alle Texte vor der Veröffentlichung.",
@@ -312,22 +327,22 @@ const U={
   phone:"Telefon für Termine",phonePh:"0151 2345678",wa:"Diese Nummer ist auf WhatsApp erreichbar (Button „Termin per WhatsApp“)",instagram:"Instagram",instagramPh:"@ihr.studio",
   l3:"Leistungen & Preise",svcHint:"Die ersten vier Leistungen erscheinen als Kacheln, alle zusammen in der Preisliste. 📷 – eigenes Foto für die Kachel (nur Vorschau).",svcPhoto:"Foto für die Kachel",ctaTitle:"Satz vor dem Kontakt-Block (optional)",ctaPh:"",svcName:"Leistung",svcPrice:"Preis",svcDesc:"Kurze Beschreibung (optional)",add:"+ Leistung hinzufügen",del:"Zeile löschen",
   l4:"Über mich",owner:"Ihr Name",about:"Text „Über mich“",aboutPh:"Wie Sie angefangen haben, wie Sie arbeiten, welche Sprachen Sie sprechen …",portrait:"Ihr Foto (optional)",
-  l5:"Fotos",photoHint:"Fotos und Logo sehen Sie nur hier in der Vorschau – sie werden nicht gespeichert und nicht mitgeschickt. Nach der Anfrage senden Sie sie mir per WhatsApp. Ohne eigene Fotos zeigt die Vorschau Beispielbilder.",hero:"Titelbild (oben)",gallery:"Ihre Arbeiten (bis zu 4)",
+  l5:"Fotos",photoHint:"Fotos und Logo sehen Sie nur hier in der Vorschau – sie werden nicht gespeichert und nicht mitgeschickt. Nach der Freischaltung laden Sie sie über Ihren persönlichen Link selbst hoch. Ohne eigene Fotos zeigt die Vorschau Beispielbilder.",hero:"Titelbild (oben)",gallery:"Ihre Arbeiten (bis zu 4)",
   l6:"Impressum (Pflicht)",impHint:"Jede geschäftliche Website in Deutschland braucht ein Impressum (§ 5 DDG). Diese Angaben stehen öffentlich auf Ihrer Website.",
   impName:"Vor- und Nachname (Inhaber/in)",impCompany:"Firmenname (falls vorhanden)",impSame:"Anschrift wie Studio-Adresse oben",impPhone:"Telefon",impEmail:"E-Mail",impUst:"USt-IdNr. (falls vorhanden)",ustPh:"DE123456789",impKlein:"Ich bin Kleinunternehmer/in nach § 19 UStG",showImp:"Impressum in der Vorschau ansehen →",
   l7:"Wunsch-Domain",domain:"Domain",domainPh:"lumi-nails.de",domainHint:"Ob die Adresse frei ist, prüfen Sie bei DENIC. Ich prüfe vor der Rechnung noch einmal.",denic:"Bei DENIC prüfen ↗",
   l8:"Anfrage senden",okPhotos:"Ich habe die Rechte an allen Fotos und am Logo, die ich schicke.",okContent:"Für die Inhalte meiner Website und das Impressum bin ich selbst verantwortlich.",okTerms:"Ich habe die Bedingungen gelesen und handle als Unternehmer/in (§ 14 BGB).",
-  termsT:"Bedingungen (kurz)",terms:["Das Angebot richtet sich nur an Unternehmer/innen, nicht an Verbraucher.","Die Anfrage ist unverbindlich. Der Vertrag kommt erst zustande, wenn Sie mein Angebot annehmen. Laufzeit und Kündigung stehen im Vertrag.","Start {start} einmalig{altNote}, danach {monat} pro Monat. Im Monatspreis sind bis zu 2 kleine Änderungen pro Monat enthalten (Fotos, Preise, Öffnungszeiten, Leistungstexte) – per WhatsApp, umgesetzt innerhalb von 2 Werktagen. Größere Änderungen nach Preisliste.","Im Startpreis ist eine Korrekturrunde enthalten: Nach Ihrem Entwurf verfeinere ich die Seite persönlich (z. B. Animationen, Details, Feinschliff der Texte) und schicke sie Ihnen zur Freigabe.","Die Domain wird auf Ihren Namen registriert. Bei Kündigung wird sie an Sie übertragen; bei Nichtzahlung wird die Website abgeschaltet.","Ich prüfe alle Texte vor der Veröffentlichung und kann Aussagen ablehnen (z. B. Heilversprechen, Vorher/Nachher).","Ihre Website bekommt kein Kontaktformular und keine Analyse-Tools – nur einen WhatsApp-Button. Die Datenschutzerklärung erstelle ich."],
+  termsT:"Bedingungen (kurz)",terms:["Das Angebot richtet sich nur an Unternehmer/innen, nicht an Verbraucher.","Die Anfrage ist unverbindlich. Der Vertrag kommt erst zustande, wenn Sie mein Angebot annehmen. Laufzeit und Kündigung stehen im Vertrag.","Start {start} einmalig{altNote}, danach {monat} pro Monat. Texte, Preise, Öffnungszeiten und Fotos ändern Sie jederzeit selbst über Ihren persönlichen Bearbeitungslink; Änderungen sind sofort online, für die Inhalte sind Sie verantwortlich. Technik, Domain, Rechtstexte und Hilfe bei Problemen (innerhalb von 2 Werktagen) sind im Monatspreis enthalten; größere Anpassungen nach Preisliste.","Im Startpreis ist eine Korrekturrunde enthalten: Nach Ihrem Entwurf verfeinere ich die Seite persönlich (z. B. Animationen, Details, Feinschliff der Texte) und schicke sie Ihnen zur Freigabe.","Die Domain wird auf Ihren Namen registriert. Bei Kündigung wird sie an Sie übertragen; bei Nichtzahlung wird die Website abgeschaltet.","Ich prüfe alle Texte vor der Veröffentlichung und kann Aussagen ablehnen (z. B. Heilversprechen, Vorher/Nachher).","Ihre Website bekommt kein Kontaktformular und keine Analyse-Tools – nur einen WhatsApp-Button. Die Datenschutzerklärung erstelle ich."],
   note:"Nachricht an mich (optional)",send:"Anfrage zur Veröffentlichung senden",sending:"Wird gesendet …",
   privacy:"Ihre Angaben gehen nur per E-Mail an mich – zur Bearbeitung Ihrer Anfrage.",dsLink:"Datenschutz",
   missing:"Bitte noch ausfüllen:",needSvc:"mindestens eine Leistung mit Preis",badMail:"gültige E-Mail-Adresse",badDomain:"Domain im Format name.de",
-  okMsg:"Danke! Ihre Anfrage ist bei mir. Ich melde mich innerhalb von 1–2 Werktagen per E-Mail.<br><b>Fotos und Logo</b> schicken Sie mir bitte per <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.",
+  okMsg:"Danke! Ihre Anfrage ist bei mir. Ich melde mich innerhalb von 1–2 Werktagen per E-Mail.<br>Nach der Freischaltung bekommen Sie Ihren <b>persönlichen Link</b> – dort laden Sie Fotos und Logo selbst hoch. Fragen? <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>",
   errMsg:"Das hat leider nicht geklappt. Bitte schreiben Sie mir per <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> oder an <a href=\"mailto:hello@olhapolishchuk.de\">hello@olhapolishchuk.de</a>.",
   testMsg:"Testmodus (nicht olhapolishchuk.de): Die Anfrage wurde nicht gesendet. So sähen die Daten aus:",
   desk:"Desktop",mob:"Handy",tabForm:"Ausfüllen",tabPrev:"Vorschau"},
- uk:{brandSub:"· Сайт самостійно",inclT:"Що входить у місячну ціну",incl:["<b>Домен на ваше ім'я</b> і надійний хостинг (https)", "<b>Impressum і Datenschutz</b> — я стежу, щоб вони були актуальні", "<b>До 2 дрібних правок на місяць</b>: фото, ціни, години роботи, тексти послуг", "Просто надішліть у WhatsApp — <b>зроблю за 2 робочі дні</b>", "Більші зміни — за прайсом, ціну називаю заздалегідь", "Спілкування українською, російською або німецькою"],back:"← Повернутися на сайт",backSub:"· чернетка збережеться",priceInc:"<span class=\"fix\">✓ У старт входить <b>одне коло правок від мене</b> — особисте доопрацювання: анімації та деталі, які роблять сайт унікальним</span>",sugBtn:"Взяти цей текст",save:"Зберегти",reset:"Почати заново",resetQ:"Точно видалити все?",saved:"Чернетку збережено",savedAt:"Збережено",
+ uk:{brandSub:"· Сайт самостійно",editL8:"Опублікувати",editBack:"← До мого сайту",photoHintEdit:"Фото завантажуються одразу після вибору й з'являться на сайті після «Опублікувати зміни». Використовуйте лише власні фото.",editH1:"Редагування сайту: {studio}",editLead:"Змінюйте тексти, ціни, години роботи й фото. Після «Опублікувати зміни» все одразу з'явиться на сайті.",editBar:"Режим редагування · ваш сайт:",editOk:"Я відповідаю за тексти й фото на своєму сайті (права на фото, без обіцянок лікування).",publish:"Опублікувати зміни",publishing:"Публікую …",published:"✓ Опубліковано — сайт оновлено.",unchanged:"Змін не було.",view:"Подивитися сайт ↗",publishedAt:"Опубліковано",pubErr:"Не вдалося опублікувати зміни.",loading:"Завантажую …",loadErr:"Не вдалося завантажити сайт. Посилання повне?",help:"Допомога: <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>",dirty:"Є неопубліковані зміни",discard:"Скасувати зміни",uploading:"Завантажую фото …",uploadErr:"Фото не завантажилося",inclT:"Що входить у місячну ціну",incl:["<b>Домен на ваше ім'я</b> і надійний хостинг (https)", "<b>Ви змінюєте сайт самі</b>: тексти, ціни, години роботи й фото — будь-коли за особистим посиланням, одразу онлайн", "<b>Impressum і Datenschutz</b> — я стежу, щоб вони були актуальні", "<b>Технічний сервіс</b>: якщо щось не працює, я все налагоджу — через WhatsApp, протягом 2 робочих днів", "Більші доробки (напр. нові розділи) — за прайсом, ціну називаю заздалегідь", "Спілкування українською, російською або німецькою"],back:"← Повернутися на сайт",backSub:"· чернетка збережеться",priceInc:"<span class=\"fix\">✓ У старт входить <b>одне коло правок від мене</b> — особисте доопрацювання: анімації та деталі, які роблять сайт унікальним</span>",sugBtn:"Взяти цей текст",save:"Зберегти",reset:"Почати заново",resetQ:"Точно видалити все?",saved:"Чернетку збережено",savedAt:"Збережено",
   h1:"Сайт вашої студії — своїми руками",lead:"Заповнюйте дані — у попередньому перегляді одразу видно, як виглядатиме ваш сайт. Чернетка зберігається в цьому браузері.",
-  st1:"Заповніть дані й подивіться результат",st2:"Надішліть заявку на публікацію",st3:"Я все перевірю, зареєструю домен і опублікую сайт",
+  st1:"Заповніть дані й подивіться результат",st2:"Надішліть заявку на публікацію",st3:"Я все перевірю й опублікую сайт — далі ви змінюєте його самі",
   priceNeu:"<span class=\"neu\">Новинка</span><b>Стартова ціна для перших {neu} студій</b><br>",priceFix:"<span class=\"fix\">✓ {monat} / міс. — <b>ціна гарантована на {fix} місяців</b>, без підвищення</span>",seats:"Вільно ще {frei} з {neu} місць",seatsNone:"Усі {neu} місць зайняті",price:"Старт <s>{alt}</s> <b>{start}</b> одноразово · далі <b>{monat} / міс.</b> — що входить, дивіться нижче. Без ПДВ (§ 19 UStG).",
   l1:"Студія",studio:"Назва студії",studioPh:"напр. Lumi Nails",category:"Тип студії",categoryPh:"Nagelstudio",siteLang:"Мова сайту",
   slogan:"Слоган",sloganPh:"Свій слоган — або готовий нижче",hwg:"Без обіцянок лікування, гарантій і «до/після» — для beauty-сайтів у Німеччині це юридичний ризик (HWG, UWG). Я перевіряю всі тексти перед публікацією.",
@@ -336,22 +351,22 @@ const U={
   phone:"Телефон для запису",phonePh:"0151 2345678",wa:"Цей номер є у WhatsApp (кнопка «Записатися у WhatsApp»)",instagram:"Instagram",instagramPh:"@vasha.studio",
   l3:"Послуги й ціни",svcHint:"Перші чотири послуги — плитками, усі разом — у прайсі. 📷 — своє фото для плитки (тільки перегляд).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необов'язково)",ctaPh:"",svcName:"Послуга",svcPrice:"Ціна",svcDesc:"Короткий опис (необов'язково)",add:"+ Додати послугу",del:"Видалити рядок",
   l4:"Про мене",owner:"Ваше ім'я",about:"Текст «Про мене»",aboutPh:"З чого почали, як працюєте, якими мовами говорите …",portrait:"Ваше фото (необов'язково)",
-  l5:"Фото",photoHint:"Фото й логотип видно тільки тут, у попередньому перегляді — вони не зберігаються і не надсилаються. Після заявки надішліть їх мені у WhatsApp. Без своїх фото показуються приклади.",hero:"Головне фото (вгорі)",gallery:"Ваші роботи (до 4)",
+  l5:"Фото",photoHint:"Фото й логотип видно тільки тут, у попередньому перегляді — вони не зберігаються і не надсилаються. Після запуску ви завантажите їх самі за особистим посиланням. Без своїх фото показуються приклади.",hero:"Головне фото (вгорі)",gallery:"Ваші роботи (до 4)",
   l6:"Impressum (обов'язково)",impHint:"Кожен комерційний сайт у Німеччині має містити Impressum (§ 5 DDG). Ці дані будуть публічно на сайті.",
   impName:"Ім'я та прізвище (власник/ця)",impCompany:"Назва фірми (якщо є)",impSame:"Адреса така сама, як у студії",impPhone:"Телефон",impEmail:"E-Mail",impUst:"USt-IdNr. (якщо є)",ustPh:"DE123456789",impKlein:"Я Kleinunternehmer/in за § 19 UStG",showImp:"Подивитися Impressum →",
   l7:"Бажаний домен",domain:"Домен",domainPh:"lumi-nails.de",domainHint:"Чи вільна адреса, можна перевірити на DENIC. Перед рахунком я перевірю ще раз.",denic:"Перевірити на DENIC ↗",
   l8:"Надіслати заявку",okPhotos:"Я маю права на всі фото й логотип, які надсилаю.",okContent:"За зміст сайту й Impressum відповідаю я.",okTerms:"Я прочитала умови і дію як підприємець (§ 14 BGB).",
-  termsT:"Умови (коротко)",terms:["Пропозиція тільки для підприємців, не для приватних споживачів.","Заявка ні до чого не зобов'язує. Договір укладається, коли ви приймаєте мою пропозицію. Строк і розірвання — у договорі.","Старт {start} одноразово{altNote}, далі {monat} на місяць. У місячну ціну входять до 2 дрібних правок на місяць (фото, ціни, години роботи, тексти послуг) — через WhatsApp, виконую протягом 2 робочих днів. Більші зміни — за прайсом.","У стартову ціну входить одне коло правок: після вашої чернетки я особисто доопрацюю сайт (напр. анімації, деталі, шліфування текстів) і надішлю вам на погодження.","Домен реєструється на ваше ім'я. Після розірвання він передається вам; у разі неоплати сайт вимикається.","Я перевіряю тексти перед публікацією і можу відхилити формулювання (напр. обіцянки лікування, «до/після»).","На вашому сайті не буде контактної форми й аналітики — тільки кнопка WhatsApp. Datenschutz складаю я."],
+  termsT:"Умови (коротко)",terms:["Пропозиція тільки для підприємців, не для приватних споживачів.","Заявка ні до чого не зобов'язує. Договір укладається, коли ви приймаєте мою пропозицію. Строк і розірвання — у договорі.","Старт {start} одноразово{altNote}, далі {monat} на місяць. Тексти, ціни, години роботи й фото ви змінюєте самі будь-коли за особистим посиланням; зміни одразу онлайн, за зміст відповідаєте ви. Техніка, домен, юридичні тексти й допомога при проблемах (протягом 2 робочих днів) входять у місячну ціну; більші доробки — за прайсом.","У стартову ціну входить одне коло правок: після вашої чернетки я особисто доопрацюю сайт (напр. анімації, деталі, шліфування текстів) і надішлю вам на погодження.","Домен реєструється на ваше ім'я. Після розірвання він передається вам; у разі неоплати сайт вимикається.","Я перевіряю тексти перед публікацією і можу відхилити формулювання (напр. обіцянки лікування, «до/після»).","На вашому сайті не буде контактної форми й аналітики — тільки кнопка WhatsApp. Datenschutz складаю я."],
   note:"Повідомлення для мене (необов'язково)",send:"Надіслати заявку на публікацію",sending:"Надсилаю …",
   privacy:"Ваші дані надходять лише мені на e-mail — для обробки заявки.",dsLink:"Datenschutz",
   missing:"Будь ласка, заповніть:",needSvc:"хоча б одну послугу з ціною",badMail:"правильний e-mail",badDomain:"домен у форматі name.de",
-  okMsg:"Дякую! Заявку отримано. Я відповім протягом 1–2 робочих днів на e-mail.<br><b>Фото й логотип</b> надішліть, будь ласка, у <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.",
+  okMsg:"Дякую! Заявку отримано. Я відповім протягом 1–2 робочих днів на e-mail.<br>Після запуску ви отримаєте <b>особисте посилання</b> — там самі завантажите фото й логотип. Питання? <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>",
   errMsg:"На жаль, не вдалося. Напишіть мені у <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> або на <a href=\"mailto:hello@olhapolishchuk.de\">hello@olhapolishchuk.de</a>.",
   testMsg:"Тестовий режим (не olhapolishchuk.de): заявку не надіслано. Ось що пішло б:",
   desk:"Комп'ютер",mob:"Телефон",tabForm:"Заповнити",tabPrev:"Перегляд"},
- ru:{brandSub:"· Сайт самостоятельно",inclT:"Что входит в месячную цену",incl:["<b>Домен на ваше имя</b> и надёжный хостинг (https)", "<b>Impressum и Datenschutz</b> — слежу, чтобы они были актуальны", "<b>До 2 мелких правок в месяц</b>: фото, цены, часы работы, тексты услуг", "Просто пришлите в WhatsApp — <b>сделаю за 2 рабочих дня</b>", "Более крупные изменения — по прайсу, цену называю заранее", "Общение на русском, украинском или немецком"],back:"← Вернуться на сайт",backSub:"· черновик сохранится",priceInc:"<span class=\"fix\">✓ В старт входит <b>один круг правок от меня</b> — личная доработка: анимации и детали, которые делают сайт уникальным</span>",sugBtn:"Взять этот текст",save:"Сохранить",reset:"Начать заново",resetQ:"Точно удалить всё?",saved:"Черновик сохранён",savedAt:"Сохранено",
+ ru:{brandSub:"· Сайт самостоятельно",editL8:"Опубликовать",editBack:"← На мой сайт",photoHintEdit:"Фото загружаются сразу после выбора и появятся на сайте после «Опубликовать изменения». Используйте только свои фото.",editH1:"Редактирование сайта: {studio}",editLead:"Меняйте тексты, цены, часы работы и фото. После «Опубликовать изменения» всё сразу появится на сайте.",editBar:"Режим редактирования · ваш сайт:",editOk:"Я отвечаю за тексты и фото на своём сайте (права на фото, без обещаний лечения).",publish:"Опубликовать изменения",publishing:"Публикую …",published:"✓ Опубликовано — сайт обновлён.",unchanged:"Изменений не было.",view:"Посмотреть сайт ↗",publishedAt:"Опубликовано",pubErr:"Не удалось опубликовать изменения.",loading:"Загружаю …",loadErr:"Не удалось загрузить сайт. Ссылка полная?",help:"Помощь: <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>",dirty:"Есть неопубликованные изменения",discard:"Отменить изменения",uploading:"Загружаю фото …",uploadErr:"Фото не загрузилось",inclT:"Что входит в месячную цену",incl:["<b>Домен на ваше имя</b> и надёжный хостинг (https)", "<b>Вы меняете сайт сами</b>: тексты, цены, часы работы и фото — в любой момент по личной ссылке, сразу онлайн", "<b>Impressum и Datenschutz</b> — слежу, чтобы они были актуальны", "<b>Технический сервис</b>: если что-то не работает, я всё налажу — через WhatsApp, в течение 2 рабочих дней", "Более крупные доработки (напр. новые разделы) — по прайсу, цену называю заранее", "Общение на русском, украинском или немецком"],back:"← Вернуться на сайт",backSub:"· черновик сохранится",priceInc:"<span class=\"fix\">✓ В старт входит <b>один круг правок от меня</b> — личная доработка: анимации и детали, которые делают сайт уникальным</span>",sugBtn:"Взять этот текст",save:"Сохранить",reset:"Начать заново",resetQ:"Точно удалить всё?",saved:"Черновик сохранён",savedAt:"Сохранено",
   h1:"Сайт вашей студии — своими руками",lead:"Заполняйте данные — в предпросмотре сразу видно, как будет выглядеть ваш сайт. Черновик сохраняется в этом браузере.",
-  st1:"Заполните данные и посмотрите результат",st2:"Отправьте заявку на публикацию",st3:"Я всё проверю, зарегистрирую домен и опубликую сайт",
+  st1:"Заполните данные и посмотрите результат",st2:"Отправьте заявку на публикацию",st3:"Я всё проверю и опубликую сайт — дальше вы меняете его сами",
   priceNeu:"<span class=\"neu\">Новинка</span><b>Стартовая цена для первых {neu} студий</b><br>",priceFix:"<span class=\"fix\">✓ {monat} / мес. — <b>цена гарантирована на {fix} месяцев</b>, без повышения</span>",seats:"Свободно ещё {frei} из {neu} мест",seatsNone:"Все {neu} мест заняты",price:"Старт <s>{alt}</s> <b>{start}</b> единоразово · дальше <b>{monat} / мес.</b> — что входит, смотрите ниже. Без НДС (§ 19 UStG).",
   l1:"Студия",studio:"Название студии",studioPh:"напр. Lumi Nails",category:"Тип студии",categoryPh:"Nagelstudio",siteLang:"Язык сайта",
   slogan:"Слоган",sloganPh:"Свой слоган — или готовый ниже",hwg:"Без обещаний лечения, гарантий и «до/после» — для beauty-сайтов в Германии это юридический риск (HWG, UWG). Я проверяю все тексты перед публикацией.",
@@ -360,16 +375,16 @@ const U={
   phone:"Телефон для записи",phonePh:"0151 2345678",wa:"Этот номер есть в WhatsApp (кнопка «Записаться в WhatsApp»)",instagram:"Instagram",instagramPh:"@vasha.studia",
   l3:"Услуги и цены",svcHint:"Первые четыре услуги — плитками, все вместе — в прайсе. 📷 — своё фото для плитки (только предпросмотр).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необязательно)",ctaPh:"",svcName:"Услуга",svcPrice:"Цена",svcDesc:"Короткое описание (необязательно)",add:"+ Добавить услугу",del:"Удалить строку",
   l4:"Обо мне",owner:"Ваше имя",about:"Текст «Обо мне»",aboutPh:"С чего начинали, как работаете, на каких языках говорите …",portrait:"Ваше фото (необязательно)",
-  l5:"Фото",photoHint:"Фото и логотип видны только здесь, в предпросмотре — они не сохраняются и не отправляются. После заявки пришлите их мне в WhatsApp. Без своих фото показываются примеры.",hero:"Главное фото (вверху)",gallery:"Ваши работы (до 4)",
+  l5:"Фото",photoHint:"Фото и логотип видны только здесь, в предпросмотре — они не сохраняются и не отправляются. После запуска вы загрузите их сами по личной ссылке. Без своих фото показываются примеры.",hero:"Главное фото (вверху)",gallery:"Ваши работы (до 4)",
   l6:"Impressum (обязательно)",impHint:"Любой коммерческий сайт в Германии обязан иметь Impressum (§ 5 DDG). Эти данные будут публично на сайте.",
   impName:"Имя и фамилия (владелец)",impCompany:"Название фирмы (если есть)",impSame:"Адрес такой же, как у студии",impPhone:"Телефон",impEmail:"E-Mail",impUst:"USt-IdNr. (если есть)",ustPh:"DE123456789",impKlein:"Я Kleinunternehmer/in по § 19 UStG",showImp:"Посмотреть Impressum →",
   l7:"Желаемый домен",domain:"Домен",domainPh:"lumi-nails.de",domainHint:"Свободен ли адрес, можно проверить на DENIC. Перед счётом я проверю ещё раз.",denic:"Проверить на DENIC ↗",
   l8:"Отправить заявку",okPhotos:"У меня есть права на все фото и логотип, которые я присылаю.",okContent:"За содержание сайта и Impressum отвечаю я.",okTerms:"Я прочитала условия и действую как предприниматель (§ 14 BGB).",
-  termsT:"Условия (коротко)",terms:["Предложение только для предпринимателей, не для частных потребителей.","Заявка ни к чему не обязывает. Договор заключается, когда вы принимаете моё предложение. Срок и расторжение — в договоре.","Старт {start} единоразово{altNote}, дальше {monat} в месяц. В месячную цену входят до 2 мелких правок в месяц (фото, цены, часы работы, тексты услуг) — через WhatsApp, выполняю в течение 2 рабочих дней. Более крупные изменения — по прайсу.","В стартовую цену входит один круг правок: после вашего черновика я лично доработаю сайт (напр. анимации, детали, шлифовка текстов) и пришлю вам на согласование.","Домен регистрируется на ваше имя. При расторжении он передаётся вам; при неоплате сайт отключается.","Я проверяю тексты перед публикацией и могу отклонить формулировки (напр. обещания лечения, «до/после»).","На вашем сайте не будет контактной формы и аналитики — только кнопка WhatsApp. Datenschutz составляю я."],
+  termsT:"Условия (коротко)",terms:["Предложение только для предпринимателей, не для частных потребителей.","Заявка ни к чему не обязывает. Договор заключается, когда вы принимаете моё предложение. Срок и расторжение — в договоре.","Старт {start} единоразово{altNote}, дальше {monat} в месяц. Тексты, цены, часы работы и фото вы меняете сами в любой момент по личной ссылке; изменения сразу онлайн, за содержание отвечаете вы. Техника, домен, юридические тексты и помощь при проблемах (в течение 2 рабочих дней) входят в месячную цену; более крупные доработки — по прайсу.","В стартовую цену входит один круг правок: после вашего черновика я лично доработаю сайт (напр. анимации, детали, шлифовка текстов) и пришлю вам на согласование.","Домен регистрируется на ваше имя. При расторжении он передаётся вам; при неоплате сайт отключается.","Я проверяю тексты перед публикацией и могу отклонить формулировки (напр. обещания лечения, «до/после»).","На вашем сайте не будет контактной формы и аналитики — только кнопка WhatsApp. Datenschutz составляю я."],
   note:"Сообщение для меня (необязательно)",send:"Отправить заявку на публикацию",sending:"Отправляю …",
   privacy:"Ваши данные приходят только мне на e-mail — для обработки заявки.",dsLink:"Datenschutz",
   missing:"Пожалуйста, заполните:",needSvc:"хотя бы одну услугу с ценой",badMail:"правильный e-mail",badDomain:"домен в формате name.de",
-  okMsg:"Спасибо! Заявка у меня. Отвечу в течение 1–2 рабочих дней на e-mail.<br><b>Фото и логотип</b> пришлите, пожалуйста, в <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>.",
+  okMsg:"Спасибо! Заявка у меня. Отвечу в течение 1–2 рабочих дней на e-mail.<br>После запуска вы получите <b>личную ссылку</b> — там сами загрузите фото и логотип. Вопросы? <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>",
   errMsg:"К сожалению, не получилось. Напишите мне в <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> или на <a href=\"mailto:hello@olhapolishchuk.de\">hello@olhapolishchuk.de</a>.",
   testMsg:"Тестовый режим (не olhapolishchuk.de): заявка не отправлена. Вот что ушло бы:",
   desk:"Компьютер",mob:"Телефон",tabForm:"Заполнить",tabPrev:"Просмотр"}
@@ -383,10 +398,10 @@ const ALTNOTE={de:" (Einführungspreis für die ersten {neu} Studios, regulär {
 const fill=(s)=>String(s).replace(/\{altNote\}/g,()=>PREIS.alt?ALTNOTE[ui]:"").replace(/\{(\w+)\}/g,(m,k)=>k==="wa"?"https://wa.me/"+OLHA_WA:(PREIS[k]??m));
 
 function blank(){return{v:1,siteLang:"de",scheme:"kupfer",studio:"",category:"",slogan:"",street:"",zip:"",city:"",hours:"",phone:"",whatsapp:true,instagram:"",
-  services:[{name:"",price:"",desc:""},{name:"",price:"",desc:""},{name:"",price:"",desc:""}],owner:"",about:"",ctaTitle:"",
+  services:[{name:"",price:"",desc:""},{name:"",price:"",desc:""},{name:"",price:"",desc:""}],owner:"",about:"",ctaTitle:"",images:{logo:"",hero:"",portrait:"",gallery:["","","",""],svc:[]},
   imp:{name:"",company:"",same:true,street:"",zip:"",city:"",phone:"",email:"",ustid:"",klein:false},domain:"",ok:{photos:false,content:false,terms:false},note:""}}
-function load(){try{const s=JSON.parse(localStorage.getItem(STORE)||"null");if(s&&s.v===1){const b=blank();return{...b,...s,imp:{...b.imp,...s.imp},ok:{...b.ok,...s.ok}}}}catch(e){}return blank()}
-function store(manual){try{localStorage.setItem(STORE,JSON.stringify(data));const tm=new Date().toLocaleTimeString(ui==="de"?"de-DE":ui==="uk"?"uk-UA":"ru-RU",{hour:"2-digit",minute:"2-digit"});$("#status").textContent=U[ui].savedAt+" · "+tm;if(manual){$("#save").textContent="✓ "+U[ui].saved;setTimeout(()=>$("#save").textContent=U[ui].save,1800);track("website-selbst-gespeichert")}}catch(e){$("#status").textContent=""}}
+function load(){try{const s=JSON.parse(localStorage.getItem(STORE)||"null");if(s&&s.v===1){const b=blank();return{...b,...s,imp:{...b.imp,...s.imp},ok:{...b.ok,...s.ok},images:b.images}}}catch(e){}return blank()}
+function store(manual){if(EDIT)return;try{localStorage.setItem(STORE,JSON.stringify(data));const tm=new Date().toLocaleTimeString(ui==="de"?"de-DE":ui==="uk"?"uk-UA":"ru-RU",{hour:"2-digit",minute:"2-digit"});$("#status").textContent=U[ui].savedAt+" · "+tm;if(manual){$("#save").textContent="✓ "+U[ui].saved;setTimeout(()=>$("#save").textContent=U[ui].save,1800);track("website-selbst-gespeichert")}}catch(e){$("#status").textContent=""}}
 
 /* --- UI text --- */
 function applyUI(l){
@@ -396,11 +411,12 @@ function applyUI(l){
   $$("[data-t]").forEach(el=>{const v=u[el.dataset.t];if(typeof v==="string")el.textContent=v});
   $$("[data-ph]").forEach(el=>el.placeholder=u[el.dataset.ph]||"");
   const fr=+PREIS.frei||0,nn=+PREIS.neu||0;
+  if(EDIT)$("[data-t=photoHint]").textContent=u.photoHintEdit;
   $("#price").innerHTML=PREIS.alt?fill(u.priceNeu+u.price+u.priceFix+u.priceInc)+`<div class="seats"><span class="dots">${Array.from({length:nn},(_,i)=>`<i class="${i<fr?"":"off"}"></i>`).join("")}</span>${fill(fr>0?u.seats:u.seatsNone)}</div>`:fill(u.price+u.priceInc).replace(/<s>.*?<\/s>\s*/,"");
   $("#incl").innerHTML=u.incl.map(x=>`<li>${x}</li>`).join("");
   $("#terms").innerHTML=u.terms.map(x=>`<li>${fill(x)}</li>`).join("");
   $("#schemes").innerHTML=SCHEMES.map(([k,c])=>`<label><input type="radio" name="scheme" value="${k}"${data.scheme===k?" checked":""}><span class="sw">${c.map(x=>`<i style="background:${x}"></i>`).join("")}</span>${u.sc[k]}</label>`).join("");
-  renderSvcs();renderGal();counts();sugs();
+  renderSvcs();renderGal();counts();sugs();editIntro();
 }
 /* --- services --- */
 function renderSvcs(){
@@ -413,26 +429,37 @@ function renderSvcs(){
 }
 function escA(s){return String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
 $("#svcs").addEventListener("input",e=>{const r=e.target.closest(".svc");if(!r)return;data.services[+r.dataset.i][e.target.dataset.k]=e.target.value;changed()});
-$("#svcs").addEventListener("change",async e=>{if(e.target.dataset.s===undefined)return;const i=+e.target.dataset.s,f=e.target.files[0];if(!f)return;try{imgs.svc[i]=await shrink(f,1000);renderSvcs();send()}catch(err){}});
-$("#svcs").addEventListener("click",e=>{if(!e.target.classList.contains("x"))return;const i=+e.target.closest(".svc").dataset.i;data.services.splice(i,1);imgs.svc.splice(i,1);if(!data.services.length)data.services.push({name:"",price:"",desc:""});renderSvcs();changed()});
+$("#svcs").addEventListener("change",async e=>{if(e.target.dataset.s===undefined)return;const i=+e.target.dataset.s,f=e.target.files[0];if(!f)return;try{await setImg("svc",i,await shrink(f,1000));renderSvcs()}catch(err){}});
+$("#svcs").addEventListener("click",e=>{if(!e.target.classList.contains("x"))return;const i=+e.target.closest(".svc").dataset.i;data.services.splice(i,1);imgs.svc.splice(i,1);data.images.svc.splice(i,1);if(!data.services.length)data.services.push({name:"",price:"",desc:""});renderSvcs();changed()});
 $("#add").onclick=()=>{if(data.services.length>=20)return;data.services.push({name:"",price:"",desc:""});renderSvcs();$("#svcs .svc:last-child input").focus();changed()};
 /* --- images (nur Vorschau) --- */
 function shrink(file,max,keepPng){return new Promise((res,rej)=>{
   if(!/^image\//.test(file.type))return rej();
-  if(file.type==="image/svg+xml"){const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file);return}
+  if(file.type==="image/svg+xml"&&!EDIT){const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file);return}
   const url=URL.createObjectURL(file),im=new Image();
   im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(url);res(keepPng?c.toDataURL("image/png"):c.toDataURL("image/jpeg",.85))};
   im.onerror=()=>{URL.revokeObjectURL(url);rej()};im.src=url})}
+/* В режиме правки фото сразу загружаются на сервер (Worker «seiten»), в данных хранится только id */
+async function putImg(dataUrl){const b=await (await fetch(dataUrl)).blob();
+  const r=await fetch(`${SITES_API}/api/img?slug=${encodeURIComponent(EDIT.slug)}`,{method:"POST",headers:{"Content-Type":b.type,"X-Edit-Key":EDIT.key},body:b});
+  const j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw new Error(j.error||"upload");return j}
+async function setImg(k,i,dataUrl){
+  let url=dataUrl,id="";
+  if(EDIT&&dataUrl){$("#status").textContent=U[ui].uploading;try{const j=await putImg(dataUrl);url=j.url;id=j.id}catch(e){$("#status").textContent=U[ui].uploadErr;throw e}}
+  if(i==null){imgs[k]=url;data.images[k]=id}else{imgs[k][i]=url;data.images[k][i]=id}
+  changed();
+}
+function paintUp(){$$(".up").forEach(box=>{const k=box.dataset.img;box.querySelector(".pv").style.backgroundImage=imgs[k]?`url("${imgs[k]}")`:"";box.querySelector(".rm").hidden=!imgs[k]})}
 $$(".up").forEach(box=>{
-  const key=box.dataset.img,inp=box.querySelector("input"),pv=box.querySelector(".pv"),rm=box.querySelector(".rm");
-  inp.onchange=async()=>{const f=inp.files[0];if(!f)return;try{imgs[key]=await shrink(f,key==="logo"?400:1600,key==="logo");pv.style.backgroundImage=`url("${imgs[key]}")`;rm.hidden=false;send()}catch(e){}inp.value=""};
-  rm.onclick=()=>{imgs[key]="";pv.style.backgroundImage="";rm.hidden=true;send()};
+  const key=box.dataset.img,inp=box.querySelector("input"),rm=box.querySelector(".rm");
+  inp.onchange=async()=>{const f=inp.files[0];if(!f)return;try{await setImg(key,null,await shrink(f,key==="logo"?400:1600,key==="logo"));paintUp()}catch(e){}inp.value=""};
+  rm.onclick=async()=>{await setImg(key,null,"");paintUp()};
 });
 function renderGal(){
-  $("#gal4").innerHTML=[0,1,2,3].map(i=>`<label class="${imgs.gallery[i]?"has":""}" style="${imgs.gallery[i]?`background-image:url('${imgs.gallery[i]}')`:""}" title="${U[ui].pick}">+<input type="file" accept="image/png,image/jpeg,image/webp" data-g="${i}"></label>`).join("");
+  $("#gal4").innerHTML=[0,1,2,3].map(i=>`<div class="gi"><label class="${imgs.gallery[i]?"has":""}" style="${imgs.gallery[i]?`background-image:url('${imgs.gallery[i]}')`:""}" title="${U[ui].pick}">+<input type="file" accept="image/png,image/jpeg,image/webp" data-g="${i}"></label>${imgs.gallery[i]?`<button type="button" class="gx" data-gx="${i}" aria-label="${U[ui].remove}">×</button>`:""}</div>`).join("");
 }
-$("#gal4").addEventListener("change",async e=>{const i=+e.target.dataset.g,f=e.target.files[0];if(!f)return;try{imgs.gallery[i]=await shrink(f,1200);renderGal();send()}catch(err){}});
-$("#gal4").addEventListener("contextmenu",e=>{const l=e.target.closest("label");if(!l||!l.classList.contains("has"))return;e.preventDefault();imgs.gallery[+l.querySelector("input").dataset.g]="";renderGal();send()});
+$("#gal4").addEventListener("change",async e=>{const i=+e.target.dataset.g,f=e.target.files[0];if(!f)return;try{await setImg("gallery",i,await shrink(f,1200));renderGal()}catch(err){}});
+$("#gal4").addEventListener("click",async e=>{const b=e.target.closest(".gx");if(!b)return;e.preventDefault();await setImg("gallery",+b.dataset.gx,"");renderGal()});
 
 /* --- form <-> data --- */
 function get(o,path){return path.split(".").reduce((a,k)=>a?.[k],o)}
@@ -444,7 +471,7 @@ F.addEventListener("input",e=>{const el=e.target;if(!el.name||el.name==="website
   if(el.name.startsWith("imp."))send({legal:"imp"});
   counts();changed()});
 function counts(){$$("[data-c]").forEach(c=>{const el=F.elements[c.dataset.c];c.textContent=el.value.length+" / "+el.maxLength})}
-function changed(){send();clearTimeout(saveTimer);saveTimer=setTimeout(()=>store(false),700)}
+function changed(){send();if(EDIT){if(!dirty){dirty=true;$("#status").textContent=U[ui].dirty}return}clearTimeout(saveTimer);saveTimer=setTimeout(()=>store(false),700)}
 let legalWanted="";
 function sugs(){const g=SUG[data.siteLang]||SUG.de;$$(".sug").forEach(b=>{const f=b.dataset.sug,v=g[SUG_FIELD[f]];b.hidden=!!String(data[f]||"").trim()||!v;b.innerHTML=`<b>✓ ${escA(U[ui].sugBtn)}</b><span>${escA(String(v||"").replace(/\n/g," · "))}</span>`})}
 $$(".sug").forEach(b=>b.onclick=e=>{e.preventDefault();const f=b.dataset.sug,v=(SUG[data.siteLang]||SUG.de)[SUG_FIELD[f]];data[f]=v;F.elements[f].value=v;counts();changed()});
@@ -463,7 +490,7 @@ $$("#ui-lang button").forEach(b=>b.onclick=()=>applyUI(b.dataset.l));
 $("#save").onclick=()=>store(true);
 $("#back").addEventListener("click",()=>{clearTimeout(saveTimer);store(false);track("website-selbst-zurueck")});
 let resetArm=0;
-$("#reset").onclick=()=>{const b=$("#reset");if(!resetArm){resetArm=setTimeout(()=>{resetArm=0;b.textContent=U[ui].reset},3500);b.textContent=U[ui].resetQ;return}
+$("#reset").onclick=()=>{const b=$("#reset");if(EDIT){if(!dirty)return;if(!resetArm){resetArm=setTimeout(()=>{resetArm=0;b.textContent=U[ui].discard},3500);b.textContent=U[ui].resetQ;return}clearTimeout(resetArm);resetArm=0;b.textContent=U[ui].discard;$("#msg").className="msg";loadSite();return}if(!resetArm){resetArm=setTimeout(()=>{resetArm=0;b.textContent=U[ui].reset},3500);b.textContent=U[ui].resetQ;return}
   clearTimeout(resetArm);resetArm=0;try{localStorage.removeItem(STORE)}catch(e){}data=blank();imgs={logo:"",hero:"",portrait:"",gallery:["","","",""],svc:[]};
   $$(".up .pv").forEach(p=>p.style.backgroundImage="");$$(".up .rm").forEach(r=>r.hidden=true);$("#msg").className="msg";
   toForm();applyUI(ui);send();$("#status").textContent="";F.scrollTop=0;track("website-selbst-neu")};
@@ -484,8 +511,9 @@ function validate(){
   else{if(!data.street.trim()){miss.push(u.street);mark.push(F.elements.street)}if(!data.zip.trim()){miss.push(u.zip);mark.push(F.elements.zip)}if(!data.city.trim()){miss.push(u.city);mark.push(F.elements.city)}}
   if(!data.imp.phone.trim()&&!data.phone.trim()){miss.push(u.impPhone);mark.push(F.elements["imp.phone"])}
   if(!EMAIL_RE.test(data.imp.email.trim())){miss.push(u.badMail);mark.push(F.elements["imp.email"])}
-  if(data.domain.trim()&&!DOMAIN_RE.test(data.domain.trim().replace(/^https?:\/\//,"").replace(/^www\./,""))){miss.push(u.badDomain);mark.push(F.elements.domain)}
-  ["photos","content","terms"].forEach(k=>{if(!data.ok[k]){const el=F.elements["ok."+k];miss.push(el.nextElementSibling.textContent);mark.push(el.closest(".chk"))}});
+  if(!EDIT&&data.domain.trim()&&!DOMAIN_RE.test(data.domain.trim().replace(/^https?:\/\//,"").replace(/^www\./,""))){miss.push(u.badDomain);mark.push(F.elements.domain)}
+  if(EDIT){if(!$("#edit-ok").checked){miss.push(u.editOk);mark.push($("#edit-ok").closest(".chk"))}}
+  else ["photos","content","terms"].forEach(k=>{if(!data.ok[k]){const el=F.elements["ok."+k];miss.push(el.nextElementSibling.textContent);mark.push(el.closest(".chk"))}});
   mark.forEach(el=>el&&(el.classList.contains("chk")?el.classList.add("bad"):el.classList.add("bad")));
   return{miss,first:mark[0]};
 }
@@ -504,7 +532,7 @@ function summary(){
   L.push("","IMPRESSUM:",`${m.name}${m.company?" / "+m.company:""}`,m.same?"Anschrift = Studio-Adresse":`${m.street}, ${m.zip} ${m.city}`,`Tel: ${m.phone||d.phone} · E-Mail: ${m.email}`,`USt-IdNr: ${m.ustid||"—"} · Kleinunternehmer: ${m.klein?"ja":"nein"}`);
   L.push("",`Bestätigt: Fotorechte ✓ · Inhalte/Impressum ✓ · Bedingungen/Unternehmer ✓`);
   if(d.note)L.push("","NACHRICHT:",d.note);
-  L.push("","Fotos/Logo: kommen per WhatsApp. Vollständige Daten: Anhang website-selbst.json");
+  L.push("","Fotos/Logo lädt die Kundin nach der Freischaltung selbst hoch. Vollständige Daten: Anhang website-selbst.json");
   return L.join("\n").slice(0,2990);
 }
 F.addEventListener("submit",async e=>{
@@ -512,6 +540,7 @@ F.addEventListener("submit",async e=>{
   $$(".bad").forEach(x=>x.classList.remove("bad"));
   const v=validate();
   if(v.miss.length){msg.className="msg err";msg.innerHTML=`<b>${u.missing}</b><ul>${v.miss.map(x=>`<li>${escA(x)}</li>`).join("")}</ul>`;v.first&&v.first.scrollIntoView({behavior:"smooth",block:"center"});(v.first?.focus&&v.first.tagName==="INPUT")&&v.first.focus({preventScroll:true});return}
+  if(EDIT){await publish();return}
   store(false);
   const site={...data,domain:data.domain.trim().toLowerCase().replace(/^https?:\/\//,"").replace(/^www\./,"").replace(/\/.*$/,""),sentAt:new Date().toISOString(),uiLang:ui};
   const payload={kind:"website-selbst",name:data.imp.name.trim(),email:data.imp.email.trim(),message:summary(),lang:ui,page:location.pathname,website:F.elements.website.value,ms:Date.now()-t0,site};
@@ -526,12 +555,46 @@ F.addEventListener("submit",async e=>{
   btn.disabled=false;btn.textContent=u.send;msg.scrollIntoView({behavior:"smooth",block:"nearest"});
 });
 
+/* --- Bearbeiten & Veröffentlichen --- */
+async function publish(){
+  const u=U[ui],msg=$("#msg"),btn=$("#send");btn.disabled=true;btn.textContent=u.publishing;
+  try{
+    const r=await fetch(`${SITES_API}/api/site`,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({slug:EDIT.slug,key:EDIT.key,data,confirm:true})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||!j.ok)throw new Error(j.missing?j.missing.join(", "):j.error||"publish");
+    dirty=false;$("#status").textContent=u.publishedAt+" · "+new Date().toLocaleTimeString(ui==="de"?"de-DE":ui==="uk"?"uk-UA":"ru-RU",{hour:"2-digit",minute:"2-digit"});
+    msg.className="msg ok";msg.innerHTML=(j.unchanged?u.unchanged:u.published)+` <a href="${escA(j.url||EDIT.url)}" target="_blank" rel="noopener">${u.view}</a>`;
+    $("#edit-ok").checked=false;track("website-selbst-veroeffentlicht");
+  }catch(e){msg.className="msg err";msg.innerHTML=escA(u.pubErr)+(e.message&&e.message!=="publish"?`<br><small>${escA(e.message)}</small>`:"")+"<br>"+fill(u.help)}
+  btn.disabled=false;btn.textContent=u.publish;msg.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+async function loadSite(){
+  const u=U[ui];$("#status").textContent=u.loading;
+  try{
+    const r=await fetch(`${SITES_API}/api/site?slug=${encodeURIComponent(EDIT.slug)}`,{headers:{"X-Edit-Key":EDIT.key}});
+    const j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw 0;
+    const b=blank();data={...b,...j.data,imp:{...b.imp,...j.data.imp},ok:b.ok,images:{...b.images,...(j.data.images||{})}};
+    const im=data.images,url=id=>id?j.imgBase+id:"";
+    imgs={logo:url(im.logo),hero:url(im.hero),portrait:url(im.portrait),gallery:[0,1,2,3].map(i=>url((im.gallery||[])[i])),svc:(im.svc||[]).map(url)};
+    EDIT.hosts=j.hosts||[];EDIT.url=EDIT.hosts[0]?`https://${EDIT.hosts[0]}/`:`${SITES_API}/s/${EDIT.slug}/`;
+    dirty=false;toForm();applyUI(ui);paintUp();send();$("#status").textContent="";editIntro();
+  }catch(e){$("#status").textContent="";const m=$("#msg");m.className="msg err";m.innerHTML=escA(u.loadErr)+"<br>"+fill(u.help);$("#editbar").hidden=true;$("#f").querySelectorAll("fieldset:not(#fs-send)").forEach(f=>f.disabled=true);$("#send").disabled=true}
+}
+function editIntro(){if(!EDIT)return;const u=U[ui];
+  $(".intro h1").textContent=u.editH1.replace("{studio}",data.studio||"");$(".intro > p").textContent=u.editLead;
+  $("#editbar").hidden=false;$("#editbar").innerHTML=`${escA(u.editBar)} <a href="${escA(EDIT.url)}" target="_blank" rel="noopener">${escA(EDIT.url.replace(/^https?:\/\//,"").replace(/\/$/,""))} ↗</a>`;
+  $("#send").textContent=u.publish;$("#reset").textContent=u.discard;
+  $("#fs-send legend span").textContent=u.editL8;$("#back").href=EDIT.url||"/";$("#back em").textContent=u.editBack;$("#back small").textContent=""}
+window.addEventListener("beforeunload",e=>{if(EDIT&&dirty){e.preventDefault();e.returnValue=""}});
+
 /* --- start --- */
 data=load();
 let startLang=new URLSearchParams(location.search).get("lang");
 try{startLang=startLang||localStorage.getItem(STORE+".ui")}catch(e){}
 if(!startLang){const n=(navigator.language||"de").slice(0,2);startLang=n==="uk"?"uk":n==="ru"?"ru":"de"}
+if(EDIT){document.body.classList.add("editing");data=blank();}
 toForm();applyUI(startLang);
+if(EDIT)loadSite();
 </script>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="fe1a89e7-ba92-4d19-99cf-5949bb100cdd" data-domains="olhapolishchuk.de" data-do-not-track="true"></script>
 </body>
