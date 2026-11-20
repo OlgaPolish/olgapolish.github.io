@@ -78,11 +78,13 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--cream
 .hero .meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:46px;padding-top:24px;border-top:1px solid var(--line);max-width:520px}
 .hero .meta b{display:block;font-family:var(--serif);font-size:24px;font-weight:400;line-height:1.1;color:var(--copper)}
 .hero .meta span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hero .meta b.hrs{font-size:18px;line-height:1.4;white-space:pre-line;margin-bottom:4px}
 @media(max-width:900px){
   .hero .bg{position:relative;width:100%;height:56vh;min-height:300px;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
   .hero .grid{min-height:0;padding:0 22px 56px;margin-top:-40px}
 }
 section{padding:96px 0}
+@media(max-width:700px){section{padding:64px 0}.hero .grid{padding-bottom:24px}.hero .meta{margin-top:30px;gap:22px}.hero p.tag{margin-bottom:26px}}
 .head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:46px;flex-wrap:wrap}
 .head h2{font-size:clamp(36px,5vw,60px);line-height:1.04;margin-top:14px;max-width:700px}
 .head p{max-width:380px;color:var(--muted)}
@@ -247,7 +249,7 @@ const L={
   tEyebrow:"Über mich",tName:"Ihr Name",tText:"Hier steht Ihr Text „Über mich“: wie Sie angefangen haben, wie Sie arbeiten und worauf Ihre Kundinnen sich verlassen können.",
   cEyebrow:"Kontakt",cTitle:"Wir freuen uns *auf Sie*",addrH:"Adresse",addr:"Straße und Hausnummer\nPLZ Ort",map:"In Google Maps öffnen ↗",
   hoursH:"Öffnungszeiten",hours:"Termine nach Vereinbarung",bookH:"Termin",book:"Schreiben Sie uns – wir antworten so schnell wie möglich.",call:"Anrufen",
-  metaCity:"Standort",metaHours:"Termine",metaLang:"Termin",metaLangV:"per WhatsApp",
+  metaCity:"Standort",metaHours:"Öffnungszeiten",metaLang:"Termin",metaLangV:"per WhatsApp",
   ctaTitle:"Bereit für Ihren *schönsten* Look?",ctaSub:"Schreiben Sie uns – wir finden gemeinsam einen passenden Termin.",
   imp:"Impressum",ds:"Datenschutz",back:"← Zurück zur Seite",demo:"Vorschau · olhapolishchuk.de"},
  uk:{menu:[["#leistungen","Послуги"],["#preise","Ціни"],["#galerie","Роботи"],["#ueber","Про мене"],["#kontakt","Контакти"]],
@@ -259,7 +261,7 @@ const L={
   tEyebrow:"Про мене",tName:"Ваше ім'я",tText:"Тут ваш текст «Про мене»: з чого почали, як працюєте і на що можуть покластися клієнтки.",
   cEyebrow:"Контакти",cTitle:"Чекаємо *на вас*",addrH:"Адреса",addr:"Вулиця і номер будинку\nІндекс Місто",map:"Відкрити в Google Maps ↗",
   hoursH:"Години роботи",hours:"За попереднім записом",bookH:"Запис",book:"Напишіть нам — відповімо якнайшвидше.",call:"Зателефонувати",
-  metaCity:"Місто",metaHours:"Запис",metaLang:"Запис",metaLangV:"у WhatsApp",
+  metaCity:"Місто",metaHours:"Години роботи",metaLang:"Запис",metaLangV:"у WhatsApp",
   ctaTitle:"Готові до *найкрасивішої* себе?",ctaSub:"Напишіть нам — разом підберемо зручний час.",
   imp:"Impressum",ds:"Datenschutz",back:"← Назад до сайту",demo:"Попередній перегляд · olhapolishchuk.de"},
  ru:{menu:[["#leistungen","Услуги"],["#preise","Цены"],["#galerie","Работы"],["#ueber","Обо мне"],["#kontakt","Контакты"]],
@@ -271,7 +273,7 @@ const L={
   tEyebrow:"Обо мне",tName:"Ваше имя",tText:"Здесь ваш текст «Обо мне»: с чего начинали, как работаете и на что могут положиться клиентки.",
   cEyebrow:"Контакты",cTitle:"Ждём *вас*",addrH:"Адрес",addr:"Улица и номер дома\nИндекс Город",map:"Открыть в Google Maps ↗",
   hoursH:"Часы работы",hours:"По предварительной записи",bookH:"Запись",book:"Напишите нам — ответим как можно скорее.",call:"Позвонить",
-  metaCity:"Город",metaHours:"Запись",metaLang:"Запись",metaLangV:"в WhatsApp",
+  metaCity:"Город",metaHours:"Часы работы",metaLang:"Запись",metaLangV:"в WhatsApp",
   ctaTitle:"Готовы к *самой красивой* себе?",ctaSub:"Напишите нам — вместе подберём удобное время.",
   imp:"Impressum",ds:"Datenschutz",back:"← Назад на сайт",demo:"Предпросмотр · olhapolishchuk.de"}
 };
@@ -283,10 +285,10 @@ const img=u=>`url('${String(u).replace(/['"\\]/g,c=>encodeURIComponent(c))}')`; 
 function digits(p){let d=String(p||"").replace(/[^\d+]/g,"");if(d.startsWith("+"))d=d.slice(1);else if(d.startsWith("00"))d=d.slice(2);else if(d.startsWith("0"))d="49"+d.slice(1);return d.replace(/\D/g,"")}
 function price(p){p=String(p||"").trim();if(!p)return"";return /^\d+([.,]\d+)?([–-]\d+([.,]\d+)?)?$/.test(p)?p+" €":p}
 function splitTitle(name){const w=String(name).trim().split(/\s+/);if(w.length<2)return esc(name);const last=w.pop();return esc(w.join(" "))+" <em>"+esc(last)+"</em>"}
-let S={},I={},legalMode="";
+let S={},I={},G={},legalMode="";
 
 function render(){
-  const d=S,t=L[d.siteLang]||L.de;
+  const d=S,t={...(L[d.siteLang]||L.de),...G};
   const sc=SCHEMES[d.scheme]||SCHEMES.kupfer;
   for(const k in sc)document.documentElement.style.setProperty("--"+k,sc[k]);
   document.documentElement.lang=d.siteLang||"de";
@@ -308,10 +310,12 @@ function render(){
   $("h-tag").innerHTML=or(d.slogan,t.slogan);
   ["h-btn","p-btn","t-btn","f-btn"].forEach(i=>{$(i).textContent=bookTxt;$(i).href=book});
   $("h-btn2").textContent=t.prices;
-  const firstHours=String(d.hours||"").split("\n").map(s=>s.trim()).filter(Boolean)[0];
-  const meta=[[city||"—",t.metaCity],[firstHours||t.hours,t.metaHours]];
-  if(hasWa)meta.push(["WhatsApp",t.metaLang]);
-  $("h-meta").innerHTML=meta.map(([b,s])=>`<div><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join("");
+  // Шапка: город + все строки часов (кнопка WhatsApp и так висит справа внизу)
+  const hrs=String(d.hours||"").split("\n").map(s=>s.trim()).filter(Boolean).join("\n");
+  const meta=[];
+  if(city)meta.push(`<div><b>${esc(city)}</b><span>${esc(t.metaCity)}</span></div>`);
+  meta.push(`<div><b class="hrs">${esc(hrs||t.hours)}</b><span>${esc(t.metaHours)}</span></div>`);
+  $("h-meta").innerHTML=meta.join("");
   // services
   const svcs=(d.services||[]).filter(s=>(s.name||"").trim()||(s.price||"").trim());
   const list=svcs.length?svcs:[{name:t.svc+" 1",price:"–"},{name:t.svc+" 2",price:"–"},{name:t.svc+" 3",price:"–"}];
@@ -332,7 +336,7 @@ function render(){
   $("t-title").innerHTML=d.owner?splitTitle(d.owner):`<span class="empty">${esc(t.tName)}</span>`;
   $("t-text").innerHTML=or(d.about,t.tText);
   // final CTA
-  $("f-title").innerHTML=d.ctaTitle&&d.ctaTitle.trim()?em(d.ctaTitle):em(t.ctaTitle); $("f-sub").textContent=t.ctaSub;
+  $("f-title").innerHTML=d.ctaTitle&&d.ctaTitle.trim()?em(d.ctaTitle):`<span class="empty">${esc(t.ctaTitle)}</span>`; $("f-sub").textContent=t.ctaSub;
   // contact
   $("c-eyebrow").textContent=t.cEyebrow; $("c-title").innerHTML=em(t.cTitle);
   $("c-addr-h").textContent=t.addrH;
@@ -390,7 +394,7 @@ $("menu").onclick=()=>$("menu").classList.remove("open");
 window.addEventListener("message",e=>{
   if(e.origin!==location.origin&&!(location.origin==="null"))return;
   const m=e.data||{};
-  if(m.type==="render"){S=m.data||{};I=m.imgs||{};render()}
+  if(m.type==="render"){S=m.data||{};I=m.imgs||{};G=m.sug||{};render()}
   if(m.type==="legal"){if(m.kind)openLegal(m.kind);else $("legal-close").onclick()}
   if(m.type==="scroll"&&m.to){legalMode="";$("legal").classList.remove("open");const el=document.querySelector(m.to);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
 });

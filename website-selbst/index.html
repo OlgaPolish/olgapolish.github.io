@@ -72,6 +72,11 @@ input:focus,textarea:focus,select:focus{border-color:var(--ink);box-shadow:0 0 0
 .chk input{margin-top:3px;width:17px;height:17px;flex:none;accent-color:var(--ink)}
 .chk.bad span{color:var(--err)}
 .count{float:right;font-weight:400;font-size:11.5px;color:var(--ink-soft)}
+.sug{display:flex;align-items:flex-start;gap:8px;width:100%;margin-top:6px;border:1px dashed #E1B77F;background:var(--amber-pale);color:var(--ink);border-radius:8px;padding:8px 10px;font-size:12.5px;line-height:1.4;text-align:left;cursor:pointer}
+.sug:hover{border-style:solid}
+.sug b{white-space:nowrap;color:var(--amber-d)}
+.sug span{color:var(--ink-soft);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sug[hidden]{display:none}
 /* schemes */
 .schemes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .schemes label{cursor:pointer;border:2px solid transparent;border-radius:12px;padding:6px;text-align:center;font-size:11.5px;font-weight:600;background:var(--bg-soft)}
@@ -168,11 +173,11 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
     <fieldset id="fs-studio"><legend><i>1</i><span data-t="l1"></span></legend>
       <label class="f"><span data-t="studio"></span> <span class="req">*</span><input type="text" name="studio" maxlength="40" data-ph="studioPh" required></label>
       <div class="row2">
-        <label class="f"><span data-t="category"></span><input type="text" name="category" maxlength="30" list="cats" data-ph="categoryPh"></label>
+        <label class="f"><span data-t="category"></span><input type="text" name="category" maxlength="30" list="cats" data-ph="categoryPh"></label><button type="button" class="sug" data-sug="category"></button>
         <label class="f"><span data-t="siteLang"></span><select name="siteLang"><option value="de">Deutsch</option><option value="uk">Українська</option><option value="ru">Русский</option></select></label>
       </div>
       <datalist id="cats"><option value="Nagelstudio"><option value="Kosmetikstudio"><option value="Lash & Brows"><option value="Permanent Make-up"><option value="Beauty-Studio"><option value="Massage"></datalist>
-      <label class="f"><span data-t="slogan"></span> <span class="count" data-c="slogan"></span><input type="text" name="slogan" maxlength="90" data-ph="sloganPh"></label>
+      <label class="f"><span data-t="slogan"></span> <span class="count" data-c="slogan"></span><input type="text" name="slogan" maxlength="90" data-ph="sloganPh"></label><button type="button" class="sug" data-sug="slogan"></button>
       <p class="hint warn" data-t="hwg"></p>
       <label class="f" data-t="scheme"></label>
       <div class="schemes" id="schemes"></div>
@@ -190,7 +195,7 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
       <label class="f"><span data-t="phone"></span> <span class="req">*</span><input type="tel" name="phone" maxlength="30" autocomplete="tel" data-ph="phonePh" required></label>
       <label class="chk"><input type="checkbox" name="whatsapp" checked><span data-t="wa"></span></label>
       <label class="f"><span data-t="instagram"></span><input type="text" name="instagram" maxlength="60" data-ph="instagramPh"></label>
-      <label class="f"><span data-t="ctaTitle"></span><input type="text" name="ctaTitle" maxlength="70" data-ph="ctaPh"></label>
+      <label class="f"><span data-t="ctaTitle"></span><input type="text" name="ctaTitle" maxlength="70" data-ph="ctaPh"></label><button type="button" class="sug" data-sug="ctaTitle"></button>
     </fieldset>
 
     <fieldset id="fs-svc"><legend><i>3</i><span data-t="l3"></span></legend>
@@ -201,7 +206,7 @@ pre.test{white-space:pre-wrap;font-size:11px;background:#fff;border:1px solid va
 
     <fieldset id="fs-about"><legend><i>4</i><span data-t="l4"></span></legend>
       <label class="f"><span data-t="owner"></span><input type="text" name="owner" maxlength="40" autocomplete="name"></label>
-      <label class="f"><span data-t="about"></span> <span class="count" data-c="about"></span><textarea name="about" rows="6" maxlength="700" data-ph="aboutPh"></textarea></label>
+      <label class="f"><span data-t="about"></span> <span class="count" data-c="about"></span><textarea name="about" rows="6" maxlength="700" data-ph="aboutPh"></textarea></label><button type="button" class="sug" data-sug="about"></button>
       <label class="f" data-t="portrait"></label>
       <div class="up" data-img="portrait"><span class="pv"></span><label class="b"><input type="file" accept="image/png,image/jpeg,image/webp"><span data-t="pick"></span></label><button type="button" class="rm" data-t="remove" hidden></button></div>
     </fieldset>
@@ -271,18 +276,31 @@ const OLHA_WA="380666578075";
 const PREIS={start:"50 €",alt:"79 €",monat:"19 €",neu:"5",frei:"5",fix:"12"}; // frei — сколько мест осталось: после каждой подписанной студии уменьшить (только правду!) // Einführungspreis: старт 50 € вместо 79 € для первых {neu} студий. Закончилась акция → start:"79 €", alt:"" (зачёркнутая цена и плашка исчезнут)
 const STORE="websiteSelbst.v1";
 /* =================================== */
+/* Готовые тексты: видны серым в предпросмотре, кнопкой «Взять этот текст» попадают в поле. Язык — язык сайта. */
+const SUG={
+ de:{cat:"Nagelstudio",slogan:"Sorgfältige Arbeit, ruhige Atmosphäre und Zeit nur für Sie.",
+  tText:"Schön, dass Sie hier sind! In meinem Studio arbeite ich sorgfältig, sauber und mit viel Liebe zum Detail. Mir ist wichtig, dass Sie sich wohlfühlen und mit einem Ergebnis nach Hause gehen, das zu Ihnen passt. Schreiben Sie mir gern – ich berate Sie persönlich.",
+  ctaTitle:"Bereit für Ihren schönsten Look?"},
+ uk:{cat:"Манікюрна студія",slogan:"Акуратна робота, спокійна атмосфера і час тільки для вас.",
+  tText:"Рада, що ви тут! У своїй студії я працюю акуратно, чисто і з увагою до кожної деталі. Для мене важливо, щоб вам було комфортно і щоб результат пасував саме вам. Пишіть — я з радістю підкажу, що обрати.",
+  ctaTitle:"Готові до найкрасивішої себе?"},
+ ru:{cat:"Маникюрная студия",slogan:"Аккуратная работа, спокойная атмосфера и время только для вас.",
+  tText:"Рада, что вы здесь! В своей студии я работаю аккуратно, чисто и с вниманием к каждой детали. Мне важно, чтобы вам было комфортно и чтобы результат подходил именно вам. Пишите — с радостью подскажу, что выбрать.",
+  ctaTitle:"Готовы к самой красивой себе?"}
+};
+const SUG_FIELD={category:"cat",slogan:"slogan",about:"tText",ctaTitle:"ctaTitle"};
 const SCHEMES=[["kupfer",["#FBF6F1","#9A3F1C","#261611","#E39466"]],["rose",["#FDF7F7","#A3405B","#2A161D","#F0A6B7"]],["salbei",["#F7F8F4","#46644C","#1C2620","#B7CFA3"]],["nacht",["#F8F5EF","#7E6026","#141210","#D4B26A"]]];
 const U={
- de:{brandSub:"· Website selbst",save:"Speichern",reset:"Neu beginnen",resetQ:"Wirklich alles löschen?",saved:"Entwurf gespeichert",savedAt:"Gespeichert",
+ de:{brandSub:"· Website selbst",sugBtn:"Diesen Text übernehmen",save:"Speichern",reset:"Neu beginnen",resetQ:"Wirklich alles löschen?",saved:"Entwurf gespeichert",savedAt:"Gespeichert",
   h1:"Ihre Studio-Website – selbst gestaltet",lead:"Füllen Sie Ihre Angaben aus – die Vorschau zeigt sofort, wie Ihre Website aussieht. Ihr Entwurf bleibt in diesem Browser gespeichert.",
   st1:"Angaben ausfüllen und Vorschau ansehen",st2:"Anfrage zur Veröffentlichung senden",st3:"Ich prüfe alles, registriere die Domain und schalte die Seite frei",
   priceNeu:"<span class=\"neu\">Neu</span><b>Einführungspreis für die ersten {neu} Studios</b><br>",priceFix:"<span class=\"fix\">✓ {monat} / Monat – <b>{fix} Monate garantiert</b>, ohne Preiserhöhung</span>",seats:"Noch {frei} von {neu} Plätzen frei",seatsNone:"Alle {neu} Plätze sind vergeben",price:"Start <s>{alt}</s> <b>{start}</b> einmalig · danach <b>{monat} / Monat</b> inkl. Domain, Hosting und kleiner Änderungen. Keine USt. (§ 19 UStG).",
   l1:"Studio",studio:"Name des Studios",studioPh:"z. B. Lumi Nails",category:"Art des Studios",categoryPh:"Nagelstudio",siteLang:"Sprache der Website",
-  slogan:"Slogan",sloganPh:"z. B. Gepflegte Nägel mitten in Düsseldorf",hwg:"Bitte keine Heilversprechen, Garantien oder „Vorher/Nachher“-Aussagen – das ist für Beauty-Websites rechtlich riskant (HWG, UWG). Ich prüfe alle Texte vor der Veröffentlichung.",
+  slogan:"Slogan",sloganPh:"Eigener Slogan – oder Vorschlag unten",hwg:"Bitte keine Heilversprechen, Garantien oder „Vorher/Nachher“-Aussagen – das ist für Beauty-Websites rechtlich riskant (HWG, UWG). Ich prüfe alle Texte vor der Veröffentlichung.",
   scheme:"Farbschema",sc:{kupfer:"Kupfer",rose:"Rosé",salbei:"Salbei",nacht:"Schwarz-Gold"},logo:"Logo (optional)",pick:"Datei wählen",remove:"entfernen",
   l2:"Adresse & Kontakt",street:"Straße und Hausnummer",streetPh:"Musterstraße 12",zip:"PLZ",city:"Ort",hours:"Öffnungszeiten",hoursPh:"Mo–Fr 10–19 Uhr\nSa 10–15 Uhr",
   phone:"Telefon für Termine",phonePh:"0151 2345678",wa:"Diese Nummer ist auf WhatsApp erreichbar (Button „Termin per WhatsApp“)",instagram:"Instagram",instagramPh:"@ihr.studio",
-  l3:"Leistungen & Preise",svcHint:"Die ersten vier Leistungen erscheinen als Kacheln, alle zusammen in der Preisliste. 📷 – eigenes Foto für die Kachel (nur Vorschau).",svcPhoto:"Foto für die Kachel",ctaTitle:"Satz vor dem Kontakt-Block (optional)",ctaPh:"Bereit für Ihren schönsten Look?",svcName:"Leistung",svcPrice:"Preis",svcDesc:"Kurze Beschreibung (optional)",add:"+ Leistung hinzufügen",del:"Zeile löschen",
+  l3:"Leistungen & Preise",svcHint:"Die ersten vier Leistungen erscheinen als Kacheln, alle zusammen in der Preisliste. 📷 – eigenes Foto für die Kachel (nur Vorschau).",svcPhoto:"Foto für die Kachel",ctaTitle:"Satz vor dem Kontakt-Block (optional)",ctaPh:"",svcName:"Leistung",svcPrice:"Preis",svcDesc:"Kurze Beschreibung (optional)",add:"+ Leistung hinzufügen",del:"Zeile löschen",
   l4:"Über mich",owner:"Ihr Name",about:"Text „Über mich“",aboutPh:"Wie Sie angefangen haben, wie Sie arbeiten, welche Sprachen Sie sprechen …",portrait:"Ihr Foto (optional)",
   l5:"Fotos",photoHint:"Fotos und Logo sehen Sie nur hier in der Vorschau – sie werden nicht gespeichert und nicht mitgeschickt. Nach der Anfrage senden Sie sie mir per WhatsApp. Ohne eigene Fotos zeigt die Vorschau Beispielbilder.",hero:"Titelbild (oben)",gallery:"Ihre Arbeiten (bis zu 4)",
   l6:"Impressum (Pflicht)",impHint:"Jede geschäftliche Website in Deutschland braucht ein Impressum (§ 5 DDG). Diese Angaben stehen öffentlich auf Ihrer Website.",
@@ -297,16 +315,16 @@ const U={
   errMsg:"Das hat leider nicht geklappt. Bitte schreiben Sie mir per <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> oder an <a href=\"mailto:hello@olhapolishchuk.de\">hello@olhapolishchuk.de</a>.",
   testMsg:"Testmodus (nicht olhapolishchuk.de): Die Anfrage wurde nicht gesendet. So sähen die Daten aus:",
   desk:"Desktop",mob:"Handy",tabForm:"Ausfüllen",tabPrev:"Vorschau"},
- uk:{brandSub:"· Сайт самостійно",save:"Зберегти",reset:"Почати заново",resetQ:"Точно видалити все?",saved:"Чернетку збережено",savedAt:"Збережено",
+ uk:{brandSub:"· Сайт самостійно",sugBtn:"Взяти цей текст",save:"Зберегти",reset:"Почати заново",resetQ:"Точно видалити все?",saved:"Чернетку збережено",savedAt:"Збережено",
   h1:"Сайт вашої студії — своїми руками",lead:"Заповнюйте дані — у попередньому перегляді одразу видно, як виглядатиме ваш сайт. Чернетка зберігається в цьому браузері.",
   st1:"Заповніть дані й подивіться результат",st2:"Надішліть заявку на публікацію",st3:"Я все перевірю, зареєструю домен і опублікую сайт",
   priceNeu:"<span class=\"neu\">Новинка</span><b>Стартова ціна для перших {neu} студій</b><br>",priceFix:"<span class=\"fix\">✓ {monat} / міс. — <b>ціна гарантована на {fix} місяців</b>, без підвищення</span>",seats:"Вільно ще {frei} з {neu} місць",seatsNone:"Усі {neu} місць зайняті",price:"Старт <s>{alt}</s> <b>{start}</b> одноразово · далі <b>{monat} / міс.</b> — домен, хостинг і дрібні зміни включено. Без ПДВ (§ 19 UStG).",
   l1:"Студія",studio:"Назва студії",studioPh:"напр. Lumi Nails",category:"Тип студії",categoryPh:"Nagelstudio",siteLang:"Мова сайту",
-  slogan:"Слоган",sloganPh:"напр. Доглянуті нігті в центрі Дюссельдорфа",hwg:"Без обіцянок лікування, гарантій і «до/після» — для beauty-сайтів у Німеччині це юридичний ризик (HWG, UWG). Я перевіряю всі тексти перед публікацією.",
+  slogan:"Слоган",sloganPh:"Свій слоган — або готовий нижче",hwg:"Без обіцянок лікування, гарантій і «до/після» — для beauty-сайтів у Німеччині це юридичний ризик (HWG, UWG). Я перевіряю всі тексти перед публікацією.",
   scheme:"Кольорова схема",sc:{kupfer:"Мідь",rose:"Рожева",salbei:"Шавлія",nacht:"Чорне золото"},logo:"Логотип (необов'язково)",pick:"Обрати файл",remove:"прибрати",
   l2:"Адреса й контакти",street:"Вулиця і номер будинку",streetPh:"Musterstraße 12",zip:"Індекс",city:"Місто",hours:"Години роботи",hoursPh:"Mo–Fr 10–19 Uhr\nSa 10–15 Uhr",
   phone:"Телефон для запису",phonePh:"0151 2345678",wa:"Цей номер є у WhatsApp (кнопка «Записатися у WhatsApp»)",instagram:"Instagram",instagramPh:"@vasha.studio",
-  l3:"Послуги й ціни",svcHint:"Перші чотири послуги — плитками, усі разом — у прайсі. 📷 — своє фото для плитки (тільки перегляд).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необов'язково)",ctaPh:"Готові до найкрасивішої себе?",svcName:"Послуга",svcPrice:"Ціна",svcDesc:"Короткий опис (необов'язково)",add:"+ Додати послугу",del:"Видалити рядок",
+  l3:"Послуги й ціни",svcHint:"Перші чотири послуги — плитками, усі разом — у прайсі. 📷 — своє фото для плитки (тільки перегляд).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необов'язково)",ctaPh:"",svcName:"Послуга",svcPrice:"Ціна",svcDesc:"Короткий опис (необов'язково)",add:"+ Додати послугу",del:"Видалити рядок",
   l4:"Про мене",owner:"Ваше ім'я",about:"Текст «Про мене»",aboutPh:"З чого почали, як працюєте, якими мовами говорите …",portrait:"Ваше фото (необов'язково)",
   l5:"Фото",photoHint:"Фото й логотип видно тільки тут, у попередньому перегляді — вони не зберігаються і не надсилаються. Після заявки надішліть їх мені у WhatsApp. Без своїх фото показуються приклади.",hero:"Головне фото (вгорі)",gallery:"Ваші роботи (до 4)",
   l6:"Impressum (обов'язково)",impHint:"Кожен комерційний сайт у Німеччині має містити Impressum (§ 5 DDG). Ці дані будуть публічно на сайті.",
@@ -321,16 +339,16 @@ const U={
   errMsg:"На жаль, не вдалося. Напишіть мені у <a href=\"{wa}\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> або на <a href=\"mailto:hello@olhapolishchuk.de\">hello@olhapolishchuk.de</a>.",
   testMsg:"Тестовий режим (не olhapolishchuk.de): заявку не надіслано. Ось що пішло б:",
   desk:"Комп'ютер",mob:"Телефон",tabForm:"Заповнити",tabPrev:"Перегляд"},
- ru:{brandSub:"· Сайт самостоятельно",save:"Сохранить",reset:"Начать заново",resetQ:"Точно удалить всё?",saved:"Черновик сохранён",savedAt:"Сохранено",
+ ru:{brandSub:"· Сайт самостоятельно",sugBtn:"Взять этот текст",save:"Сохранить",reset:"Начать заново",resetQ:"Точно удалить всё?",saved:"Черновик сохранён",savedAt:"Сохранено",
   h1:"Сайт вашей студии — своими руками",lead:"Заполняйте данные — в предпросмотре сразу видно, как будет выглядеть ваш сайт. Черновик сохраняется в этом браузере.",
   st1:"Заполните данные и посмотрите результат",st2:"Отправьте заявку на публикацию",st3:"Я всё проверю, зарегистрирую домен и опубликую сайт",
   priceNeu:"<span class=\"neu\">Новинка</span><b>Стартовая цена для первых {neu} студий</b><br>",priceFix:"<span class=\"fix\">✓ {monat} / мес. — <b>цена гарантирована на {fix} месяцев</b>, без повышения</span>",seats:"Свободно ещё {frei} из {neu} мест",seatsNone:"Все {neu} мест заняты",price:"Старт <s>{alt}</s> <b>{start}</b> единоразово · дальше <b>{monat} / мес.</b> — домен, хостинг и мелкие правки включены. Без НДС (§ 19 UStG).",
   l1:"Студия",studio:"Название студии",studioPh:"напр. Lumi Nails",category:"Тип студии",categoryPh:"Nagelstudio",siteLang:"Язык сайта",
-  slogan:"Слоган",sloganPh:"напр. Ухоженные ногти в центре Дюссельдорфа",hwg:"Без обещаний лечения, гарантий и «до/после» — для beauty-сайтов в Германии это юридический риск (HWG, UWG). Я проверяю все тексты перед публикацией.",
+  slogan:"Слоган",sloganPh:"Свой слоган — или готовый ниже",hwg:"Без обещаний лечения, гарантий и «до/после» — для beauty-сайтов в Германии это юридический риск (HWG, UWG). Я проверяю все тексты перед публикацией.",
   scheme:"Цветовая схема",sc:{kupfer:"Медь",rose:"Розовая",salbei:"Шалфей",nacht:"Чёрное золото"},logo:"Логотип (необязательно)",pick:"Выбрать файл",remove:"убрать",
   l2:"Адрес и контакты",street:"Улица и номер дома",streetPh:"Musterstraße 12",zip:"Индекс",city:"Город",hours:"Часы работы",hoursPh:"Mo–Fr 10–19 Uhr\nSa 10–15 Uhr",
   phone:"Телефон для записи",phonePh:"0151 2345678",wa:"Этот номер есть в WhatsApp (кнопка «Записаться в WhatsApp»)",instagram:"Instagram",instagramPh:"@vasha.studia",
-  l3:"Услуги и цены",svcHint:"Первые четыре услуги — плитками, все вместе — в прайсе. 📷 — своё фото для плитки (только предпросмотр).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необязательно)",ctaPh:"Готовы к самой красивой себе?",svcName:"Услуга",svcPrice:"Цена",svcDesc:"Короткое описание (необязательно)",add:"+ Добавить услугу",del:"Удалить строку",
+  l3:"Услуги и цены",svcHint:"Первые четыре услуги — плитками, все вместе — в прайсе. 📷 — своё фото для плитки (только предпросмотр).",svcPhoto:"Фото для плитки",ctaTitle:"Фраза перед контактами (необязательно)",ctaPh:"",svcName:"Услуга",svcPrice:"Цена",svcDesc:"Короткое описание (необязательно)",add:"+ Добавить услугу",del:"Удалить строку",
   l4:"Обо мне",owner:"Ваше имя",about:"Текст «Обо мне»",aboutPh:"С чего начинали, как работаете, на каких языках говорите …",portrait:"Ваше фото (необязательно)",
   l5:"Фото",photoHint:"Фото и логотип видны только здесь, в предпросмотре — они не сохраняются и не отправляются. После заявки пришлите их мне в WhatsApp. Без своих фото показываются примеры.",hero:"Главное фото (вверху)",gallery:"Ваши работы (до 4)",
   l6:"Impressum (обязательно)",impHint:"Любой коммерческий сайт в Германии обязан иметь Impressum (§ 5 DDG). Эти данные будут публично на сайте.",
@@ -371,7 +389,7 @@ function applyUI(l){
   $("#price").innerHTML=PREIS.alt?fill(u.priceNeu+u.price+u.priceFix)+`<div class="seats"><span class="dots">${Array.from({length:nn},(_,i)=>`<i class="${i<fr?"":"off"}"></i>`).join("")}</span>${fill(fr>0?u.seats:u.seatsNone)}</div>`:fill(u.price).replace(/<s>.*?<\/s>\s*/,"");
   $("#terms").innerHTML=u.terms.map(x=>`<li>${fill(x)}</li>`).join("");
   $("#schemes").innerHTML=SCHEMES.map(([k,c])=>`<label><input type="radio" name="scheme" value="${k}"${data.scheme===k?" checked":""}><span class="sw">${c.map(x=>`<i style="background:${x}"></i>`).join("")}</span>${u.sc[k]}</label>`).join("");
-  renderSvcs();renderGal();counts();
+  renderSvcs();renderGal();counts();sugs();
 }
 /* --- services --- */
 function renderSvcs(){
@@ -417,7 +435,9 @@ F.addEventListener("input",e=>{const el=e.target;if(!el.name||el.name==="website
 function counts(){$$("[data-c]").forEach(c=>{const el=F.elements[c.dataset.c];c.textContent=el.value.length+" / "+el.maxLength})}
 function changed(){send();clearTimeout(saveTimer);saveTimer=setTimeout(()=>store(false),700)}
 let legalWanted="";
-function send(opt){if(!ready)return;frame.contentWindow.postMessage({type:"render",data,imgs},location.origin==="null"?"*":location.origin);if(opt&&opt.legal)frame.contentWindow.postMessage({type:"legal",kind:opt.legal},"*")}
+function sugs(){const g=SUG[data.siteLang]||SUG.de;$$(".sug").forEach(b=>{const f=b.dataset.sug,v=g[SUG_FIELD[f]];b.hidden=!!String(data[f]||"").trim()||!v;b.innerHTML=`<b>✓ ${escA(U[ui].sugBtn)}</b><span>${escA(v)}</span>`})}
+$$(".sug").forEach(b=>b.onclick=e=>{e.preventDefault();const f=b.dataset.sug,v=(SUG[data.siteLang]||SUG.de)[SUG_FIELD[f]];data[f]=v;F.elements[f].value=v;counts();changed()});
+function send(opt){sugs();if(!ready)return;frame.contentWindow.postMessage({type:"render",data,imgs,sug:SUG[data.siteLang]||SUG.de},location.origin==="null"?"*":location.origin);if(opt&&opt.legal)frame.contentWindow.postMessage({type:"legal",kind:opt.legal},"*")}
 window.addEventListener("message",e=>{if(e.source!==frame.contentWindow)return;if(e.data&&e.data.type==="ready"){ready=true;send()}});
 frame.addEventListener("load",()=>{ready=true;send()});
 /* section focus -> scroll preview */
