@@ -437,6 +437,17 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 a.inl{color:#9A6424;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 a.inl:hover{color:var(--ink)}
 .pkg-note{font-size:13px;color:var(--ink-soft);margin-top:22px;max-width:85ch}
+.ws-teaser{display:grid;grid-template-columns:minmax(0,1.5fr) auto auto;gap:26px;align-items:center;margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:26px 28px}
+.ws-teaser h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.7rem;line-height:1.15;margin:6px 0 8px}
+.ws-teaser p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);max-width:56ch}
+.ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
+.ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
+.ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
+.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
+.ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
+.ws-btn:hover{background:var(--amber-light)}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -950,6 +961,11 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
         <p class="pkg-term">Минимум 3 месяца — первые результаты в Google обычно видны через 2–3 месяца.</p>
         <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="C">Обсудить</a>
       </article>
+    </div>
+    <div class="ws-teaser">
+      <div><span class="ws-neu">Новинка</span><h3>Сайт самостоятельно</h3><p>Вы заполняете данные и сразу видите свой сайт в готовом beauty-дизайне. Я всё проверяю, регистрирую домен и публикую сайт.</p></div>
+      <div class="ws-price"><s>79 €</s> <b>50 €</b> старт<br><b>19 €</b> / мес., цена гарантирована на 12 месяцев<small>для первых 5 студий</small></div>
+      <a class="ws-btn" href="/website-selbst/?lang=ru" data-umami-event="website-selbst-teaser">Попробовать →</a>
     </div>
     <div class="pkg-extras">
       <div class="pkg-extra"><strong>A + B вместе — 590 €</strong> вместо 640 €. Google-профиль и сайт в одних руках. Сайт-визитка для мастера маникюра — <a class="inl" href="/ru/sait-vizitka-dlya-mastera-manikyura.html">подробно →</a></div>

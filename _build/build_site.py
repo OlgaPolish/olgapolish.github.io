@@ -25,6 +25,10 @@ FORM_ENDPOINT = "https://kontakt.olha-polishchuk-web.workers.dev"
 
 # ── Аналитика Umami Cloud (без cookies, баннер не нужен). Пустой ID → скрипт не вставляется.
 #    ID и адрес скрипта: Umami → Settings → Websites → Edit → Tracking code.
+# Конструктор «Website selbst» (/website-selbst/) — тизер в блоке «Пакеты». Цены держать в синхроне с PREIS в website-selbst/index.html.
+# Акция закончилась → WS_ALT = "" (зачёркнутая цена и строка «для первых 5 студий» пропадут).
+WS_URL = "/website-selbst/"
+WS_START, WS_ALT, WS_MONAT, WS_PLAETZE = "50 €", "79 €", "19 €", "5"
 UMAMI_SRC = "https://cloud.umami.is/script.js"
 UMAMI_ID = "fe1a89e7-ba92-4d19-99cf-5949bb100cdd"
 
@@ -254,6 +258,17 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64
 a.inl{color:#9A6424;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 a.inl:hover{color:var(--ink)}
 .pkg-note{font-size:13px;color:var(--ink-soft);margin-top:22px;max-width:85ch}
+.ws-teaser{display:grid;grid-template-columns:minmax(0,1.5fr) auto auto;gap:26px;align-items:center;margin-top:18px;background:var(--ink);color:#fff;border-radius:14px;padding:26px 28px}
+.ws-teaser h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.7rem;line-height:1.15;margin:6px 0 8px}
+.ws-teaser p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);max-width:56ch}
+.ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
+.ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
+.ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
+.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
+.ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
+.ws-btn:hover{background:var(--amber-light)}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -601,6 +616,9 @@ T["de"] = dict(
              term="Mindestens 3 Monate — erste Ergebnisse in Google zeigen sich meist nach 2–3 Monaten.")],
     pk_combo="<strong>A + B zusammen — 590 €</strong> statt 640 €. Google-Profil und Webseite aus einer Hand.",
     pk_addon="<strong>Zusätzlich zur Betreuung: Content für Sie — +190 € pro Monat.</strong> 12 Beiträge im Monat für Instagram, Telegram oder Threads: Texte, einfache Grafiken, Veröffentlichung nach Plan.",
+    ws_neu="Neu", ws_title="Website selbst gestalten",
+    ws_text="Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.",
+    ws_start="Start", ws_monat="/ Monat, 12 Monate garantiert", ws_first="für die ersten %s Studios", ws_btn="Jetzt ausprobieren →",
     pk_note="Alle Preise sind Endpreise. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Den genauen Leistungsumfang halten wir schriftlich im Angebot fest.",
     st_label="Ablauf", st_title="Vier Schritte — und man sieht Sie",
     steps=[("Kostenloser Google-Check", "Sie schreiben mir, was Sie machen und in welcher Stadt. Ich schaue, wie man Sie in Google gerade sieht, und schicke Ihnen eine kurze Checkliste mit Wachstumspunkten: was schon gut ist, was stört und was sich verbessern lässt."),
@@ -717,6 +735,9 @@ T["uk"] = dict(
              term="Мінімум 3 місяці — перші результати в Google зазвичай видно через 2–3 місяці.")],
     pk_combo="<strong>A + B разом — 590 €</strong> замість 640 €. Google-профіль і сайт в одних руках. Сайт-візитка для майстра манікюру — <a class=\"inl\" href=\"/uk/sait-vizytka-dlia-maistra-manikiuru.html\">детально →</a>",
     pk_addon="<strong>Додатково до підтримки: контент за вас — +190 € на місяць.</strong> 12 дописів на місяць для Instagram, Telegram або Threads: тексти, прості картинки, публікація за розкладом.",
+    ws_neu="Новинка", ws_title="Сайт самостійно",
+    ws_text="Ви заповнюєте дані й одразу бачите свій сайт у готовому beauty-дизайні. Я все перевіряю, реєструю домен і публікую сайт.",
+    ws_start="старт", ws_monat="/ міс., ціна гарантована на 12 місяців", ws_first="для перших %s студій", ws_btn="Спробувати →",
     pk_note="Ціни остаточні: як Kleinunternehmer за § 19 UStG я не нараховую ПДВ. Точний обсяг робіт фіксуємо письмово в пропозиції.",
     st_label="Як ми працюємо", st_title="Чотири кроки — і вас видно",
     steps=[("Безкоштовний аудит", "Ви пишете, чим займаєтеся і в якому місті. Я дивлюся, як вас зараз видно в Google, і надсилаю короткий чек-лист точок зростання: що вже добре, що заважає і що можна покращити."),
@@ -836,6 +857,9 @@ T["ru"] = dict(
              term="Минимум 3 месяца — первые результаты в Google обычно видны через 2–3 месяца.")],
     pk_combo="<strong>A + B вместе — 590 €</strong> вместо 640 €. Google-профиль и сайт в одних руках. Сайт-визитка для мастера маникюра — <a class=\"inl\" href=\"/ru/sait-vizitka-dlya-mastera-manikyura.html\">подробно →</a>",
     pk_addon="<strong>Дополнительно к поддержке: контент за вас — +190 € в месяц.</strong> 12 постов в месяц для Instagram, Telegram или Threads: тексты, простые картинки, публикация по расписанию.",
+    ws_neu="Новинка", ws_title="Сайт самостоятельно",
+    ws_text="Вы заполняете данные и сразу видите свой сайт в готовом beauty-дизайне. Я всё проверяю, регистрирую домен и публикую сайт.",
+    ws_start="старт", ws_monat="/ мес., цена гарантирована на 12 месяцев", ws_first="для первых %s студий", ws_btn="Попробовать →",
     pk_note="Цены окончательные: как Kleinunternehmer по § 19 UStG я не начисляю НДС. Точный объём работ фиксируем письменно в предложении.",
     st_label="Как мы работаем", st_title="Четыре шага — и вас видно",
     steps=[("Бесплатный аудит", "Вы пишете, чем занимаетесь и в каком городе. Я смотрю, как вас сейчас видно в Google, и присылаю короткий чек-лист точек роста: что уже хорошо, что мешает и что можно улучшить."),
@@ -1436,7 +1460,14 @@ def render(lang):
         for it in p["items"]:
             w('          <li>%s</li>\n' % esc(it))
         w('        </ul>\n        <p class="pkg-term">%s</p>\n        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="%s">%s</a>\n      </article>\n' % (esc(p["term"]), esc(_plain(p["name"])[:1]), esc(t["pk_btn"])))
-    w('    </div>\n    <div class="pkg-extras">\n      <div class="pkg-extra">%s</div>\n      <div class="pkg-extra">%s</div>\n    </div>\n' % (t["pk_combo"], t["pk_addon"]))
+    w('    </div>\n')
+    if WS_URL:
+        alt = ('<s>%s</s> ' % esc(WS_ALT)) if WS_ALT else ''
+        first = ('<small>%s</small>' % esc(t["ws_first"] % WS_PLAETZE)) if WS_ALT else ''
+        w('    <div class="ws-teaser">\n      <div><span class="ws-neu">%s</span><h3>%s</h3><p>%s</p></div>\n' % (esc(t["ws_neu"]), esc(t["ws_title"]), esc(t["ws_text"])))
+        w('      <div class="ws-price">%s<b>%s</b> %s<br><b>%s</b> %s%s</div>\n' % (alt, esc(WS_START), esc(t["ws_start"]), esc(WS_MONAT), esc(t["ws_monat"]), first))
+        w('      <a class="ws-btn" href="%s?lang=%s" data-umami-event="website-selbst-teaser">%s</a>\n    </div>\n' % (WS_URL, lang, esc(t["ws_btn"])))
+    w('    <div class="pkg-extras">\n      <div class="pkg-extra">%s</div>\n      <div class="pkg-extra">%s</div>\n    </div>\n' % (t["pk_combo"], t["pk_addon"]))
     w('    <p class="pkg-note">%s</p>\n  </div>\n</section>\n\n' % esc(t["pk_note"]))
 
     # steps
