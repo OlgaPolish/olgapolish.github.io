@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-11-20",
-  "hash": "2b8e195a7e2197f31fb674647a8252792d7f981351de32d6c46cc42bf7f12777"
+  "date": "2026-11-22",
+  "hash": "4cc1736db934592883c1577b39c16d1a2a092118dcedd6217946bce112e6e351"
  },
  "blog/": {
   "date": "2026-11-20",
@@ -24,8 +24,8 @@
   "hash": "86f4b9a2fef601e47d7378cc6ab578d9ad9ab56855b5e5d8aaeb70b99f4b7bf9"
  },
  "ru/": {
-  "date": "2026-11-20",
-  "hash": "468a4922e620a1e841f0e177623c69c170df6b08be7b5c0ec39ce67eb3dfb5d4"
+  "date": "2026-11-22",
+  "hash": "9c6e6347d97a2acb3f6afbc0feed8058f7db8338af2daee2f7204407c4ae2033"
  },
  "ru/blog/": {
   "date": "2026-11-20",
@@ -52,8 +52,8 @@
   "hash": "f1745ff20c16e07547e0c18db45a5121291b4c5e99e8f128ad17e15e66d602ea"
  },
  "uk/": {
-  "date": "2026-11-20",
-  "hash": "99ddb07db6310342dabcaac32dcb619a029e122f7a5086c8668c3fe2b3479948"
+  "date": "2026-11-22",
+  "hash": "d9888baf715e8c7301076cffcac5b577c9f28736b531117ba144c01558fb5f8a"
  },
  "uk/blog/": {
   "date": "2026-11-20",

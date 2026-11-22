@@ -468,11 +468,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -849,7 +860,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
           <div class="ph-book">Termin buchen</div>
         </div>
       </div>
-      <a class="hero-badge ws" href="/website-selbst/?lang=uk" data-umami-event="website-selbst-hero"><span class="hero-badge-tag">Новинка</span><div class="hero-badge-num">50 €</div><div class="hero-badge-lbl">старт: створіть свій сайт самі <b>Спробувати →</b></div></a>
+      <a class="hero-badge ws" href="/website-selbst/?lang=uk" data-umami-event="website-selbst-hero"><span class="hero-badge-tag">Новинка</span><div class="hero-badge-num">79 €</div><div class="hero-badge-lbl">старт: створіть свій сайт самі <b>Спробувати →</b></div></a>
     </div>
   </div>
 </section>
@@ -868,7 +879,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <div class="sec-label">Міні-тест</div>
       <h2 class="quiz-q">Що вам потрібно?</h2>
       <div class="quiz-opts">
-        <a class="quiz-opt" href="/website-selbst/?lang=uk" aria-pressed="false" data-res="У &lt;b&gt;конструкторі&lt;/b&gt; ви заповнюєте дані й одразу бачите свій сайт. Я перевіряю, реєструю домен і публікую — старт 50 €, далі 19 € на місяць." data-btn="Створити сайт самостійно →" data-n="1"><i aria-hidden="true">✏️</i><b>Зробити сайт самостійно</b><span>Заповнюєте форму — і одразу бачите свій сайт</span></a>
+        <a class="quiz-opt" href="/website-selbst/?lang=uk" aria-pressed="false" data-res="У &lt;b&gt;конструкторі&lt;/b&gt; ви заповнюєте дані й одразу бачите свій сайт. Я перевіряю, реєструю домен і публікую — старт 79 €, далі 19 € на місяць." data-btn="Створити сайт самостійно →" data-n="1"><i aria-hidden="true">✏️</i><b>Зробити сайт самостійно</b><span>Заповнюєте форму — і одразу бачите свій сайт</span></a>
         <a class="quiz-opt" href="#paket-b" aria-pressed="false" data-res="&lt;b&gt;Пакет B · Сайт-візитка&lt;/b&gt;: я пишу тексти, створюю сайт і подбаю про Impressum і Datenschutz. Від вас — лише фото й інформація." data-btn="До пакета B →" data-n="2"><i aria-hidden="true">🗝️</i><b>Сайт під ключ</b><span>Я роблю все — ви надсилаєте лише фото й інформацію</span></a>
         <a class="quiz-opt" href="#paket-a" aria-pressed="false" data-res="&lt;b&gt;Пакет A · «Вас знаходять у Google»&lt;/b&gt;: створю або впорядкую ваш профіль у Google — фото, послуги, категорії." data-btn="До пакета A →" data-n="3"><i aria-hidden="true">📍</i><b>Профіль у Google</b><span>Щоб вас знаходили в Google Картах</span></a>
         <a class="quiz-opt" href="#contact" aria-pressed="false" data-res="Нічого страшного. Напишіть, чим займаєтеся і в якому місті — я безкоштовно подивлюся, як вас видно в Google, і підкажу, з чого почати." data-btn="Безкоштовний аудит →" data-n="4"><i aria-hidden="true">💬</i><b>Ще не знаю</b><span>Напишіть коротко — я подивлюся на вашу ситуацію</span></a>
@@ -1007,10 +1018,13 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
         <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="C">Обговорити</a>
       </article>
     </div>
-    <div class="ws-teaser">
-      <div><span class="ws-neu">Новинка</span><h3>Сайт самостійно</h3><p>Ви заповнюєте дані й одразу бачите свій сайт у готовому beauty-дизайні. Я все перевіряю, реєструю домен і публікую сайт.</p></div>
-      <div class="ws-price"><s>79 €</s> <b>50 €</b> старт<br><b>19 €</b> / міс., ціна гарантована на 12 місяців<small>для перших 5 студій</small></div>
-      <a class="ws-btn" href="/website-selbst/?lang=uk" data-umami-event="website-selbst-teaser">Спробувати →</a>
+    <div class="ws-teaser" id="website-abo">
+      <div><span class="ws-neu">Новинка</span><h3>Сайт самостійно</h3><p>Ви заповнюєте дані й одразу бачите свій сайт у готовому beauty-дизайні. Я все перевіряю, реєструю домен і публікую сайт.</p>
+        <ul class="ws-incl"><li>Хостинг, SSL і домен .de — власниця ви</li><li>Тексти, ціни й фото змінюєте самі будь-коли</li><li>1 невелика правка на місяць від мене</li><li>Скасування будь-коли, діє до кінця оплаченого періоду</li></ul>
+        <div class="ws-pay"><span>Оплата</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>SEPA-Lastschrift</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>Картка</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Apple Pay</span></div>
+      </div>
+      <div class="ws-price"><b>19 €</b> / міс.<br><b>79 €</b> старт одноразово<span class="ws-jahr">або 190 € / рік (2 місяці безкоштовно)</span><small>Для перших 5 клієнток: старт 50 € за кодом</small><span class="ws-ust">Kleinunternehmerin за § 19 UStG, без ПДВ.</span></div>
+      <div class="ws-cta"><a class="ws-btn" href="/website-selbst/?lang=uk" data-umami-event="website-selbst-teaser">Почати →</a><p class="ws-after">Оплата лише після перевірки — посилання на оплату надішлю e-mail.</p><a class="ws-agb" href="/vertragsbedingungen-website-abo.html" data-umami-event="website-abo-agb">Умови договору (Vertragsbedingungen, DE)</a></div>
     </div>
     <div class="pkg-extras">
       <div class="pkg-extra"><strong>A + B разом — 590 €</strong> замість 640 €. Google-профіль і сайт в одних руках. Сайт-візитка для майстра манікюру — <a class="inl" href="/uk/sait-vizytka-dlia-maistra-manikiuru.html">детально →</a></div>

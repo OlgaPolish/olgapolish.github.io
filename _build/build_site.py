@@ -26,9 +26,11 @@ FORM_ENDPOINT = "https://kontakt.olha-polishchuk-web.workers.dev"
 # ── Аналитика Umami Cloud (без cookies, баннер не нужен). Пустой ID → скрипт не вставляется.
 #    ID и адрес скрипта: Umami → Settings → Websites → Edit → Tracking code.
 # Конструктор «Website selbst» (/website-selbst/) — тизер в блоке «Пакеты». Цены держать в синхроне с PREIS в website-selbst/index.html.
-# Акция закончилась → WS_ALT = "" (зачёркнутая цена и строка «для первых 5 студий» пропадут).
+# Карточка тарифа «Website-Abo»: оплата через Stripe Payment Link — ссылку Оля шлёт письмом ПОСЛЕ договора, на сайте кода оплаты нет.
+# WS_CODE — цена старта по коду (Stripe Promotion Code) для первых WS_PLAETZE клиенток. Акция закончилась → WS_CODE = "" (строка пропадёт).
 WS_URL = "/website-selbst/"
-WS_START, WS_ALT, WS_MONAT, WS_PLAETZE = "50 €", "79 €", "19 €", "5"
+WS_AGB = "/vertragsbedingungen-website-abo.html"
+WS_START, WS_CODE, WS_MONAT, WS_JAHR, WS_PLAETZE = "79 €", "50 €", "19 €", "190 €", "5"
 UMAMI_SRC = "https://cloud.umami.is/script.js"
 UMAMI_ID = "fe1a89e7-ba92-4d19-99cf-5949bb100cdd"
 
@@ -289,11 +291,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -653,7 +666,10 @@ T["de"] = dict(
     pk_addon="<strong>Zusätzlich zur Betreuung: Content für Sie — +190 € pro Monat.</strong> 12 Beiträge im Monat für Instagram, Telegram oder Threads: Texte, einfache Grafiken, Veröffentlichung nach Plan.",
     ws_neu="Neu", ws_title="Website selbst gestalten",
     ws_text="Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.",
-    ws_start="Start", ws_monat="/ Monat, 12 Monate garantiert", ws_first="für die ersten %s Studios", ws_btn="Jetzt ausprobieren →",
+    ws_start="einmalig Start", ws_monat="/ Monat", ws_jahr="oder %s / Jahr (2 Monate gratis)", ws_first="Für die ersten %s Kundinnen: Start %s mit Code",
+    ws_incl=["Hosting, SSL und .de-Domain – Inhaberin sind Sie", "Texte, Preise und Fotos ändern Sie jederzeit selbst", "1 kleine Änderung pro Monat durch mich", "Kündigung jederzeit zum Ende des Zeitraums"],
+    ws_pay="Bezahlen per", ws_pay_m=["SEPA-Lastschrift", "Karte", "Apple Pay"],
+    ws_btn="Jetzt starten →", ws_after="Bezahlung erst nach Prüfung — Zahlungslink per E-Mail.", ws_agb="Vertragsbedingungen Website-Abo", ws_ust="Kleinunternehmerin nach § 19 UStG, keine USt.",
     pk_note="Alle Preise sind Endpreise. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Den genauen Leistungsumfang halten wir schriftlich im Angebot fest.",
     st_label="Ablauf", st_title="Vier Schritte — und man sieht Sie",
     steps=[("Kostenloser Google-Check", "Sie schreiben mir, was Sie machen und in welcher Stadt. Ich schaue, wie man Sie in Google gerade sieht, und schicke Ihnen eine kurze Checkliste mit Wachstumspunkten: was schon gut ist, was stört und was sich verbessern lässt."),
@@ -782,7 +798,10 @@ T["uk"] = dict(
     pk_addon="<strong>Додатково до підтримки: контент за вас — +190 € на місяць.</strong> 12 дописів на місяць для Instagram, Telegram або Threads: тексти, прості картинки, публікація за розкладом.",
     ws_neu="Новинка", ws_title="Сайт самостійно",
     ws_text="Ви заповнюєте дані й одразу бачите свій сайт у готовому beauty-дизайні. Я все перевіряю, реєструю домен і публікую сайт.",
-    ws_start="старт", ws_monat="/ міс., ціна гарантована на 12 місяців", ws_first="для перших %s студій", ws_btn="Спробувати →",
+    ws_start="старт одноразово", ws_monat="/ міс.", ws_jahr="або %s / рік (2 місяці безкоштовно)", ws_first="Для перших %s клієнток: старт %s за кодом",
+    ws_incl=["Хостинг, SSL і домен .de — власниця ви", "Тексти, ціни й фото змінюєте самі будь-коли", "1 невелика правка на місяць від мене", "Скасування будь-коли, діє до кінця оплаченого періоду"],
+    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Картка", "Apple Pay"],
+    ws_btn="Почати →", ws_after="Оплата лише після перевірки — посилання на оплату надішлю e-mail.", ws_agb="Умови договору (Vertragsbedingungen, DE)", ws_ust="Kleinunternehmerin за § 19 UStG, без ПДВ.",
     pk_note="Ціни остаточні: як Kleinunternehmer за § 19 UStG я не нараховую ПДВ. Точний обсяг робіт фіксуємо письмово в пропозиції.",
     st_label="Як ми працюємо", st_title="Чотири кроки — і вас видно",
     steps=[("Безкоштовний аудит", "Ви пишете, чим займаєтеся і в якому місті. Я дивлюся, як вас зараз видно в Google, і надсилаю короткий чек-лист точок зростання: що вже добре, що заважає і що можна покращити."),
@@ -914,7 +933,10 @@ T["ru"] = dict(
     pk_addon="<strong>Дополнительно к поддержке: контент за вас — +190 € в месяц.</strong> 12 постов в месяц для Instagram, Telegram или Threads: тексты, простые картинки, публикация по расписанию.",
     ws_neu="Новинка", ws_title="Сайт самостоятельно",
     ws_text="Вы заполняете данные и сразу видите свой сайт в готовом beauty-дизайне. Я всё проверяю, регистрирую домен и публикую сайт.",
-    ws_start="старт", ws_monat="/ мес., цена гарантирована на 12 месяцев", ws_first="для первых %s студий", ws_btn="Попробовать →",
+    ws_start="старт единоразово", ws_monat="/ мес.", ws_jahr="или %s / год (2 месяца бесплатно)", ws_first="Для первых %s клиенток: старт %s по коду",
+    ws_incl=["Хостинг, SSL и домен .de — владелица вы", "Тексты, цены и фото меняете сами в любой момент", "1 небольшая правка в месяц от меня", "Отмена в любой момент, действует до конца оплаченного периода"],
+    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Карта", "Apple Pay"],
+    ws_btn="Начать →", ws_after="Оплата только после проверки — ссылку на оплату пришлю по e-mail.", ws_agb="Условия договора (Vertragsbedingungen, DE)", ws_ust="Kleinunternehmerin по § 19 UStG, без НДС.",
     pk_note="Цены окончательные: как Kleinunternehmer по § 19 UStG я не начисляю НДС. Точный объём работ фиксируем письменно в предложении.",
     st_label="Как мы работаем", st_title="Четыре шага — и вас видно",
     steps=[("Бесплатный аудит", "Вы пишете, чем занимаетесь и в каком городе. Я смотрю, как вас сейчас видно в Google, и присылаю короткий чек-лист точек роста: что уже хорошо, что мешает и что можно улучшить."),
@@ -1536,12 +1558,19 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>\n\n'
             w('          <li>%s</li>\n' % esc(it))
         w('        </ul>\n        <p class="pkg-term">%s</p>\n        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="%s">%s</a>\n      </article>\n' % (esc(p["term"]), esc(_plain(p["name"])[:1]), esc(t["pk_btn"])))
     w('    </div>\n')
-    if WS_URL:
-        alt = ('<s>%s</s> ' % esc(WS_ALT)) if WS_ALT else ''
-        first = ('<small>%s</small>' % esc(t["ws_first"] % WS_PLAETZE)) if WS_ALT else ''
-        w('    <div class="ws-teaser">\n      <div><span class="ws-neu">%s</span><h3>%s</h3><p>%s</p></div>\n' % (esc(t["ws_neu"]), esc(t["ws_title"]), esc(t["ws_text"])))
-        w('      <div class="ws-price">%s<b>%s</b> %s<br><b>%s</b> %s%s</div>\n' % (alt, esc(WS_START), esc(t["ws_start"]), esc(WS_MONAT), esc(t["ws_monat"]), first))
-        w('      <a class="ws-btn" href="%s?lang=%s" data-umami-event="website-selbst-teaser">%s</a>\n    </div>\n' % (WS_URL, lang, esc(t["ws_btn"])))
+    if WS_URL:  # карточка тарифа «Website-Abo»
+        icons = {0: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>',
+                 1: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>',
+                 2: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>'}
+        first = ('<small>%s</small>' % esc(t["ws_first"] % (WS_PLAETZE, WS_CODE))) if WS_CODE else ''
+        w('    <div class="ws-teaser" id="website-abo">\n      <div><span class="ws-neu">%s</span><h3>%s</h3><p>%s</p>\n        <ul class="ws-incl">%s</ul>\n'
+          % (esc(t["ws_neu"]), esc(t["ws_title"]), esc(t["ws_text"]), "".join('<li>%s</li>' % esc(x) for x in t["ws_incl"])))
+        w('        <div class="ws-pay"><span>%s</span>%s</div>\n      </div>\n'
+          % (esc(t["ws_pay"]), "".join('<span class="ws-pm">%s%s</span>' % (icons[i], esc(m)) for i, m in enumerate(t["ws_pay_m"]))))
+        w('      <div class="ws-price"><b>%s</b> %s<br><b>%s</b> %s<span class="ws-jahr">%s</span>%s<span class="ws-ust">%s</span></div>\n'
+          % (esc(WS_MONAT), esc(t["ws_monat"]), esc(WS_START), esc(t["ws_start"]), esc(t["ws_jahr"] % WS_JAHR), first, esc(t["ws_ust"])))
+        w('      <div class="ws-cta"><a class="ws-btn" href="%s?lang=%s" data-umami-event="website-selbst-teaser">%s</a><p class="ws-after">%s</p><a class="ws-agb" href="%s" data-umami-event="website-abo-agb">%s</a></div>\n    </div>\n'
+          % (WS_URL, lang, esc(t["ws_btn"]), esc(t["ws_after"]), WS_AGB, esc(t["ws_agb"])))
     w('    <div class="pkg-extras">\n      <div class="pkg-extra">%s</div>\n      <div class="pkg-extra">%s</div>\n    </div>\n' % (t["pk_combo"], t["pk_addon"]))
     w('    <p class="pkg-note">%s</p>\n  </div>\n</section>\n\n' % esc(t["pk_note"]))
 

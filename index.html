@@ -444,11 +444,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -825,7 +836,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
           <div class="ph-book">Termin buchen</div>
         </div>
       </div>
-      <a class="hero-badge ws" href="/website-selbst/?lang=de" data-umami-event="website-selbst-hero"><span class="hero-badge-tag">Neu</span><div class="hero-badge-num">50 €</div><div class="hero-badge-lbl">Startpreis: Ihre Website selbst gestalten <b>Ausprobieren →</b></div></a>
+      <a class="hero-badge ws" href="/website-selbst/?lang=de" data-umami-event="website-selbst-hero"><span class="hero-badge-tag">Neu</span><div class="hero-badge-num">79 €</div><div class="hero-badge-lbl">Startpreis: Ihre Website selbst gestalten <b>Ausprobieren →</b></div></a>
     </div>
   </div>
 </section>
@@ -844,7 +855,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
       <div class="sec-label">Mini-Check</div>
       <h2 class="quiz-q">Was brauchen Sie?</h2>
       <div class="quiz-opts">
-        <a class="quiz-opt" href="/website-selbst/?lang=de" aria-pressed="false" data-res="Im &lt;b&gt;Website-Baukasten&lt;/b&gt; füllen Sie Ihre Angaben aus und sehen Ihre Website sofort. Ich prüfe, registriere die Domain und veröffentliche – Start 50 €, danach 19 € im Monat." data-btn="Website selbst gestalten →" data-n="1"><i aria-hidden="true">✏️</i><b>Website selbst gestalten</b><span>Formular ausfüllen – Ihre Website sofort sehen</span></a>
+        <a class="quiz-opt" href="/website-selbst/?lang=de" aria-pressed="false" data-res="Im &lt;b&gt;Website-Baukasten&lt;/b&gt; füllen Sie Ihre Angaben aus und sehen Ihre Website sofort. Ich prüfe, registriere die Domain und veröffentliche – Start 79 €, danach 19 € im Monat." data-btn="Website selbst gestalten →" data-n="1"><i aria-hidden="true">✏️</i><b>Website selbst gestalten</b><span>Formular ausfüllen – Ihre Website sofort sehen</span></a>
         <a class="quiz-opt" href="#paket-b" aria-pressed="false" data-res="&lt;b&gt;Paket B · Onepager-Webseite&lt;/b&gt;: Ich schreibe die Texte, gestalte die Seite und kümmere mich um Impressum und Datenschutz. Sie schicken nur Fotos und Infos." data-btn="Zu Paket B →" data-n="2"><i aria-hidden="true">🗝️</i><b>Website zum Festpreis</b><span>Ich mache alles – Sie schicken nur Fotos und Infos</span></a>
         <a class="quiz-opt" href="#paket-a" aria-pressed="false" data-res="&lt;b&gt;Paket A · „Man findet Sie in Google“&lt;/b&gt;: Ich richte Ihr Google-Unternehmensprofil ein oder bringe es in Ordnung – mit Fotos, Leistungen und Kategorien." data-btn="Zu Paket A →" data-n="3"><i aria-hidden="true">📍</i><b>Google-Profil</b><span>Damit man Sie in Google Maps findet</span></a>
         <a class="quiz-opt" href="#contact" aria-pressed="false" data-res="Kein Problem. Schreiben Sie mir kurz, was Sie machen und in welcher Stadt – ich schaue kostenlos, wie man Sie in Google sieht, und empfehle Ihnen den passenden Weg." data-btn="Kostenloser Google-Check →" data-n="4"><i aria-hidden="true">💬</i><b>Ich weiß es noch nicht</b><span>Kurz schreiben – ich schaue mir Ihre Situation an</span></a>
@@ -983,10 +994,13 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
         <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="C">Anfragen</a>
       </article>
     </div>
-    <div class="ws-teaser">
-      <div><span class="ws-neu">Neu</span><h3>Website selbst gestalten</h3><p>Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.</p></div>
-      <div class="ws-price"><s>79 €</s> <b>50 €</b> Start<br><b>19 €</b> / Monat, 12 Monate garantiert<small>für die ersten 5 Studios</small></div>
-      <a class="ws-btn" href="/website-selbst/?lang=de" data-umami-event="website-selbst-teaser">Jetzt ausprobieren →</a>
+    <div class="ws-teaser" id="website-abo">
+      <div><span class="ws-neu">Neu</span><h3>Website selbst gestalten</h3><p>Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.</p>
+        <ul class="ws-incl"><li>Hosting, SSL und .de-Domain – Inhaberin sind Sie</li><li>Texte, Preise und Fotos ändern Sie jederzeit selbst</li><li>1 kleine Änderung pro Monat durch mich</li><li>Kündigung jederzeit zum Ende des Zeitraums</li></ul>
+        <div class="ws-pay"><span>Bezahlen per</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>SEPA-Lastschrift</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>Karte</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Apple Pay</span></div>
+      </div>
+      <div class="ws-price"><b>19 €</b> / Monat<br><b>79 €</b> einmalig Start<span class="ws-jahr">oder 190 € / Jahr (2 Monate gratis)</span><small>Für die ersten 5 Kundinnen: Start 50 € mit Code</small><span class="ws-ust">Kleinunternehmerin nach § 19 UStG, keine USt.</span></div>
+      <div class="ws-cta"><a class="ws-btn" href="/website-selbst/?lang=de" data-umami-event="website-selbst-teaser">Jetzt starten →</a><p class="ws-after">Bezahlung erst nach Prüfung — Zahlungslink per E-Mail.</p><a class="ws-agb" href="/vertragsbedingungen-website-abo.html" data-umami-event="website-abo-agb">Vertragsbedingungen Website-Abo</a></div>
     </div>
     <div class="pkg-extras">
       <div class="pkg-extra"><strong>A + B zusammen — 590 €</strong> statt 640 €. Google-Profil und Webseite aus einer Hand.</div>
