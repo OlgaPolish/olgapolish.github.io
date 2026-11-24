@@ -668,7 +668,7 @@ T["de"] = dict(
     ws_text="Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.",
     ws_start="einmalig Start", ws_monat="/ Monat", ws_jahr="oder %s / Jahr (2 Monate gratis)", ws_first="Für die ersten %s Kundinnen: Start %s mit Code",
     ws_incl=["Hosting, SSL und .de-Domain – Inhaberin sind Sie", "Texte, Preise und Fotos ändern Sie jederzeit selbst", "1 kleine Änderung pro Monat durch mich", "Kündigung jederzeit zum Ende des Zeitraums"],
-    ws_pay="Bezahlen per", ws_pay_m=["SEPA-Lastschrift", "Karte", "Apple Pay"],
+    ws_pay="Bezahlen per", ws_pay_m=["SEPA-Lastschrift", "Karte", "Apple Pay", "PayPal"],
     ws_btn="Jetzt starten →", ws_after="Bezahlung erst nach Prüfung — Zahlungslink per E-Mail.", ws_agb="Vertragsbedingungen Website-Abo", ws_ust="Kleinunternehmerin nach § 19 UStG, keine USt.",
     pk_note="Alle Preise sind Endpreise. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Den genauen Leistungsumfang halten wir schriftlich im Angebot fest.",
     st_label="Ablauf", st_title="Vier Schritte — und man sieht Sie",
@@ -800,7 +800,7 @@ T["uk"] = dict(
     ws_text="Ви заповнюєте дані й одразу бачите свій сайт у готовому beauty-дизайні. Я все перевіряю, реєструю домен і публікую сайт.",
     ws_start="старт одноразово", ws_monat="/ міс.", ws_jahr="або %s / рік (2 місяці безкоштовно)", ws_first="Для перших %s клієнток: старт %s за кодом",
     ws_incl=["Хостинг, SSL і домен .de — власниця ви", "Тексти, ціни й фото змінюєте самі будь-коли", "1 невелика правка на місяць від мене", "Скасування будь-коли, діє до кінця оплаченого періоду"],
-    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Картка", "Apple Pay"],
+    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Картка", "Apple Pay", "PayPal"],
     ws_btn="Почати →", ws_after="Оплата лише після перевірки — посилання на оплату надішлю e-mail.", ws_agb="Умови договору (Vertragsbedingungen, DE)", ws_ust="Kleinunternehmerin за § 19 UStG, без ПДВ.",
     pk_note="Ціни остаточні: як Kleinunternehmer за § 19 UStG я не нараховую ПДВ. Точний обсяг робіт фіксуємо письмово в пропозиції.",
     st_label="Як ми працюємо", st_title="Чотири кроки — і вас видно",
@@ -935,7 +935,7 @@ T["ru"] = dict(
     ws_text="Вы заполняете данные и сразу видите свой сайт в готовом beauty-дизайне. Я всё проверяю, регистрирую домен и публикую сайт.",
     ws_start="старт единоразово", ws_monat="/ мес.", ws_jahr="или %s / год (2 месяца бесплатно)", ws_first="Для первых %s клиенток: старт %s по коду",
     ws_incl=["Хостинг, SSL и домен .de — владелица вы", "Тексты, цены и фото меняете сами в любой момент", "1 небольшая правка в месяц от меня", "Отмена в любой момент, действует до конца оплаченного периода"],
-    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Карта", "Apple Pay"],
+    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Карта", "Apple Pay", "PayPal"],
     ws_btn="Начать →", ws_after="Оплата только после проверки — ссылку на оплату пришлю по e-mail.", ws_agb="Условия договора (Vertragsbedingungen, DE)", ws_ust="Kleinunternehmerin по § 19 UStG, без НДС.",
     pk_note="Цены окончательные: как Kleinunternehmer по § 19 UStG я не начисляю НДС. Точный объём работ фиксируем письменно в предложении.",
     st_label="Как мы работаем", st_title="Четыре шага — и вас видно",
@@ -1561,7 +1561,8 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>\n\n'
     if WS_URL:  # карточка тарифа «Website-Abo»
         icons = {0: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>',
                  1: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>',
-                 2: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>'}
+                 2: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>',
+                 3: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h14.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2H17"/><path d="M16 13.5h2"/></svg>'}
         first = ('<small>%s</small>' % esc(t["ws_first"] % (WS_PLAETZE, WS_CODE))) if WS_CODE else ''
         w('    <div class="ws-teaser" id="website-abo">\n      <div><span class="ws-neu">%s</span><h3>%s</h3><p>%s</p>\n        <ul class="ws-incl">%s</ul>\n'
           % (esc(t["ws_neu"]), esc(t["ws_title"]), esc(t["ws_text"]), "".join('<li>%s</li>' % esc(x) for x in t["ws_incl"])))
