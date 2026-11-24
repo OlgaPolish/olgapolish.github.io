@@ -2,7 +2,7 @@
 """Статья «Impressum и Datenschutz для мастера маникюра и косметолога» (RU/UK/DE).
 RU одобрен Олей 24.11.2026, DE/UK — перевод Claude 24.11.2026.
 Правовая база сверена 24.11.2026: § 5 DDG, отмена OS-платформы с 20.07.2025, W-IdNr (§ 139c AO),
-§ 25 TDDDG, § 11 HWG + BGH 31.07.2025 (I ZR 170/24). Черновик и заметки: _build/entwuerfe/impressum-datenschutz-dlya-mastera-ru.md
+§ 25 TDDDG, § 11 HWG + BGH 31.07.2025 (I ZR 170/24). Черновик и заметки: E:\\PROJECTS\\Uslugi\\texte\\entwuerfe-mysite\\impressum-datenschutz-dlya-mastera-ru.md
 Когда появится лендинг для косметологов — поставить на него ссылку в финальном блоке (RU/UK).
 """
 

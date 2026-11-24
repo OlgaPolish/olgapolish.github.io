@@ -473,9 +473,6 @@ a.inl:hover{color:var(--ink)}
 .ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
 .ws-incl li{position:relative;padding-left:20px}
 .ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
-.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
-.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
-.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
 .ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
 .ws-agb{font-size:12.5px;color:var(--amber-light)}
@@ -557,6 +554,7 @@ a.inl:hover{color:var(--ink)}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
 .case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.demo-slide.has-img{align-content:start}
 .case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
 .case-img img{width:100%;height:auto;display:block}
 .case.has-img .case-result{gap:22px}
@@ -745,7 +743,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
-  .case.has-img{gap:20px}
+  .case.has-img{gap:20px;align-items:start}
   .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
   .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
   .beispiele{padding:0 0 64px}
@@ -914,6 +912,14 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
     <div class="car-view">
     <div class="demo-track" tabindex="0">
       <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 из 5">
+        <a class="case-img" href="/demo/midna/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-midna-600.avif 600w, /images/case-midna-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-midna-600.webp 600w, /images/case-midna-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-midna.jpg" width="1200" height="750" alt="Главная страница концепт-сайта Midna Nails — вымышленная нейл-студия с курсами" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Концепт · вымышленная студия</div>
+        <h3><a href="/demo/midna/" target="_blank" rel="noopener">Midna Nails — концепт-сайт для нейл-студии с курсами</a></h3>
+        <p>Медь и крем, в шапке ветер шевелит волосы. Цены в два уровня, работы, студия, команда, курсы маникюра с программой и частые вопросы — на немецком и украинском. Студия вымышленная — фото, цифры и данные только для примера.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 из 5">
         <a class="case-img" href="/demo/elle/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-elle-600.avif 600w, /images/case-elle-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-elle-600.webp 600w, /images/case-elle-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-elle.jpg" width="1200" height="750" alt="Главная страница сайта-портфолио Elle&#x27;s Beauty Studio — вымышленная бьюти-студия в Дюссельдорфе" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Кейс портфолио · вымышленная студия</div>
@@ -921,20 +927,12 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
         <p>Тёмный графит, золото и розовый с перьями — образ студии премиум-класса. Маникюр, педикюр, ресницы, брови и перманент: прайс по мастерам, запись в WhatsApp с готовым текстом, правила отмены и опозданий на виду, галерея работ, отзывы и часы работы — на немецком и русском. Студия вымышленная — фото, отзывы и данные только для примера.</p>
         </div>
       </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 из 5">
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 из 5">
         <a class="case-img" href="/demo/rose/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-rose-600.avif 600w, /images/case-rose-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-rose-600.webp 600w, /images/case-rose-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-rose.jpg" width="1200" height="750" alt="Главная страница концепт-сайта ROSÉ beauty space — вымышленная бьюти-студия в Дюссельдорфе" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Концепт · вымышленная студия</div>
         <h3><a href="/demo/rose/" target="_blank" rel="noopener">ROSÉ beauty space — концепт-сайт для ногтей, ресниц и бровей</a></h3>
         <p>Спокойный тауп и графит, элегантный шрифт Bodoni, арка с ранункулюсом и падающие лепестки. Услуги плитками, подробный прайс, студия, команда, галерея, отзывы и частые вопросы — на немецком и русском. Студия вымышленная — фото, отзывы и данные только для примера.</p>
-        </div>
-      </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 из 5">
-        <a class="case-img" href="/demo/midna/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-midna-600.avif 600w, /images/case-midna-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-midna-600.webp 600w, /images/case-midna-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-midna.jpg" width="1200" height="750" alt="Главная страница концепт-сайта Midna Nails — вымышленная нейл-студия с курсами" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Концепт · вымышленная студия</div>
-        <h3><a href="/demo/midna/" target="_blank" rel="noopener">Midna Nails — концепт-сайт для нейл-студии с курсами</a></h3>
-        <p>Медь и крем, в шапке ветер шевелит волосы. Цены в два уровня, работы, студия, команда, курсы маникюра с программой и частые вопросы — на немецком и украинском. Студия вымышленная — фото, цифры и данные только для примера.</p>
         </div>
       </div>
       <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="4 из 5">
@@ -1021,7 +1019,6 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
     <div class="ws-teaser" id="website-abo">
       <div><span class="ws-neu">Новинка</span><h3>Сайт самостоятельно</h3><p>Вы заполняете данные и сразу видите свой сайт в готовом beauty-дизайне. Я всё проверяю, регистрирую домен и публикую сайт.</p>
         <ul class="ws-incl"><li>Хостинг, SSL и домен .de — владелица вы</li><li>Тексты, цены и фото меняете сами в любой момент</li><li>1 небольшая правка в месяц от меня</li><li>Отмена в любой момент, действует до конца оплаченного периода</li></ul>
-        <div class="ws-pay"><span>Оплата</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>SEPA-Lastschrift</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>Карта</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Apple Pay</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h14.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2H17"/><path d="M16 13.5h2"/></svg>PayPal</span></div>
       </div>
       <div class="ws-price"><b>19 €</b> / мес.<br><b>79 €</b> старт единоразово<span class="ws-jahr">или 190 € / год (2 месяца бесплатно)</span><small>Для первых 5 клиенток: старт 50 € по коду</small><span class="ws-ust">Kleinunternehmerin по § 19 UStG, без НДС.</span></div>
       <div class="ws-cta"><a class="ws-btn" href="/website-selbst/?lang=ru" data-umami-event="website-selbst-teaser">Начать →</a><p class="ws-after">Оплата только после проверки — ссылку на оплату пришлю по e-mail.</p><a class="ws-agb" href="/vertragsbedingungen-website-abo.html" data-umami-event="website-abo-agb">Условия договора (Vertragsbedingungen, DE)</a></div>

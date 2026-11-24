@@ -296,9 +296,6 @@ a.inl:hover{color:var(--ink)}
 .ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
 .ws-incl li{position:relative;padding-left:20px}
 .ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
-.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
-.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
-.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
 .ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
 .ws-agb{font-size:12.5px;color:var(--amber-light)}
@@ -380,6 +377,7 @@ a.inl:hover{color:var(--ink)}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
 .case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.demo-slide.has-img{align-content:start}
 .case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
 .case-img img{width:100%;height:auto;display:block}
 .case.has-img .case-result{gap:22px}
@@ -568,7 +566,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
-  .case.has-img{gap:20px}
+  .case.has-img{gap:20px;align-items:start}
   .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
   .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
   .beispiele{padding:0 0 64px}
@@ -668,7 +666,6 @@ T["de"] = dict(
     ws_text="Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.",
     ws_start="einmalig Start", ws_monat="/ Monat", ws_jahr="oder %s / Jahr (2 Monate gratis)", ws_first="Für die ersten %s Kundinnen: Start %s mit Code",
     ws_incl=["Hosting, SSL und .de-Domain – Inhaberin sind Sie", "Texte, Preise und Fotos ändern Sie jederzeit selbst", "1 kleine Änderung pro Monat durch mich", "Kündigung jederzeit zum Ende des Zeitraums"],
-    ws_pay="Bezahlen per", ws_pay_m=["SEPA-Lastschrift", "Karte", "Apple Pay", "PayPal"],
     ws_btn="Jetzt starten →", ws_after="Bezahlung erst nach Prüfung — Zahlungslink per E-Mail.", ws_agb="Vertragsbedingungen Website-Abo", ws_ust="Kleinunternehmerin nach § 19 UStG, keine USt.",
     pk_note="Alle Preise sind Endpreise. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Den genauen Leistungsumfang halten wir schriftlich im Angebot fest.",
     st_label="Ablauf", st_title="Vier Schritte — und man sieht Sie",
@@ -679,10 +676,10 @@ T["de"] = dict(
     cs_label="Ergebnisse", cs_title="Echte Ergebnisse für echte Unternehmen", cs_sub="Fertige Projekte für Kundinnen und Kunden — mit Zahlen und Bewertungen.", dm_label="Beispiele",
     dm_title="Demo-Design — so kann Ihre Webseite aussehen", dm_sub="Beispiele für erfundene Studios — damit Sie Stil und Aufbau sehen. Zum Blättern wischen oder die Pfeile nutzen.",
     dm_prev="Vorheriges Beispiel", dm_next="Nächstes Beispiel", dm_of="von", cs_prev="Vorheriges Projekt", cs_next="Nächstes Projekt", swipe="Weiter blättern",
-    demos=[dict(img="/images/case-elle.jpg", img_alt="Startseite der Portfolio-Webseite Elle's Beauty Studio — fiktives Beauty-Studio in Düsseldorf", tag="Portfolio-Case · fiktives Studio", name="Elle's Beauty Studio — Webseite für ein Beauty-Studio in der Innenstadt", link="/demo/elle/",
+    demos=[dict(img='/images/case-midna.jpg', img_alt='Startseite der Konzept-Webseite Midna Nails — fiktives Nagelstudio mit Kursen', tag='Konzept · fiktives Studio', name='Midna Nails — Konzept-Webseite für ein Nagelstudio mit Kursen', link='/demo/midna/', text='Kupfer und Creme, im Header bewegt der Wind die Haare. Preise in zwei Stufen, Arbeiten, Studio, Team, Maniküre-Kurse mit Programm und häufige Fragen — auf Deutsch und Ukrainisch. Das Studio ist erfunden — Fotos, Zahlen und Angaben dienen nur als Beispiel.', res=[]),
+           dict(img="/images/case-elle.jpg", img_alt="Startseite der Portfolio-Webseite Elle's Beauty Studio — fiktives Beauty-Studio in Düsseldorf", tag="Portfolio-Case · fiktives Studio", name="Elle's Beauty Studio — Webseite für ein Beauty-Studio in der Innenstadt", link="/demo/elle/",
                 text="Dunkles Graphit, Gold und Pink mit Federn — ein eleganter Auftritt für ein Studio im gehobenen Segment. Maniküre, Pediküre, Wimpern, Brauen und Permanent Make-up: Preisliste nach Stylistinnen, Terminanfrage per WhatsApp mit vorbereitetem Text, Regeln zu Absage und Verspätung gut sichtbar, Galerie, Bewertungen und Öffnungszeiten — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[]),
            dict(img='/images/case-rose.jpg', img_alt='Startseite der Konzept-Webseite ROSÉ beauty space — fiktives Beauty-Studio in Düsseldorf', tag='Konzept · fiktives Studio', name='ROSÉ beauty space — Konzept-Webseite für Nägel, Wimpern & Augenbrauen', link='/demo/rose/', text='Ruhiges Taupe und Graphit, elegante Bodoni-Schrift, ein Bogen mit Ranunkel und fallende Rosenblätter. Leistungen als Kacheln, ausführliche Preisliste, Studio, Team, Galerie, Bewertungen und häufige Fragen — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.', res=[]),
-           dict(img='/images/case-midna.jpg', img_alt='Startseite der Konzept-Webseite Midna Nails — fiktives Nagelstudio mit Kursen', tag='Konzept · fiktives Studio', name='Midna Nails — Konzept-Webseite für ein Nagelstudio mit Kursen', link='/demo/midna/', text='Kupfer und Creme, im Header bewegt der Wind die Haare. Preise in zwei Stufen, Arbeiten, Studio, Team, Maniküre-Kurse mit Programm und häufige Fragen — auf Deutsch und Ukrainisch. Das Studio ist erfunden — Fotos, Zahlen und Angaben dienen nur als Beispiel.', res=[]),
            dict(img="/images/case-makova.jpg", img_alt="Startseite der Konzept-Webseite MAKOVA Art & Beauty Studio — fiktives Beauty-Studio", tag="Konzept · fiktives Studio", name="MAKOVA — Konzept-Webseite für ein Beauty-Studio", link="/demo/makova/",
                 text="Ein Studio mit vielen Leistungen auf einer Seite: Nägel, Pediküre, Massage, Brows & Lashes, Make-up und Workshops. Preisliste nach Kategorien, Galerie, Team, Studio und Öffnungszeiten — auf Deutsch und Ukrainisch. Eigenes Farbkonzept: Bordeaux, Creme und Mohnblumen. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.", res=[]),
            dict(img="/images/case-feinschliff.jpg", img_alt="Startseite der Demo-Webseite Feinschliff — fiktives Nagelstudio", tag="Demo · fiktives Studio", name="Feinschliff — Beispiel-Webseite für ein Nagelstudio", link="https://german-nail-studio.netlify.app/",
@@ -800,7 +797,6 @@ T["uk"] = dict(
     ws_text="Ви заповнюєте дані й одразу бачите свій сайт у готовому beauty-дизайні. Я все перевіряю, реєструю домен і публікую сайт.",
     ws_start="старт одноразово", ws_monat="/ міс.", ws_jahr="або %s / рік (2 місяці безкоштовно)", ws_first="Для перших %s клієнток: старт %s за кодом",
     ws_incl=["Хостинг, SSL і домен .de — власниця ви", "Тексти, ціни й фото змінюєте самі будь-коли", "1 невелика правка на місяць від мене", "Скасування будь-коли, діє до кінця оплаченого періоду"],
-    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Картка", "Apple Pay", "PayPal"],
     ws_btn="Почати →", ws_after="Оплата лише після перевірки — посилання на оплату надішлю e-mail.", ws_agb="Умови договору (Vertragsbedingungen, DE)", ws_ust="Kleinunternehmerin за § 19 UStG, без ПДВ.",
     pk_note="Ціни остаточні: як Kleinunternehmer за § 19 UStG я не нараховую ПДВ. Точний обсяг робіт фіксуємо письмово в пропозиції.",
     st_label="Як ми працюємо", st_title="Чотири кроки — і вас видно",
@@ -811,10 +807,10 @@ T["uk"] = dict(
     cs_label="Результати", cs_title="Реальні результати для реального бізнесу", cs_sub="Завершені проєкти для клієнтів — з цифрами та відгуками.", dm_label="Приклади сайтів",
     dm_title="Демо-дизайн — так може виглядати ваш сайт", dm_sub="Приклади для вигаданих студій — щоб ви побачили стиль і структуру. Гортайте пальцем або стрілками.",
     dm_prev="Попередній приклад", dm_next="Наступний приклад", dm_of="з", cs_prev="Попередній проєкт", cs_next="Наступний проєкт", swipe="Гортайте далі",
-    demos=[dict(img="/images/case-elle.jpg", img_alt="Головна сторінка сайту-портфоліо Elle's Beauty Studio — вигадана б’юті-студія в Дюссельдорфі", tag="Кейс портфоліо · вигадана студія", name="Elle's Beauty Studio — сайт для б’юті-студії в центрі міста", link="/demo/elle/",
+    demos=[dict(img='/images/case-midna.jpg', img_alt='Головна сторінка концепт-сайту Midna Nails — вигадана нейл-студія з курсами', tag='Концепт · вигадана студія', name='Midna Nails — концепт-сайт для нейл-студії з курсами', link='/demo/midna/', text='Мідь і крем, у шапці вітер ворушить волосся. Ціни у два рівні, роботи, студія, команда, курси манікюру з програмою й часті запитання — німецькою та українською. Студія вигадана — фото, цифри й дані лише для прикладу.', res=[]),
+           dict(img="/images/case-elle.jpg", img_alt="Головна сторінка сайту-портфоліо Elle's Beauty Studio — вигадана б’юті-студія в Дюссельдорфі", tag="Кейс портфоліо · вигадана студія", name="Elle's Beauty Studio — сайт для б’юті-студії в центрі міста", link="/demo/elle/",
                 text="Темний графіт, золото й рожевий із пір’ям — образ студії преміум-класу. Манікюр, педикюр, вії, брови й перманент: прайс за майстринями, запис у WhatsApp із готовим текстом, правила скасування й запізнень на видноті, галерея робіт, відгуки та години роботи — німецькою й російською. Студія вигадана — фото, відгуки й дані лише для прикладу.", res=[]),
            dict(img='/images/case-rose.jpg', img_alt='Головна сторінка концепт-сайту ROSÉ beauty space — вигадана б’юті-студія в Дюссельдорфі', tag='Концепт · вигадана студія', name='ROSÉ beauty space — концепт-сайт для нігтів, вій і брів', link='/demo/rose/', text='Спокійний тауп і графіт, елегантний шрифт Bodoni, арка з ранункулюсом і пелюстки, що падають. Послуги плитками, детальний прайс, студія, команда, галерея, відгуки й часті запитання — німецькою та російською. Студія вигадана — фото, відгуки й дані лише для прикладу.', res=[]),
-           dict(img='/images/case-midna.jpg', img_alt='Головна сторінка концепт-сайту Midna Nails — вигадана нейл-студія з курсами', tag='Концепт · вигадана студія', name='Midna Nails — концепт-сайт для нейл-студії з курсами', link='/demo/midna/', text='Мідь і крем, у шапці вітер ворушить волосся. Ціни у два рівні, роботи, студія, команда, курси манікюру з програмою й часті запитання — німецькою та українською. Студія вигадана — фото, цифри й дані лише для прикладу.', res=[]),
            dict(img="/images/case-makova.jpg", img_alt="Головна сторінка концепт-сайту MAKOVA Art & Beauty Studio — вигадана б’юті-студія", tag="Концепт · вигадана студія", name="MAKOVA — концепт-сайт для б’юті-студії", link="/demo/makova/",
                 text="Студія з багатьма послугами на одній сторінці: нігті, педикюр, масаж, брови й вії, макіяж і майстер-класи. Прайс за категоріями, галерея, команда, студія та години роботи — німецькою й українською. Власна кольорова концепція: бордо, крем і маки. Студія вигадана — фото, відгуки й дані лише для прикладу.", res=[]),
            dict(img="/images/case-feinschliff.jpg", img_alt="Головна сторінка демо-сайту Feinschliff — вигадана нейл-студія", tag="Демо · вигадана студія", name="Feinschliff — приклад сайту для нейл-студії", link="https://german-nail-studio.netlify.app/",
@@ -935,7 +931,6 @@ T["ru"] = dict(
     ws_text="Вы заполняете данные и сразу видите свой сайт в готовом beauty-дизайне. Я всё проверяю, регистрирую домен и публикую сайт.",
     ws_start="старт единоразово", ws_monat="/ мес.", ws_jahr="или %s / год (2 месяца бесплатно)", ws_first="Для первых %s клиенток: старт %s по коду",
     ws_incl=["Хостинг, SSL и домен .de — владелица вы", "Тексты, цены и фото меняете сами в любой момент", "1 небольшая правка в месяц от меня", "Отмена в любой момент, действует до конца оплаченного периода"],
-    ws_pay="Оплата", ws_pay_m=["SEPA-Lastschrift", "Карта", "Apple Pay", "PayPal"],
     ws_btn="Начать →", ws_after="Оплата только после проверки — ссылку на оплату пришлю по e-mail.", ws_agb="Условия договора (Vertragsbedingungen, DE)", ws_ust="Kleinunternehmerin по § 19 UStG, без НДС.",
     pk_note="Цены окончательные: как Kleinunternehmer по § 19 UStG я не начисляю НДС. Точный объём работ фиксируем письменно в предложении.",
     st_label="Как мы работаем", st_title="Четыре шага — и вас видно",
@@ -946,10 +941,10 @@ T["ru"] = dict(
     cs_label="Результаты", cs_title="Реальные результаты для реального бизнеса", cs_sub="Готовые проекты для клиентов — с цифрами и отзывами.", dm_label="Примеры сайтов",
     dm_title="Демо-дизайн — так может выглядеть ваш сайт", dm_sub="Примеры для вымышленных студий — чтобы вы увидели стиль и структуру. Листайте пальцем или стрелками.",
     dm_prev="Предыдущий пример", dm_next="Следующий пример", dm_of="из", cs_prev="Предыдущий проект", cs_next="Следующий проект", swipe="Листайте дальше",
-    demos=[dict(img="/images/case-elle.jpg", img_alt="Главная страница сайта-портфолио Elle's Beauty Studio — вымышленная бьюти-студия в Дюссельдорфе", tag="Кейс портфолио · вымышленная студия", name="Elle's Beauty Studio — сайт для бьюти-студии в центре города", link="/demo/elle/",
+    demos=[dict(img='/images/case-midna.jpg', img_alt='Главная страница концепт-сайта Midna Nails — вымышленная нейл-студия с курсами', tag='Концепт · вымышленная студия', name='Midna Nails — концепт-сайт для нейл-студии с курсами', link='/demo/midna/', text='Медь и крем, в шапке ветер шевелит волосы. Цены в два уровня, работы, студия, команда, курсы маникюра с программой и частые вопросы — на немецком и украинском. Студия вымышленная — фото, цифры и данные только для примера.', res=[]),
+           dict(img="/images/case-elle.jpg", img_alt="Главная страница сайта-портфолио Elle's Beauty Studio — вымышленная бьюти-студия в Дюссельдорфе", tag="Кейс портфолио · вымышленная студия", name="Elle's Beauty Studio — сайт для бьюти-студии в центре города", link="/demo/elle/",
                 text="Тёмный графит, золото и розовый с перьями — образ студии премиум-класса. Маникюр, педикюр, ресницы, брови и перманент: прайс по мастерам, запись в WhatsApp с готовым текстом, правила отмены и опозданий на виду, галерея работ, отзывы и часы работы — на немецком и русском. Студия вымышленная — фото, отзывы и данные только для примера.", res=[]),
            dict(img='/images/case-rose.jpg', img_alt='Главная страница концепт-сайта ROSÉ beauty space — вымышленная бьюти-студия в Дюссельдорфе', tag='Концепт · вымышленная студия', name='ROSÉ beauty space — концепт-сайт для ногтей, ресниц и бровей', link='/demo/rose/', text='Спокойный тауп и графит, элегантный шрифт Bodoni, арка с ранункулюсом и падающие лепестки. Услуги плитками, подробный прайс, студия, команда, галерея, отзывы и частые вопросы — на немецком и русском. Студия вымышленная — фото, отзывы и данные только для примера.', res=[]),
-           dict(img='/images/case-midna.jpg', img_alt='Главная страница концепт-сайта Midna Nails — вымышленная нейл-студия с курсами', tag='Концепт · вымышленная студия', name='Midna Nails — концепт-сайт для нейл-студии с курсами', link='/demo/midna/', text='Медь и крем, в шапке ветер шевелит волосы. Цены в два уровня, работы, студия, команда, курсы маникюра с программой и частые вопросы — на немецком и украинском. Студия вымышленная — фото, цифры и данные только для примера.', res=[]),
            dict(img="/images/case-makova.jpg", img_alt="Главная страница концепт-сайта MAKOVA Art & Beauty Studio — вымышленная бьюти-студия", tag="Концепт · вымышленная студия", name="MAKOVA — концепт-сайт для бьюти-студии", link="/demo/makova/",
                 text="Студия с множеством услуг на одной странице: ногти, педикюр, массаж, брови и ресницы, макияж и мастер-классы. Прайс по категориям, галерея, команда, студия и часы работы — на немецком и украинском. Собственная цветовая концепция: бордо, крем и маки. Студия вымышленная — фото, отзывы и данные только для примера.", res=[]),
            dict(img="/images/case-feinschliff.jpg", img_alt="Главная страница демо-сайта Feinschliff — вымышленная ногтевая студия", tag="Демо · вымышленная студия", name="Feinschliff — пример сайта для ногтевой студии", link="https://german-nail-studio.netlify.app/",
@@ -1559,15 +1554,10 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>\n\n'
         w('        </ul>\n        <p class="pkg-term">%s</p>\n        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="%s">%s</a>\n      </article>\n' % (esc(p["term"]), esc(_plain(p["name"])[:1]), esc(t["pk_btn"])))
     w('    </div>\n')
     if WS_URL:  # карточка тарифа «Website-Abo»
-        icons = {0: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>',
-                 1: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>',
-                 2: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>',
-                 3: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h14.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2H17"/><path d="M16 13.5h2"/></svg>'}
         first = ('<small>%s</small>' % esc(t["ws_first"] % (WS_PLAETZE, WS_CODE))) if WS_CODE else ''
         w('    <div class="ws-teaser" id="website-abo">\n      <div><span class="ws-neu">%s</span><h3>%s</h3><p>%s</p>\n        <ul class="ws-incl">%s</ul>\n'
           % (esc(t["ws_neu"]), esc(t["ws_title"]), esc(t["ws_text"]), "".join('<li>%s</li>' % esc(x) for x in t["ws_incl"])))
-        w('        <div class="ws-pay"><span>%s</span>%s</div>\n      </div>\n'
-          % (esc(t["ws_pay"]), "".join('<span class="ws-pm">%s%s</span>' % (icons[i], esc(m)) for i, m in enumerate(t["ws_pay_m"]))))
+        w('      </div>\n')  # способы оплаты не показываем — их видно уже в Stripe при оплате
         w('      <div class="ws-price"><b>%s</b> %s<br><b>%s</b> %s<span class="ws-jahr">%s</span>%s<span class="ws-ust">%s</span></div>\n'
           % (esc(WS_MONAT), esc(t["ws_monat"]), esc(WS_START), esc(t["ws_start"]), esc(t["ws_jahr"] % WS_JAHR), first, esc(t["ws_ust"])))
         w('      <div class="ws-cta"><a class="ws-btn" href="%s?lang=%s" data-umami-event="website-selbst-teaser">%s</a><p class="ws-after">%s</p><a class="ws-agb" href="%s" data-umami-event="website-abo-agb">%s</a></div>\n    </div>\n'

@@ -449,9 +449,6 @@ a.inl:hover{color:var(--ink)}
 .ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
 .ws-incl li{position:relative;padding-left:20px}
 .ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
-.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
-.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
-.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
 .ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
 .ws-agb{font-size:12.5px;color:var(--amber-light)}
@@ -533,6 +530,7 @@ a.inl:hover{color:var(--ink)}
 .result-item .r-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--ink);line-height:1.2}
 .result-item .r-lbl{font-size:12px;color:var(--ink-soft);margin-top:2px;max-width:22ch;line-height:1.4}
 .case.has-img{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center}
+.demo-slide.has-img{align-content:start}
 .case-img{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);line-height:0}
 .case-img img{width:100%;height:auto;display:block}
 .case.has-img .case-result{gap:22px}
@@ -721,7 +719,7 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
-  .case.has-img{gap:20px}
+  .case.has-img{gap:20px;align-items:start}
   .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
   .car-side{width:46px;height:46px;font-size:18px;top:118px}.car-next{right:-8px}.car-prev{left:-8px}
   .beispiele{padding:0 0 64px}
@@ -890,6 +888,14 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
     <div class="car-view">
     <div class="demo-track" tabindex="0">
       <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="1 von 5">
+        <a class="case-img" href="/demo/midna/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-midna-600.avif 600w, /images/case-midna-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-midna-600.webp 600w, /images/case-midna-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-midna.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite Midna Nails — fiktives Nagelstudio mit Kursen" loading="lazy" decoding="async"></picture></a>
+        <div>
+        <div class="case-tag">Konzept · fiktives Studio</div>
+        <h3><a href="/demo/midna/" target="_blank" rel="noopener">Midna Nails — Konzept-Webseite für ein Nagelstudio mit Kursen</a></h3>
+        <p>Kupfer und Creme, im Header bewegt der Wind die Haare. Preise in zwei Stufen, Arbeiten, Studio, Team, Maniküre-Kurse mit Programm und häufige Fragen — auf Deutsch und Ukrainisch. Das Studio ist erfunden — Fotos, Zahlen und Angaben dienen nur als Beispiel.</p>
+        </div>
+      </div>
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 von 5">
         <a class="case-img" href="/demo/elle/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-elle-600.avif 600w, /images/case-elle-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-elle-600.webp 600w, /images/case-elle-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-elle.jpg" width="1200" height="750" alt="Startseite der Portfolio-Webseite Elle&#x27;s Beauty Studio — fiktives Beauty-Studio in Düsseldorf" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Portfolio-Case · fiktives Studio</div>
@@ -897,20 +903,12 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
         <p>Dunkles Graphit, Gold und Pink mit Federn — ein eleganter Auftritt für ein Studio im gehobenen Segment. Maniküre, Pediküre, Wimpern, Brauen und Permanent Make-up: Preisliste nach Stylistinnen, Terminanfrage per WhatsApp mit vorbereitetem Text, Regeln zu Absage und Verspätung gut sichtbar, Galerie, Bewertungen und Öffnungszeiten — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
         </div>
       </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="2 von 5">
+      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 von 5">
         <a class="case-img" href="/demo/rose/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-rose-600.avif 600w, /images/case-rose-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-rose-600.webp 600w, /images/case-rose-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-rose.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite ROSÉ beauty space — fiktives Beauty-Studio in Düsseldorf" loading="lazy" decoding="async"></picture></a>
         <div>
         <div class="case-tag">Konzept · fiktives Studio</div>
         <h3><a href="/demo/rose/" target="_blank" rel="noopener">ROSÉ beauty space — Konzept-Webseite für Nägel, Wimpern &amp; Augenbrauen</a></h3>
         <p>Ruhiges Taupe und Graphit, elegante Bodoni-Schrift, ein Bogen mit Ranunkel und fallende Rosenblätter. Leistungen als Kacheln, ausführliche Preisliste, Studio, Team, Galerie, Bewertungen und häufige Fragen — auf Deutsch und Russisch. Das Studio ist erfunden — Fotos, Bewertungen und Angaben dienen nur als Beispiel.</p>
-        </div>
-      </div>
-      <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="3 von 5">
-        <a class="case-img" href="/demo/midna/" target="_blank" rel="noopener"><picture><source type="image/avif" srcset="/images/case-midna-600.avif 600w, /images/case-midna-1200.avif 1200w" sizes="(max-width:900px) 92vw, 560px"><source type="image/webp" srcset="/images/case-midna-600.webp 600w, /images/case-midna-1200.webp 1200w" sizes="(max-width:900px) 92vw, 560px"><img src="/images/case-midna.jpg" width="1200" height="750" alt="Startseite der Konzept-Webseite Midna Nails — fiktives Nagelstudio mit Kursen" loading="lazy" decoding="async"></picture></a>
-        <div>
-        <div class="case-tag">Konzept · fiktives Studio</div>
-        <h3><a href="/demo/midna/" target="_blank" rel="noopener">Midna Nails — Konzept-Webseite für ein Nagelstudio mit Kursen</a></h3>
-        <p>Kupfer und Creme, im Header bewegt der Wind die Haare. Preise in zwei Stufen, Arbeiten, Studio, Team, Maniküre-Kurse mit Programm und häufige Fragen — auf Deutsch und Ukrainisch. Das Studio ist erfunden — Fotos, Zahlen und Angaben dienen nur als Beispiel.</p>
         </div>
       </div>
       <div class="case has-img demo-slide" role="group" aria-roledescription="slide" aria-label="4 von 5">
@@ -997,7 +995,6 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>
     <div class="ws-teaser" id="website-abo">
       <div><span class="ws-neu">Neu</span><h3>Website selbst gestalten</h3><p>Sie füllen Ihre Angaben aus und sehen sofort Ihre Website im fertigen Beauty-Design. Ich prüfe alles, registriere die Domain und schalte die Seite frei.</p>
         <ul class="ws-incl"><li>Hosting, SSL und .de-Domain – Inhaberin sind Sie</li><li>Texte, Preise und Fotos ändern Sie jederzeit selbst</li><li>1 kleine Änderung pro Monat durch mich</li><li>Kündigung jederzeit zum Ende des Zeitraums</li></ul>
-        <div class="ws-pay"><span>Bezahlen per</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M5 10v8m4.7-8v8m4.6-8v8M19 10v8M3 20h18"/></svg>SEPA-Lastschrift</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>Karte</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>Apple Pay</span><span class="ws-pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h14.5a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2H17"/><path d="M16 13.5h2"/></svg>PayPal</span></div>
       </div>
       <div class="ws-price"><b>19 €</b> / Monat<br><b>79 €</b> einmalig Start<span class="ws-jahr">oder 190 € / Jahr (2 Monate gratis)</span><small>Für die ersten 5 Kundinnen: Start 50 € mit Code</small><span class="ws-ust">Kleinunternehmerin nach § 19 UStG, keine USt.</span></div>
       <div class="ws-cta"><a class="ws-btn" href="/website-selbst/?lang=de" data-umami-event="website-selbst-teaser">Jetzt starten →</a><p class="ws-after">Bezahlung erst nach Prüfung — Zahlungslink per E-Mail.</p><a class="ws-agb" href="/vertragsbedingungen-website-abo.html" data-umami-event="website-abo-agb">Vertragsbedingungen Website-Abo</a></div>

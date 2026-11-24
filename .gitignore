@@ -1,3 +1,5 @@
 PROJECT.md
 *.patch
 __pycache__/
+Claude outputs/
+_build/entwuerfe/
