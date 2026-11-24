@@ -191,11 +191,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -533,7 +544,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <h1>Tilda чи замовити сайт: що обрати майстрині в Німеччині</h1>
 <p class="lead">Tilda — добрий конструктор, і зробити на ньому сайт самій цілком реально. Питання не «чи можна», а «скільки це коштуватиме вам насправді» — у грошах, вечорах і нервах. Особливо в Німеччині, де в сайту є обов&#x27;язкові юридичні сторінки, а клієнти шукають вас німецькою.</p>
 <h2>Коротко: кому що підходить</h2>
-<ul><li><strong>Самій на Tilda</strong> — якщо вам подобається розбиратися, є кілька вільних вечорів і хочеться повністю свій дизайн.</li><li><strong>Готовий шаблон, який ви правите самі</strong> — якщо потрібен гарний сайт швидко й недорого, але ви хочете самі змінювати ціни та фото.</li><li><strong>Сайт під ключ</strong> — якщо часу немає, потрібен результат до терміну й важливо, щоб німецькі тексти, Impressum і Google-профіль були зроблені правильно.</li></ul>
+<ul><li><strong>Самій на Tilda</strong> — якщо вам подобається розбиратися, є кілька вільних вечорів і хочеться повністю свій дизайн.</li><li><strong>Готовий шаблон, який ви правите самі</strong> — якщо потрібен гарний сайт швидко й недорого, але ви хочете самі змінювати ціни та фото.</li><li><strong><a class="inl" href="/uk/sait-vizytka-dlia-maistra-manikiuru.html">Сайт під ключ</a></strong> — якщо часу немає, потрібен результат до терміну й важливо, щоб німецькі тексти, Impressum і Google-профіль були зроблені правильно.</li></ul>
 <p>Нижче — докладно, з цифрами.</p>
 <h2>Скільки насправді коштує Tilda</h2>
 <p>У Tilda є безкоштовний тариф, але на ньому не можна підключити свій домен: сайт буде за адресою на кшталт ім&#x27;я.tilda.ws і з плашкою «Made on Tilda». Для бізнесу це виглядає несерйозно, і клієнти це помічають.</p>
@@ -542,7 +553,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <div class="tip"><p><strong>Найдорожче в конструкторі — ваш час.</strong> Перший сайт у новачка займає не один вечір: вибрати блоки, підібрати шрифти, обробити фото, окремо перевірити, як усе виглядає на телефоні. А потім ще тексти й юридичні сторінки.</p></div>
 <h2>Чого конструктор не зробить за вас</h2>
 <p>Tilda дає блоки та хостинг. Усе інше — ваша відповідальність як власниці сайту. У Німеччині це особливо важливо.</p>
-<ul><li><strong>Impressum і Datenschutz.</strong> Вони обов&#x27;язкові для комерційного сайту, і тексти ви пишете самі. У Datenschutz треба перелічити все, що використовує сайт: хостинг, форми заявок, аналітику, вбудовані карти й відео. У Tilda є інструкції щодо GDPR, але вони не напишуть текст під ваш бізнес.</li><li><strong>Cookie-банер.</strong> Якщо ви підключаєте статистику, Google Maps на сторінці або відео з YouTube, зазвичай потрібна згода відвідувача. Її треба налаштувати правильно, а не просто «щоб було».</li><li><strong>Німецькі тексти, які шукають клієнти.</strong> Клієнтка в Дюссельдорфі пише в Google «Maniküre Benrath», а не «манікюр». Якщо на сайті лише українська чи російська, Google не зрозуміє, що ви поруч і робите саме це.</li><li><strong>Зв&#x27;язок із Google Maps.</strong> Сайт і профіль у Google мають збігатися: одна назва, одна адреса, один телефон. Докладно я писала про це в статті <a class="inl" href="/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html">«Чому вас не знаходять у Google Maps»</a>.</li><li><strong>Мобільна версія.</strong> Більшість клієнток відкриють сайт із телефона. У вільних блоках Tilda (Zero Block) мобільну версію часто доводиться збирати окремо.</li></ul>
+<ul><li><strong><a class="inl" href="/uk/blog/impressum-i-datenschutz-dlia-maistra.html">Impressum і Datenschutz</a>.</strong> Вони обов&#x27;язкові для комерційного сайту, і тексти ви пишете самі. У Datenschutz треба перелічити все, що використовує сайт: хостинг, форми заявок, аналітику, вбудовані карти й відео. У Tilda є інструкції щодо GDPR, але вони не напишуть текст під ваш бізнес.</li><li><strong>Cookie-банер.</strong> Якщо ви підключаєте статистику, Google Maps на сторінці або відео з YouTube, зазвичай потрібна згода відвідувача. Її треба налаштувати правильно, а не просто «щоб було».</li><li><strong>Німецькі тексти, які шукають клієнти.</strong> Клієнтка в Дюссельдорфі пише в Google «Maniküre Benrath», а не «манікюр». Якщо на сайті лише українська чи російська, Google не зрозуміє, що ви поруч і робите саме це.</li><li><strong>Зв&#x27;язок із Google Maps.</strong> Сайт і профіль у Google мають збігатися: одна назва, одна адреса, один телефон. Докладно я писала про це в статті <a class="inl" href="/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html">«Чому вас не знаходять у Google Maps»</a>.</li><li><strong>Мобільна версія.</strong> Більшість клієнток відкриють сайт із телефона. У вільних блоках Tilda (Zero Block) мобільну версію часто доводиться збирати окремо.</li></ul>
 <h2>Часті помилки саморобних сайтів</h2>
 <p>Я регулярно бачу одне й те саме:</p>
 <ul><li>послуги й ціни — <strong>картинкою</strong>, а не текстом (Google їх не читає);</li><li>немає адреси й району — клієнтка не розуміє, чи далеко йти;</li><li>фото по 5–10 МБ — сайт довго вантажиться на телефоні;</li><li>Impressum скопійований в іншої студії — з чужими даними;</li><li>сайт лише українською чи російською — і не знаходиться німецькою.</li></ul>

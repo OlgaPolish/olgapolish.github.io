@@ -15,7 +15,7 @@ TILDA_POST = {
 
 - **Самой на Tilda** — если вам нравится разбираться, есть несколько свободных вечеров и хочется полностью свой дизайн.
 - **Готовый шаблон, который вы правите сами** — если нужен красивый сайт быстро и недорого, но вы хотите сама менять цены и фото.
-- **Сайт под ключ** — если времени нет, нужен результат к сроку и важно, чтобы немецкие тексты, Impressum и Google-профиль были сделаны правильно.
+- **[Сайт под ключ](/ru/sait-vizitka-dlya-mastera-manikyura.html)** — если времени нет, нужен результат к сроку и важно, чтобы немецкие тексты, Impressum и Google-профиль были сделаны правильно.
 
 Ниже — подробно, с цифрами.
 
@@ -33,7 +33,7 @@ TILDA_POST = {
 
 Tilda даёт блоки и хостинг. Всё остальное — ваша ответственность как владелицы сайта. В Германии это особенно важно.
 
-- **Impressum и Datenschutz.** Они обязательны для коммерческого сайта, и тексты вы пишете сами. В Datenschutz нужно перечислить всё, что сайт использует: хостинг, формы заявок, аналитику, встроенные карты и видео. У Tilda есть инструкции по GDPR, но они не напишут текст под ваш бизнес.
+- **[Impressum и Datenschutz](/ru/blog/impressum-i-datenschutz-dlya-mastera.html).** Они обязательны для коммерческого сайта, и тексты вы пишете сами. В Datenschutz нужно перечислить всё, что сайт использует: хостинг, формы заявок, аналитику, встроенные карты и видео. У Tilda есть инструкции по GDPR, но они не напишут текст под ваш бизнес.
 - **Cookie-баннер.** Если вы подключаете статистику, Google Maps на странице или видео с YouTube, обычно нужно согласие посетителя. Его нужно настроить правильно, а не просто «чтобы было».
 - **Немецкие тексты, которые ищут клиенты.** Клиентка в Дюссельдорфе пишет в Google «Maniküre Benrath», а не «маникюр». Если на сайте только русский или украинский, Google не поймёт, что вы рядом и делаете именно это.
 - **Связь с Google Maps.** Сайт и профиль в Google должны совпадать: одно название, один адрес, один телефон. Подробно я писала об этом в статье [«Почему вас не находят в Google Maps»](/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html).
@@ -92,7 +92,7 @@ Tilda даёт блоки и хостинг. Всё остальное — ва�
 
 - **Самій на Tilda** — якщо вам подобається розбиратися, є кілька вільних вечорів і хочеться повністю свій дизайн.
 - **Готовий шаблон, який ви правите самі** — якщо потрібен гарний сайт швидко й недорого, але ви хочете самі змінювати ціни та фото.
-- **Сайт під ключ** — якщо часу немає, потрібен результат до терміну й важливо, щоб німецькі тексти, Impressum і Google-профіль були зроблені правильно.
+- **[Сайт під ключ](/uk/sait-vizytka-dlia-maistra-manikiuru.html)** — якщо часу немає, потрібен результат до терміну й важливо, щоб німецькі тексти, Impressum і Google-профіль були зроблені правильно.
 
 Нижче — докладно, з цифрами.
 
@@ -110,7 +110,7 @@ Tilda даёт блоки и хостинг. Всё остальное — ва�
 
 Tilda дає блоки та хостинг. Усе інше — ваша відповідальність як власниці сайту. У Німеччині це особливо важливо.
 
-- **Impressum і Datenschutz.** Вони обов'язкові для комерційного сайту, і тексти ви пишете самі. У Datenschutz треба перелічити все, що використовує сайт: хостинг, форми заявок, аналітику, вбудовані карти й відео. У Tilda є інструкції щодо GDPR, але вони не напишуть текст під ваш бізнес.
+- **[Impressum і Datenschutz](/uk/blog/impressum-i-datenschutz-dlia-maistra.html).** Вони обов'язкові для комерційного сайту, і тексти ви пишете самі. У Datenschutz треба перелічити все, що використовує сайт: хостинг, форми заявок, аналітику, вбудовані карти й відео. У Tilda є інструкції щодо GDPR, але вони не напишуть текст під ваш бізнес.
 - **Cookie-банер.** Якщо ви підключаєте статистику, Google Maps на сторінці або відео з YouTube, зазвичай потрібна згода відвідувача. Її треба налаштувати правильно, а не просто «щоб було».
 - **Німецькі тексти, які шукають клієнти.** Клієнтка в Дюссельдорфі пише в Google «Maniküre Benrath», а не «манікюр». Якщо на сайті лише українська чи російська, Google не зрозуміє, що ви поруч і робите саме це.
 - **Зв'язок із Google Maps.** Сайт і профіль у Google мають збігатися: одна назва, одна адреса, один телефон. Докладно я писала про це в статті [«Чому вас не знаходять у Google Maps»](/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html).
@@ -187,7 +187,7 @@ Das sind also rund **120–130 € im ersten Jahr**. Ehrlich gesagt: günstig. A
 
 Tilda liefert Blöcke und Hosting. Alles andere liegt in Ihrer Verantwortung als Betreiberin der Website. In Deutschland ist das besonders wichtig.
 
-- **Impressum und Datenschutz.** Beides ist für eine geschäftliche Website Pflicht, und die Texte schreiben Sie selbst. In die Datenschutzerklärung gehört alles, was die Website nutzt: Hosting, Kontaktformulare, Statistik, eingebettete Karten und Videos. Tilda hat Anleitungen zur DSGVO, aber keinen Text für Ihr Unternehmen.
+- **[Impressum und Datenschutz](/blog/impressum-datenschutz-nagelstudio-kosmetikstudio.html).** Beides ist für eine geschäftliche Website Pflicht, und die Texte schreiben Sie selbst. In die Datenschutzerklärung gehört alles, was die Website nutzt: Hosting, Kontaktformulare, Statistik, eingebettete Karten und Videos. Tilda hat Anleitungen zur DSGVO, aber keinen Text für Ihr Unternehmen.
 - **Cookie-Banner.** Wenn Sie Statistik, eine Google-Karte oder YouTube-Videos einbinden, brauchen Sie in der Regel die Einwilligung der Besucherinnen. Die muss richtig eingerichtet sein – nicht nur „damit etwas da ist“.
 - **Deutsche Texte, nach denen gesucht wird.** Eine Kundin in Düsseldorf sucht bei Google „Maniküre Benrath“. Steht auf Ihrer Website nur Russisch oder Ukrainisch, versteht Google nicht, dass Sie in der Nähe sind und genau das anbieten.
 - **Verbindung zu Google Maps.** Website und Google-Profil müssen übereinstimmen: gleicher Name, gleiche Adresse, gleiche Telefonnummer. Mehr dazu im Artikel [„Warum Sie bei Google Maps nicht gefunden werden“](/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html).

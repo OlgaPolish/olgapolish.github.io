@@ -191,11 +191,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -556,9 +567,9 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <p>Якщо в Google «Studio Anna», на сайті «Anna Nails &amp; Beauty», а в старому каталозі — колишня адреса й інший телефон, Google менше довіряє даним і обережніше показує вас. Пройдіться по всіх місцях, де ви є, і вирівняйте дані до однієї версії.</p>
 <h2>6. Немає сайту — або він мовчить</h2>
 <p>Сайт — один із сигналів помітності. Але навіть коли сайт є, він часто не допомагає: одна сторінка з логотипом, без переліку послуг, без адреси, без німецьких слів, які шукають клієнти.</p>
-<p>Сайт, що працює на карти, — це:</p>
-<ul><li>послуги й ціни <strong>текстом</strong>, а не лише картинкою;</li><li>та сама назва, адреса й телефон, що й у профілі;</li><li>райони, де ви працюєте;</li><li>обов&#x27;язковий Impressum і Datenschutz.</li></ul>
-<p>Якщо у вас тільки Instagram — це краще, ніж нічого, але Google значно гірше «читає» Instagram, ніж звичайний сайт.</p>
+<p><a class="inl" href="/uk/sait-vizytka-dlia-maistra-manikiuru.html">Сайт, що працює на карти</a>, — це:</p>
+<ul><li>послуги й ціни <strong>текстом</strong>, а не лише картинкою;</li><li>та сама назва, адреса й телефон, що й у профілі;</li><li>райони, де ви працюєте;</li><li>обов&#x27;язковий <a class="inl" href="/uk/blog/impressum-i-datenschutz-dlia-maistra.html">Impressum і Datenschutz</a>.</li></ul>
+<p>Якщо у вас <a class="inl" href="/uk/blog/tilky-instagram-tse-orenda.html">тільки Instagram</a> — це краще, ніж нічого, але Google значно гірше «читає» Instagram, ніж звичайний сайт.</p>
 <h2>7. Профіль порушує правила — і Google його приглушує</h2>
 <p>Деякі «хитрощі» дають протилежний ефект:</p>
 <ul><li><strong>Ключові слова в назві.</strong> «Anna Nails — Maniküre Pediküre Gel Düsseldorf günstig» замість назви з вивіски. Конкуренти можуть поскаржитися, і Google змінить назву або заблокує профіль.</li><li><strong>Два профілі</strong> на один бізнес (наприклад, старий і новий після переїзду). Вони конкурують між собою — дублікат треба видалити або об&#x27;єднати.</li><li><strong>Віртуальний офіс</strong> чи адреса, де вас насправді немає.</li></ul>

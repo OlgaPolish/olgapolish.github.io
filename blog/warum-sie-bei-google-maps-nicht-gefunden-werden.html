@@ -191,11 +191,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -556,9 +567,9 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <p>Heißt es bei Google „Studio Anna“, auf der Website „Anna Nails &amp; Beauty“ und im alten Verzeichnis steht noch die frühere Adresse mit anderer Nummer, vertraut Google den Daten weniger und zeigt Sie vorsichtiger an. Gehen Sie alle Stellen durch, an denen Sie zu finden sind, und bringen Sie die Daten auf einen Stand.</p>
 <h2>6. Keine Website – oder eine, die nichts sagt</h2>
 <p>Die Website ist eines der Signale für Bekanntheit. Aber selbst wenn es eine gibt, hilft sie oft nicht: eine Seite mit Logo, ohne Leistungen, ohne Adresse, ohne die deutschen Wörter, nach denen Kundinnen suchen.</p>
-<p>Eine Website, die für die Karte arbeitet, hat:</p>
-<ul><li>Leistungen und Preise <strong>als Text</strong>, nicht nur als Bild;</li><li>denselben Namen, dieselbe Adresse und Telefonnummer wie im Profil;</li><li>die Stadtteile, in denen Sie arbeiten;</li><li>das Pflicht-Impressum und die Datenschutzerklärung.</li></ul>
-<p>Wenn Sie nur Instagram haben, ist das besser als nichts – aber Google „liest“ Instagram deutlich schlechter als eine normale Website.</p>
+<p>Eine <a class="inl" href="/#pakete">Website, die für die Karte arbeitet</a>, hat:</p>
+<ul><li>Leistungen und Preise <strong>als Text</strong>, nicht nur als Bild;</li><li>denselben Namen, dieselbe Adresse und Telefonnummer wie im Profil;</li><li>die Stadtteile, in denen Sie arbeiten;</li><li>das Pflicht-Impressum und die <a class="inl" href="/blog/impressum-datenschutz-nagelstudio-kosmetikstudio.html">Datenschutzerklärung</a>.</li></ul>
+<p>Wenn Sie <a class="inl" href="/blog/nur-instagram-ist-miete.html">nur Instagram</a> haben, ist das besser als nichts – aber Google „liest“ Instagram deutlich schlechter als eine normale Website.</p>
 <h2>7. Das Profil verstößt gegen Regeln – und Google bremst es aus</h2>
 <p>Manche „Tricks“ bewirken das Gegenteil:</p>
 <ul><li><strong>Suchbegriffe im Namen.</strong> „Anna Nails – Maniküre Pediküre Gel Düsseldorf günstig“ statt des Namens auf dem Schild. Die Konkurrenz kann das melden, und Google ändert den Namen oder sperrt das Profil.</li><li><strong>Zwei Profile</strong> für ein Unternehmen (zum Beispiel ein altes und ein neues nach dem Umzug). Sie konkurrieren miteinander – das Duplikat muss gelöscht oder zusammengeführt werden.</li><li><strong>Virtuelles Büro</strong> oder eine Adresse, an der Sie gar nicht sind.</li></ul>

@@ -188,11 +188,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -528,6 +539,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <div class="blog-main">
 <section class="blog-hero"><div class="blog-cover"><picture><source type="image/avif" srcset="/images/blog/blog-header-800.avif 800w, /images/blog/blog-header-1600.avif 1600w" sizes="(max-width:900px) 92vw, 820px"><source type="image/webp" srcset="/images/blog/blog-header-800.webp 800w, /images/blog/blog-header-1600.webp 1600w" sizes="(max-width:900px) 92vw, 820px"><img src="/images/blog/blog-header.jpg" width="1600" height="800" alt="" fetchpriority="high" decoding="async"></picture></div><div class="sec-label">Блог</div><h1>Блог</h1><p>Объясняю простыми словами, как малому бизнесу в Германии получать клиентов из Google: профиль на картах, сайт, отзывы.</p></section>
 <div class="post-list">
+<a class="post-card" href="/ru/blog/impressum-i-datenschutz-dlya-mastera.html"><div class="post-meta">24 ноября 2026 · 8 мин чтения</div><h2>Impressum и Datenschutz для мастера маникюра и косметолога: что обязательно в 2026 году</h2><p>Две обязательные страницы, из-за которых приходят Abmahnungen. Разбираю по пунктам, что в них должно быть, что изменилось за последний год — и где у косметологов больше подводных камней.</p><span class="post-more">Читать →</span></a>
 <a class="post-card" href="/ru/blog/tilda-ili-zakazat-sajt.html"><div class="post-meta">20 ноября 2026 · 4 мин чтения</div><h2>Tilda или заказать сайт: что выбрать мастеру в Германии</h2><p>Конструктор стоит 10 долларов в месяц, но сайт — это не только блоки. Сравниваю три пути: самой на Tilda, готовый шаблон или сайт под ключ.</p><span class="post-more">Читать →</span></a>
 <a class="post-card" href="/ru/blog/tolko-instagram-eto-arenda.html"><div class="post-meta">7 ноября 2026 · 4 мин чтения</div><h2>Только Instagram — это аренда</h2><p>Аккаунт могут заблокировать за один день. Почему рядом с Instagram нужно то, что принадлежит вам: сайт и Google-профиль.</p><span class="post-more">Читать →</span></a>
 <a class="post-card" href="/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html"><div class="post-meta">28 октября 2026 · 4 мин чтения</div><h2>Почему вас не находят в Google Maps: 7 причин, о которых молчат чек-листы</h2><p>Профиль заполнен, фото есть — а звонков нет. Объясняю, как Google выбирает, кого показать на карте, и что мешает именно вам.</p><span class="post-more">Читать →</span></a>

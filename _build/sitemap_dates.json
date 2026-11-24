@@ -4,20 +4,24 @@
   "hash": "4cc1736db934592883c1577b39c16d1a2a092118dcedd6217946bce112e6e351"
  },
  "blog/": {
-  "date": "2026-11-20",
-  "hash": "f4489e236f648ad4c905ca2ce3766d9ddca81dd41f671681b5a6ff18a17b16d4"
+  "date": "2026-11-24",
+  "hash": "efa678fe9fb6bdc3b9f62cbe9bf8c51046871cc15a6fe97e69b6f76f068a7c24"
+ },
+ "blog/impressum-datenschutz-nagelstudio-kosmetikstudio.html": {
+  "date": "2026-11-24",
+  "hash": "fd4e800eb8a49f7653cd85d4050a64d555318caed59c1924fe25cdf23a2bea78"
  },
  "blog/nur-instagram-ist-miete.html": {
-  "date": "2026-11-20",
-  "hash": "2827d940059933a56962e82605761ddb6fe5f03c5c4d08d0cb418c5dd7eed53f"
+  "date": "2026-11-24",
+  "hash": "0e4349de5ac9c47adf9ec354f052ba8930d3e19f086f1a00b983f90252ee6fb6"
  },
  "blog/tilda-oder-website-erstellen-lassen.html": {
-  "date": "2026-11-20",
-  "hash": "b0cf9b0798f4bed24a4ea98fc2d0cbeb7bc7041805adb6be25bcc0f0b7838661"
+  "date": "2026-11-24",
+  "hash": "3f63c2f025bd58c1b2e33f63ccd2e2f7ddc39ca04fac19c2318286e86fcb3820"
  },
  "blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html": {
-  "date": "2026-11-20",
-  "hash": "b2e38454e978bd430ac6058000e576f7b8cd3b9f462db678a991ec5ba9325fde"
+  "date": "2026-11-24",
+  "hash": "8df4c13818543fb0412bea3a34ab9c0298aa397ec30232b539bdd6a14c6a58f8"
  },
  "checklist-google-maps.html": {
   "date": "2026-11-10",
@@ -28,55 +32,63 @@
   "hash": "9c6e6347d97a2acb3f6afbc0feed8058f7db8338af2daee2f7204407c4ae2033"
  },
  "ru/blog/": {
-  "date": "2026-11-20",
-  "hash": "db12036ecbec22cb2716a8eec6f1be1922d5cbd1dee341153d16c6970a8033cd"
+  "date": "2026-11-24",
+  "hash": "bc52df9b2673c83b1cedf4c63f8100b4630c30d5134645bdf72fed65db802441"
+ },
+ "ru/blog/impressum-i-datenschutz-dlya-mastera.html": {
+  "date": "2026-11-24",
+  "hash": "7d89113d8db13a472bc96389826f4ba03eb1130f2c8a8ebea9e48bcda360e4ea"
  },
  "ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html": {
-  "date": "2026-11-20",
-  "hash": "79fadf991724e46f19a17613e128ec939cc0d81e5421101c257d5f60ddaba3d6"
+  "date": "2026-11-24",
+  "hash": "ef4993911646695e798f2fd12daaced109f59668046c449682d1f74519da78c5"
  },
  "ru/blog/tilda-ili-zakazat-sajt.html": {
-  "date": "2026-11-20",
-  "hash": "524dc8b66946ecc03d46a65e12f3cf13bcacc85d62d894c6b199d6de07ee9c56"
+  "date": "2026-11-24",
+  "hash": "3f50af1aabafee121c81f5c7a3e79c655ea32520e789646ab5ca96e7a0548f8a"
  },
  "ru/blog/tolko-instagram-eto-arenda.html": {
-  "date": "2026-11-20",
-  "hash": "ce6642b138a4e0ebd48f50c3fba48d967371b059371625ca4ecb4102a47450da"
+  "date": "2026-11-24",
+  "hash": "e91c3ed8047d468a779a18b7e350b713704149e3e46c29c32abe9094adb6d91b"
  },
  "ru/checklist-google-maps.html": {
   "date": "2026-11-10",
   "hash": "39a4e313fc0d24cced4ad3420cd17e77346c90ed4708946aa89ac277a547dea1"
  },
  "ru/sait-vizitka-dlya-mastera-manikyura.html": {
-  "date": "2026-11-20",
-  "hash": "f1745ff20c16e07547e0c18db45a5121291b4c5e99e8f128ad17e15e66d602ea"
+  "date": "2026-11-24",
+  "hash": "b91063ff640389eaf7e1e2c27a3b7d262844c0c969cd50f8108f1f39a0cdea31"
  },
  "uk/": {
   "date": "2026-11-22",
   "hash": "d9888baf715e8c7301076cffcac5b577c9f28736b531117ba144c01558fb5f8a"
  },
  "uk/blog/": {
-  "date": "2026-11-20",
-  "hash": "8d06e153ea47261ae94bdef43415d543650b4ea107833c7f21bd3ae65fc2dd50"
+  "date": "2026-11-24",
+  "hash": "6a48f97efd299feb91925d2d379cf1343d19e01d2b51dc66cc5c05cda905c74c"
  },
  "uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html": {
-  "date": "2026-11-20",
-  "hash": "6c5c23d97aa7073eb788ad56ab8cf8aa0c7fd7fec6df85114ab129bfa84d8db1"
+  "date": "2026-11-24",
+  "hash": "765c447b230259887050443172f746b7a97c03dbe12eefe84ba5fbf7ada788f3"
+ },
+ "uk/blog/impressum-i-datenschutz-dlia-maistra.html": {
+  "date": "2026-11-24",
+  "hash": "fb92f0870ceda094b614e1d5c5d8ef49f5c3c7cf8e89c33bf26a1ac65809b60a"
  },
  "uk/blog/tilda-chy-zamovyty-sait.html": {
-  "date": "2026-11-20",
-  "hash": "10cf39dd6483f2c709cc005990259ad2fb397f3b008a8fa0a732b07dfd9b2df0"
+  "date": "2026-11-24",
+  "hash": "0344848ffd6a07ec23c94cf90aae77d5ace81b5b33b132c84b4392285007dbfa"
  },
  "uk/blog/tilky-instagram-tse-orenda.html": {
-  "date": "2026-11-20",
-  "hash": "b70a2adfddef542e1c2162c2a7225d2bee597def6ff2b394465dfde7bb674610"
+  "date": "2026-11-24",
+  "hash": "2e7bc36dc98a5348582001bbf341d302d79dcd3c38cb5fec981e2fc6d68a59e3"
  },
  "uk/checklist-google-maps.html": {
   "date": "2026-11-10",
   "hash": "07091af97fbb200576c2891ad882ef86e4127569894510a4dd97d54896f029fe"
  },
  "uk/sait-vizytka-dlia-maistra-manikiuru.html": {
-  "date": "2026-11-20",
-  "hash": "4969c6bb5d62eb4c467b1c3616392cfbadf6ad89cc0cf5bfb7853f21c5b7ebb8"
+  "date": "2026-11-24",
+  "hash": "303a84f24ee87bc42c442879e7be8b6b7b5042b5af2819ab11d876fe75f3ec33"
  }
 }

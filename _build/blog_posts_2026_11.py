@@ -62,14 +62,14 @@ Heißt es bei Google „Studio Anna“, auf der Website „Anna Nails & Beauty�
 
 Die Website ist eines der Signale für Bekanntheit. Aber selbst wenn es eine gibt, hilft sie oft nicht: eine Seite mit Logo, ohne Leistungen, ohne Adresse, ohne die deutschen Wörter, nach denen Kundinnen suchen.
 
-Eine Website, die für die Karte arbeitet, hat:
+Eine [Website, die für die Karte arbeitet](/#pakete), hat:
 
 - Leistungen und Preise **als Text**, nicht nur als Bild;
 - denselben Namen, dieselbe Adresse und Telefonnummer wie im Profil;
 - die Stadtteile, in denen Sie arbeiten;
-- das Pflicht-Impressum und die Datenschutzerklärung.
+- das Pflicht-Impressum und die [Datenschutzerklärung](/blog/impressum-datenschutz-nagelstudio-kosmetikstudio.html).
 
-Wenn Sie nur Instagram haben, ist das besser als nichts – aber Google „liest“ Instagram deutlich schlechter als eine normale Website.
+Wenn Sie [nur Instagram](/blog/nur-instagram-ist-miete.html) haben, ist das besser als nichts – aber Google „liest“ Instagram deutlich schlechter als eine normale Website.
 
 ## 7. Das Profil verstößt gegen Regeln – und Google bremst es aus
 
@@ -130,7 +130,7 @@ INSTAGRAM_POST = {
 
 И выбирает из тех, кого Google показал. А Google смотрит на три вещи: насколько профиль подходит запросу, как далеко человек и насколько бизнес известен. В «известность» он включает отзывы и ссылки на ваш бизнес в интернете ([Google Business Profile Help](%(gbp)s)).
 
-Аккаунт в Instagram в этих результатах не заменяет ни карточку в Google Maps, ни сайт. Получается, что там, где вас ищут незнакомые люди, вас просто нет.
+Аккаунт в Instagram в этих результатах не заменяет ни [карточку в Google Maps](/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html), ни сайт. Получается, что там, где вас ищут незнакомые люди, вас просто нет.
 
 ## Аренда или собственность
 
@@ -166,7 +166,7 @@ Instagram — ваша витрина, сайт — адрес, Google-проф�
 - **Двухфакторная защита.** Включите её — это пять минут против взлома.
 - **Контакты клиенток.** Храните их не только в Direct: в программе записи или хотя бы в телефоне.
 - **Google-профиль.** Точная категория (Nagelstudio, а не Kosmetikstudio), часы работы, свежие фото.
-- **Сайт-визитка.** Одна страница: услуги, цены, контакты, запись. И обязательно Impressum — страница с данными владельца, без неё в Германии нельзя ([§ 5 DDG](%(ddg)s)).
+- **[Сайт-визитка](/ru/sait-vizitka-dlya-mastera-manikyura.html).** Одна страница: услуги, цены, контакты, запись. И обязательно Impressum — страница с данными владельца, без неё в Германии нельзя ([§ 5 DDG](%(ddg)s)).
 
 Первые три шага вы сделаете сами сегодня вечером.
 
@@ -212,7 +212,7 @@ Instagram — ваша витрина, сайт — адрес, Google-проф�
 
 І обирає з тих, кого показав Google. А Google дивиться на три речі: наскільки профіль відповідає запиту, як далеко людина і наскільки бізнес відомий. До «відомості» він зараховує відгуки й посилання на ваш бізнес в інтернеті ([Google Business Profile Help](%(gbp)s)).
 
-Акаунт в Instagram у цих результатах не замінює ні картки в Google Maps, ні сайту. Виходить, що там, де вас шукають незнайомі люди, вас просто немає.
+Акаунт в Instagram у цих результатах не замінює ні [картки в Google Maps](/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html), ні сайту. Виходить, що там, де вас шукають незнайомі люди, вас просто немає.
 
 ## Оренда чи власність
 
@@ -248,7 +248,7 @@ Instagram — ваша вітрина, сайт — адреса, Google-про�
 - **Двофакторний захист.** Увімкніть його — це п'ять хвилин проти зламу.
 - **Контакти клієнток.** Зберігайте їх не лише в Direct: у програмі запису або хоча б у телефоні.
 - **Google-профіль.** Точна категорія (Nagelstudio, а не Kosmetikstudio), години роботи, свіжі фото.
-- **Сайт-візитка.** Одна сторінка: послуги, ціни, контакти, запис. І обов'язково Impressum — сторінка з даними власника, без неї в Німеччині не можна ([§ 5 DDG](%(ddg)s)).
+- **[Сайт-візитка](/uk/sait-vizytka-dlia-maistra-manikiuru.html).** Одна сторінка: послуги, ціни, контакти, запис. І обов'язково Impressum — сторінка з даними власника, без неї в Німеччині не можна ([§ 5 DDG](%(ddg)s)).
 
 Перші три кроки ви зробите самі сьогодні ввечері.
 
@@ -294,7 +294,7 @@ Ihre Followerinnen kennen Sie schon. Wer aber neu in Ihr Viertel zieht, tippt of
 
 Und wählt unter denen, die Google anzeigt. Google achtet dabei auf drei Dinge: wie gut das Profil zur Suche passt, wie weit die Person entfernt ist und wie bekannt das Unternehmen ist. Zur Bekanntheit zählen Bewertungen und Links zu Ihrem Unternehmen im Netz ([Google Business Profile-Hilfe](%(gbp)s?hl=de)).
 
-Ein Instagram-Account ersetzt in diesen Ergebnissen weder den Eintrag in Google Maps noch die Website. Dort, wo Fremde nach Ihnen suchen, sind Sie also einfach nicht da.
+Ein Instagram-Account ersetzt in diesen Ergebnissen weder [den Eintrag in Google Maps](/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html) noch die Website. Dort, wo Fremde nach Ihnen suchen, sind Sie also einfach nicht da.
 
 ## Miete oder Eigentum
 
@@ -330,7 +330,7 @@ Verschwindet Instagram morgen, bleiben Schritt 2 und 3. Und Sie legen in Ruhe ei
 - **Zwei-Faktor-Authentifizierung.** Schalten Sie sie ein – fünf Minuten gegen Hacker.
 - **Kundenkontakte.** Speichern Sie sie nicht nur im Direct, sondern im Buchungsprogramm oder zumindest im Telefon.
 - **Google-Profil.** Genaue Kategorie (Nagelstudio, nicht Kosmetikstudio), Öffnungszeiten, aktuelle Fotos.
-- **Website.** Eine Seite: Leistungen, Preise, Kontakt, Buchung. Und unbedingt ein Impressum mit Ihren Anbieterangaben – ohne geht es in Deutschland nicht ([§ 5 DDG](%(ddg)s)).
+- **[Website](/#pakete).** Eine Seite: Leistungen, Preise, Kontakt, Buchung. Und unbedingt ein Impressum mit Ihren Anbieterangaben – ohne geht es in Deutschland nicht ([§ 5 DDG](%(ddg)s)).
 
 Die ersten drei Schritte schaffen Sie heute Abend selbst.
 

@@ -189,11 +189,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -534,7 +545,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <p>Instagram — ваша витрина. Но новая клиентка, которая переехала в ваш район, чаще всего пишет в Google «Nagelstudio» и название города. И выбирает из тех, кого видит там.</p>
 <p>Сайт на своём домене принадлежит вам: его не заблокируют из-за чужой жалобы, и цены не теряются в Stories. Подробнее — в статье <a class="inl" href="/ru/blog/tolko-instagram-eto-arenda.html">«Только Instagram — это аренда»</a>.</p>
 <h2>Что будет на сайте</h2>
-<ul><li>услуги и прайс — с длительностью процедур</li><li>фото ваших работ (только ваши настоящие фото)</li><li>адрес, карта, часы работы</li><li>кнопка WhatsApp или онлайн-запись (например, Fresha или другой сервис, которым вы уже пользуетесь)</li><li>отзывы клиенток из Google</li><li>Impressum и Datenschutz — обязательные страницы</li><li>текст на немецком; по желанию — вторая версия на русском или украинском</li><li>удобно смотреть с телефона</li></ul>
+<ul><li>услуги и прайс — с длительностью процедур</li><li>фото ваших работ (только ваши настоящие фото)</li><li>адрес, карта, часы работы</li><li>кнопка WhatsApp или онлайн-запись (например, Fresha или другой сервис, которым вы уже пользуетесь)</li><li>отзывы клиенток из Google</li><li><a class="inl" href="/ru/blog/impressum-i-datenschutz-dlya-mastera.html">Impressum и Datenschutz</a> — обязательные страницы</li><li>текст на немецком; по желанию — вторая версия на русском или украинском</li><li>удобно смотреть с телефона</li></ul>
 <h2>Сколько стоит и сколько времени</h2>
 <div class="tbl-wrap"><table><thead><tr><th>Что</th><th>Цена</th><th>Срок</th></tr></thead><tbody><tr><th scope="row">Сайт-визитка</th><td>350 € для первых 3 клиентов, дальше 450 €</td><td>1–2 недели после ваших материалов</td></tr><tr><th scope="row">Профиль в Google Maps</th><td>150 € для первых 3 клиентов, дальше 190 €</td><td>около 1 недели</td></tr><tr><th scope="row">Сайт + профиль вместе</th><td>590 €</td><td>2–3 недели</td></tr></tbody></table></div>
 <p>Хостинг бесплатный, домен регистрируется на ваше имя. Я Kleinunternehmer по § 19 UStG — НДС не начисляю, цены окончательные. Точный объём фиксируем письменно до начала работы. Все пакеты — <a class="inl" href="/ru/#pakete">на главной странице</a>.</p>

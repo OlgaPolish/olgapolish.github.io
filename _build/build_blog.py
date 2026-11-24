@@ -116,14 +116,14 @@ Google офіційно називає три головні фактори ло
 
 Сайт — один із сигналів помітності. Але навіть коли сайт є, він часто не допомагає: одна сторінка з логотипом, без переліку послуг, без адреси, без німецьких слів, які шукають клієнти.
 
-Сайт, що працює на карти, — це:
+[Сайт, що працює на карти](/uk/sait-vizytka-dlia-maistra-manikiuru.html), — це:
 
 - послуги й ціни **текстом**, а не лише картинкою;
 - та сама назва, адреса й телефон, що й у профілі;
 - райони, де ви працюєте;
-- обов'язковий Impressum і Datenschutz.
+- обов'язковий [Impressum і Datenschutz](/uk/blog/impressum-i-datenschutz-dlia-maistra.html).
 
-Якщо у вас тільки Instagram — це краще, ніж нічого, але Google значно гірше «читає» Instagram, ніж звичайний сайт.
+Якщо у вас [тільки Instagram](/uk/blog/tilky-instagram-tse-orenda.html) — це краще, ніж нічого, але Google значно гірше «читає» Instagram, ніж звичайний сайт.
 
 ## 7. Профіль порушує правила — і Google його приглушує
 
@@ -204,14 +204,14 @@ Google официально называет три главных фактор�
 
 Сайт — один из сигналов известности. Но даже когда сайт есть, он часто не помогает: одна страница с логотипом, без списка услуг, без адреса, без немецких слов, которые ищут клиенты.
 
-Сайт, который работает на карты, — это:
+[Сайт, который работает на карты](/ru/sait-vizitka-dlya-mastera-manikyura.html), — это:
 
 - услуги и цены **текстом**, а не только картинкой;
 - то же название, адрес и телефон, что и в профиле;
 - районы, где вы работаете;
-- обязательные Impressum и Datenschutz.
+- обязательные [Impressum и Datenschutz](/ru/blog/impressum-i-datenschutz-dlya-mastera.html).
 
-Если у вас только Instagram — это лучше, чем ничего, но Google заметно хуже «читает» Instagram, чем обычный сайт.
+Если у вас [только Instagram](/ru/blog/tolko-instagram-eto-arenda.html) — это лучше, чем ничего, но Google заметно хуже «читает» Instagram, чем обычный сайт.
 
 ## 7. Профиль нарушает правила — и Google его приглушает
 
@@ -244,6 +244,10 @@ POSTS.append(INSTAGRAM_POST)
 # Добавлено 20.11.2026: «Tilda или заказать сайт» (RU/UK/DE)
 from blog_posts_tilda import TILDA_POST  # noqa: E402
 POSTS.append(TILDA_POST)
+
+# Добавлено 24.11.2026: «Impressum и Datenschutz для мастера маникюра и косметолога» (RU/UK/DE)
+from blog_posts_impressum import IMPRESSUM_POST  # noqa: E402
+POSTS.append(IMPRESSUM_POST)
 
 # Доп. стили блога: картинки и таблицы в статьях
 HEADER = "/images/blog/blog-header.jpg"  # фото-шапка списка статей (Canva, 2:1)

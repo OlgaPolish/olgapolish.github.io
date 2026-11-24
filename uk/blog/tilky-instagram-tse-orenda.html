@@ -191,11 +191,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -544,7 +555,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <h2>Де вас шукає нова клієнтка</h2>
 <p>Підписниці вас уже знають. А людина, яка переїхала у ваш район, часто набирає в Google чи Google Maps «Nagelstudio» і назву свого міста.</p>
 <p>І обирає з тих, кого показав Google. А Google дивиться на три речі: наскільки профіль відповідає запиту, як далеко людина і наскільки бізнес відомий. До «відомості» він зараховує відгуки й посилання на ваш бізнес в інтернеті (<a class="inl" href="https://support.google.com/business/answer/7091">Google Business Profile Help</a>).</p>
-<p>Акаунт в Instagram у цих результатах не замінює ні картки в Google Maps, ні сайту. Виходить, що там, де вас шукають незнайомі люди, вас просто немає.</p>
+<p>Акаунт в Instagram у цих результатах не замінює ні <a class="inl" href="/uk/blog/chomu-vas-ne-znakhodyat-u-google-maps.html">картки в Google Maps</a>, ні сайту. Виходить, що там, де вас шукають незнайомі люди, вас просто немає.</p>
 <h2>Оренда чи власність</h2>
 <p>Сайт на вашому домені належить вам, поки ви платите за домен. А Google-профіль приводить тих, хто шукає майстра просто зараз.</p>
 <figure><picture><source type="image/avif" srcset="/images/blog/arenda-vs-sobstvennost-uk-600.avif 600w, /images/blog/arenda-vs-sobstvennost-uk-1200.avif 1200w" sizes="(max-width:760px) 92vw, 720px"><source type="image/webp" srcset="/images/blog/arenda-vs-sobstvennost-uk-600.webp 600w, /images/blog/arenda-vs-sobstvennost-uk-1200.webp 1200w" sizes="(max-width:760px) 92vw, 720px"><img src="/images/blog/arenda-vs-sobstvennost-uk.png" width="1200" height="630" alt="Будинок на землі Meta і будинок на своєму домені" loading="lazy" decoding="async"></picture></figure>
@@ -556,7 +567,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <ol style="margin:0 0 18px 22px"><li>Клієнтка знаходить вас у Google Maps або бачить роботу в Instagram.</li><li>Переходить на сайт: ціни, адреса, години роботи, відгуки — усе в одному місці.</li><li>Записується сама — кнопкою, без листування в Direct.</li></ol>
 <p>Якщо завтра Instagram зникне, кроки 2 і 3 залишаться. А ви спокійно створите новий акаунт і дасте клієнткам посилання на сайт.</p>
 <h2>5 кроків, щоб перестати орендувати</h2>
-<ul><li><strong>Копія акаунта.</strong> У налаштуваннях Instagram завантажте свої дані — фото робіт залишаться у вас.</li><li><strong>Двофакторний захист.</strong> Увімкніть його — це п&#x27;ять хвилин проти зламу.</li><li><strong>Контакти клієнток.</strong> Зберігайте їх не лише в Direct: у програмі запису або хоча б у телефоні.</li><li><strong>Google-профіль.</strong> Точна категорія (Nagelstudio, а не Kosmetikstudio), години роботи, свіжі фото.</li><li><strong>Сайт-візитка.</strong> Одна сторінка: послуги, ціни, контакти, запис. І обов&#x27;язково Impressum — сторінка з даними власника, без неї в Німеччині не можна (<a class="inl" href="https://www.gesetze-im-internet.de/ddg/__5.html">§ 5 DDG</a>).</li></ul>
+<ul><li><strong>Копія акаунта.</strong> У налаштуваннях Instagram завантажте свої дані — фото робіт залишаться у вас.</li><li><strong>Двофакторний захист.</strong> Увімкніть його — це п&#x27;ять хвилин проти зламу.</li><li><strong>Контакти клієнток.</strong> Зберігайте їх не лише в Direct: у програмі запису або хоча б у телефоні.</li><li><strong>Google-профіль.</strong> Точна категорія (Nagelstudio, а не Kosmetikstudio), години роботи, свіжі фото.</li><li><strong><a class="inl" href="/uk/sait-vizytka-dlia-maistra-manikiuru.html">Сайт-візитка</a>.</strong> Одна сторінка: послуги, ціни, контакти, запис. І обов&#x27;язково Impressum — сторінка з даними власника, без неї в Німеччині не можна (<a class="inl" href="https://www.gesetze-im-internet.de/ddg/__5.html">§ 5 DDG</a>).</li></ul>
 <p>Перші три кроки ви зробите самі сьогодні ввечері.</p>
 <h2>Спірно?</h2>
 <p>Багато майстрів кажуть мені: «Мої клієнтки всі з Instagram, сайт не потрібен». Іноді це навіть правда — до першого блокування.</p>

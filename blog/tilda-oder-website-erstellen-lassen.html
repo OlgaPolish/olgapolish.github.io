@@ -191,11 +191,22 @@ a.inl:hover{color:var(--ink)}
 .ws-neu{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px}
 .ws-price{font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);white-space:nowrap}
 .ws-price b{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.9rem;color:#fff}
-.ws-price s{color:rgba(255,255,255,.55);text-decoration-color:var(--amber-light);text-decoration-thickness:2px;margin-right:4px}
+.ws-jahr{display:block;margin-top:4px;color:rgba(255,255,255,.85)}
+.ws-ust{display:block;margin-top:6px;font-size:12px;color:rgba(255,255,255,.55)}
+.ws-incl{list-style:none;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;font-size:14px;color:rgba(255,255,255,.88)}
+.ws-incl li{position:relative;padding-left:20px}
+.ws-incl li::before{content:"✓";position:absolute;left:0;color:var(--amber-light);font-weight:700}
+.ws-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.6)}
+.ws-pm{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.25);border-radius:6px;padding:4px 9px;color:#fff;font-weight:600}
+.ws-pm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ws-cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;max-width:230px}
+.ws-after{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.75)}
+.ws-agb{font-size:12.5px;color:var(--amber-light)}
 .ws-price small{display:block;color:var(--amber-light);font-size:12.5px;font-weight:600}
 .ws-btn{display:inline-flex;justify-content:center;padding:13px 22px;border-radius:var(--r);background:var(--amber);color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .2s}
 .ws-btn:hover{background:var(--amber-light)}
-@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}}
+@media(max-width:900px){.ws-teaser{grid-template-columns:1fr;gap:16px;padding:24px 22px}.ws-price{white-space:normal}.ws-btn{width:100%}.ws-cta{max-width:none}}
+@media(max-width:520px){.ws-incl{grid-template-columns:1fr}}
 
 /* STEPS */
 .ablauf{padding:88px 0}
@@ -542,7 +553,7 @@ article.post tbody th{font-weight:600;color:var(--ink);width:26%}
 <div class="tip"><p><strong>Das Teuerste am Baukasten ist Ihre Zeit.</strong> Die erste Website dauert für Einsteigerinnen mehr als einen Abend: Blöcke auswählen, Schriften abstimmen, Fotos bearbeiten, die Handy-Ansicht extra prüfen. Und danach kommen noch Texte und Pflichtseiten.</p></div>
 <h2>Was der Baukasten nicht für Sie erledigt</h2>
 <p>Tilda liefert Blöcke und Hosting. Alles andere liegt in Ihrer Verantwortung als Betreiberin der Website. In Deutschland ist das besonders wichtig.</p>
-<ul><li><strong>Impressum und Datenschutz.</strong> Beides ist für eine geschäftliche Website Pflicht, und die Texte schreiben Sie selbst. In die Datenschutzerklärung gehört alles, was die Website nutzt: Hosting, Kontaktformulare, Statistik, eingebettete Karten und Videos. Tilda hat Anleitungen zur DSGVO, aber keinen Text für Ihr Unternehmen.</li><li><strong>Cookie-Banner.</strong> Wenn Sie Statistik, eine Google-Karte oder YouTube-Videos einbinden, brauchen Sie in der Regel die Einwilligung der Besucherinnen. Die muss richtig eingerichtet sein – nicht nur „damit etwas da ist“.</li><li><strong>Deutsche Texte, nach denen gesucht wird.</strong> Eine Kundin in Düsseldorf sucht bei Google „Maniküre Benrath“. Steht auf Ihrer Website nur Russisch oder Ukrainisch, versteht Google nicht, dass Sie in der Nähe sind und genau das anbieten.</li><li><strong>Verbindung zu Google Maps.</strong> Website und Google-Profil müssen übereinstimmen: gleicher Name, gleiche Adresse, gleiche Telefonnummer. Mehr dazu im Artikel <a class="inl" href="/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html">„Warum Sie bei Google Maps nicht gefunden werden“</a>.</li><li><strong>Handy-Ansicht.</strong> Die meisten Kundinnen öffnen Ihre Website auf dem Smartphone. In den freien Tilda-Blöcken (Zero Block) muss die mobile Version oft separat gebaut werden.</li></ul>
+<ul><li><strong><a class="inl" href="/blog/impressum-datenschutz-nagelstudio-kosmetikstudio.html">Impressum und Datenschutz</a>.</strong> Beides ist für eine geschäftliche Website Pflicht, und die Texte schreiben Sie selbst. In die Datenschutzerklärung gehört alles, was die Website nutzt: Hosting, Kontaktformulare, Statistik, eingebettete Karten und Videos. Tilda hat Anleitungen zur DSGVO, aber keinen Text für Ihr Unternehmen.</li><li><strong>Cookie-Banner.</strong> Wenn Sie Statistik, eine Google-Karte oder YouTube-Videos einbinden, brauchen Sie in der Regel die Einwilligung der Besucherinnen. Die muss richtig eingerichtet sein – nicht nur „damit etwas da ist“.</li><li><strong>Deutsche Texte, nach denen gesucht wird.</strong> Eine Kundin in Düsseldorf sucht bei Google „Maniküre Benrath“. Steht auf Ihrer Website nur Russisch oder Ukrainisch, versteht Google nicht, dass Sie in der Nähe sind und genau das anbieten.</li><li><strong>Verbindung zu Google Maps.</strong> Website und Google-Profil müssen übereinstimmen: gleicher Name, gleiche Adresse, gleiche Telefonnummer. Mehr dazu im Artikel <a class="inl" href="/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html">„Warum Sie bei Google Maps nicht gefunden werden“</a>.</li><li><strong>Handy-Ansicht.</strong> Die meisten Kundinnen öffnen Ihre Website auf dem Smartphone. In den freien Tilda-Blöcken (Zero Block) muss die mobile Version oft separat gebaut werden.</li></ul>
 <h2>Typische Fehler selbstgebauter Websites</h2>
 <p>Ich sehe immer wieder dasselbe:</p>
 <ul><li>Leistungen und Preise als <strong>Bild</strong> statt als Text (Google kann sie nicht lesen);</li><li>keine Adresse, kein Stadtteil – die Kundin weiß nicht, wie weit es ist;</li><li>Fotos mit 5–10 MB – die Seite lädt auf dem Handy ewig;</li><li>Impressum von einem anderen Studio kopiert – mit fremden Daten;</li><li>Website nur auf Russisch oder Ukrainisch – und auf Deutsch nicht zu finden.</li></ul>
