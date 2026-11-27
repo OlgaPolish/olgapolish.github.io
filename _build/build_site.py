@@ -1435,7 +1435,7 @@ def render(lang):
     wa = "https://wa.me/%s?text=%s" % (WA_NUM, quote(t["wa_text"]))
     out = []
     w = out.append
-    w('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n' % lang)
+    w('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<link rel="manifest" href="/site.webmanifest">\n' % lang)
     w('<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
     w('<title>%s</title>\n<meta name="description" content="%s">\n' % (esc(t["title"]), esc(t["desc"])))
     w('<meta property="og:title" content="%s">\n<meta property="og:description" content="%s">\n' % (esc(t["og_title"]), esc(t["desc"])))

@@ -247,7 +247,7 @@ def render(lang):
     url = B.SITE + B.PATHS[lang] + SLUG
     wa = "https://wa.me/%s?text=%s" % (B.WA_NUM, quote(c["wa_text"]))
     w = []
-    w.append('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n' % lang)
+    w.append('<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<link rel="manifest" href="/site.webmanifest">\n' % lang)
     w.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
     w.append('<title>%s</title>\n<meta name="description" content="%s">\n' % (html.escape(c["title"]), html.escape(c["desc"])))
     w.append('<link rel="canonical" href="%s">\n' % url)

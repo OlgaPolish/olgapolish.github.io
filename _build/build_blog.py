@@ -316,7 +316,7 @@ def nice_date(d, lang):
 
 
 def head(lang, title, desc, url, alts, extra="", og_img="images/olha-portrait.jpg"):
-    o = ['<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n' % lang,
+    o = ['<!DOCTYPE html>\n<html lang="%s">\n<head>\n<meta charset="UTF-8">\n<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n<link rel="manifest" href="/site.webmanifest">\n' % lang,
          '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n',
          '<title>%s</title>\n<meta name="description" content="%s">\n' % (esc(title), esc(desc)),
          '<meta property="og:title" content="%s">\n<meta property="og:description" content="%s">\n' % (esc(title), esc(desc)),
