@@ -18,7 +18,7 @@ esc = B.esc
 
 UI = {
     "de": dict(
-        title="Blog – Google Maps, Website und Kundschaft für kleine Unternehmen in Deutschland",
+        title="Blog: Google Maps & Website für Selbstständige | Olha Polishchuk",
         h1="Blog",
         lead="Ich erkläre in einfachen Worten, wie kleine Unternehmen in Deutschland über Google Kundschaft gewinnen: Profil in Google Maps, Website, Bewertungen.",
         desc="Artikel für Beauty-Studios, Salons, Cafés und Selbstständige in Deutschland: Google Maps, Website, Bewertungen, Impressum.",
@@ -361,6 +361,24 @@ def render_index(lang):
     return "".join(o)
 
 
+# «Читайте также» (28.11.2026): до 3 соседних статей на том же языке + ссылка на услуги
+RELATED = {
+    "de": dict(t="Weitere Artikel", svc="Pakete & Preise ansehen →"),
+    "uk": dict(t="Читайте також", svc="Пакети й ціни →"),
+    "ru": dict(t="Читайте также", svc="Пакеты и цены →"),
+}
+
+
+def related_html(p, lang, limit=3):
+    r = RELATED[lang]
+    others = [q for q in sorted(POSTS, key=lambda x: x["date"], reverse=True) if q is not p and lang in q][:limit]
+    o = ['<nav class="post-related" aria-label="%s"><h2>%s</h2><ul>\n' % (esc(r["t"]), esc(r["t"]))]
+    for q in others:
+        o.append('<li><a href="/%sblog/%s">%s</a></li>\n' % (B.PATHS[lang], q[lang]["slug"], esc(q[lang]["title"])))
+    o.append('</ul><p class="rel-svc"><a href="/%s#pakete">%s</a></p></nav>\n' % (B.PATHS[lang], esc(r["svc"])))
+    return "".join(o)
+
+
 def render_post(p, lang):
     u = UI[lang]
     a = p[lang]
@@ -395,6 +413,7 @@ def render_post(p, lang):
     o.append(md(a["body"]) + "\n")
     o.append('<div class="post-cta"><h2>%s</h2><p>%s</p><div class="btns"><a class="b1" href="/%s#contact">%s</a><a class="b2" href="/%s%s">%s</a></div></div>\n' % (
         esc(u["cta_t"]), esc(u["cta_p"]), B.PATHS[lang], esc(u["cta_b1"]), B.PATHS[lang], CHECKLIST, esc(u["cta_b2"])))
+    o.append(related_html(p, lang))
     o.append('</article>\n</main>\n')
     o.append(tail(lang))
     return "".join(o).replace(" €", " €")

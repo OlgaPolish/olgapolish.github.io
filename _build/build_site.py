@@ -31,6 +31,12 @@ FORM_ENDPOINT = "https://kontakt.olha-polishchuk-web.workers.dev"
 WS_URL = "/website-selbst/"
 WS_AGB = "/vertragsbedingungen-website-abo.html"
 WS_START, WS_CODE, WS_MONAT, WS_JAHR, WS_PLAETZE = "79 €", "50 €", "19 €", "190 €", "5"
+# Счётчики стартовых мест — ТОЛЬКО правда (UWG § 5 «irreführende Werbung»): вписывать после реальной оплаты.
+# Полоска «1 von 3 Startplätzen vergeben» видна у пакета, если число > 0.
+PK_START_PLAETZE = 3
+PK_START_VERGEBEN = {"a": 2, "b": 2, "c": 0}   # A+B — Яна (JANA NAILS, 11.2026)
+# Website-Abo: сколько студий уже оплатили по цене основательницы (из WS_PLAETZE). 0 → полоска скрыта.
+WS_VERGEBEN = 0
 UMAMI_SRC = "https://cloud.umami.is/script.js"
 UMAMI_ID = "fe1a89e7-ba92-4d19-99cf-5949bb100cdd"
 
@@ -220,9 +226,9 @@ a.hero-badge.ws .hero-badge-lbl b{color:#9A6424;font-weight:700}
 
 /* METRICS */
 .metrics{background:var(--ink);padding:28px 0}
-.metrics-inner{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap}
-.metric{text-align:center}
-.metric-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:#fff;line-height:1.1}
+.metrics-inner{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.metric{text-align:center}.metric+.metric{border-left:1px solid rgba(255,255,255,.12)}
+.metric-num{font-family:'DM Serif Display',serif;font-size:1.9rem;color:#fff;line-height:1.1;white-space:nowrap}
 .metric-lbl{font-size:12.5px;color:rgba(255,255,255,0.72);margin-top:4px;letter-spacing:0.03em}
 
 /* COMMON */
@@ -231,7 +237,7 @@ a.hero-badge.ws .hero-badge-lbl b{color:#9A6424;font-weight:700}
 
 /* WHY */
 .why{padding:88px 0}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}.why-grid>.svc:first-child{grid-row:span 2;background:var(--ink);border-color:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:34px 30px;background-image:radial-gradient(circle at 85% 15%,rgba(212,139,58,.35),transparent 55%)}.why-grid>.svc:first-child h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1.15;margin-bottom:12px}.why-grid>.svc:first-child p{color:rgba(255,255,255,.78);font-size:15px}.why-grid>.svc:first-child .svc-icon{background:rgba(255,255,255,.1);margin-bottom:auto;padding:0}.why-grid>.svc:first-child .svc-icon svg{color:var(--amber-light)}.why-grid>.svc:last-child{grid-column:span 2;display:grid;grid-template-columns:44px 1fr;column-gap:18px;align-items:start}.why-grid>.svc:last-child .svc-icon{grid-row:span 2;margin:0}
 .svc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden}
 .svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .svc:hover::before{transform:scaleX(1)}
@@ -252,7 +258,7 @@ a.hero-badge.ws .hero-badge-lbl b{color:#9A6424;font-weight:700}
 .pkg-price s.old{font-size:.62em;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#D62828;text-decoration-thickness:3px;margin-right:6px;vertical-align:middle}
 .pkg-price small{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink-soft);font-weight:500}
 .pkg-start{background:var(--amber-pale);color:#7A4E17;font-size:13.5px;line-height:1.5;padding:10px 12px;border-radius:8px;margin-bottom:16px}
-.pkg-desc{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}
+.pkg-desc{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}.pk-sep{max-width:72ch;margin:-18px 0 28px;font-size:15px;color:var(--ink-soft);padding-left:14px;border-left:3px solid var(--amber)}.seats{display:flex;align-items:center;gap:10px;margin-top:9px;font-size:12.5px;font-weight:600;color:#7A4E17}.seats-bar{display:flex;gap:4px}.seats-bar i{width:22px;height:6px;border-radius:3px;background:rgba(122,78,23,.18)}.seats-bar i.on{background:var(--amber)}.seats.dark{color:var(--amber-light);margin-top:6px}.seats.dark .seats-bar i{background:rgba(255,255,255,.18)}.seats.dark .seats-bar i.on{background:var(--amber-light)}
 .pkg ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
 .pkg li{font-size:14px;line-height:1.55;padding-left:24px;position:relative}
 .pkg li::before{content:"";position:absolute;left:2px;top:6px;width:11px;height:6px;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg)}
@@ -405,7 +411,7 @@ a.inl:hover{color:var(--ink)}
 
 /* FAQ */
 .faq{padding:88px 0;background:var(--bg-soft)}
-.faq-list{display:flex;flex-direction:column;gap:10px;max-width:820px}
+.faq-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;align-items:start}.faq-list{display:flex;flex-direction:column;gap:10px;max-width:820px}.faq-aside{position:sticky;top:96px;background:var(--ink);color:#fff;border-radius:16px;padding:26px 24px;background-image:radial-gradient(circle at 100% 0%,rgba(212,139,58,.3),transparent 60%)}.fa-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}.fa-top picture,.fa-top img{flex:0 0 64px;width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center 20%;border:2px solid var(--amber-light)}.faq-aside h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.35rem;line-height:1.2}.faq-aside p{font-size:14px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:18px}.fa-wa{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:var(--r);background:#25D366;color:#fff;font-weight:600;font-size:14px;transition:filter .2s}.fa-wa:hover{filter:brightness(1.08)}.fa-wa svg{width:20px;height:20px}.fa-check{display:block;text-align:center;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--amber-light)}.fa-check:hover{color:#fff}@media(max-width:900px){.faq-grid{grid-template-columns:1fr}.faq-aside{position:static}}
 .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 22px}
 .faq summary{cursor:pointer;list-style:none;font-weight:600;font-size:16px;padding:18px 32px 18px 0;position:relative}
 .faq summary::-webkit-details-marker{display:none}
@@ -426,7 +432,7 @@ a.inl:hover{color:var(--ink)}
 .wa-float svg{width:30px;height:30px}
 .wa-float:hover{transform:scale(1.07);box-shadow:0 8px 26px rgba(0,0,0,0.28)}
 .wa-float:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-@media(max-width:560px){.wa-float{right:14px;bottom:14px;width:54px;height:54px}}
+@media(max-width:560px){.wa-float{right:14px;bottom:14px;width:54px;height:54px}}@media(max-width:900px){.wa-float{transition:opacity .3s,transform .3s}.wa-float.wait{opacity:0;transform:scale(.6) translateY(20px);pointer-events:none;visibility:hidden}}
 @media print{.wa-float{display:none}}
 .cm.wa{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.4)}
 .cm-ic{width:44px;height:44px;border-radius:50%;background:rgba(212,139,58,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -526,6 +532,12 @@ header.open .mnav{display:block}
 .blog-hero h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.12;margin-bottom:14px}
 .blog-hero p{color:var(--ink-soft);font-size:1.05rem;max-width:60ch}
 .post-list{display:grid;gap:18px;padding-bottom:88px}
+.home-blog{padding:88px 0}
+.hb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+.home-blog .post-card h3{font-size:1.12rem;font-weight:600;line-height:1.35;margin-bottom:8px}
+.hb-all{margin-top:22px}
+.hb-all a{color:var(--amber);font-weight:600;text-decoration:none}
+@media(max-width:560px){.home-blog{padding:56px 0}}
 .post-card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 26px;transition:all .25s}
 .post-card:hover{border-color:rgba(212,139,58,0.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(30,42,74,0.08)}
 .post-meta{font-size:12.5px;color:#9A6424;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
@@ -545,6 +557,12 @@ article.post strong{font-weight:600}
 article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset:3px}
 .tip{background:var(--amber-pale);border-left:4px solid var(--amber);border-radius:8px;padding:18px 20px;margin:22px 0}
 .tip p:last-child{margin-bottom:0}
+.post-related{margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.post-related h2{font-size:1.25rem!important;margin:0 0 12px!important}
+.post-related ul{margin:0 0 14px 20px}
+.post-related li{margin-bottom:8px}
+.post-related a{color:var(--ink)}
+.post-related .rel-svc a{color:var(--amber);font-weight:600;text-decoration:none}
 .post-cta{background:var(--ink);color:#fff;border-radius:16px;padding:34px 30px;margin-top:48px;text-align:center}
 .post-cta h2{color:#fff;margin:0 0 10px!important}
 .post-cta p{color:rgba(255,255,255,.8);max-width:52ch;margin:0 auto 22px!important}
@@ -565,6 +583,9 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
   .hero-badge-num{font-size:1.5rem}
   .hero-badge-lbl{font-size:11px}
   .why-grid{grid-template-columns:1fr 1fr}
+  .why-grid>.svc:first-child{grid-row:auto;grid-column:span 2;min-height:0;padding:26px 22px}
+  .metrics-inner{grid-template-columns:1fr 1fr;row-gap:22px}
+  .metric:nth-child(3){border-left:0}
   .pkg-grid,.pkg-extras,.cases-grid,.case.has-img{grid-template-columns:1fr}
   .case.has-img{gap:20px;align-items:start}
   .demo-slide,.demo-slide.no-img{flex-basis:86%;padding:20px}
@@ -577,9 +598,14 @@ article.post a.inl{color:#9A6424;text-decoration:underline;text-underline-offset
 }
 @media(max-width:560px){
   .wrap{padding:0 16px}
-  .why-grid,.steps{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .why-grid{gap:10px}.why-grid .svc{padding:18px 16px}.why-grid .svc-icon{width:36px;height:36px;margin-bottom:12px}
+  .why-grid .svc h3{font-size:15px}.why-grid .svc p{font-size:13px;line-height:1.55}
+  .why-grid>.svc:first-child h3{font-size:1.45rem}
+  .why-grid>.svc:last-child{grid-template-columns:36px 1fr;column-gap:14px}
+  .metric-num{font-size:1.5rem}.metric-lbl{font-size:11.5px}
+  .pk-sep{margin:-10px 0 22px;font-size:14px}
   .hero{padding:52px 0 44px}
-  .metrics-inner{flex-direction:column;gap:18px}
   .cta-nav{display:none}
   .about-card{position:static;margin-top:14px}
 }
@@ -623,7 +649,7 @@ T["de"] = dict(
            "Kein Problem. Schreiben Sie mir kurz, was Sie machen und in welcher Stadt – ich schaue kostenlos, wie man Sie in Google sieht, und empfehle Ihnen den passenden Weg.", "Kostenloser Google-Check →")],
     ws_badge_tag="Neu", ws_badge_lbl="Startpreis: Ihre Website selbst gestalten", ws_badge_go="Ausprobieren →",
     proof_q="Eine absolute Herzensempfehlung!", proof_who="Jana, JANA NAILS & Beauty", proof_link="Bewertungen bei Google",
-    metrics=[("UA · RU", "Beratung — Webseite auf Deutsch"), ("Google SEO", "praktische Erfahrung"), ("Ganz Deutschland", "remote und in Düsseldorf")],
+    metrics=[("11 Tage", "vom Demo bis zur fertigen Studio-Webseite"), ("Nr. 1", "in Google für einen Shop-Kunden"), ("★★★★★", "Bewertungen bei Google"), ("3 Sprachen", "Deutsch · Ukrainisch · Russisch")],
     why_label="Warum mit mir", why_title="Einfach, verständlich — in Ihrer Sprache",
     why=[("chat", "Wir sprechen dieselbe Sprache", "Sie erklären auf Ukrainisch oder Russisch, Ihre Kunden lesen alles auf Deutsch. Ohne Dolmetscher, ohne Missverständnisse."),
          ("hand", "Ich mache das für Sie", "Sie schicken Fotos und ein paar Sätze zu Ihrer Arbeit — den Rest übernehme ich. Sie prüfen nur und sagen „Ja“."),
@@ -754,7 +780,7 @@ T["uk"] = dict(
            "Нічого страшного. Напишіть, чим займаєтеся і в якому місті — я безкоштовно подивлюся, як вас видно в Google, і підкажу, з чого почати.", "Безкоштовний аудит →")],
     ws_badge_tag="Новинка", ws_badge_lbl="старт: створіть свій сайт самі", ws_badge_go="Спробувати →",
     proof_q="Eine absolute Herzensempfehlung!", proof_who="Яна, JANA NAILS & Beauty", proof_link="Відгуки в Google",
-    metrics=[("UA · RU", "спілкуємося — сайт німецькою"), ("Google SEO", "практичний досвід"), ("Уся Німеччина", "дистанційно та в Düsseldorf")],
+    metrics=[("11 днів", "від демо до готового сайту студії"), ("№ 1", "у Google для клієнта-магазину"), ("★★★★★", "відгуки в Google"), ("3 мови", "німецька · українська · російська")],
     why_label="Чому зі мною зручно", why_title="Просто, зрозуміло й вашою мовою",
     why=[("chat", "Говоримо однією мовою", "Ви пояснюєте українською чи російською, я пишу для ваших клієнтів німецькою. Без перекладача й без непорозумінь."),
          ("hand", "Роблю за вас", "Ви надсилаєте фото й кілька слів про свою роботу — решта на мені. Від вас потрібно лише перевірити й сказати «так»."),
@@ -888,7 +914,7 @@ T["ru"] = dict(
            "Ничего страшного. Напишите, чем занимаетесь и в каком городе — я бесплатно посмотрю, как вас видно в Google, и подскажу, с чего начать.", "Бесплатный аудит →")],
     ws_badge_tag="Новинка", ws_badge_lbl="старт: создайте свой сайт сами", ws_badge_go="Попробовать →",
     proof_q="Eine absolute Herzensempfehlung!", proof_who="Яна, JANA NAILS & Beauty", proof_link="Отзывы в Google",
-    metrics=[("RU · UA", "общаемся — сайт на немецком"), ("Google SEO", "практический опыт"), ("Вся Германия", "удалённо и в Düsseldorf")],
+    metrics=[("11 дней", "от демо до готового сайта студии"), ("№ 1", "в Google для клиента-магазина"), ("★★★★★", "отзывы в Google"), ("3 языка", "немецкий · украинский · русский")],
     why_label="Почему со мной удобно", why_title="Просто, понятно и на вашем языке",
     why=[("chat", "Говорим на одном языке", "Вы объясняете по-русски или по-украински, я пишу для ваших клиентов по-немецки. Без переводчика и без недопонимания."),
          ("hand", "Делаю за вас", "Вы присылаете фото и пару слов о своей работе — остальное на мне. От вас нужно только проверить и сказать «да»."),
@@ -999,6 +1025,11 @@ T["ru"] = dict(
 )
 
 # ---- Пазл-лид-магнит в блоке «Обо мне» ----
+# Тексты к правкам 28.11 (подпись про отдельные услуги, счётчики мест, карточка рядом с FAQ)
+EXTRA = {'de': {'pk_sep': 'Jede Leistung wird einzeln gebucht: Google-Profil (A), Webseite (B), Betreuung (C) und das Website-Abo haben jeweils einen eigenen Preis. Sie wählen nur, was Sie brauchen — A + B zusammen gibt es günstiger.', 'seats': '%d von %d Startplätzen vergeben', 'ws_seats': 'Noch %d von %d Gründerplätzen frei', 'fa_title': 'Ihre Frage ist nicht dabei?', 'fa_text': 'Schreiben Sie mir kurz auf WhatsApp — auf Deutsch, Ukrainisch oder Russisch. Antwort innerhalb von 24 Stunden.', 'fa_wa': 'Per WhatsApp fragen', 'fa_check': 'Kostenloser Google-Check →'}, 'uk': {'pk_sep': 'Кожна послуга оплачується окремо: Google-профіль (A), сайт (B), супровід (C) і підписка «Сайт самостійно» мають свою ціну. Ви обираєте лише те, що потрібно, — A + B разом дешевше.', 'seats': '%d з %d стартових місць зайнято', 'ws_seats': 'Залишилось %d з %d місць за ціною засновниці', 'fa_title': 'Не знайшли свого питання?', 'fa_text': 'Напишіть мені коротко у WhatsApp — українською, російською чи німецькою. Відповідь протягом 24 годин.', 'fa_wa': 'Запитати у WhatsApp', 'fa_check': 'Безкоштовний аудит у Google →'}, 'ru': {'pk_sep': 'Каждая услуга оплачивается отдельно: Google-профиль (A), сайт (B), сопровождение (C) и подписка «Сайт самостоятельно» имеют свою цену. Вы выбираете только то, что нужно, — A + B вместе дешевле.', 'seats': '%d из %d стартовых мест занято', 'ws_seats': 'Осталось %d из %d мест по цене основательницы', 'fa_title': 'Не нашли свой вопрос?', 'fa_text': 'Напишите мне коротко в WhatsApp — по-русски, по-украински или по-немецки. Ответ в течение 24 часов.', 'fa_wa': 'Спросить в WhatsApp', 'fa_check': 'Бесплатный аудит в Google →'}}
+for _l, _d in EXTRA.items():
+    T[_l].update(_d)
+
 PZ_SLUG = "checklist-google-maps.html"
 PZ = {
     "de": dict(label="Mini-Spiel", title="Puzzle lösen — Geschenk bekommen",
@@ -1146,8 +1177,11 @@ def wa_float(lang):
     t = T[lang]
     href = "https://wa.me/%s?text=%s" % (WA_NUM, quote(t["wa_text"]))
     label = {"de": "Per WhatsApp schreiben", "uk": "Написати у WhatsApp", "ru": "Написать в WhatsApp"}[lang]
-    return ('<a class="wa-float" href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s" '
-            'data-umami-event="whatsapp-float">%s</a>\n' % (html.escape(href, quote=True), label, label, ICON["wa"]))
+    js = ('<script>{const b=document.querySelector(".wa-float"),h=document.getElementById("top");'
+          'if(b&&h&&"IntersectionObserver"in window){new IntersectionObserver(e=>b.classList.toggle("wait",e[0].isIntersecting),{threshold:.15}).observe(h)}'
+          'else if(b)b.classList.remove("wait")}</script>\n')
+    return ('<a class="wa-float wait" href="%s" target="_blank" rel="noopener" aria-label="%s" title="%s" '
+            'data-umami-event="whatsapp-float">%s</a>\n' % (html.escape(href, quote=True), label, label, ICON["wa"])) + js
 
 
 import re as _re
@@ -1428,6 +1462,29 @@ CAL_JS = r"""<script>
 """
 
 
+HOME_BLOG = {
+    "de": dict(label="Blog", title="Aus dem Blog", all="Alle Artikel →"),
+    "uk": dict(label="Блог", title="Свіжі статті", all="Усі статті →"),
+    "ru": dict(label="Блог", title="Свежие статьи", all="Все статьи →"),
+}
+
+
+def blog_teaser_html(lang, limit=4):
+    """Карточки последних статей на главной. Данные берутся из build_blog.POSTS (импорт внутри — чтобы не было цикла)."""
+    import build_blog as BB
+    u, ui = HOME_BLOG[lang], BB.UI[lang]
+    posts = [p for p in sorted(BB.POSTS, key=lambda x: x["date"], reverse=True) if lang in p][:limit]
+    if not posts:
+        return ""
+    o = ['<section class="home-blog" id="blog">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="hb-grid">\n' % (esc(u["label"]), esc(u["title"]))]
+    for p in posts:
+        a = p[lang]
+        o.append('      <a class="post-card" href="/%sblog/%s" data-umami-event="home-blog"><div class="post-meta">%s</div><h3>%s</h3><p>%s</p><span class="post-more">%s</span></a>\n' % (
+            PATHS[lang], a["slug"], BB.nice_date(p["date"], lang), esc(a["title"]), esc(a["excerpt"]), esc(ui["more"])))
+    o.append('    </div>\n    <p class="hb-all"><a href="/%sblog/">%s</a></p>\n  </div>\n</section>\n\n' % (PATHS[lang], esc(u["all"])))
+    return "".join(o)
+
+
 def render(lang):
     t = T[lang]
     url = SITE + PATHS[lang]
@@ -1544,17 +1601,29 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>\n\n'
         w('  </div>\n</section>\n\n')
 
     # packages
-    w('<section class="pakete" id="pakete">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="pkg-grid">\n' % (esc(t["pk_label"]), esc(t["pk_title"])))
+    w('<section class="pakete" id="pakete">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <p class="pk-sep">%s</p>\n    <div class="pkg-grid">\n' % (esc(t["pk_label"]), esc(t["pk_title"]), esc(t["pk_sep"])))
     for p in t["pk"]:
         w('      <article class="pkg%s" id="paket-%s">\n' % (" feat" if p.get("feat") else "", _plain(p["name"])[:1].lower()))
         w('        <div class="pkg-tag">%s</div>\n        <h3>%s</h3>\n        <div class="pkg-price">%s</div>\n' % (esc(p["tag"]), esc(p["name"]), p["price"]))
-        w('        <div class="pkg-start">%s</div>\n        <p class="pkg-desc">%s</p>\n        <ul>\n' % (p["start"], esc(p["desc"])))
+        key = _plain(p["name"])[:1].lower()
+        taken = PK_START_VERGEBEN.get(key, 0)
+        seats = ('<span class="seats" role="img" aria-label="%s"><span class="seats-bar">%s</span>%s</span>'
+                 % (esc(t["seats"] % (taken, PK_START_PLAETZE)),
+                    "".join('<i class="on"></i>' if i < taken else '<i></i>' for i in range(PK_START_PLAETZE)),
+                    esc(t["seats"] % (taken, PK_START_PLAETZE)))) if 0 < taken < PK_START_PLAETZE else ""
+        w('        <div class="pkg-start">%s%s</div>\n        <p class="pkg-desc">%s</p>\n        <ul>\n' % (p["start"], seats, esc(p["desc"])))
         for it in p["items"]:
             w('          <li>%s</li>\n' % esc(it))
         w('        </ul>\n        <p class="pkg-term">%s</p>\n        <a href="#contact" class="pkg-btn" data-umami-event="paket-anfragen" data-umami-event-paket="%s">%s</a>\n      </article>\n' % (esc(p["term"]), esc(_plain(p["name"])[:1]), esc(t["pk_btn"])))
     w('    </div>\n')
     if WS_URL:  # карточка тарифа «Website-Abo»
         first = ('<small>%s</small>' % esc(t["ws_first"] % (WS_PLAETZE, WS_CODE))) if WS_CODE else ''
+        _wp = int(WS_PLAETZE or 0)
+        if WS_CODE and 0 < WS_VERGEBEN < _wp:
+            first += ('<span class="seats dark" role="img" aria-label="%s"><span class="seats-bar">%s</span>%s</span>'
+                      % (esc(t["ws_seats"] % (_wp - WS_VERGEBEN, _wp)),
+                         "".join('<i class="on"></i>' if i < WS_VERGEBEN else '<i></i>' for i in range(_wp)),
+                         esc(t["ws_seats"] % (_wp - WS_VERGEBEN, _wp))))
         w('    <div class="ws-teaser" id="website-abo">\n      <div><span class="ws-neu">%s</span><h3>%s</h3><p>%s</p>\n        <ul class="ws-incl">%s</ul>\n'
           % (esc(t["ws_neu"]), esc(t["ws_title"]), esc(t["ws_text"]), "".join('<li>%s</li>' % esc(x) for x in t["ws_incl"])))
         w('      </div>\n')  # способы оплаты не показываем — их видно уже в Stripe при оплате
@@ -1594,12 +1663,21 @@ try{window.umami&&umami.track("quiz-"+o.dataset.n)}catch(_){}}))}}</script>\n\n'
     w('</section>\n\n')
 
     # faq
-    w('<section class="faq" id="faq">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="faq-list">\n' % (esc(t["fq_label"]), esc(t["fq_title"])))
+    w('<section class="faq" id="faq">\n  <div class="wrap">\n    <div class="sec-label">%s</div>\n    <h2 class="sec-title">%s</h2>\n    <div class="faq-grid">\n    <div class="faq-list">\n' % (esc(t["fq_label"]), esc(t["fq_title"])))
     for f in t["faq"]:
         q, a = f[0], f[1]
         more = ' <a class="inl" href="%s">%s</a>' % (f[2], esc(f[3])) if len(f) > 2 else ""
         w('      <details><summary>%s</summary><p>%s%s</p></details>\n' % (esc(q), esc(a), more))
+    w('    </div>\n')
+    w('    <aside class="faq-aside">\n      <div class="fa-top">%s<h3>%s</h3></div>\n      <p>%s</p>\n'
+      % (pic("/images/olha-portrait.jpg", 900, 1350, "", (480,), "64px", 'loading="lazy" decoding="async" class="fa-img"'), esc(t["fa_title"]), esc(t["fa_text"])))
+    w('      <a class="fa-wa" href="%s" target="_blank" rel="noopener" data-umami-event="faq-whatsapp">%s%s</a>\n      <a class="fa-check" href="#contact" data-umami-event="faq-google-check">%s</a>\n    </aside>\n'
+      % (esc(wa), ICON["wa"], esc(t["fa_wa"]), esc(t["fa_check"])))
     w('    </div>\n  </div>\n</section>\n\n')
+
+    # blog teaser (28.11.2026): последние статьи блога со ссылками — помогает Google найти статьи с главной
+    if lang in BLOG_LANGS:
+        w(blog_teaser_html(lang))
 
     # contact
     w('<section class="contact" id="contact">\n  <div class="wrap contact-inner">\n    <div>\n')

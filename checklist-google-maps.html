@@ -7,11 +7,11 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkliste: 10 Punkte für Ihr Google-Maps-Profil — Olha Polishchuk</title>
-<meta name="description" content="Kostenlose Checkliste für kleine Unternehmen: So prüfen und verbessern Sie Ihr Google-Unternehmensprofil in 20 Minuten.">
+<title>Google-Unternehmensprofil Checkliste: 10 Punkte — Olha Polishchuk</title>
+<meta name="description" content="Haken Sie 10 Punkte ab und sehen Sie, wie gut Ihr Google-Maps-Profil aufgestellt ist: Richtig-/Falsch-Beispiele, Klickwege, Zeitangaben. Kostenlos.">
 <link rel="canonical" href="https://olhapolishchuk.de/checklist-google-maps.html">
-<meta property="og:title" content="Checkliste: 10 Punkte für Ihr Google-Maps-Profil — Olha Polishchuk">
-<meta property="og:description" content="Kostenlose Checkliste für kleine Unternehmen: So prüfen und verbessern Sie Ihr Google-Unternehmensprofil in 20 Minuten.">
+<meta property="og:title" content="Google-Unternehmensprofil Checkliste: 10 Punkte — Olha Polishchuk">
+<meta property="og:description" content="Haken Sie 10 Punkte ab und sehen Sie, wie gut Ihr Google-Maps-Profil aufgestellt ist: Richtig-/Falsch-Beispiele, Klickwege, Zeitangaben. Kostenlos.">
 <meta property="og:url" content="https://olhapolishchuk.de/checklist-google-maps.html">
 <meta property="og:image" content="https://olhapolishchuk.de/images/olha-portrait.jpg">
 <meta property="og:type" content="article">
@@ -19,6 +19,7 @@
 <link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/checklist-google-maps.html">
 <link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/checklist-google-maps.html">
 <link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/checklist-google-maps.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "de", "mainEntity": [{"@type": "Question", "name": "Wann sehe ich Ergebnisse?", "acceptedAnswer": {"@type": "Answer", "text": "Änderungen übernimmt Google meist in wenigen Tagen, Veränderungen bei den Aufrufen sehen Sie nach 2–4 Wochen. Vergleichen Sie im Profil unter „Leistung“ die Zahlen vorher und nachher."}}, {"@type": "Question", "name": "Kann ich Google bezahlen, um weiter oben zu stehen?", "acceptedAnswer": {"@type": "Answer", "text": "Die normalen Plätze auf der Karte sind nicht käuflich. Es gibt Anzeigen mit dem Hinweis „Gesponsert“ – das ist ein separates, kostenpflichtiges Angebot."}}, {"@type": "Question", "name": "Brauche ich eine Website, wenn ich ein Google-Profil habe?", "acceptedAnswer": {"@type": "Answer", "text": "Nicht zwingend. Eine Website mit demselben Namen, derselben Adresse und Telefonnummer stärkt aber das Vertrauen von Google in Ihr Profil."}}]}</script>
 <style>
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/dm-sans-latin-300-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/dm-sans-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -53,7 +54,6 @@ h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.8rem,4
 .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:16px;break-inside:avoid}
 .item.zero{border-left:4px solid var(--amber)}
 .item h2{font-family:'DM Sans',sans-serif;font-size:1.12rem;font-weight:600;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
-.box{flex-shrink:0;width:22px;height:22px;border:2px solid var(--amber);border-radius:5px;margin-top:3px}
 .item p{color:var(--ink-soft);margin-bottom:10px}
 .item p:last-child{margin-bottom:0}
 .item strong{color:var(--ink)}
@@ -68,58 +68,123 @@ h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.8rem,4
 .sig{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:22px}
 @media (max-width:600px){main{padding:32px 16px 56px}.item{padding:20px 18px}}
 @media print{body{background:#fff}.top,.print,.cta a{display:none}.item{border:1px solid #ccc}.cta{background:#fff;color:var(--ink);border:1px solid #ccc}.cta p{color:var(--ink-soft)}main{padding:0}}
+
+.counter{position:sticky;top:0;z-index:5;background:var(--bg-soft);padding:10px 0 14px;margin-bottom:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.counter b{font-size:1.05rem}
+.bar{flex:1;min-width:140px;height:8px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--amber);transition:width .25s}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.tools .print{margin-bottom:0}
+.intro{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:20px 24px;margin-bottom:16px;color:var(--ink-soft)}
+.intro p{margin-bottom:8px}.intro p:last-child{margin-bottom:0}.intro strong{color:var(--ink)}
+.item label{cursor:pointer}
+.item input[type=checkbox]{flex-shrink:0;width:22px;height:22px;margin-top:3px;accent-color:var(--amber);cursor:pointer}
+.item.is-done{border-color:var(--amber);background:var(--amber-pale)}
+.meta{font-size:14px;color:var(--ink-soft);margin:-2px 0 12px 34px}
+.ex{border-radius:6px;padding:6px 12px;margin:0 0 6px;font-size:15px}
+.ex.good{background:#EAF6EE;color:#1E5E34}
+.ex.bad{background:#FBECEC;color:#8A2525}
+.res{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-top:28px}
+.res h2,.faq h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem;margin-bottom:12px}
+.res div{padding:10px 14px;border-radius:8px;margin-bottom:6px;color:var(--ink-soft)}
+.res div.on{background:var(--amber-pale);color:var(--ink);font-weight:500}
+.res b{display:inline-block;min-width:64px;color:var(--ink)}
+.faq{margin-top:32px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600}
+.faq details p{color:var(--ink-soft);margin-top:8px}
+@media print{.counter,.tools,.reset{display:none}.item.is-done{background:#fff}.faq details{border:0;padding:0}.faq details>*{display:block}}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="fe1a89e7-ba92-4d19-99cf-5949bb100cdd" data-domains="olhapolishchuk.de" data-do-not-track="true"></script>
 </head>
 <body>
 <div class="top"><div class="in"><a class="brand" href="/">Olha <span>Polishchuk</span></a><a href="/">← Zur Startseite</a></div></div>
 <main>
-<h1>Checkliste: 10 Punkte für Ihr Google-Maps-Profil</h1>
-<p class="lead">Dauert etwa 20 Minuten. Sie brauchen Ihr Handy und das Google-Konto, mit dem das Profil verwaltet wird.</p>
-<button class="print" type="button" onclick="window.print()">Als PDF speichern / drucken</button>
-<section class="item zero"><h2><span>Schritt 0: Warum das wichtig ist und wie Sie Ihr Profil öffnen</span></h2>
-<p>Wer „Friseur in der Nähe“, „Steuerberater Düsseldorf“ oder „Handyreparatur“ sucht, sieht bei Google zuerst eine Karte mit drei Unternehmen — erst darunter kommen Webseiten. In diese Dreiergruppe kommen Sie kostenlos: mit Ihrem Google-Unternehmensprofil. Fehlt das Profil oder ist es nur halb ausgefüllt, gehen die Kunden zur Konkurrenz.</p>
-<p><strong>So öffnen Sie Ihr Profil:</strong></p>
-<ol><li>Melden Sie sich mit dem Google-Konto an, auf das Ihr Unternehmen eingetragen ist.</li><li>Öffnen Sie die App <strong>Google Maps</strong>, tippen Sie oben rechts auf Ihr Profilbild und wählen Sie <strong>„Ihr Unternehmensprofil“</strong>. Oder suchen Sie bei Google nach dem Namen Ihres Unternehmens — als Inhaber sehen Sie über dem Ergebnis ein Feld zur Profilverwaltung.</li><li>Noch kein Profil? Legen Sie es auf <strong>business.google.com</strong> an. Google bestätigt per Telefon, Video oder Brief, dass das Unternehmen Ihnen gehört.</li></ol>
+<h1>Google-Unternehmensprofil: Checkliste mit 10 Punkten zum Abhaken</h1>
+<p class="lead">Dauert etwa 30 Minuten. Sie brauchen Ihr Handy und das Google-Konto, mit dem Sie das Profil verwalten. Haken Sie die Punkte ab – der Zähler zeigt Ihr Ergebnis.</p>
+<div class="counter" aria-live="polite"><b>Erledigt: <span id="cnt">0</span> / 10</b><span class="bar"><i id="bar"></i></span></div>
+<div class="tools"><button class="print" type="button" onclick="window.print()">Als PDF speichern / drucken</button><button class="print reset" id="reset" type="button">Häkchen zurücksetzen</button></div>
+<div class="intro"><p><strong>So öffnen Sie Ihr Profil:</strong> App <strong>Google Maps</strong> → Profilbild oben rechts → <strong>„Ihr Unternehmensprofil“</strong>. Noch kein Profil? Legen Sie es auf <strong>business.google.com</strong> an.</p>
+<p><em>Warum das wichtig ist und wie Google entscheidet, wen es auf der Karte zeigt, lesen Sie im Artikel <a href="/blog/warum-sie-bei-google-maps-nicht-gefunden-werden.html">„Warum Sie bei Google Maps nicht gefunden werden: 7 Gründe“</a>.</em></p></div>
+<section class="item"><h2><input type="checkbox" id="p1"><label for="p1">1. Name – genau wie auf dem Schild</label></h2>
+<p class="meta">⏱ 2 Min. · 📍 „Profil bearbeiten“ → „Name des Unternehmens“</p>
+<p class="ex good">✓ Studio Anna</p>
+<p class="ex bad">✗ Studio Anna – Maniküre Gel günstig Düsseldorf</p>
+<p>Suchbegriffe im Namen verstoßen gegen die Google-Richtlinien: Der Name kann geändert oder das Profil gesperrt werden.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>1. Name — genau wie auf dem Schild</span></h2>
-<p>Ohne Zusätze wie „bester“ oder „günstig Düsseldorf“. Dafür kann Google das Profil sperren.</p>
+<section class="item"><h2><input type="checkbox" id="p2"><label for="p2">2. Hauptkategorie – so genau wie möglich</label></h2>
+<p class="meta">⏱ 3 Min. · 📍 „Profil bearbeiten“ → „Unternehmenskategorie“</p>
+<p class="ex good">✓ Nagelstudio (wenn Maniküre Ihr Hauptumsatz ist)</p>
+<p class="ex bad">✗ Schönheitssalon (zu allgemein)</p>
+<p>Tippen Sie den Anfang ein – Google schlägt passende Kategorien vor. Weitere Leistungen als zusätzliche Kategorien, aber höchstens 3–4.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>2. Hauptkategorie — so genau wie möglich</span></h2>
-<p>Wählen Sie die Kategorie, die Ihre Haupttätigkeit am genauesten beschreibt: nicht „Geschäft“, sondern „Kinderbekleidungsgeschäft“; nicht „Dienstleistungen“, sondern „Buchhalter“. Die Hauptkategorie bestimmt am stärksten, bei welchen Suchanfragen Sie erscheinen. Weitere Bereiche fügen Sie als zusätzliche Kategorien hinzu.</p>
+<section class="item"><h2><input type="checkbox" id="p3"><label for="p3">3. Adresse oder Einzugsgebiet</label></h2>
+<p class="meta">⏱ 3 Min. · 📍 „Profil bearbeiten“ → „Standort“ / „Einzugsgebiet“</p>
+<p class="ex good">✓ Kundinnen kommen zu Ihnen → genaue Adresse, Markierung am Eingang.</p>
+<p class="ex good">✓ Sie fahren zu Ihren Kundinnen → Adresse ausgeblendet, Stadtteile oder Städte angegeben.</p>
+<p class="ex bad">✗ Adresse von Bekannten oder ein virtuelles Büro.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>3. Adresse und Einzugsgebiet</span></h2>
-<p>Kommen Kunden zu Ihnen — genaue Adresse und Markierung an der richtigen Stelle. Fahren Sie zu Ihren Kunden — Adresse ausblenden und Stadtteile oder Städte angeben.</p>
+<section class="item"><h2><input type="checkbox" id="p4"><label for="p4">4. Öffnungszeiten und Feiertage</label></h2>
+<p class="meta">⏱ 3 Min. · 📍 „Profil bearbeiten“ → „Öffnungszeiten“ → „Besondere Öffnungszeiten“</p>
+<p>Tragen Sie 24.12., 25./26.12., 31.12. und 1.1. schon vorab ein. Eine verschlossene Tür zur „geöffneten“ Zeit ist ein häufiger Grund für schlechte Bewertungen.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>4. Öffnungszeiten aktuell — auch an Feiertagen</span></h2>
-<p>Eine verschlossene Tür zur „geöffneten“ Zeit ist ein häufiger Grund für schlechte Bewertungen. Sonderöffnungszeiten für Feiertage tragen Sie vorab ein.</p>
+<section class="item"><h2><input type="checkbox" id="p5"><label for="p5">5. Telefon und Website anklickbar</label></h2>
+<p class="meta">⏱ 2 Min. · 📍 Profil wie eine Kundin öffnen, im Inkognito-Fenster</p>
+<p>Tippen Sie selbst auf „Anrufen“ und „Website“. Keine Website? Dann verlinken Sie WhatsApp oder Instagram.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>5. Telefon und Webseite anklickbar</span></h2>
-<p>Testen Sie selbst: Tippen Sie auf „Anrufen“ und „Website“. Keine Webseite? Dann verlinken Sie WhatsApp oder Instagram.</p>
-</section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>6. Beschreibung nach Vorlage</span></h2>
+<section class="item"><h2><input type="checkbox" id="p6"><label for="p6">6. Beschreibung nach Vorlage</label></h2>
+<p class="meta">⏱ 10 Min. · 📍 „Profil bearbeiten“ → „Beschreibung“</p>
 <p>Bis zu 750 Zeichen, ohne Links und ohne Großbuchstaben am Stück. Füllen Sie die Vorlage aus:</p>
 <div class="tpl"><div><strong>[Name]</strong> — [was Sie tun] in [Stadt / Stadtteil].</div><div>Wir helfen [wem: Familien, Autofahrern, kleinen Unternehmen …] [bei welchem Anliegen].</div><div>Unsere Leistungen: [3–5 Hauptleistungen, durch Komma getrennt].</div><div>Warum Kunden uns wählen: [Jahre Erfahrung / Garantie / schnelle Termine / persönliche Beratung].</div><div>Wir sprechen [Deutsch, Russisch, Ukrainisch …].</div><div>Termin per Telefon oder WhatsApp — [Antwort innerhalb einer Stunde / Termine noch heute].</div></div>
 <p><strong>Beispiel:</strong> „Studio Anna — Kosmetikerin in Düsseldorf-Bilk. Ich helfe Frauen, ihre Haut ohne aggressive Behandlungen zu pflegen. Leistungen: Gesichtsreinigung, Peelings, Gesichtsmassage, Pflege für empfindliche Haut. 8 Jahre Erfahrung, nur zertifizierte Kosmetik. Ich spreche Deutsch, Russisch und Ukrainisch. Termine per Telefon oder WhatsApp — Antwort innerhalb einer Stunde.“</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>7. Mindestens 10 aktuelle Fotos</span></h2>
-<p>Eingang von außen (damit man Sie leicht findet), Räume, Ihre Arbeiten oder Produkte, Sie und Ihr Team. Profile mit Fotos bekommen deutlich mehr Klicks. Laden Sie mindestens einmal im Monat neue hoch.</p>
+<section class="item"><h2><input type="checkbox" id="p7"><label for="p7">7. Mindestens 10 Fotos – jeden Monat neue</label></h2>
+<p class="meta">⏱ 5 Min. · 📍 Profil → „Fotos hinzufügen“</p>
+<p>Was haben Sie schon? Eingang von außen · Räume · Ihre Arbeiten · Sie und Ihr Team · Logo.</p>
+<p class="ex bad">✗ Fotos aus dem Internet oder von Bildagenturen – Google und Kundinnen merken das.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>8. Leistungen und Preise ausgefüllt</span></h2>
-<p><strong>So geht's:</strong> Tippen Sie im Profil auf <strong>„Profil bearbeiten“ → „Dienstleistungen“</strong> (je nach Kategorie heißt der Bereich <strong>„Produkte“</strong> oder <strong>„Speisekarte“</strong>). Dann <strong>„Dienstleistung hinzufügen“</strong> — Name, Preis (auch „ab …“) und eine kurze Beschreibung eintragen.</p>
-<p>Kunden schreiben eher, wenn sie die Preisspanne kennen.</p>
+<section class="item"><h2><input type="checkbox" id="p8"><label for="p8">8. Leistungen und Preise</label></h2>
+<p class="meta">⏱ 10 Min. · 📍 „Profil bearbeiten“ → „Dienstleistungen“ (je nach Kategorie „Produkte“)</p>
+<p class="ex good">✓ Maniküre mit Shellac – ab 35 €</p>
+<p class="ex bad">✗ Maniküre – Preis auf Anfrage</p>
+<p>Kundinnen schreiben eher, wenn sie die Preisspanne kennen.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>9. Bewertungen: auch negative arbeiten für Sie</span></h2>
-<p>Bitten Sie 3–5 zufriedene Kunden um eine Bewertung und schicken Sie ihnen den direkten Link — Sie finden ihn im Profil unter <strong>„Um Rezensionen bitten“</strong>.</p>
-<p><strong>Keine Angst vor negativen Bewertungen.</strong> Ein Profil mit nur fünf Sternen wirkt verdächtig — dem glaubt man nicht. Künftige Kunden lesen weniger die Bewertung selbst als Ihre Antwort darauf.</p>
-<ul><li>Antworten Sie ruhig, höflich und sachlich: bedanken, Situation erklären, Lösung anbieten.</li><li>Nicht streiten und nicht emotional rechtfertigen.</li><li>Eine kompetente Antwort auf Kritik überzeugt mehr als zehn Fünf-Sterne-Bewertungen: Der Kunde sieht, dass Sie Probleme lösen, wenn etwas schiefgeht.</li></ul>
-<p>Antworten Sie auch auf gute Bewertungen — ein kurzes „Danke, wir haben uns gefreut!“ zeigt, dass hinter dem Profil ein Mensch steht.</p>
+<section class="item"><h2><input type="checkbox" id="p9"><label for="p9">9. Bewertungen: Link teilen und antworten</label></h2>
+<p class="meta">⏱ 5 Min. · 📍 „Um Rezensionen bitten“ → Link kopieren</p>
+<p>Schicken Sie den Link an 3–5 zufriedene Kundinnen. Antworten Sie auf jede Bewertung, auch auf negative: ruhig, sachlich, mit einer Lösung. Künftige Kundinnen lesen weniger die Bewertung als Ihre Antwort darauf.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>10. Alle 2 Wochen ein Beitrag</span></h2>
-<p>Neuigkeit, Angebot, Foto einer neuen Arbeit. Das Profil wirkt lebendig — und Kunden haben einen Grund, sich für Sie zu entscheiden.</p>
+<section class="item"><h2><input type="checkbox" id="p10"><label for="p10">10. Alle 2 Wochen ein Beitrag</label></h2>
+<p class="meta">⏱ 5 Min. · 📍 Profil → „Neuigkeit hinzufügen“</p>
+<p>Neue Arbeit, Angebot, freie Termine diese Woche. Tragen Sie sich eine Erinnerung in den Kalender ein.</p>
 </section>
-<div class="cta"><h2>Soll ich Ihr Profil prüfen?</h2><p>Schreiben Sie mir per WhatsApp. Der erste Check ist kostenlos — Sie bekommen eine kurze Liste, was Sie verbessern können.</p><a href="https://wa.me/380666578075?text=Hallo%21%20Ich%20habe%20die%20Google-Maps-Checkliste%20gelesen%20und%20m%C3%B6chte%20einen%20kostenlosen%20Profil-Check." target="_blank" rel="noopener">Per WhatsApp schreiben</a></div>
+<div class="res"><h2>Ihr Ergebnis</h2>
+<div data-min="9" data-max="10"><b>9–10 ✓</b> Ihr Profil ist gut aufgestellt. Bleiben Sie bei Bewertungen und Beiträgen dran.</div>
+<div data-min="6" data-max="8"><b>6–8 ✓</b> Die Basis steht, aber Kundinnen landen noch bei der Konkurrenz. Beginnen Sie mit offenen Punkten aus 1–3: Sie wirken am stärksten auf die Sichtbarkeit.</div>
+<div data-min="0" data-max="5"><b>0–5 ✓</b> Ihr Profil arbeitet mit halber Kraft. Am einfachsten starten Sie mit einem kostenlosen Check.</div>
+</div>
+<div class="cta"><h2>Soll ich Ihr Profil prüfen?</h2><p>Kostenloser Google-Check: Ich schaue mir Ihr Profil an und schicke Ihnen 3–5 konkrete Schritte.</p><a href="https://wa.me/380666578075?text=Hallo%21%20Ich%20habe%20die%20Google-Maps-Checkliste%20durchgearbeitet%20und%20m%C3%B6chte%20einen%20kostenlosen%20Profil-Check." target="_blank" rel="noopener">Per WhatsApp schreiben</a></div>
+<div class="faq"><h2>Häufige Fragen</h2>
+<details><summary>Wann sehe ich Ergebnisse?</summary><p>Änderungen übernimmt Google meist in wenigen Tagen, Veränderungen bei den Aufrufen sehen Sie nach 2–4 Wochen. Vergleichen Sie im Profil unter „Leistung“ die Zahlen vorher und nachher.</p></details>
+<details><summary>Kann ich Google bezahlen, um weiter oben zu stehen?</summary><p>Die normalen Plätze auf der Karte sind nicht käuflich. Es gibt Anzeigen mit dem Hinweis „Gesponsert“ – das ist ein separates, kostenpflichtiges Angebot.</p></details>
+<details><summary>Brauche ich eine Website, wenn ich ein Google-Profil habe?</summary><p>Nicht zwingend. Eine Website mit demselben Namen, derselben Adresse und Telefonnummer stärkt aber das Vertrauen von Google in Ihr Profil.</p></details>
+</div>
 <p class="sig">Olha Polishchuk · <a href="/">olhapolishchuk.de</a></p>
 </main>
+<script>
+(function(){
+  var KEY='olha-checklist-v2', boxes=[].slice.call(document.querySelectorAll('.item input[type=checkbox]'));
+  var n=document.getElementById('cnt'), bar=document.getElementById('bar'), rows=document.querySelectorAll('.res div[data-min]');
+  var st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function upd(){
+    var k=0; boxes.forEach(function(b){ if(b.checked)k++; b.closest('.item').classList.toggle('is-done',b.checked); st[b.id]=b.checked; });
+    n.textContent=k; bar.style.width=(k*10)+'%';
+    [].forEach.call(rows,function(r){ r.classList.toggle('on', k>=+r.dataset.min && k<=+r.dataset.max); });
+    try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+  }
+  boxes.forEach(function(b){ if(st[b.id])b.checked=true; b.addEventListener('change',function(){ upd(); if(b.checked && window.umami){try{umami.track('checklist-punkt',{n:b.id})}catch(e){}} }); });
+  var r=document.getElementById('reset'); if(r)r.addEventListener('click',function(){ boxes.forEach(function(b){b.checked=false}); upd(); });
+  upd();
+})();
+</script>
 </body>
 </html>

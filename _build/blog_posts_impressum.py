@@ -11,8 +11,8 @@ IMPRESSUM_POST = {
     "ru": dict(
         slug="impressum-i-datenschutz-dlya-mastera.html",
         title="Impressum и Datenschutz для мастера маникюра и косметолога: что обязательно в 2026 году",
-        seo_title="Impressum и Datenschutz для мастера и косметолога в Германии | Olha Polishchuk",
-        desc="Что должно быть в Impressum и Datenschutz у мастера маникюра и косметолога в Германии: адрес при работе из дома, Wirtschafts-ID, Instagram, онлайн-запись, фото «до/после». Простым языком.",
+        seo_title="Impressum и Datenschutz для мастера в Германии | Olha Polishchuk",
+        desc="Что должно быть в Impressum и Datenschutz у мастера маникюра и косметолога: адрес при работе из дома, Wirtschafts-ID, Instagram, онлайн-запись, фото «до/после».",
         excerpt="Две обязательные страницы, из-за которых приходят Abmahnungen. Разбираю по пунктам, что в них должно быть, что изменилось за последний год — и где у косметологов больше подводных камней.",
         lead="Impressum и Datenschutz — самые скучные страницы сайта. И единственные, из-за которых вам может прийти письмо от адвоката с требованием заплатить. Хорошая новость: для мастера, который работает один, всё укладывается в понятный список. Разберём его по пунктам — сначала то, что одинаково для маникюра, бровей и косметологии, а потом отдельно то, что важно именно косметологам.",
         body="""> Это обзор для ориентира, а не юридическая консультация. Перед запуском сайта тексты лучше показать юристу или в IHK/HWK — первичная консультация там часто бесплатная.
@@ -140,8 +140,8 @@ Datenschutzerklärung описывает, какие данные посетит
     "uk": dict(
         slug="impressum-i-datenschutz-dlia-maistra.html",
         title="Impressum і Datenschutz для майстра манікюру й косметолога: що обов'язково у 2026 році",
-        seo_title="Impressum і Datenschutz для майстра й косметолога в Німеччині | Olha Polishchuk",
-        desc="Що має бути в Impressum і Datenschutz у майстра манікюру й косметолога в Німеччині: адреса, якщо працюєте вдома, Wirtschafts-ID, Instagram, онлайн-запис, фото «до/після». Простими словами.",
+        seo_title="Impressum і Datenschutz для майстра в Німеччині | Olha Polishchuk",
+        desc="Що має бути в Impressum і Datenschutz у майстра манікюру й косметолога: адреса, якщо працюєте вдома, Wirtschafts-ID, Instagram, онлайн-запис, фото «до/після».",
         excerpt="Дві обов'язкові сторінки, через які приходять Abmahnungen. Розбираю по пунктах, що в них має бути, що змінилося за останній рік — і де в косметологів більше підводних каменів.",
         lead="Impressum і Datenschutz — найнудніші сторінки сайту. І єдині, через які вам може прийти лист від адвоката з вимогою заплатити. Добра новина: для майстра, який працює сам, усе вкладається у зрозумілий список. Розберімо його по пунктах — спершу те, що однаково для манікюру, брів і косметології, а потім окремо те, що важливо саме косметологам.",
         body="""> Це огляд для орієнтиру, а не юридична консультація. Перед запуском сайту тексти краще показати юристу або в IHK/HWK — первинна консультація там часто безкоштовна.
@@ -269,8 +269,8 @@ Datenschutzerklärung описує, які дані відвідувачок о�
     "de": dict(
         slug="impressum-datenschutz-nagelstudio-kosmetikstudio.html",
         title="Impressum und Datenschutz für Nagel- und Kosmetikstudios: Was 2026 Pflicht ist",
-        seo_title="Impressum & Datenschutz für Nagelstudio und Kosmetikstudio | Olha Polishchuk",
-        desc="Was in Impressum und Datenschutzerklärung eines Nagel- oder Kosmetikstudios gehört: Adresse im Homeoffice, Wirtschafts-ID, Instagram, Online-Buchung, Vorher-Nachher-Bilder. Verständlich erklärt.",
+        seo_title="Impressum & Datenschutz fürs Nagelstudio | Olha Polishchuk",
+        desc="Was ins Impressum und in die Datenschutzerklärung eines Nagel- oder Kosmetikstudios gehört: Homeoffice-Adresse, Wirtschafts-ID, Instagram, Online-Buchung.",
         excerpt="Zwei Pflichtseiten, wegen denen Abmahnungen kommen. Ich erkläre Punkt für Punkt, was hineingehört, was sich im letzten Jahr geändert hat – und wo Kosmetikerinnen besonders aufpassen müssen.",
         lead="Impressum und Datenschutz sind die langweiligsten Seiten einer Website. Und die einzigen, wegen denen ein Anwaltsschreiben mit Zahlungsaufforderung kommen kann. Die gute Nachricht: Wer allein arbeitet, kommt mit einer überschaubaren Liste aus. Gehen wir sie Punkt für Punkt durch – erst das, was für Nägel, Brauen und Kosmetik gleich ist, dann das, was speziell Kosmetikerinnen betrifft.",
         body="""> Dieser Überblick dient der Orientierung und ist keine Rechtsberatung. Lassen Sie Ihre Texte vor dem Start von einer Anwältin, einem Anwalt oder bei IHK bzw. HWK prüfen – die Erstberatung dort ist oft kostenlos.

@@ -7,11 +7,11 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Чек-лист: 10 проверок профиля в Google Maps — Olha Polishchuk</title>
-<meta name="description" content="Бесплатный чек-лист для малого бизнеса: как за 20 минут проверить и улучшить свой профиль компании в Google Maps.">
+<title>Чек-лист Google Maps: 10 пунктов с галочками — Olha Polishchuk</title>
+<meta name="description" content="Отметьте 10 пунктов и узнайте, насколько готов ваш профиль в Google Maps: примеры «правильно/неправильно», где нажать, сколько времени. Бесплатно.">
 <link rel="canonical" href="https://olhapolishchuk.de/ru/checklist-google-maps.html">
-<meta property="og:title" content="Чек-лист: 10 проверок профиля в Google Maps — Olha Polishchuk">
-<meta property="og:description" content="Бесплатный чек-лист для малого бизнеса: как за 20 минут проверить и улучшить свой профиль компании в Google Maps.">
+<meta property="og:title" content="Чек-лист Google Maps: 10 пунктов с галочками — Olha Polishchuk">
+<meta property="og:description" content="Отметьте 10 пунктов и узнайте, насколько готов ваш профиль в Google Maps: примеры «правильно/неправильно», где нажать, сколько времени. Бесплатно.">
 <meta property="og:url" content="https://olhapolishchuk.de/ru/checklist-google-maps.html">
 <meta property="og:image" content="https://olhapolishchuk.de/images/olha-portrait.jpg">
 <meta property="og:type" content="article">
@@ -19,6 +19,7 @@
 <link rel="alternate" hreflang="uk" href="https://olhapolishchuk.de/uk/checklist-google-maps.html">
 <link rel="alternate" hreflang="ru" href="https://olhapolishchuk.de/ru/checklist-google-maps.html">
 <link rel="alternate" hreflang="x-default" href="https://olhapolishchuk.de/checklist-google-maps.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "ru", "mainEntity": [{"@type": "Question", "name": "Сколько ждать результата после изменений?", "acceptedAnswer": {"@type": "Answer", "text": "Обычно Google обновляет профиль за несколько дней, а изменения в показах видны через 2–4 недели. В профиле есть раздел «Статистика» — сравните цифры до и после."}}, {"@type": "Question", "name": "Можно ли заплатить Google, чтобы быть выше на карте?", "acceptedAnswer": {"@type": "Answer", "text": "Обычные места на карте не продаются. Есть рекламные места с пометкой «Реклама», но это отдельная платная услуга."}}, {"@type": "Question", "name": "Нужен ли сайт, если есть профиль в Google?", "acceptedAnswer": {"@type": "Answer", "text": "Не обязательно. Но сайт с теми же названием, адресом и телефоном усиливает доверие Google к профилю."}}]}</script>
 <style>
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/dm-sans-latin-300-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/dm-sans-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -53,7 +54,6 @@ h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.8rem,4
 .item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-bottom:16px;break-inside:avoid}
 .item.zero{border-left:4px solid var(--amber)}
 .item h2{font-family:'DM Sans',sans-serif;font-size:1.12rem;font-weight:600;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
-.box{flex-shrink:0;width:22px;height:22px;border:2px solid var(--amber);border-radius:5px;margin-top:3px}
 .item p{color:var(--ink-soft);margin-bottom:10px}
 .item p:last-child{margin-bottom:0}
 .item strong{color:var(--ink)}
@@ -68,58 +68,123 @@ h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(1.8rem,4
 .sig{text-align:center;color:var(--ink-soft);font-size:14px;margin-top:22px}
 @media (max-width:600px){main{padding:32px 16px 56px}.item{padding:20px 18px}}
 @media print{body{background:#fff}.top,.print,.cta a{display:none}.item{border:1px solid #ccc}.cta{background:#fff;color:var(--ink);border:1px solid #ccc}.cta p{color:var(--ink-soft)}main{padding:0}}
+
+.counter{position:sticky;top:0;z-index:5;background:var(--bg-soft);padding:10px 0 14px;margin-bottom:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.counter b{font-size:1.05rem}
+.bar{flex:1;min-width:140px;height:8px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--amber);transition:width .25s}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.tools .print{margin-bottom:0}
+.intro{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:20px 24px;margin-bottom:16px;color:var(--ink-soft)}
+.intro p{margin-bottom:8px}.intro p:last-child{margin-bottom:0}.intro strong{color:var(--ink)}
+.item label{cursor:pointer}
+.item input[type=checkbox]{flex-shrink:0;width:22px;height:22px;margin-top:3px;accent-color:var(--amber);cursor:pointer}
+.item.is-done{border-color:var(--amber);background:var(--amber-pale)}
+.meta{font-size:14px;color:var(--ink-soft);margin:-2px 0 12px 34px}
+.ex{border-radius:6px;padding:6px 12px;margin:0 0 6px;font-size:15px}
+.ex.good{background:#EAF6EE;color:#1E5E34}
+.ex.bad{background:#FBECEC;color:#8A2525}
+.res{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin-top:28px}
+.res h2,.faq h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem;margin-bottom:12px}
+.res div{padding:10px 14px;border-radius:8px;margin-bottom:6px;color:var(--ink-soft)}
+.res div.on{background:var(--amber-pale);color:var(--ink);font-weight:500}
+.res b{display:inline-block;min-width:64px;color:var(--ink)}
+.faq{margin-top:32px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:600}
+.faq details p{color:var(--ink-soft);margin-top:8px}
+@media print{.counter,.tools,.reset{display:none}.item.is-done{background:#fff}.faq details{border:0;padding:0}.faq details>*{display:block}}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="fe1a89e7-ba92-4d19-99cf-5949bb100cdd" data-domains="olhapolishchuk.de" data-do-not-track="true"></script>
 </head>
 <body>
 <div class="top"><div class="in"><a class="brand" href="/ru/">Olha <span>Polishchuk</span></a><a href="/ru/">← На главную</a></div></div>
 <main>
-<h1>Чек-лист: 10 проверок вашего профиля в Google Maps</h1>
-<p class="lead">Займёт 20 минут. Вам понадобится телефон и Google-аккаунт, на который зарегистрирован профиль.</p>
-<button class="print" type="button" onclick="window.print()">Сохранить в PDF / распечатать</button>
-<section class="item zero"><h2><span>Шаг 0. Почему это важно и как открыть профиль</span></h2>
-<p>Когда человек ищет «парикмахер рядом», «Steuerberater Düsseldorf» или «ремонт телефонов», Google первым делом показывает карту с тремя компаниями — и только под ней сайты. Попасть в эту тройку можно бесплатно: через профиль компании в Google (Google Unternehmensprofil). Если профиля нет или он заполнен наполовину, клиенты уходят к соседу.</p>
-<p><strong>Как открыть свой профиль:</strong></p>
-<ol><li>Войдите в Google-аккаунт, на который зарегистрирован бизнес.</li><li>Откройте приложение <strong>Google Maps</strong>, нажмите на свою аватарку справа вверху и выберите <strong>«Ваш профиль компании»</strong>. Или наберите в поиске Google название своей компании — если вы владелец, над результатом появится панель управления профилем.</li><li>Если профиля нет — создайте его на <strong>business.google.com</strong>. Google подтвердит, что компания ваша: по телефону, видео или письмом.</li></ol>
+<h1>Чек-лист профиля Google Maps: 10 пунктов с галочками</h1>
+<p class="lead">Около 30 минут. Нужны телефон и Google-аккаунт, через который вы управляете профилем. Отмечайте пункты — счётчик покажет результат.</p>
+<div class="counter" aria-live="polite"><b>Выполнено: <span id="cnt">0</span> / 10</b><span class="bar"><i id="bar"></i></span></div>
+<div class="tools"><button class="print" type="button" onclick="window.print()">Сохранить в PDF / распечатать</button><button class="print reset" id="reset" type="button">Сбросить отметки</button></div>
+<div class="intro"><p><strong>Как открыть профиль:</strong> приложение <strong>Google Maps</strong> → фото профиля справа вверху → <strong>«Ваш профиль компании»</strong>. Профиля ещё нет — создайте его на <strong>business.google.com</strong>.</p>
+<p><em>Почему это важно и как Google выбирает, кого показать на карте, — в статье <a href="/ru/blog/pochemu-vas-ne-nakhodyat-v-google-maps.html">«Почему вас не находят в Google Maps: 7 причин»</a>.</em></p></div>
+<section class="item"><h2><input type="checkbox" id="p1"><label for="p1">1. Название — как на вывеске</label></h2>
+<p class="meta">⏱ 2 мин · 📍 «Изменить профиль» → «Название компании»</p>
+<p class="ex good">✓ Studio Anna</p>
+<p class="ex bad">✗ Studio Anna – Maniküre Gel günstig Düsseldorf</p>
+<p>Ключевые слова в названии нарушают правила Google: название могут изменить или заблокировать профиль.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>1. Название — ровно как на вывеске</span></h2>
-<p>Без добавок вроде «лучший» или «дёшево Düsseldorf». За это Google может заблокировать профиль.</p>
+<section class="item"><h2><input type="checkbox" id="p2"><label for="p2">2. Основная категория — самая точная</label></h2>
+<p class="meta">⏱ 3 мин · 📍 «Изменить профиль» → «Категория компании»</p>
+<p class="ex good">✓ Nagelstudio (если основной доход — маникюр)</p>
+<p class="ex bad">✗ Schönheitssalon (слишком общая)</p>
+<p>Начните вводить слово — Google предложит варианты. Остальные услуги добавьте дополнительными категориями, но не больше 3–4.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>2. Основная категория — самая точная</span></h2>
-<p>Выберите ту, что точнее всего описывает ваше главное занятие: не «Магазин», а «Магазин детской одежды»; не «Услуги», а «Бухгалтер». Именно основная категория сильнее всего влияет на то, по каким запросам вас показывают. Остальные направления добавьте как дополнительные категории.</p>
+<section class="item"><h2><input type="checkbox" id="p3"><label for="p3">3. Адрес или зона обслуживания</label></h2>
+<p class="meta">⏱ 3 мин · 📍 «Изменить профиль» → «Местоположение» / «Зона обслуживания»</p>
+<p class="ex good">✓ Клиенты приходят к вам → точный адрес, метка на входе.</p>
+<p class="ex good">✓ Вы ездите к клиентам → адрес скрыт, указаны районы или города.</p>
+<p class="ex bad">✗ Адрес знакомых или виртуальный офис.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>3. Адрес и зона обслуживания</span></h2>
-<p>Если клиенты приходят к вам — точный адрес и метка на правильном месте. Если вы выезжаете к клиентам — адрес можно скрыть и указать районы или города.</p>
+<section class="item"><h2><input type="checkbox" id="p4"><label for="p4">4. Часы работы и праздники</label></h2>
+<p class="meta">⏱ 3 мин · 📍 «Изменить профиль» → «Часы работы» → «Особые часы работы»</p>
+<p>Внесите заранее 24.12, 25.–26.12, 31.12 и 1.1. Закрытая дверь в «открытое» время — частая причина плохих отзывов.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>4. Часы работы актуальны, включая праздники</span></h2>
-<p>Закрытая дверь в «открытое» время — частая причина плохих отзывов. Особые часы на праздники выставляйте заранее.</p>
+<section class="item"><h2><input type="checkbox" id="p5"><label for="p5">5. Телефон и сайт нажимаются</label></h2>
+<p class="meta">⏱ 2 мин · 📍 откройте свой профиль как клиент, в режиме инкогнито</p>
+<p>Нажмите сами «Позвонить» и «Сайт». Сайта нет — поставьте ссылку на WhatsApp или Instagram.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>5. Телефон и сайт кликабельны</span></h2>
-<p>Проверьте сами: нажмите «Позвонить» и «Сайт». Если сайта нет — укажите ссылку на WhatsApp или Instagram.</p>
-</section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>6. Описание по шаблону</span></h2>
+<section class="item"><h2><input type="checkbox" id="p6"><label for="p6">6. Описание по шаблону</label></h2>
+<p class="meta">⏱ 10 мин · 📍 «Изменить профиль» → «Описание»</p>
 <p>До 750 знаков, без ссылок и заглавных букв подряд. Заполните шаблон:</p>
 <div class="tpl"><div><strong>[Название]</strong> — [чем вы занимаетесь] в [город / район].</div><div>Мы помогаем [кому: семьям, владельцам авто, малому бизнесу…] [какую задачу решаете].</div><div>Наши услуги: [3–5 главных услуг через запятую].</div><div>Почему выбирают нас: [опыт в годах / гарантия / быстрые сроки / индивидуальный подход].</div><div>Говорим на [немецком, русском, украинском…].</div><div>Запишитесь по телефону или WhatsApp — [ответим за час / запись на сегодня].</div></div>
 <p><strong>Пример:</strong> «Studio Anna — косметолог в Düsseldorf-Bilk. Помогаю женщинам ухаживать за кожей без агрессивных процедур. Услуги: чистка лица, пилинги, массаж лица, уход для чувствительной кожи. 8 лет опыта, работаю только с сертифицированной косметикой. Говорю на немецком, русском и украинском. Запись по телефону или в WhatsApp — отвечаю в течение часа.»</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>7. Не меньше 10 свежих фото</span></h2>
-<p>Вход снаружи (чтобы вас легко было найти), помещение, ваши работы или товары, вы и команда. Профили с фото получают заметно больше переходов. Добавляйте новые хотя бы раз в месяц.</p>
+<section class="item"><h2><input type="checkbox" id="p7"><label for="p7">7. Не меньше 10 фото, новые — раз в месяц</label></h2>
+<p class="meta">⏱ 5 мин · 📍 профиль → «Добавить фото»</p>
+<p>Что уже есть: вход снаружи · помещение · ваши работы · вы и команда · логотип.</p>
+<p class="ex bad">✗ Фото из интернета или со стоков — Google и клиенты это замечают.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>8. Услуги и цены заполнены</span></h2>
-<p><strong>Как открыть:</strong> в профиле нажмите <strong>«Изменить профиль» → «Услуги»</strong> (в некоторых категориях раздел называется <strong>«Товары»</strong> или <strong>«Меню»</strong>). Нажмите <strong>«Добавить услугу»</strong>, укажите название, цену (можно «от …») и короткое описание.</p>
-<p>Клиенту проще написать, когда он понимает порядок цен.</p>
+<section class="item"><h2><input type="checkbox" id="p8"><label for="p8">8. Услуги и цены</label></h2>
+<p class="meta">⏱ 10 мин · 📍 «Изменить профиль» → «Услуги» (в некоторых категориях «Товары»)</p>
+<p class="ex good">✓ Maniküre mit Shellac — ab 35 €</p>
+<p class="ex bad">✗ Maniküre — Preis auf Anfrage</p>
+<p>Клиентам проще написать, когда они видят порядок цен.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>9. Отзывы: негативные тоже работают на вас</span></h2>
-<p>Попросите 3–5 довольных клиентов оставить отзыв и дайте им прямую ссылку — её можно взять в профиле: кнопка <strong>«Попросить оставить отзыв»</strong>.</p>
-<p><strong>Не бойтесь негативных отзывов.</strong> Профиль только с пятёрками выглядит подозрительно — люди этому не верят. Будущий клиент читает не столько сам отзыв, сколько ваш ответ на него.</p>
-<ul><li>Отвечайте спокойно, вежливо и по делу: поблагодарите, объясните ситуацию, предложите решение.</li><li>Не спорьте и не оправдывайтесь эмоционально.</li><li>Компетентный ответ на критику убеждает лучше десятка пятёрок: клиент видит, что если что-то пойдёт не так, вы решите вопрос.</li></ul>
-<p>Отвечайте и на хорошие отзывы — короткое «Спасибо, рады были помочь!» показывает, что за профилем стоит живой человек.</p>
+<section class="item"><h2><input type="checkbox" id="p9"><label for="p9">9. Отзывы: ссылка и ответы</label></h2>
+<p class="meta">⏱ 5 мин · 📍 «Попросить оставить отзыв» → скопировать ссылку</p>
+<p>Отправьте ссылку 3–5 довольным клиентам. Отвечайте на все отзывы, и на негативные тоже: спокойно, по делу, с решением. Будущие клиенты читают не столько отзыв, сколько ваш ответ.</p>
 </section>
-<section class="item"><h2><span class="box" aria-hidden="true"></span><span>10. Публикации раз в 2 недели</span></h2>
-<p>Новость, акция, фото новой работы. Профиль выглядит «живым», и у клиента появляется повод выбрать вас.</p>
+<section class="item"><h2><input type="checkbox" id="p10"><label for="p10">10. Публикация раз в 2 недели</label></h2>
+<p class="meta">⏱ 5 мин · 📍 профиль → «Добавить новость»</p>
+<p>Новая работа, акция, свободные окна на неделе. Поставьте себе повтор в календаре.</p>
 </section>
-<div class="cta"><h2>Хотите, чтобы я проверила ваш профиль?</h2><p>Напишите мне в WhatsApp. Первая проверка бесплатная — в ответ пришлю короткий список того, что исправить.</p><a href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D1%80%D0%BE%D1%87%D0%B8%D1%82%D0%B0%D0%BB%28%D0%B0%29%20%D1%87%D0%B5%D0%BA-%D0%BB%D0%B8%D1%81%D1%82%20%D0%BF%D0%BE%20Google%20Maps%20%D0%B8%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D1%83%20%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F." target="_blank" rel="noopener">Написать в WhatsApp</a></div>
+<div class="res"><h2>Ваш результат</h2>
+<div data-min="9" data-max="10"><b>9–10 ✓</b> Профиль в хорошей форме. Следите за отзывами и публикациями.</div>
+<div data-min="6" data-max="8"><b>6–8 ✓</b> Основа есть, но клиенты пока уходят к конкурентам. Начните с невыполненных пунктов 1–3: они сильнее всего влияют на показы.</div>
+<div data-min="0" data-max="5"><b>0–5 ✓</b> Профиль работает вполсилы. Проще всего начать с бесплатной проверки.</div>
+</div>
+<div class="cta"><h2>Проверить профиль за вас?</h2><p>Бесплатный Google-Check: посмотрю ваш профиль и пришлю 3–5 конкретных шагов.</p><a href="https://wa.me/380666578075?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D1%80%D0%BE%D1%88%D0%BB%D0%B0%20%D1%87%D0%B5%D0%BA-%D0%BB%D0%B8%D1%81%D1%82%20%D0%BF%D0%BE%20Google%20Maps%20%D0%B8%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D1%83%20%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8F." target="_blank" rel="noopener">Написать в WhatsApp</a></div>
+<div class="faq"><h2>Частые вопросы</h2>
+<details><summary>Сколько ждать результата после изменений?</summary><p>Обычно Google обновляет профиль за несколько дней, а изменения в показах видны через 2–4 недели. В профиле есть раздел «Статистика» — сравните цифры до и после.</p></details>
+<details><summary>Можно ли заплатить Google, чтобы быть выше на карте?</summary><p>Обычные места на карте не продаются. Есть рекламные места с пометкой «Реклама», но это отдельная платная услуга.</p></details>
+<details><summary>Нужен ли сайт, если есть профиль в Google?</summary><p>Не обязательно. Но сайт с теми же названием, адресом и телефоном усиливает доверие Google к профилю.</p></details>
+</div>
 <p class="sig">Olha Polishchuk · <a href="/ru/">olhapolishchuk.de</a></p>
 </main>
+<script>
+(function(){
+  var KEY='olha-checklist-v2', boxes=[].slice.call(document.querySelectorAll('.item input[type=checkbox]'));
+  var n=document.getElementById('cnt'), bar=document.getElementById('bar'), rows=document.querySelectorAll('.res div[data-min]');
+  var st={}; try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function upd(){
+    var k=0; boxes.forEach(function(b){ if(b.checked)k++; b.closest('.item').classList.toggle('is-done',b.checked); st[b.id]=b.checked; });
+    n.textContent=k; bar.style.width=(k*10)+'%';
+    [].forEach.call(rows,function(r){ r.classList.toggle('on', k>=+r.dataset.min && k<=+r.dataset.max); });
+    try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}
+  }
+  boxes.forEach(function(b){ if(st[b.id])b.checked=true; b.addEventListener('change',function(){ upd(); if(b.checked && window.umami){try{umami.track('checklist-punkt',{n:b.id})}catch(e){}} }); });
+  var r=document.getElementById('reset'); if(r)r.addEventListener('click',function(){ boxes.forEach(function(b){b.checked=false}); upd(); });
+  upd();
+})();
+</script>
 </body>
 </html>

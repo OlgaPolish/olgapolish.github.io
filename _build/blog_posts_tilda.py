@@ -7,7 +7,7 @@ TILDA_POST = {
     "ru": dict(
         slug="tilda-ili-zakazat-sajt.html",
         title="Tilda или заказать сайт: что выбрать мастеру в Германии",
-        seo_title="Tilda или заказать сайт? Честное сравнение для Германии | Olha Polishchuk",
+        seo_title="Tilda или заказать сайт? Сравнение для Германии | Olha Polishchuk",
         desc="Сделать сайт самой на Tilda или заказать? Сравниваю деньги, время и то, о чём конструктор не скажет: Impressum, Datenschutz, немецкие тексты и Google Maps.",
         excerpt="Конструктор стоит 10 долларов в месяц, но сайт — это не только блоки. Сравниваю три пути: самой на Tilda, готовый шаблон или сайт под ключ.",
         lead="Tilda — хороший конструктор, и сделать на нём сайт самой вполне реально. Вопрос не «можно ли», а «сколько это будет стоить вам на самом деле» — в деньгах, вечерах и нервах. Особенно в Германии, где у сайта есть обязательные юридические страницы, а клиенты ищут вас по-немецки.",
@@ -84,7 +84,7 @@ Tilda даёт блоки и хостинг. Всё остальное — ва�
     "uk": dict(
         slug="tilda-chy-zamovyty-sait.html",
         title="Tilda чи замовити сайт: що обрати майстрині в Німеччині",
-        seo_title="Tilda чи замовити сайт? Чесне порівняння для Німеччини | Olha Polishchuk",
+        seo_title="Tilda чи замовити сайт? Порівняння для Німеччини | Olha Polishchuk",
         desc="Зробити сайт самій на Tilda чи замовити? Порівнюю гроші, час і те, про що конструктор не скаже: Impressum, Datenschutz, німецькі тексти та Google Maps.",
         excerpt="Конструктор коштує 10 доларів на місяць, але сайт — це не лише блоки. Порівнюю три шляхи: самій на Tilda, готовий шаблон або сайт під ключ.",
         lead="Tilda — добрий конструктор, і зробити на ньому сайт самій цілком реально. Питання не «чи можна», а «скільки це коштуватиме вам насправді» — у грошах, вечорах і нервах. Особливо в Німеччині, де в сайту є обов'язкові юридичні сторінки, а клієнти шукають вас німецькою.",
@@ -161,8 +161,8 @@ Tilda дає блоки та хостинг. Усе інше — ваша від
     "de": dict(
         slug="tilda-oder-website-erstellen-lassen.html",
         title="Tilda oder Website erstellen lassen: Was passt für kleine Studios in Deutschland?",
-        seo_title="Tilda oder Website erstellen lassen? Ehrlicher Vergleich | Olha Polishchuk",
-        desc="Website selbst mit Tilda bauen oder erstellen lassen? Ich vergleiche Kosten, Zeit und das, was kein Baukasten erledigt: Impressum, Datenschutz, deutsche Texte und Google Maps.",
+        seo_title="Tilda oder Website erstellen lassen? Vergleich | Olha Polishchuk",
+        desc="Website selbst mit Tilda bauen oder erstellen lassen? Kosten, Zeit und was kein Baukasten erledigt: Impressum, Datenschutz, deutsche Texte, Google Maps.",
         excerpt="Der Baukasten kostet 10 Dollar im Monat – aber eine Website ist mehr als Blöcke. Drei Wege im Vergleich: selbst mit Tilda, fertige Vorlage oder Website zum Festpreis.",
         lead="Tilda ist ein guter Baukasten, und eine Website damit selbst zu bauen ist absolut machbar. Die Frage ist nicht „geht das?“, sondern „was kostet es Sie wirklich?“ – an Geld, Abenden und Nerven. Gerade in Deutschland, wo eine Website Pflichtseiten braucht und Kundinnen Sie auf Deutsch suchen.",
         body="""## Kurz gesagt: Was passt zu wem?
